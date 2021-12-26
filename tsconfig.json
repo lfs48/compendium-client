@@ -15,12 +15,18 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
+    "noImplicitAny": false,
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
+      "@api/*": ["src/api/*"],
+      "@aasets/*": ["src/assets/*"],
+      "@atoms/*": ["src/components/atoms/*"],
       "@components/*": ["src/components/*"],
+      "@molecules/*": ["src/components/molecules/*"],
       "@pages/*": ["src/components/pages/*"],
       "@reducers/*": ["src/reducers/*"],
+      "@interfaces/*": ["src/types/interfaces/*"]
     }
   }
 }
