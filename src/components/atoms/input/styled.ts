@@ -1,5 +1,5 @@
 import tw from 'tailwind-styled-components';
 
-export const Root = tw.div`
-
+export const Input = tw.input`
+    bg-gray-200
 `

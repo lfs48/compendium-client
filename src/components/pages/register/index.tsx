@@ -1,4 +1,4 @@
-import { useLoginMutation, useRegisterMutation } from '@/api/auth.api';
+import { useRegisterMutation } from '@/api/auth.api';
 import Button from '@/components/atoms/button';
 import { login } from '@/reducers/session.reducer';
 import { handleInput } from '@/utils/component.utils';
@@ -7,19 +7,19 @@ import { useCallback, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import * as S from './styled';
 
-export default function Landing() {
+export default function Register() {
 
     const dispatch = useDispatch();
 
-    const [triggerLogin, {data, error, isLoading}] = useLoginMutation();
+    const [triggerRegister, {data, error, isLoading}] = useRegisterMutation();
 
     const [inputs, setInputs] = useState({
         username: "",
         password: ""
     });
 
-    const handleLogin = useCallback( () => {
-        triggerLogin({
+    const handleRegister = useCallback( () => {
+        triggerRegister({
             user: inputs
         })
         .unwrap()
@@ -40,7 +40,7 @@ export default function Landing() {
 
     return(
         <S.Root>
-            Login
+            Register
             <Field 
                 label='Username'
                 value={inputs.username}
@@ -52,9 +52,9 @@ export default function Landing() {
                 onChange={(e)=>handleInput(e, 'password', inputs, setInputs)}
             />
             <Button
-                onClick={handleLogin}
+                onClick={handleRegister}
             >
-                Login
+                Register
             </Button>
         </S.Root>
     )
