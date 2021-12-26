@@ -1,3 +1,26 @@
+@import url('https://fonts.googleapis.com/css?family=MedievalSharp');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+
+  .filled-padding {
+    background-image: linear-gradient(white, white), linear-gradient(var(--tw-gradient-stops)) !important;
+    background-clip: content-box, padding-box !important;
+  }
+
+  .font-fancy {
+    font-family: 'MedievalSharp', cursive !important;
+  }
+  
+}
+
+html, body, #root {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+}

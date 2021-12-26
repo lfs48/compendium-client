@@ -18,3 +18,9 @@ export function handleInput(
     }
     setState(newState);
 }
+
+export function areInputsFilled(
+    inputs: object
+) {
+    return Object.values(inputs).every( (input) => input.length > 0);
+}
