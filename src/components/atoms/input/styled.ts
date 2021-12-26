@@ -10,4 +10,5 @@ export const Input = tw.input`
     focus:ring-black
     px-2
     py-1
+    w-full
 `

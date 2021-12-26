@@ -5,8 +5,8 @@ export const Root = tw.div`
 `
 
 export const Header = tw.h1`
-    font-fancy 
     font-bold 
+    font-fancy
     text-2xl 
     text-center
 `

@@ -1,6 +1,7 @@
 import { useLoginMutation, useRegisterMutation } from '@/api/auth.api';
 import Book from '@/components/atoms/book';
 import Button from '@/components/atoms/button';
+import Link from '@/components/atoms/link';
 import { login } from '@/reducers/session.reducer';
 import { areInputsFilled, handleInput } from '@/utils/component.utils';
 import Field from '@molecules/field';
@@ -54,6 +55,12 @@ export default function LoginForm() {
                         value={inputs.password}
                         onChange={(e)=>handleInput(e, 'password', inputs, setInputs)}
                     />
+                    <Link 
+                        block
+                        to='/register'
+                    >
+                        Create an account
+                    </Link>
                 </S.Top>
             <Button
                 block

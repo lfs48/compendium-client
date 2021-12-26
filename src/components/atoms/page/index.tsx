@@ -1,6 +1,6 @@
 import * as S from './styled';
 
-export default function Template({
+export default function Page({
     children
 }) {
     return(

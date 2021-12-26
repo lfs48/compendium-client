@@ -30,3 +30,10 @@ export const Bookmark = tw.i`
     text-2xl 
     text-orange
 `
+
+export const Cover = tw.div`
+    bg-beige-light
+    h-full
+    rounded-tr
+    rounded-br
+`

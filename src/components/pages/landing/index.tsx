@@ -1,5 +1,6 @@
 import { useLoginMutation, useRegisterMutation } from '@/api/auth.api';
 import Button from '@/components/atoms/button';
+import Page from '@/components/atoms/page';
 import LoginForm from '@/components/organisms/login-form';
 import { login } from '@/reducers/session.reducer';
 import { handleInput } from '@/utils/component.utils';
@@ -40,8 +41,8 @@ export default function Landing() {
     }, [inputs])
 
     return(
-        <S.Root>
+        <Page>
             <LoginForm />
-        </S.Root>
+        </Page>
     )
 }

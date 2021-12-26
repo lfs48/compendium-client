@@ -14,7 +14,9 @@ export default function Book({
         <S.Root {...props}>
             <S.Spine />
             <S.Bookmark />
-            {children}
+            <S.Cover>
+                {children}
+            </S.Cover>
         </S.Root>
     )
 }
