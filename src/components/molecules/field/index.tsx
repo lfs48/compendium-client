@@ -1,5 +1,6 @@
 import Input from '@atoms/input';
 import Label from '@atoms/label';
+import ErrorList from '@/components/molecules/error-list';
 import { SyntheticEvent } from 'react';
 import * as S from './styled';
 
@@ -9,6 +10,7 @@ interface FieldProps {
     label?: string;
     onChange: (event:SyntheticEvent) => void;
     maxLength?: number;
+    errors?: string[];
     [prop:string]: any;
 }
 
@@ -18,6 +20,7 @@ export default function Field({
     label,
     onChange,
     maxLength=20,
+    errors=[],
     ...props
 }: FieldProps) {
     return(
@@ -31,6 +34,9 @@ export default function Field({
                 onChange={onChange}
                 maxLength={maxLength}
             />
+            {(errors && errors.length > 0) &&
+                <ErrorList errors={errors} />
+            }
         </S.Root>
     )
 }

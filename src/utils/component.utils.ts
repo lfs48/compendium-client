@@ -19,8 +19,14 @@ export function handleInput(
     setState(newState);
 }
 
-export function areInputsFilled(
-    inputs: object
+export function areAllKeysFilled(
+    obj: object
 ) {
-    return Object.values(inputs).every( (input) => input.length > 0);
+    return Object.values(obj).every( (val) => val.length > 0);
+}
+
+export function isAnyKeyFilled(
+    obj: object
+) {
+    return Object.values(obj).some( (val) => val.length > 0);
 }

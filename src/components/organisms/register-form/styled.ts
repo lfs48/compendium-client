@@ -11,6 +11,11 @@ export const Header = tw.h1`
     text-center
 `
 
+export const SubHeader = tw.h2`
+    font-bold
+    text-center
+`
+
 export const Content = tw.div`
     h-full
     px-6

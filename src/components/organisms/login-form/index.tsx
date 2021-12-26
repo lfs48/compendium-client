@@ -2,8 +2,9 @@ import { useLoginMutation, useRegisterMutation } from '@/api/auth.api';
 import Book from '@/components/atoms/book';
 import Button from '@/components/atoms/button';
 import Link from '@/components/atoms/link';
+import ErrorList from '@/components/molecules/error-list';
 import { login } from '@/reducers/session.reducer';
-import { areInputsFilled, handleInput } from '@/utils/component.utils';
+import { areAllKeysFilled, handleInput, isAnyKeyFilled } from '@/utils/component.utils';
 import Field from '@molecules/field';
 import { useCallback, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -19,6 +20,12 @@ export default function LoginForm() {
         username: "",
         password: ""
     });
+
+    const initialErrors = {
+        form: [] as string[]
+    }
+
+    const [errors, setErrors] = useState(initialErrors);
 
     const handleLogin = useCallback( () => {
         triggerLogin({
@@ -36,7 +43,7 @@ export default function LoginForm() {
             })
         })
         .catch( err => {
-            console.log(err)
+            setErrors(err.data.errors);
         })
     }, [inputs]);
 
@@ -52,9 +59,13 @@ export default function LoginForm() {
                     />
                     <Field 
                         label='Password'
+                        type='password'
                         value={inputs.password}
                         onChange={(e)=>handleInput(e, 'password', inputs, setInputs)}
                     />
+                    {isAnyKeyFilled(errors) &&
+                        <ErrorList errors={errors.form} />
+                    }
                     <Link 
                         block
                         to='/register'
@@ -64,7 +75,7 @@ export default function LoginForm() {
                 </S.Top>
             <Button
                 block
-                disabled={!areInputsFilled(inputs)}
+                disabled={!areAllKeysFilled(inputs)}
                 loading={isLoading}
                 onClick={handleLogin}
             >

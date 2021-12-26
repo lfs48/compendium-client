@@ -2,7 +2,7 @@ import { useRegisterMutation } from '@/api/auth.api';
 import Book from '@atoms/book';
 import Button from '@atoms/button';
 import { login } from '@/reducers/session.reducer';
-import { areInputsFilled, handleInput } from '@/utils/component.utils';
+import { areAllKeysFilled, handleInput, isAnyKeyFilled } from '@/utils/component.utils';
 import Field from '@molecules/field';
 import { useCallback, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -21,49 +21,79 @@ export default function RegisterForm() {
         confirmPassword: ""
     });
 
+    const initialErrors = {
+        username: [] as string[],
+        password: [] as string[],
+        confirmPassword: [] as string[]
+    }
+
+    const [errors, setErrors] = useState(initialErrors);
+
     const handleRegister = useCallback( () => {
-        triggerRegister({
-            user: {
-                username: inputs.username,
-                password: inputs.password
-            }
-        })
-        .unwrap()
-        .then( res => {
-            const {token, user} = res;
-            dispatch({
-                type: login.type,
-                payload: {
-                    jwt: token,
-                    id: user.id
+        const newErrors = validateInputs();
+        if ( isAnyKeyFilled(newErrors) ) {
+            setErrors(newErrors);
+        } else {
+            triggerRegister({
+                user: {
+                    username: inputs.username,
+                    password: inputs.password
                 }
             })
-        })
-        .catch( err => {
-            console.log(err)
-        })
+            .unwrap()
+            .then( res => {
+                setErrors(initialErrors);
+                const {token, user} = res;
+                dispatch({
+                    type: login.type,
+                    payload: {
+                        jwt: token,
+                        id: user.id
+                    }
+                })
+            })
+            .catch( err => {
+                setErrors(err.data.errors);
+            })
+        }
     }, [inputs])
+
+    const validateInputs = useCallback( () => {
+        const newErrors = initialErrors;
+        if (inputs.password !== inputs.confirmPassword) {
+            newErrors
+            .confirmPassword
+            .push('must match password')
+        }
+        return newErrors;
+    }, [inputs])
+
+
 
     return(
         <Book>
             <S.Content>
                 <S.Top>
-                <S.Header>Create an Account</S.Header>
+                <S.Header>Compendium</S.Header>
+                <S.SubHeader>Create an Account</S.SubHeader>
                 <Field 
                     label='Username'
                     value={inputs.username}
+                    errors={errors.username}
                     onChange={(e)=>handleInput(e, 'username', inputs, setInputs)}
                 />
                 <Field 
                     label='Password'
                     type='password'
                     value={inputs.password}
+                    errors={errors.password}
                     onChange={(e)=>handleInput(e, 'password', inputs, setInputs)}
                 />
                 <Field 
                     label='Confirm Password'
                     type='password'
                     value={inputs.confirmPassword}
+                    errors={errors.confirmPassword}
                     onChange={(e)=>handleInput(e, 'confirmPassword', inputs, setInputs)}
                 />
                 <Link
@@ -75,7 +105,7 @@ export default function RegisterForm() {
             </S.Top>
             <Button
                 block
-                disabled={!areInputsFilled(inputs)}
+                disabled={!areAllKeysFilled(inputs)}
                 loading={isLoading}
                 onClick={handleRegister}
             >
