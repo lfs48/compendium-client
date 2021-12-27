@@ -29,7 +29,7 @@ module.exports = {
         200: '50rem',
         240: '60rem',
         'full-minus-panel': 'calc(100% - 42rem)',
-        'full-minus-nav': 'calc(100% - 8.5rem)',
+        'full-minus-nav': 'calc(100% - 4rem)',
       },
       colors: {
         beige: {

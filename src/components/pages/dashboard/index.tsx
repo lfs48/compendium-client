@@ -1,9 +1,10 @@
+import Page from '@/components/atoms/page';
 import * as S from './styled';
 
 export default function Dashboard() {
     return(
-        <S.Root>
+        <Page>
             Dashboard
-        </S.Root>
+        </Page>
     )
 }

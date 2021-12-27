@@ -5,7 +5,7 @@ export const Root = tw.div`
     flex
     justify-center
     items-center
-    h-full
+    h-full-minus-nav
     w-full
     bg-beige-lightest
 `
