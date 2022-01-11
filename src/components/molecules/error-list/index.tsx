@@ -9,7 +9,7 @@ interface ErrorProps {
 export default function ErrorList({
     errors,
     ...props
-}) {
+}: ErrorProps) {
 
     const errorList = errors.map( (error, i) => (
         <Error 
