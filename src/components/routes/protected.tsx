@@ -1,15 +1,27 @@
 import { useGetUserByIdQuery } from "@/api/users.api";
 import { Navigate, Route } from "react-router-dom";
 import Loading from "@pages/loading";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/types/interfaces";
+import { useEffect } from "react";
+import { logout } from "@/reducers/session.reducer";
 
 // Route for components that should only be accessed when authenticated, e.g. dashboard
 export default function Protected({children}) {
 
+    const dispatch = useDispatch();
+
     const { authenticated, id } = useSelector( (state:RootState) => state.session);
     
     const { data, error, isLoading } = useGetUserByIdQuery(id);
+
+    useEffect( () => {
+        if (error) {
+            dispatch({
+                type: logout.type
+            })
+        }
+    }, [error])
 
     if (authenticated && data) {
         return children;
