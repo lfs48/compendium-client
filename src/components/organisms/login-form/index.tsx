@@ -33,6 +33,7 @@ export default function LoginForm() {
         })
         .unwrap()
         .then( res => {
+            setErrors(initialErrors);
             const {token, user} = res;
             dispatch({
                 type: login.type,
@@ -56,12 +57,14 @@ export default function LoginForm() {
                         label='Username'
                         value={inputs.username}
                         onChange={(e)=>handleInput(e, 'username', inputs, setInputs)}
+                        hasErrors={errors.form.length >= 1}
                     />
                     <Field 
                         label='Password'
                         type='password'
                         value={inputs.password}
                         onChange={(e)=>handleInput(e, 'password', inputs, setInputs)}
+                        hasErrors={errors.form.length >= 1}
                     />
                     {isAnyKeyFilled(errors) &&
                         <ErrorList errors={errors.form} />
