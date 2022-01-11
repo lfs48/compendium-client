@@ -1,12 +1,12 @@
-import { useLoginMutation, useRegisterMutation } from '@/api/auth.api';
-import Book from '@/components/atoms/book';
-import Button from '@/components/atoms/button';
-import Link from '@/components/atoms/link';
-import ErrorList from '@/components/molecules/error-list';
+import { useLoginMutation } from '@/api/auth.api';
+import Book from '@atoms/book';
+import Button from '@atoms/button';
+import Link from '@atoms/link';
+import ErrorList from '@molecules/error-list';
 import { login } from '@/reducers/session.reducer';
 import { areAllKeysFilled, handleInput, isAnyKeyFilled } from '@/utils/component.utils';
 import Field from '@molecules/field';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import * as S from './styled';
 

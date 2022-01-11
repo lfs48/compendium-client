@@ -1,6 +1,6 @@
 import Input from '@atoms/input';
 import Label from '@atoms/label';
-import ErrorList from '@/components/molecules/error-list';
+import ErrorList from '@molecules/error-list';
 import { SyntheticEvent } from 'react';
 import * as S from './styled';
 

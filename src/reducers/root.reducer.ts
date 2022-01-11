@@ -1,5 +1,5 @@
 import { combineReducers } from "@reduxjs/toolkit";
-import { rootApi } from "@api/root.api";
+import { rootApi } from "@/api/root.api";
 import sessionReducer from "./session.reducer";
 
 const rootReducer = combineReducers({

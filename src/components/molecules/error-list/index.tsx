@@ -1,4 +1,4 @@
-import Error from '@/components/atoms/error';
+import Error from '@atoms/error';
 import * as S from './styled';
 
 interface ErrorProps {

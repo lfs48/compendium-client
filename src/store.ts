@@ -5,7 +5,7 @@
  import { configureStore, Middleware } from '@reduxjs/toolkit';
  import logger from 'redux-logger';
  import rootReducer from './reducers/root.reducer';
- import { rootApi } from '@api/root.api';
+ import { rootApi } from '@/api/root.api';
  
  export function configureAppStore(preloadedState={}) {
    // Create the store with middleware

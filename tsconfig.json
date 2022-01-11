@@ -19,14 +19,10 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
-      "@api/*": ["src/api/*"],
-      "@aasets/*": ["src/assets/*"],
       "@atoms/*": ["src/components/atoms/*"],
-      "@components/*": ["src/components/*"],
       "@molecules/*": ["src/components/molecules/*"],
-      "@pages/*": ["src/components/pages/*"],
-      "@reducers/*": ["src/reducers/*"],
-      "@interfaces/*": ["src/types/interfaces/*"]
+      "@organisms/*": ["src/components/organisms/*"],
+      "@pages/*": ["src/components/pages/*"]
     }
   }
 }

@@ -1,5 +1,5 @@
-import Page from '@/components/atoms/page';
-import RegisterForm from '@/components/organisms/register-form';
+import Page from '@atoms/page';
+import RegisterForm from '@organisms/register-form';
 
 export default function Register() {
 

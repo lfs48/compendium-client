@@ -4,10 +4,10 @@ import Button from '@atoms/button';
 import { login } from '@/reducers/session.reducer';
 import { areAllKeysFilled, handleInput, isAnyKeyFilled } from '@/utils/component.utils';
 import Field from '@molecules/field';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import * as S from './styled';
-import Link from '@/components/atoms/link';
+import Link from '@atoms/link';
 
 export default function RegisterForm() {
 

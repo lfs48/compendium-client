@@ -1,5 +1,5 @@
-import Routes from "@components/routes"
-import Navbar from "@components/organisms/navbar"
+import Routes from "@/components/routes"
+import Navbar from "@organisms/navbar"
 
 function App() {
 
