@@ -1,4 +1,5 @@
-import SessionReducer from '@reducers/session.reducer';
+import EntitiesReducer from '@/reducers/entities/entities.reducer';
+import SessionReducer from '@/reducers/session.reducer';
 
 // [IMPORT NEW CONTAINERSTATE ABOVE] < Needed for generating containers seamlessly
 /* 
@@ -6,6 +7,7 @@ import SessionReducer from '@reducers/session.reducer';
   You have to declare them here manually
 */
 export interface RootState {
-  session: ReturnType<typeof SessionReducer>
+  session: ReturnType<typeof SessionReducer>,
+  entities: ReturnType<typeof EntitiesReducer>
   // [INSERT NEW REDUCER KEY ABOVE] < Needed for generating containers seamlessly
 }
