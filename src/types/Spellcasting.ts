@@ -1,0 +1,1 @@
+export type Spellcasting = 'full' | 'half' | 'half+' | 'third' | 'none';
