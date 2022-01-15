@@ -23,6 +23,8 @@ function tabName(tab:Tab) {
     switch(tab) {
         case('dndclasses'):
             return 'Classes';
+        case('features'):
+            return 'Features';
         default:
             return '';
     }

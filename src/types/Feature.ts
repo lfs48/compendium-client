@@ -12,3 +12,23 @@ export interface Feature {
         }
     ]
 }
+
+export interface PostFeature {
+    id: string;
+    feature: {
+        name: string;
+        description: string;
+        kind: string;
+        category: string;
+    }
+}
+
+export interface PatchFeature {
+    id: string;
+    feature: {
+        name?: string;
+        description?: string;
+        kind?: string;
+        category?: string;
+    }
+}

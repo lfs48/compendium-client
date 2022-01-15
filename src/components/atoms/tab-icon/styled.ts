@@ -33,6 +33,8 @@ function tabIcon(tab:Tab) {
     switch(tab) {
         case('dndclasses'):
             return 'fas fa-sword';
+        case('features'):
+            return 'fas fa-star';
         default:
             return '';
     }

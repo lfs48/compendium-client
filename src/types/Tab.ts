@@ -1,1 +1,1 @@
-export type Tab = 'dndclasses';
+export type Tab = 'dndclasses' | 'features';

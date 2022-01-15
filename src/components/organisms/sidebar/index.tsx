@@ -1,4 +1,5 @@
 import { useGetAllClassesQuery } from '@/api/dndclasses.api';
+import { useGetAllFeaturesQuery } from '@/api/features.api';
 import Loading from '@/components/atoms/loading';
 import SidebarLineItem from '@/components/atoms/sidebar-line-item';
 import SidebarTabSelect from '@/components/molecules/sidebar-tab-select';
@@ -9,16 +10,16 @@ import * as S from './styled';
 
 export default function Sidebar() {
 
-    const classesQuery = useGetAllClassesQuery();
+    const [selectedTab, setSelectedTab] = useState<Tab>('dndclasses');
 
     const queries = {
-        dndclasses: classesQuery
+        dndclasses: useGetAllClassesQuery(),
+        features: useGetAllFeaturesQuery()
     };
 
-    const [selectedTab, setSelectedTab] = useState<Tab>('dndclasses')
-
     const entities = useSelector( (state:RootState) => ({
-        dndclasses: state.entities.dndClasses
+        dndclasses: state.entities.dndClasses,
+        features: state.entities.features
     }))
 
     const tabSelectors = Object.keys(entities).map( (key) => {
@@ -26,6 +27,7 @@ export default function Sidebar() {
 
         return(
             <SidebarTabSelect 
+                key={tab}
                 tab={tab}
                 selected={selectedTab === tab}
                 handleSelect={() => setSelectedTab(tab)}
@@ -36,6 +38,7 @@ export default function Sidebar() {
     const tabContent = Object.values(entities[selectedTab]).map( (entity) => {
         return(
             <SidebarLineItem 
+                key={entity.id}
                 content={entity}
             />
         )
