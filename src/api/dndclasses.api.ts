@@ -19,21 +19,21 @@ export const dndClassApi = rootApi.injectEndpoints({
         }),
         postClass: builder.mutation<Res, PostDndClass>({
             query: ({...post}) => ({
-                url: `/${post.id}`,
+                url: `/classes/${post.id}`,
                 method: 'POST',
                 body: post
             })
         }),
         patchClass: builder.mutation<Res, PatchDndClass>({
             query: ({...patch}) => ({
-                url: `/${patch.id}`,
+                url: `/classes/${patch.id}`,
                 method: 'PATCH',
                 body: patch
             })
         }),
         deleteClass: builder.mutation<Res, string>({
             query: (id) => ({
-                url: `/${id}`,
+                url: `/classes/${id}`,
                 method: 'DELETE'
             })
         })
