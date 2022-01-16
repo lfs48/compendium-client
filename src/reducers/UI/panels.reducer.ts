@@ -1,14 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 interface Panel {
-    id: string;
-    panelType: string;
-    editing: boolean;
+  id: string;
+  panelType: string;
+  editing: boolean;
 }
+
+const initialState = [] as Panel[]
 
 const panelsSlice = createSlice({
   name: 'panels',
-  initialState: [] as Panel[],
+  initialState: initialState,
   reducers: {
       openPanel: (state, action) => {
         const i = state.findIndex( (panel) => panel.id === action.payload.id);

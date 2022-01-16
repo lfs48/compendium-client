@@ -65,7 +65,7 @@ const handleClose = ({styleData, setStyleData, dispatch, id}) => {
             }
         };
         dispatch(action);
-    }, 350);
+    }, 450);
 };
 
 
