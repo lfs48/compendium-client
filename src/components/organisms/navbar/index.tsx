@@ -1,6 +1,6 @@
 import { useGetUserByIdQuery } from '@/api/users.api';
 import Logout from '@atoms/logout';
-import { RootState } from '@/types/interfaces';
+import { RootState } from '@/types';
 import { useSelector } from 'react-redux';
 import * as S from './styled';
 
