@@ -1,8 +1,8 @@
-import { Tab } from '@/types';
+import { GameEntity } from '@/types';
 import * as S from './styled';
 
 interface TabNameProps {
-    tab: Tab;
+    tab: GameEntity;
     [prop: string]: any;
 }
 
@@ -19,7 +19,7 @@ export default function TabName({
     )
 }
 
-function tabName(tab:Tab) {
+function tabName(tab:GameEntity) {
     switch(tab) {
         case('dndClasses'):
             return 'Classes';
