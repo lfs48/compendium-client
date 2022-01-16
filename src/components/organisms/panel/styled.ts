@@ -85,22 +85,20 @@ export const Block = tw.div`
     ml-4
     mb-2
 `
-export const panelContentClasses = `
-    p-6
-    h-[calc(100%-6rem)]
-    overflow-y-auto
-    overflow-x-hidden
-    scroll
-`
+
 export const Close = tw.i`
     fas 
     fa-times 
     text-lg
     cursor-pointer
+    transition-colors
+    duration-200
+    hover:text-red-500
 `
 
 export const Content = tw.div`
-    p-6
+    px-6
+    py-2
     h-[calc(100%-3rem)]
     overflow-y-auto
     overflow-x-hidden
