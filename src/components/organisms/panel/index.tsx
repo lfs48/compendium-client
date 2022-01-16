@@ -3,6 +3,7 @@ import { merge, throttle } from 'lodash';
 import { closePanel, selectPanel } from '@/reducers/UI/panels.reducer';
 import { useDispatch } from 'react-redux';
 import * as S from './styled';
+import Resize from '@atoms/resize';
 import { useMousePos } from '@/hooks/useMouse.hook';
 
 const handleDragStart = ({event, x, y, styleData, setStyleData, id, dispatch, dragging, setDragging}) => {
@@ -178,6 +179,8 @@ const Panel = React.memo( function({
             </S.Header>
 
             {children}
+
+            <Resize styleData={styleData} setStyleData={setStyleData}/>
 
         </S.Root>
     );
