@@ -4,6 +4,7 @@ import Panel from '@/components/organisms/panel';
 import Sidebar from '@/components/organisms/sidebar';
 import { RootState } from '@/types';
 import { useSelector } from 'react-redux';
+import Markdown from '@molecules/markdown';
 
 export default function Dashboard() {
 
@@ -19,9 +20,9 @@ export default function Dashboard() {
                 key={panel.id} 
                 data={entity} 
             >
-                <div>
+                <Markdown>
                     {entity.description}
-                </div>
+                </Markdown>
             </Panel>
         )
     })

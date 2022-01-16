@@ -177,9 +177,9 @@ const Panel = React.memo( function({
                     />
                 </div>
             </S.Header>
-
-            {children}
-
+            <S.Content>
+                {children}
+            </S.Content>
             <Resize styleData={styleData} setStyleData={setStyleData}/>
 
         </S.Root>

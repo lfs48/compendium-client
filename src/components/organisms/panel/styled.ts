@@ -98,3 +98,12 @@ export const Close = tw.i`
     text-lg
     cursor-pointer
 `
+
+export const Content = tw.div`
+    p-6
+    h-[calc(100%-3rem)]
+    overflow-y-auto
+    overflow-x-hidden
+    scroll
+    scrollbar
+`

@@ -98,6 +98,21 @@
   .resize-topleft:hover {
     cursor: nw-resize;
   }
+
+  .scrollbar::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  .scrollbar::-webkit-scrollbar-track {
+      background: #f1f1f1;
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb {
+      background: #888;
+      border: 2px solid rgba(0, 0, 0, 0);
+      border-radius: 10px;
+      background-clip: padding-box;
+  }
   
 }
 
