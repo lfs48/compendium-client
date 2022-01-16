@@ -13,14 +13,101 @@
   .font-fancy {
     font-family: 'MedievalSharp', cursive !important;
   }
+
+  .resizable {
+    position: fixed;
+  }
+
+  .resize-area {
+    position: absolute;
+  }
+
+  .resize-top {
+    top: -0.5rem;
+    left: 0;
+    width: 100%;
+    height: 1rem;
+  }
+
+  .resize-right {
+    top: 0;
+    right: -0.5rem;
+    width: 0.5rem;
+    height: 100%;
+  }
+
+  .resize-bottom {
+    bottom: -0.5rem;
+    left: 0;
+    width: 100%;
+    height: 1rem;
+  }
+
+  .resize-left {
+    top: 0;
+    left: -0.5rem;
+    width: 1rem;
+    height: 100%;
+  }
+
+  .resize-corner {
+    height: 1rem;
+    width: 1rem;
+  }
+
+  .resize-bottomright {
+    bottom: -0.5rem;
+    right: -0.5rem;
+  }
+
+  .resize-bottomleft {
+    bottom: -0.5rem;
+    left: -0.5rem;
+  }
+
+  .resize-topright {
+    top: -0.5rem;
+    right: -0.5rem;
+  }
+
+  .resize-topleft {
+    top: -0.5rem;
+    left: -0.5rem;
+  }
+
+  .resize-top:hover, .resize-bottom:hover {
+    cursor: n-resize;
+  }
+
+  .resize-left:hover, .resize-right:hover {
+    cursor: e-resize;
+  }
+
+  .resize-bottomright:hover {
+    cursor: se-resize;
+  }
+
+  .resize-bottomleft:hover {
+    cursor: sw-resize;
+  }
+
+  .resize-topright:hover {
+    cursor: ne-resize;
+  }
+
+  .resize-topleft:hover {
+    cursor: nw-resize;
+  }
   
 }
 
 html, body, #root {
-    height: 100%;
-    width: 100%;
+  height: 100%;
+  width: 100%;
 }
 
 body {
-    -webkit-font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  overflow-y: hidden;
 }

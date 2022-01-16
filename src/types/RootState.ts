@@ -1,5 +1,6 @@
 import EntitiesReducer from '@/reducers/entities/entities.reducer';
 import SessionReducer from '@/reducers/session.reducer';
+import UIReducer from '@/reducers/UI/UI.reducer';
 
 // [IMPORT NEW CONTAINERSTATE ABOVE] < Needed for generating containers seamlessly
 /* 
@@ -8,6 +9,7 @@ import SessionReducer from '@/reducers/session.reducer';
 */
 export interface RootState {
   session: ReturnType<typeof SessionReducer>,
-  entities: ReturnType<typeof EntitiesReducer>
+  entities: ReturnType<typeof EntitiesReducer>,
+  UI: ReturnType<typeof UIReducer>,
   // [INSERT NEW REDUCER KEY ABOVE] < Needed for generating containers seamlessly
 }

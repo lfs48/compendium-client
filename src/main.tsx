@@ -10,6 +10,11 @@ async function initializeApp() {
   const preloadedState = {};
   const store = configureAppStore(preloadedState);
 
+  document.addEventListener("dragstart", function( event ) {
+    var img = new Image();
+    event.dataTransfer?.setDragImage(img, 0, 0);
+  }, false);
+
   ReactDOM.render(
     <Provider store={store}>
       <React.StrictMode>
