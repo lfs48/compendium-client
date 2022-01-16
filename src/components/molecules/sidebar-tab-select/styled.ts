@@ -1,4 +1,3 @@
-import { Tab } from '@/types';
 import tw from 'tailwind-styled-components';
 
 type RootProps = {

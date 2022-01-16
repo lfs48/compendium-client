@@ -1,8 +1,8 @@
-import { Tab } from '@/types';
+import { GameEntity } from '@/types';
 import tw from 'tailwind-styled-components';
 
 type RootProps = {
-    $tab: Tab;
+    $tab: GameEntity;
     $selected?: boolean;
 }
 
@@ -29,9 +29,9 @@ export const Root = tw.i<RootProps>`
     }
 `
 
-function tabIcon(tab:Tab) {
+function tabIcon(tab:GameEntity) {
     switch(tab) {
-        case('dndclasses'):
+        case('dndClasses'):
             return 'fas fa-sword';
         case('features'):
             return 'fas fa-star';

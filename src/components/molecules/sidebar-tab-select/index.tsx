@@ -1,10 +1,10 @@
 import TabIcon from '@/components/atoms/tab-icon';
 import TabName from '@/components/atoms/tab-name';
-import { Tab } from '@/types';
+import { GameEntity } from '@/types';
 import * as S from './styled';
 
 interface SidebarTabSelectProps {
-    tab: Tab;
+    tab: GameEntity;
     selected: boolean;
     handleSelect: () => void;
     [prop: string]: any;

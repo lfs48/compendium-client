@@ -3,27 +3,27 @@ import { useGetAllFeaturesQuery } from '@/api/features.api';
 import Loading from '@/components/atoms/loading';
 import SidebarLineItem from '@/components/atoms/sidebar-line-item';
 import SidebarTabSelect from '@/components/molecules/sidebar-tab-select';
-import { RootState, Tab } from '@/types';
+import { RootState, GameEntity } from '@/types';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import * as S from './styled';
 
 export default function Sidebar() {
 
-    const [selectedTab, setSelectedTab] = useState<Tab>('dndclasses');
+    const [selectedTab, setSelectedTab] = useState<GameEntity>('dndClasses');
 
     const queries = {
-        dndclasses: useGetAllClassesQuery(),
+        dndClasses: useGetAllClassesQuery(),
         features: useGetAllFeaturesQuery()
     };
 
     const entities = useSelector( (state:RootState) => ({
-        dndclasses: state.entities.dndClasses,
+        dndClasses: state.entities.dndClasses,
         features: state.entities.features
     }))
 
     const tabSelectors = Object.keys(entities).map( (key) => {
-        const tab = key as Tab;
+        const tab = key as GameEntity;
 
         return(
             <SidebarTabSelect 
@@ -35,11 +35,12 @@ export default function Sidebar() {
         )
     })
 
-    const tabContent = Object.values(entities[selectedTab]).map( (entity) => {
+    const tabContent = Object.values(entities[selectedTab]).map( (entity:any) => {
         return(
             <SidebarLineItem 
                 key={entity.id}
                 content={entity}
+                contentType={selectedTab}
             />
         )
     })

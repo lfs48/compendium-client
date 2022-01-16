@@ -9,7 +9,7 @@ interface TabNameProps {
 export default function TabName({
     tab,
     ...props
-}) {
+}: TabNameProps) {
     return(
         <S.Root 
             {...props}
@@ -21,7 +21,7 @@ export default function TabName({
 
 function tabName(tab:Tab) {
     switch(tab) {
-        case('dndclasses'):
+        case('dndClasses'):
             return 'Classes';
         case('features'):
             return 'Features';
