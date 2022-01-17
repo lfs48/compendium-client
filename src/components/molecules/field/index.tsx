@@ -12,6 +12,10 @@ interface FieldProps {
     maxLength?: number;
     errors?: string[];
     hasErrors?: boolean;
+    icon?: string;
+    iconSide?: 'left' | 'right';
+    placeholder?: string;
+    inputClasses?: string;
     [prop:string]: any;
 }
 
@@ -23,20 +27,40 @@ export default function Field({
     maxLength=20,
     errors=[],
     hasErrors=false,
+    icon,
+    iconSide='right',
+    placeholder,
+    inputClasses='',
     ...props
 }: FieldProps) {
     return(
-        <S.Root {...props}>
+        <S.Root 
+            {...props}
+        >
             {label &&
                 <Label>{label}</Label>
             }
-            <Input 
-                value={value}
-                type={type}
-                onChange={onChange}
-                maxLength={maxLength}
-                hasErrors={errors.length >= 1 || hasErrors}
-            />
+            <S.InputContainer
+                $hasErrors={errors.length >= 1 || hasErrors}
+                $hasIcon={!!icon}
+                $iconSide={iconSide}
+                className={inputClasses}
+            >
+                <Input 
+                    value={value}
+                    type={type}
+                    onChange={onChange}
+                    maxLength={maxLength}
+                    placeholder={placeholder}
+                    hasErrors={errors.length >= 1 || hasErrors}
+                />
+                {icon &&
+                    <S.Icon 
+                        $icon={icon}
+                        $iconSide={iconSide}
+                    />
+                }
+            </S.InputContainer>
             {(errors && errors.length > 0) &&
                 <ErrorList errors={errors} />
             }

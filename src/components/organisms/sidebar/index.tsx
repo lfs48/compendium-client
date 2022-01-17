@@ -1,16 +1,25 @@
 import { useGetAllClassesQuery } from '@/api/dndclasses.api';
 import { useGetAllFeaturesQuery } from '@/api/features.api';
 import Loading from '@/components/atoms/loading';
+import NoResults from '@/components/atoms/no-results';
 import SidebarLineItem from '@/components/atoms/sidebar-line-item';
+import SidebarHeader from '@/components/molecules/sidebar-header';
 import SidebarTabSelect from '@/components/molecules/sidebar-tab-select';
 import { RootState, GameEntity } from '@/types';
-import { useState } from 'react';
+import { handleInput } from '@/utils/component.utils';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import * as S from './styled';
+
+const initialInputs = {
+    search: ''
+};
 
 export default function Sidebar() {
 
     const [selectedTab, setSelectedTab] = useState<GameEntity>('dndClasses');
+
+    const [inputs, setInputs] = useState(initialInputs);
 
     const queries = {
         dndClasses: useGetAllClassesQuery(),
@@ -33,9 +42,15 @@ export default function Sidebar() {
                 handleSelect={() => setSelectedTab(tab)}
             />
         )
-    })
+    });
 
-    const tabContent = Object.values(entities[selectedTab]).map( (entity:any) => {
+    useEffect( () => {
+        setInputs(initialInputs);
+    }, [selectedTab])
+
+    const tabContent = Object.values(entities[selectedTab])
+    .filter( (entity) => entity.name.toLowerCase().startsWith( inputs.search.toLowerCase() ))
+    .map( (entity:any) => {
         return(
             <SidebarLineItem 
                 key={entity.id}
@@ -51,8 +66,18 @@ export default function Sidebar() {
                 {tabSelectors}
             </S.Selectors>
             <S.Content>
+                <SidebarHeader 
+                    searchInput={inputs.search}
+                    handleSearch={(e) => handleInput(e, 'search', inputs, setInputs)}
+                />
                 {queries[selectedTab].isSuccess ?
-                    tabContent
+                    <>
+                    {tabContent.length >= 1 ?
+                        tabContent
+                    :
+                        <NoResults />
+                    }
+                    </>
                 :
                     <Loading />
                 }
