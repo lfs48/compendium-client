@@ -1,4 +1,4 @@
-import { User } from '@interfaces/index';
+import { User } from '@/types';
 import { rootApi } from './root.api';
 
 interface AuthReqBody {

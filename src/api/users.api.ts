@@ -1,12 +1,5 @@
-import { User } from '@interfaces/User';
+import { User } from '@/types';
 import { rootApi } from './root.api';
-
-interface PostUser {
-    user: {
-        username: string;
-        password: string;
-    }
-}
 
 interface PatchUser {
     user: {
