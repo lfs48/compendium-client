@@ -3,6 +3,7 @@ import { DndClass, RootState } from '@/types';
 import * as S from './styled';
 import { intToOrdinal } from '@/utils/functions.utils';
 import { useSelector } from 'react-redux';
+import EntityLink from '@/components/atoms/entity-link';
 
 interface ClassTableProps {
     dndClass: DndClass;
@@ -37,7 +38,13 @@ export default function ClassTable({
         .map( ({id}) => {
             const feature = classFeatures.find(feature => feature.id === id);
             return(
-                <span>{feature?.name}</span>
+                <EntityLink 
+                    key={id} 
+                    id={id}
+                    entityType='features'
+                >
+                    {feature?.name}
+                </EntityLink>
             )
         });
         const extraCols = Object.keys(dndClass.table_cols).map( (col, i) => {
@@ -50,7 +57,6 @@ export default function ClassTable({
                 return <S.Cell key={i}>{slots > 0 ? slots : "—"}</S.Cell>
             })
         }
-        if (dndClass)
         return(
             <S.Row key={n}>
                 <S.Cell $left>{intToOrdinal(n+1)}</S.Cell>

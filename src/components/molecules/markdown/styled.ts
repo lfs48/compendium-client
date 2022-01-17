@@ -22,7 +22,3 @@ export const li = tw.li`
     ml-8
     mb-1
 `
-
-export const a = tw.a`
-
-`

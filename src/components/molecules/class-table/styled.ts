@@ -14,8 +14,8 @@ type CellProps = {
 }
 
 export const HeaderCell = tw.th<CellProps>`
-    pl-2
-    relative
+    px-2
+    pb-1
     ${p => p.$left
         ?`
             text-left
@@ -32,9 +32,8 @@ export const Row = tw.tr`
 `
 
 export const Cell = tw.td<CellProps>`
-    pl-2
+    px-2
     py-1
-    relative
     ${p => p.$left
         ?`
             text-left
