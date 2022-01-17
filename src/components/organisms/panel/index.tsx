@@ -104,8 +104,8 @@ const Panel = React.memo( function({
     const [styleData, setStyleData] = useState({
         left: Math.random() * (window.innerWidth - 800),
         top: Math.random() * (window.innerHeight - 600 ),
-        width: 800,
-        height: 600,
+        width: 400,
+        height: 400,
         minHeight: 50,
         minWidth: 200,
         dragPrevX: 0,

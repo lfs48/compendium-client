@@ -9,7 +9,7 @@ export const Root = tw.div<RootProps>`
     border-2
     border-black
     bg-white
-    shadow-xl
+    shadow-panel
     z-40
     rounded
     ${p => p.$stage < 2
@@ -36,7 +36,7 @@ export const Header = tw.header`
     border-b-2
     border-black
     cursor-move
-    
+    bg-beige
 `
 
 export const Footer = tw.footer`
@@ -104,4 +104,5 @@ export const Content = tw.div`
     overflow-x-hidden
     scroll
     scrollbar
+    bg-beige-lighter
 `

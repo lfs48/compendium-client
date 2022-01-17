@@ -18,7 +18,8 @@ module.exports = {
       '3xl': '0 35px 60px -15px rgba(0, 0, 0, 0.3)',
       inner: 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)',
       none: 'none',
-      right: '3px 2px 8px -2px #888'
+      right: '3px 2px 8px -2px #888',
+      panel: '5px 5px 5px 0px rgba(0,0,0,0.5)'
     },
     extend: {
       spacing: {
