@@ -1,38 +1,30 @@
-import { DndClass, PostDndClass, PatchDndClass, Feature } from '@/types';
+import { Feature } from '@/types';
 import { PatchFeature, PostFeature } from '@/types/Feature';
 import { rootApi } from './root.api';
 
-interface Res {
-    feature: Feature;
-}
-
-interface GetAllFeaturesRes {
-    features: Feature[];
-}
-
 export const featureApi = rootApi.injectEndpoints({
     endpoints: (builder) => ({
-        getAllFeatures: builder.query<GetAllFeaturesRes, void>({
+        getAllFeatures: builder.query<Feature[], void>({
             query: () => `features`
         }),
-        getFeatureById: builder.query<Res, string>({
+        getFeatureById: builder.query<Feature, string>({
             query: (id) => `features/${id}`
         }),
-        postFeature: builder.mutation<Res, PostFeature>({
+        postFeature: builder.mutation<Feature, PostFeature>({
             query: ({...post}) => ({
                 url: `/features/${post.id}`,
                 method: 'POST',
                 body: post
             })
         }),
-        patchFeature: builder.mutation<Res, PatchFeature>({
+        patchFeature: builder.mutation<Feature, PatchFeature>({
             query: ({...patch}) => ({
                 url: `/features/${patch.id}`,
                 method: 'PATCH',
                 body: patch
             })
         }),
-        deleteFeature: builder.mutation<Res, string>({
+        deleteFeature: builder.mutation<Feature, string>({
             query: (id) => ({
                 url: `/features/${id}`,
                 method: 'DELETE'

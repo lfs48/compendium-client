@@ -1,25 +1,12 @@
-import { User } from '@/types';
+import { User, PatchUser } from '@/types';
 import { rootApi } from './root.api';
-
-interface PatchUser {
-    user: {
-        id: string;
-        username?: string;
-        password?: string;
-    }
-}
-
-interface UserResponse {
-    user: User,
-    token?: string;
-}
 
 export const userApi = rootApi.injectEndpoints({
     endpoints: (builder) => ({
-        getUserById: builder.query<UserResponse, string>({
+        getUserById: builder.query<User, string>({
             query: (id) => `users/${id}`
         }),
-        updateUser: builder.mutation<UserResponse, PatchUser>({
+        updateUser: builder.mutation<User, PatchUser>({
             query: ({...patch}) => ({
                 url: `/${patch.user.id}`,
                 method: 'PATCH',

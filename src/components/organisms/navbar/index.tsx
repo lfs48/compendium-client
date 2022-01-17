@@ -8,7 +8,7 @@ export default function Navbar() {
 
     const { authenticated, id } = useSelector( (state:RootState) => state.session);
     
-    const { data, error, isLoading } = useGetUserByIdQuery(id);
+    const { data } = useGetUserByIdQuery(id);
 
     return(
         <S.Root>
@@ -16,7 +16,7 @@ export default function Navbar() {
             <S.Right>
                 {(authenticated && data) &&
                     <>
-                    <span>{data.user.username}</span>
+                    <span>{data.username}</span>
                     <Logout />
                     </>
                 }

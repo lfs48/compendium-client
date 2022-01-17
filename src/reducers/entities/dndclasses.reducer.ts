@@ -21,7 +21,7 @@ const dndClassesSlice = createSlice({
     .addMatcher(
         dndClassApi.endpoints.getAllClasses.matchFulfilled,
         (state, { payload }) => {
-            payload.dndclasses.forEach( (dndClass) => {
+            payload.forEach( (dndClass) => {
                 const newClass = merge( {}, dndClass );
                 newClass.features = sortFeatures(dndClass);
                 state[dndClass.id] = newClass;
@@ -35,7 +35,7 @@ const dndClassesSlice = createSlice({
             dndClassApi.endpoints.patchClass.matchFulfilled
         ),
         (state, { payload }) => {
-          const dndClass = merge( {}, payload.dndclass );
+          const dndClass = merge( {}, payload );
           dndClass.features = sortFeatures(dndClass);
           state[dndClass.id] = dndClass;
         }
@@ -43,7 +43,7 @@ const dndClassesSlice = createSlice({
       .addMatcher(
         dndClassApi.endpoints.deleteClass.matchFulfilled,
         (state, { payload }) => {
-            delete state[payload.dndclass.id]
+            delete state[payload.id]
         }
       );
   }

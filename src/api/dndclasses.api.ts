@@ -1,37 +1,29 @@
 import { DndClass, PostDndClass, PatchDndClass } from '@/types';
 import { rootApi } from './root.api';
 
-interface Res {
-    dndclass: DndClass;
-}
-
-interface GetAllClassesRes {
-    dndclasses: DndClass[];
-}
-
 export const dndClassApi = rootApi.injectEndpoints({
     endpoints: (builder) => ({
-        getAllClasses: builder.query<GetAllClassesRes, void>({
+        getAllClasses: builder.query<DndClass[], void>({
             query: () => `classes`
         }),
-        getClassById: builder.query<Res, string>({
+        getClassById: builder.query<DndClass, string>({
             query: (id) => `classes/${id}`
         }),
-        postClass: builder.mutation<Res, PostDndClass>({
+        postClass: builder.mutation<DndClass, PostDndClass>({
             query: ({...post}) => ({
                 url: `/classes/${post.id}`,
                 method: 'POST',
                 body: post
             })
         }),
-        patchClass: builder.mutation<Res, PatchDndClass>({
+        patchClass: builder.mutation<DndClass, PatchDndClass>({
             query: ({...patch}) => ({
                 url: `/classes/${patch.id}`,
                 method: 'PATCH',
                 body: patch
             })
         }),
-        deleteClass: builder.mutation<Res, string>({
+        deleteClass: builder.mutation<DndClass, string>({
             query: (id) => ({
                 url: `/classes/${id}`,
                 method: 'DELETE'

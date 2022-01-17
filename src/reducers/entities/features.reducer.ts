@@ -17,8 +17,8 @@ const featuresSlice = createSlice({
     .addMatcher(
         featureApi.endpoints.getAllFeatures.matchFulfilled,
         (state, { payload }) => {
-            payload.features.forEach( (feature) => {
-                state[feature.id] = feature
+            payload.forEach( (feature) => {
+                state[feature.id] = feature;
             })
         }
       )
@@ -29,13 +29,13 @@ const featuresSlice = createSlice({
             featureApi.endpoints.patchFeature.matchFulfilled
         ),
         (state, { payload }) => {
-            state[payload.feature.id] = payload.feature
+            state[payload.id] = payload;
         }
       )
       .addMatcher(
         featureApi.endpoints.deleteFeature.matchFulfilled,
         (state, { payload }) => {
-            delete state[payload.feature.id]
+            delete state[payload.id];
         }
       );
   }
