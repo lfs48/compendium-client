@@ -1,12 +1,12 @@
 import React from 'react';
 import { DndClass } from '@/types';
 import * as S from './styled';
-import { DiceRoll } from '@dice-roller/rpg-dice-roller';
 import Divider from '@/components/atoms/divider';
 import StartingEquipment from '@/components/molecules/starting-equipment';
 import ClassHitpoints from '@/components/molecules/class-hitpoints';
 import ClassProficiencies from '@/components/molecules/class-proficiencies';
-import ClassFeatures from '@/components/molecules/class-features';
+import ClassFeatures from '@/components/molecules/features-list';
+import ClassTable from '@/components/molecules/class-table';
 
 interface ClassPanelContentProps {
     dndClass: DndClass;
@@ -20,6 +20,9 @@ const ClassPanelContent = React.memo(function ClassPanelContent({
 
     return(
         <S.Root {...props}>
+            <ClassTable
+                dndClass={dndClass}
+            />
             <S.Description>
                 {dndClass.description}
             </S.Description>
@@ -38,7 +41,7 @@ const ClassPanelContent = React.memo(function ClassPanelContent({
                 equipmentList={dndClass.equipment}
             />
             <ClassFeatures
-                dndClass={dndClass}
+                source={dndClass}
             />
         </S.Root>
     )

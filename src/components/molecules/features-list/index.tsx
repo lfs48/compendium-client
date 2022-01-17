@@ -5,32 +5,40 @@ import Markdown from '@molecules/markdown';
 import * as S from './styled';
 import { intToOrdinal } from '@/utils/functions.utils';
 
-interface ClassFeaturesProps {
-    dndClass: DndClass;
+interface FeatureListProps {
+    source: {
+        features: [
+            {
+                id: string;
+                level?: number;
+            }
+        ];
+        [others: string]: any;
+    };
     [prop: string]: any;
 }
 
-export default function ClassFeatures({
-    dndClass,
+export default function FeaturesList({
+    source,
     ...props
-}: ClassFeaturesProps) {
+}: FeatureListProps) {
 
     const {features} = useSelector( (state:RootState) => ({
         features: state.entities.features
     }));
 
-    const classFeatures = [] as Feature[];
-    const featureSections = dndClass.features
+    const featureSections = source.features
     .map( ({id, level}) => {
         const feature = features[id];
-        classFeatures.push(feature);
         return(
             <Collapsable
                 key={feature.id}
                 header={
                     <span>
                         <S.Name>{feature.name}</S.Name>
-                        <S.Level>({intToOrdinal(level || '')} level)</S.Level>
+                        {level &&
+                            <S.Level>({intToOrdinal(level || '')} level)</S.Level>
+                        }
                     </span>
                 }
             >
