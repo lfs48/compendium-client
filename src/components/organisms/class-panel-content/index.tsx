@@ -6,6 +6,7 @@ import Divider from '@/components/atoms/divider';
 import StartingEquipment from '@/components/molecules/starting-equipment';
 import ClassHitpoints from '@/components/molecules/class-hitpoints';
 import ClassProficiencies from '@/components/molecules/class-proficiencies';
+import ClassFeatures from '@/components/molecules/class-features';
 
 interface ClassPanelContentProps {
     dndClass: DndClass;
@@ -16,8 +17,6 @@ const ClassPanelContent = React.memo(function ClassPanelContent({
     dndClass,
     ...props
 }: ClassPanelContentProps) {
-
-    const roll = new DiceRoll(dndClass.hitdie);
 
     return(
         <S.Root {...props}>
@@ -37,6 +36,9 @@ const ClassPanelContent = React.memo(function ClassPanelContent({
             />
             <StartingEquipment 
                 equipmentList={dndClass.equipment}
+            />
+            <ClassFeatures
+                dndClass={dndClass}
             />
         </S.Root>
     )

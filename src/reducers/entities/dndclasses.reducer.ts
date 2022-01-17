@@ -2,6 +2,8 @@ import { DndClass } from '@/types';
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import { rootApi } from "@/api/root.api";
 import { dndClassApi } from '@/api/dndclasses.api';
+import { sortFeatures } from '@/utils/dndClass.utils';
+import { merge } from 'lodash';
 
 interface DndClassesState {
     [id: string]: DndClass;
@@ -20,7 +22,9 @@ const dndClassesSlice = createSlice({
         dndClassApi.endpoints.getAllClasses.matchFulfilled,
         (state, { payload }) => {
             payload.dndclasses.forEach( (dndClass) => {
-                state[dndClass.id] = dndClass
+                const newClass = merge( {}, dndClass );
+                newClass.features = sortFeatures(dndClass);
+                state[dndClass.id] = newClass;
             })
         }
       )
@@ -31,7 +35,9 @@ const dndClassesSlice = createSlice({
             dndClassApi.endpoints.patchClass.matchFulfilled
         ),
         (state, { payload }) => {
-            state[payload.dndclass.id] = payload.dndclass
+          const dndClass = merge( {}, payload.dndclass );
+          dndClass.features = sortFeatures(dndClass);
+          state[dndClass.id] = dndClass;
         }
       )
       .addMatcher(
