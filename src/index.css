@@ -5,6 +5,18 @@
 
 @layer utilities {
 
+  h1 {
+    @apply
+      text-xl
+      font-bold
+  }
+
+  h2 {
+    @apply
+      text-lg
+      font-bold
+  }
+
   .filled-padding {
     background-image: linear-gradient(white, white), linear-gradient(var(--tw-gradient-stops)) !important;
     background-clip: content-box, padding-box !important;

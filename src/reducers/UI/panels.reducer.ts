@@ -1,8 +1,9 @@
+import { GameEntity } from "@/types";
 import { createSlice } from "@reduxjs/toolkit";
 
 interface Panel {
   id: string;
-  panelType: string;
+  panelType: GameEntity;
   editing: boolean;
 }
 

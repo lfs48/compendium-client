@@ -2,9 +2,10 @@ import { useGetAllClassesQuery } from '@/api/dndclasses.api';
 import Page from '@/components/atoms/page';
 import Panel from '@/components/organisms/panel';
 import Sidebar from '@/components/organisms/sidebar';
-import { RootState } from '@/types';
+import { DndClass, RootState } from '@/types';
 import { useSelector } from 'react-redux';
 import Markdown from '@molecules/markdown';
+import ClassPanelContent from '@/components/organisms/class-panel-content';
 
 export default function Dashboard() {
 
@@ -18,11 +19,17 @@ export default function Dashboard() {
         return (
             <Panel 
                 key={panel.id} 
-                data={entity} 
+                data={entity as any} 
             >
-                <Markdown>
-                    {entity.description}
-                </Markdown>
+                    {panel.panelType === 'dndClasses' ?
+                        <ClassPanelContent 
+                            dndClass={entity as DndClass}
+                        />
+                    :
+                        <Markdown>
+                            {entity.description}
+                        </Markdown>
+                    }
             </Panel>
         )
     })

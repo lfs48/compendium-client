@@ -4,12 +4,10 @@ import gfm from 'remark-gfm';
 import * as S from './styled';
 
 interface MarkdownProps {
-    children: string;
     [prop: string]: any;
 }
 
 const Markdown = React.memo( function({
-    children,
     ...props
 }: MarkdownProps) {
 
@@ -18,7 +16,7 @@ const Markdown = React.memo( function({
             remarkPlugins={[gfm]}
             //@ts-ignore
             components={{...S}}
-            children={children}
+            className={props.className || 'keep'}
             {...props}
         />
     )
