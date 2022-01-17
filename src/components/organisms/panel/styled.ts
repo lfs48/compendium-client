@@ -2,25 +2,45 @@ import tw from "tailwind-styled-components";
 
 type RootProps = {
     $stage: number;
+    $transitioning: boolean;
+    $minimized: boolean;
 }
 
 export const Root = tw.div<RootProps>`
     absolute
     border-2
     border-black
-    bg-white
+    bg-beige-lighter
     shadow-panel
     z-40
     rounded
-    ${p => p.$stage < 2
+    ${p => p.$transitioning
         ?`
-            transition-all 
-            duration-500 
-            ease-in-out
+            transition-all
+            ease-in
+            ${p.$stage >= 2
+                ?`
+                    duration-200
+                `
+                :`
+                    duration-500
+                `
+            }
+        `
+    :``}
+    ${p => p.$stage < 1
+        ?`
+            opacity-0
         `
         :`
+            opacity-100
         `
     }
+    ${p => p.$minimized
+        ?`
+            opacity-20
+        `
+    :``}
 `
 
 export const Header = tw.header`

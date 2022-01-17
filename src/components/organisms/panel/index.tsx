@@ -1,4 +1,4 @@
-import React, {useState, useEffect, ReactNode} from 'react';
+import React, {useState, useEffect, ReactNode, useCallback} from 'react';
 import { merge, throttle } from 'lodash';
 import { closePanel, selectPanel } from '@/reducers/UI/panels.reducer';
 import { useDispatch } from 'react-redux';
@@ -24,10 +24,10 @@ const handleDragStart = ({event, x, y, styleData, setStyleData, id, dispatch, dr
     function _handleDragEnd() {
         setDragging(false);
         document.body.className = ''
-        document.removeEventListener('mouseup', _handleDragEnd)
+        document.removeEventListener('mouseup', _handleDragEnd);
     };
 
-    document.addEventListener('mouseup', _handleDragEnd)
+    document.addEventListener('mouseup', _handleDragEnd);
 };
 
 const _handleDrag = ({x, y, styleData, setStyleData, dragging}) => {
@@ -50,23 +50,6 @@ const _handleDrag = ({x, y, styleData, setStyleData, dragging}) => {
 };
 
 const handleDrag = throttle(_handleDrag, 10);
-
-const handleClose = ({styleData, setStyleData, dispatch, id}) => {
-    const newState = merge({}, styleData);
-    newState.stage = 1;
-    newState.opacity = 0;
-    newState.left -= 100;
-    setStyleData(newState);
-    setTimeout( () => {
-        const action = {
-            type: closePanel.type,
-            payload: {
-                id: id
-            }
-        };
-        dispatch(action);
-    }, 450);
-};
 
 
 const handleSelect = ({id, dispatch}) => {
@@ -100,33 +83,63 @@ const Panel = React.memo( function({
     const mousePos = useMousePos();
 
     const [dragging, setDragging] = useState(false);
+    const [transitioning, setTransitioning] = useState(true);
+    const [minimized, setMinized] = useState(false);
+    const [stage, setStage] = useState(0);
 
     const [styleData, setStyleData] = useState({
-        left: Math.random() * (window.innerWidth - 800),
-        top: Math.random() * (window.innerHeight - 600 ),
+        left: Math.random() * (window.innerWidth - 400),
+        top: Math.random() * (window.innerHeight - 464 ),
         width: 400,
         height: 400,
         minHeight: 50,
         minWidth: 200,
         dragPrevX: 0,
-        dragPrevY: 0,
-        stage: 0,
-        opacity: 0,
+        dragPrevY: 0
     });
+
+    const [prevDims, setPrevDrims] = useState({
+        width: 400,
+        height: 400
+    })
+
+    const handleMinimize = useCallback( () => {
+        setMinized(true);
+        setPrevDrims({
+            width: styleData.width,
+            height: styleData.height
+        });
+        const newState = merge({}, styleData);
+        newState.width = 200;
+        newState.height = 48;
+        setStyleData(newState);
+        setTransitioning(true);
+        setTimeout( () => {
+            setTransitioning(false);
+        }, 200);
+    }, [styleData])
+
+    const handleUnminimize = useCallback( () => {
+        setMinized(false);
+        const newState = merge({}, styleData);
+        newState.width = prevDims.width;
+        newState.height = prevDims.height;
+        setStyleData(newState);
+        setTransitioning(true);
+        setTimeout( () => {
+            setTransitioning(false);
+        }, 200);
+    }, [styleData])
 
     useEffect(() => {
         const newState = merge({}, styleData);
         newState.left += 100;
-        newState.stage = 1;
-        newState.opacity = 1;
+        setStyleData(newState);
+        setStage(1);
         setTimeout( () => {
-            setStyleData(newState);
-        }, 0);
-        setTimeout( () => {
-            const newerState = merge({}, newState);
-            newerState.stage = 2;
-            setStyleData(newerState);
-        }, 720);
+            setStage(2);
+            setTransitioning(false);
+        }, 500);
     }, []);
 
     useEffect( () => {
@@ -140,14 +153,33 @@ const Panel = React.memo( function({
         }
     }, [dragging, mousePos])
 
+    const handleClose = useCallback( () => {
+        const newState = merge({}, styleData);
+        newState.left -= 100;
+        setStyleData(newState);
+        setStage(0);
+        setTransitioning(true);
+        setTimeout( () => {
+            const action = {
+                type: closePanel.type,
+                payload: {
+                    id: data.id
+                }
+            };
+            dispatch(action);
+        }, 450);
+    }, [data, styleData]);
+
     return(
         <S.Root
-            $stage={styleData.stage}
+            $stage={stage}
             style={styleData}
             onClick={(e) => handleSelect({
                 id: data.id,
                 dispatch: dispatch
             })}
+            $minimized={minimized}
+            $transitioning={transitioning}
             {...props}
         >
 
@@ -162,25 +194,25 @@ const Panel = React.memo( function({
                     setDragging: setDragging,
                     ...mousePos
                 })}
+                onDoubleClick={minimized ? handleUnminimize : handleMinimize}
             >
                 <S.HeaderContent>
                     {data.name}
                 </S.HeaderContent>
                 <div>
                     <S.Close 
-                        onClick={() => handleClose({
-                            styleData: styleData,
-                            setStyleData: setStyleData,
-                            dispatch: dispatch,
-                            id: data.id
-                        })}
+                        onClick={handleClose}
                     />
                 </div>
             </S.Header>
+            {!minimized &&
+                <>
             <S.Content>
                 {children}
             </S.Content>
             <Resize styleData={styleData} setStyleData={setStyleData}/>
+                </>
+            }
 
         </S.Root>
     );
