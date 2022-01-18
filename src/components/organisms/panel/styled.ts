@@ -17,7 +17,7 @@ export const Root = tw.div<RootProps>`
     ${p => p.$transitioning
         ?`
             transition-all
-            ease-in
+            ease-in-out
             ${p.$stage >= 2
                 ?`
                     duration-200
