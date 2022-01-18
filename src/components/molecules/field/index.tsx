@@ -1,8 +1,9 @@
 import Input from '@atoms/input';
 import Label from '@atoms/label';
 import ErrorList from '@molecules/error-list';
-import { SyntheticEvent } from 'react';
+import { SyntheticEvent, useState } from 'react';
 import * as S from './styled';
+import SearchField from './search-field';
 
 interface FieldProps {
     value: string | number;
@@ -12,9 +13,12 @@ interface FieldProps {
     maxLength?: number;
     errors?: string[];
     hasErrors?: boolean;
-    icon?: string;
-    iconSide?: 'left' | 'right';
+    leftIcon?: string;
+    handleClickLeftIcon?: () => void;
+    rightIcon?: string;
+    handleClickRightIcon?: () => void;
     placeholder?: string;
+    inputContainerClasses?: string;
     inputClasses?: string;
     [prop:string]: any;
 }
@@ -27,12 +31,16 @@ export default function Field({
     maxLength=20,
     errors=[],
     hasErrors=false,
-    icon,
-    iconSide='right',
+    leftIcon,
+    handleClickLeftIcon,
+    rightIcon,
+    handleClickRightIcon,
     placeholder,
+    inputContainerClasses='',
     inputClasses='',
     ...props
 }: FieldProps) {
+
     return(
         <S.Root 
             {...props}
@@ -42,9 +50,9 @@ export default function Field({
             }
             <S.InputContainer
                 $hasErrors={errors.length >= 1 || hasErrors}
-                $hasIcon={!!icon}
-                $iconSide={iconSide}
-                className={inputClasses}
+                $hasLeftIcon={!!leftIcon}
+                $hasRightIcon={!!rightIcon}
+                className={inputContainerClasses}
             >
                 <Input 
                     value={value}
@@ -52,12 +60,22 @@ export default function Field({
                     onChange={onChange}
                     maxLength={maxLength}
                     placeholder={placeholder}
-                    hasErrors={errors.length >= 1 || hasErrors}
+                    className={inputClasses}
                 />
-                {icon &&
+                {leftIcon &&
                     <S.Icon 
-                        $icon={icon}
-                        $iconSide={iconSide}
+                        $icon={leftIcon}
+                        $iconSide='left'
+                        $isClickable={!!handleClickLeftIcon}
+                        onClick={handleClickLeftIcon}
+                    />
+                }
+                {rightIcon &&
+                    <S.Icon 
+                        $icon={rightIcon}
+                        $iconSide='right'
+                        $isClickable={!!handleClickRightIcon}
+                        onClick={handleClickRightIcon}
                     />
                 }
             </S.InputContainer>
@@ -67,3 +85,5 @@ export default function Field({
         </S.Root>
     )
 }
+
+export { SearchField };

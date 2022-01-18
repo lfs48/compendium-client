@@ -6,8 +6,8 @@ import SidebarLineItem from '@/components/atoms/sidebar-line-item';
 import SidebarHeader from '@/components/molecules/sidebar-header';
 import SidebarTabSelect from '@/components/molecules/sidebar-tab-select';
 import { RootState, GameEntity } from '@/types';
-import { handleInput } from '@/utils/component.utils';
-import { useEffect, useState } from 'react';
+import { clearInput, handleInput } from '@/utils/component.utils';
+import { useCallback, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import * as S from './styled';
 
@@ -44,12 +44,8 @@ export default function Sidebar() {
         )
     });
 
-    useEffect( () => {
-        setInputs(initialInputs);
-    }, [selectedTab])
-
     const tabContent = Object.values(entities[selectedTab])
-    .filter( (entity) => entity.name.toLowerCase().startsWith( inputs.search.toLowerCase() ))
+    .filter( (entity:any) => entity.name.toLowerCase().startsWith( inputs.search.toLowerCase() ))
     .map( (entity:any) => {
         return(
             <SidebarLineItem 
@@ -58,7 +54,11 @@ export default function Sidebar() {
                 contentType={selectedTab}
             />
         )
-    })
+    });
+
+    useEffect( () => {
+        clearInput('search', inputs, setInputs);
+    }, [selectedTab])
 
     return(
         <S.Root>
@@ -69,6 +69,7 @@ export default function Sidebar() {
                 <SidebarHeader 
                     searchInput={inputs.search}
                     handleSearch={(e) => handleInput(e, 'search', inputs, setInputs)}
+                    handleClearSearch={() => clearInput('search', inputs, setInputs)}
                 />
                 {queries[selectedTab].isSuccess ?
                     <>

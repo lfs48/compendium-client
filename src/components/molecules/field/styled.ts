@@ -9,25 +9,26 @@ export const Root = tw.div`
 
 type InputContainerProps = {
     $hasErrors: boolean;
-    $hasIcon: boolean;
-    $iconSide?: 'left' | 'right';
+    $hasLeftIcon: boolean;
+    $hasRightIcon: boolean;
 }
 
 export const InputContainer = tw.div<InputContainerProps>`
     relative
-    bg-beige-lightest
+    transition-colors
+    duration-200
+    bg-beige-lighter
+    focus-within:bg-beige-lightest
     rounded-sm
     border
-    ${p => p.$hasIcon
+    ${p => p.$hasLeftIcon
         ?`
-            ${p => p.$iconSide === 'left'
-                ?`
-                    pl-6
-                `
-                :`
-                    pr-6
-                `
-            }
+            pl-6
+        `
+    :``}
+    ${p => p.$hasRightIcon
+        ?`
+            pr-6
         `
     :``}
     ${p => p.$hasErrors
@@ -38,8 +39,8 @@ export const InputContainer = tw.div<InputContainerProps>`
         `
         :`
             border-black
-            focus:ring-1
-            focus:ring-black
+            focus-within:ring-1
+            focus-within:ring-black
         `
     }
 `
@@ -47,6 +48,7 @@ export const InputContainer = tw.div<InputContainerProps>`
 type IconProps = {
     $icon: string;
     $iconSide: 'left' | 'right';
+    $isClickable: boolean;
 }
 
 export const Icon = tw.i<IconProps>`
@@ -60,6 +62,14 @@ export const Icon = tw.i<IconProps>`
         `
         :`
             right-2
+        `
+    }
+    ${p => p.$isClickable
+        ?`
+            cursor-pointer
+        `
+        :`
+            cursor-auto
         `
     }
 `

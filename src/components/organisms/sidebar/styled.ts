@@ -10,7 +10,7 @@ export const Root = tw.div`
 `
 export const Content = tw.div`
     w-100
-    bg-gray-100
+    bg-gray-200
     flex
     flex-col
     divide-y

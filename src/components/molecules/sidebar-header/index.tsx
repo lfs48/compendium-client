@@ -1,27 +1,26 @@
-import Field from '@molecules/field';
+import { SearchField } from '@molecules/field';
 import { SyntheticEvent } from 'react';
 import * as S from './styled';
 
 interface SidebarHeaderProps {
     searchInput: string;
     handleSearch: (e:SyntheticEvent) => void;
+    handleClearSearch: () => void;
     [prop: string]: any;
 }
 
 export default function SidebarHeader({
     searchInput,
     handleSearch,
+    handleClearSearch,
     ...props
 }: SidebarHeaderProps) {
     return(
         <S.Root {...props}>
-            <Field 
+            <SearchField 
                 value={searchInput}
                 onChange={handleSearch}
-                icon='fas fa-search'
-                iconSide='left'
-                placeholder='Search'
-                inputClasses='bg-gray-300 border-none'
+                handleClearSearch={handleClearSearch}
             />
         </S.Root>
     )
