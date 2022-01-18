@@ -12,14 +12,15 @@ import { useSelector } from 'react-redux';
 import * as S from './styled';
 
 const initialInputs = {
-    search: ''
+    dndClasses: '',
+    features: ''
 };
 
 export default function Sidebar() {
 
     const [selectedTab, setSelectedTab] = useState<GameEntity>('dndClasses');
 
-    const [inputs, setInputs] = useState(initialInputs);
+    const [searchInputs, setSearchInputs] = useState(initialInputs);
 
     const queries = {
         dndClasses: useGetAllClassesQuery(),
@@ -45,7 +46,7 @@ export default function Sidebar() {
     });
 
     const tabContent = Object.values(entities[selectedTab])
-    .filter( (entity:any) => entity.name.toLowerCase().startsWith( inputs.search.toLowerCase() ))
+    .filter( (entity:any) => entity.name.toLowerCase().startsWith( searchInputs[selectedTab].toLowerCase() ))
     .map( (entity:any) => {
         return(
             <SidebarLineItem 
@@ -56,10 +57,6 @@ export default function Sidebar() {
         )
     });
 
-    useEffect( () => {
-        clearInput('search', inputs, setInputs);
-    }, [selectedTab])
-
     return(
         <S.Root>
             <S.Selectors>
@@ -67,9 +64,9 @@ export default function Sidebar() {
             </S.Selectors>
             <S.Content>
                 <SidebarHeader 
-                    searchInput={inputs.search}
-                    handleSearch={(e) => handleInput(e, 'search', inputs, setInputs)}
-                    handleClearSearch={() => clearInput('search', inputs, setInputs)}
+                    searchInput={searchInputs[selectedTab]}
+                    handleSearch={(e) => handleInput(e, selectedTab, searchInputs, setSearchInputs)}
+                    handleClearSearch={() => clearInput(selectedTab, searchInputs, setSearchInputs)}
                 />
                 {queries[selectedTab].isSuccess ?
                     <>

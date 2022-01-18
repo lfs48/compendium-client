@@ -1,3 +1,4 @@
+import Button from '@/components/atoms/button';
 import { SearchField } from '@molecules/field';
 import { SyntheticEvent } from 'react';
 import * as S from './styled';
