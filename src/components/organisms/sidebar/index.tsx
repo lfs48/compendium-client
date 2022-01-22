@@ -62,12 +62,13 @@ export default function Sidebar() {
             <S.Selectors>
                 {tabSelectors}
             </S.Selectors>
-            <S.Content>
+            <S.Body>
                 <SidebarHeader 
                     searchInput={searchInputs[selectedTab]}
                     handleSearch={(e) => handleInput(e, selectedTab, searchInputs, setSearchInputs)}
                     handleClearSearch={() => clearInput(selectedTab, searchInputs, setSearchInputs)}
                 />
+                <S.Content>
                 {queries[selectedTab].isSuccess ?
                     <>
                     {tabContent.length >= 1 ?
@@ -79,7 +80,8 @@ export default function Sidebar() {
                 :
                     <Loading />
                 }
-            </S.Content>
+                </S.Content>
+            </S.Body>
         </S.Root>
     )
 }

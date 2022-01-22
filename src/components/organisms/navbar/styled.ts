@@ -1,7 +1,7 @@
 import tw from 'tailwind-styled-components';
 
 export const Root = tw.nav`
-    h-16
+    h-12
     sticky
     bg-beige-lighter
     border-b-2
