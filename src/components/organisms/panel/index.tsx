@@ -138,8 +138,10 @@ const Panel = React.memo( function({
     }, [dragging, mousePos])
 
     const handleClose = useCallback( () => {
-        setStage(0);
-        setTransitioning(true);
+        setTimeout( () => {
+            setStage(0);
+            setTransitioning(true);
+        }, 0);
         setTimeout( () => {
             const action = {
                 type: closePanel.type,
@@ -176,7 +178,7 @@ const Panel = React.memo( function({
                 </S.HeaderContent>
                 <div>
                     <S.Close 
-                        onClick={handleClose}
+                        onMouseDown={handleClose}
                     />
                 </div>
             </S.Header>
