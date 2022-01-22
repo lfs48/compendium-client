@@ -1,6 +1,6 @@
 import { openPanel } from '@/reducers/UI/panels.reducer';
 import { RootState } from '@/types';
-import { useCallback } from 'react';
+import { useCallback, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as S from './styled';
 
@@ -22,27 +22,41 @@ export default function SidebarLineItem({
 
     const dispatch = useDispatch();
 
+    const [animating, setAnimating] = useState(false);
+
     const panels = useSelector( (state:RootState) => state.UI.panels);
 
     const isActive = !!panels[content.id];
 
     const handleClick = useCallback( () => {
-        dispatch({
-            type: openPanel.type,
-            payload: {
-                id: content.id,
-                panelType: contentType
-            }
-        })
-    }, [content, contentType])
+        if (Object.keys(panels).length < 20) {
+            dispatch({
+                type: openPanel.type,
+                payload: {
+                    id: content.id,
+                    panelType: contentType
+                }
+            })
+        } else {
+            setAnimating(true);
+            setTimeout( () => {
+                setAnimating(false);
+            }, 300)
+        }
+    }, [content, contentType, panels])
 
     return(
         <S.Root
             $active={isActive}
+            $animating={animating}
             onClick={handleClick}
             {...props}
         >
-            <S.Name>{content.name}</S.Name>
+            <S.Name
+                $animating={animating}
+            >
+                {content.name}
+            </S.Name>
         </S.Root>
     )
 }
