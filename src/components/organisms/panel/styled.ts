@@ -31,6 +31,7 @@ export const Root = tw.div<RootProps>`
     ${p => p.$stage < 1
         ?`
             opacity-0
+            -translate-x-20
         `
         :`
             opacity-100
@@ -56,7 +57,6 @@ export const Header = tw.header`
     border-b-2
     border-black
     cursor-move
-    bg-beige
 `
 
 export const Footer = tw.footer`
@@ -87,8 +87,8 @@ export const HeaderContent = tw.h1`
     font-bold
     text-2xl
     font-fancy 
-    flex 
-    items-center
+    truncate
+    mr-4
 `
 
 export const PanelSectionHeader = tw.h2`

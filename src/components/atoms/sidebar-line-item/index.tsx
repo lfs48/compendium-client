@@ -24,7 +24,7 @@ export default function SidebarLineItem({
 
     const panels = useSelector( (state:RootState) => state.UI.panels);
 
-    const isActive = !!panels.find( panel => panel.id === content.id);
+    const isActive = !!panels[content.id];
 
     const handleClick = useCallback( () => {
         dispatch({

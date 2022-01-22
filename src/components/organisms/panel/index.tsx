@@ -1,12 +1,12 @@
 import React, {useState, useEffect, ReactNode, useCallback} from 'react';
 import { merge, throttle } from 'lodash';
-import { closePanel, selectPanel } from '@/reducers/UI/panels.reducer';
+import { closePanel } from '@/reducers/UI/panels.reducer';
 import { useDispatch } from 'react-redux';
 import * as S from './styled';
 import Resize from '@atoms/resize';
 import { useMousePos } from '@/hooks/useMouse.hook';
 
-const handleDragStart = ({event, x, y, styleData, setStyleData, id, dispatch, dragging, setDragging}) => {
+const handleDragStart = ({event, x, y, styleData, setStyleData, dragging, setDragging}) => {
     event.preventDefault();
     if (!dragging) {
         const newState = merge({}, styleData);
@@ -16,10 +16,6 @@ const handleDragStart = ({event, x, y, styleData, setStyleData, id, dispatch, dr
         setStyleData(newState);
         document.body.className = 'cursor-move';
     }
-    handleSelect({
-        id: id,
-        dispatch: dispatch
-    });
 
     function _handleDragEnd() {
         setDragging(false);
@@ -50,17 +46,6 @@ const _handleDrag = ({x, y, styleData, setStyleData, dragging}) => {
 };
 
 const handleDrag = throttle(_handleDrag, 10);
-
-
-const handleSelect = ({id, dispatch}) => {
-    const action = {
-        type: selectPanel.type,
-        payload: {
-            id: id
-        }
-    };
-    dispatch(action);
-}
 
 interface PanelProps {
     data: {
@@ -132,14 +117,13 @@ const Panel = React.memo( function({
     }, [styleData])
 
     useEffect(() => {
-        const newState = merge({}, styleData);
-        newState.left += 100;
-        setStyleData(newState);
-        setStage(1);
+        setTimeout( () => {
+            setStage(1);
+        }, 50);
         setTimeout( () => {
             setStage(2);
             setTransitioning(false);
-        }, 500);
+        }, 550);
     }, []);
 
     useEffect( () => {
@@ -154,9 +138,6 @@ const Panel = React.memo( function({
     }, [dragging, mousePos])
 
     const handleClose = useCallback( () => {
-        const newState = merge({}, styleData);
-        newState.left -= 100;
-        setStyleData(newState);
         setStage(0);
         setTransitioning(true);
         setTimeout( () => {
@@ -174,10 +155,6 @@ const Panel = React.memo( function({
         <S.Root
             $stage={stage}
             style={styleData}
-            onClick={(e) => handleSelect({
-                id: data.id,
-                dispatch: dispatch
-            })}
             $minimized={minimized}
             $transitioning={transitioning}
             {...props}
@@ -188,8 +165,6 @@ const Panel = React.memo( function({
                     event: e,
                     styleData: styleData,
                     setStyleData: setStyleData,
-                    id: data.id,
-                    dispatch: dispatch,
                     dragging: dragging,
                     setDragging: setDragging,
                     ...mousePos
@@ -207,10 +182,10 @@ const Panel = React.memo( function({
             </S.Header>
             {!minimized &&
                 <>
-            <S.Content>
-                {children}
-            </S.Content>
-            <Resize styleData={styleData} setStyleData={setStyleData}/>
+                <S.Content>
+                    {children}
+                </S.Content>
+                <Resize styleData={styleData} setStyleData={setStyleData}/>
                 </>
             }
 
