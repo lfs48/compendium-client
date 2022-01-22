@@ -1,22 +1,19 @@
 import { SyntheticEvent } from "react";
 import * as S from "./styled";
 
-interface InputProps {
+interface TextAreaProps {
     value: string | number;
     onChange: (event:SyntheticEvent) => void;
-    type?: string;
     [prop: string]: any;
 }
 
-export default function Input({
+export default function TextArea({
     onChange, 
     value, 
-    type='text',
     ...props
-}: InputProps) {
+}: TextAreaProps) {
     return(
-        <S.Input
-            type={type}
+        <S.Root
             value={value}
             onChange={onChange}
             {...props}

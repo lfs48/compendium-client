@@ -3,6 +3,7 @@ import { Oval } from 'svg-loaders-react';
 
 type RootProps = {
     $block?: boolean;
+    $color: string;
 }
 
 export const Root = tw.button<RootProps>`
@@ -23,6 +24,7 @@ export const Root = tw.button<RootProps>`
     disabled:text-gray-700
     disabled:cursor-default
     ${p => p.$block ? 'w-full' : ''}
+    ${p => colorClasses(p.$color)}
 `
 
 export const LoadingContainer = tw.div`
@@ -49,3 +51,20 @@ type ContentProps = {
 export const Content = tw.div<ContentProps>`
     ${p => p.$loading ? 'opacity-0' : 'opacity-100'}
 `
+
+function colorClasses(color) {
+    switch(color) {
+        default:
+            return`
+                bg-blue-600
+                hover:bg-blue-700
+                text-white
+            `
+        case('red'):
+        return`
+                bg-red-600
+                hover:bg-red-700
+                text-white
+            `
+    }
+}

@@ -4,10 +4,11 @@ import ErrorList from '@molecules/error-list';
 import { SyntheticEvent, useState } from 'react';
 import * as S from './styled';
 import SearchField from './search-field';
+import TextArea from '@/components/atoms/textarea';
 
 interface FieldProps {
     value: string | number;
-    type?: string;
+    type?: 'text' | 'password' | 'textarea';
     label?: string;
     onChange: (event:SyntheticEvent) => void;
     maxLength?: number;
@@ -18,6 +19,7 @@ interface FieldProps {
     rightIcon?: string;
     handleClickRightIcon?: () => void;
     placeholder?: string;
+    defaultInput?: string;
     inputContainerClasses?: string;
     inputClasses?: string;
     [prop:string]: any;
@@ -28,7 +30,7 @@ export default function Field({
     type='text',
     label,
     onChange,
-    maxLength=20,
+    maxLength=30,
     errors=[],
     hasErrors=false,
     leftIcon,
@@ -36,6 +38,7 @@ export default function Field({
     rightIcon,
     handleClickRightIcon,
     placeholder,
+    defaultInput='',
     inputContainerClasses='',
     inputClasses='',
     ...props
@@ -52,16 +55,28 @@ export default function Field({
                 $hasErrors={errors.length >= 1 || hasErrors}
                 $hasLeftIcon={!!leftIcon}
                 $hasRightIcon={!!rightIcon}
+                $isTextarea={type === 'textarea'}
                 className={inputContainerClasses}
             >
-                <Input 
-                    value={value}
-                    type={type}
-                    onChange={onChange}
-                    maxLength={maxLength}
-                    placeholder={placeholder}
-                    className={inputClasses}
-                />
+                {type === 'textarea' ?
+                    <TextArea
+                        value={value}
+                        onChange={onChange}
+                        maxLength={5000}
+                        placeholder={placeholder}
+                        className={inputClasses}
+                    />
+                :
+                    <Input 
+                        value={value}
+                        type={type}
+                        onChange={onChange}
+                        maxLength={maxLength}
+                        placeholder={placeholder}
+                        default={defaultInput}
+                        className={inputClasses}
+                    />
+                }
                 {leftIcon &&
                     <S.Icon 
                         $icon={leftIcon}

@@ -125,6 +125,14 @@
       border-radius: 10px;
       background-clip: padding-box;
   }
+
+  .scrollbar-left {
+    direction:rtl; 
+  }
+
+  .scrollbar-left > * {
+    direction:ltr; 
+  }
   
 }
 

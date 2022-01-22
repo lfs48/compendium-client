@@ -11,7 +11,7 @@ export const dndClassApi = rootApi.injectEndpoints({
         }),
         postClass: builder.mutation<DndClass, PostDndClass>({
             query: ({...post}) => ({
-                url: `/classes/${post.id}`,
+                url: `/classes`,
                 method: 'POST',
                 body: post
             })

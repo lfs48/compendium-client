@@ -11,14 +11,15 @@ type InputContainerProps = {
     $hasErrors: boolean;
     $hasLeftIcon: boolean;
     $hasRightIcon: boolean;
+    $isTextarea: boolean;
 }
 
 export const InputContainer = tw.div<InputContainerProps>`
     relative
     transition-colors
     duration-200
-    bg-beige-lighter
-    focus-within:bg-beige-lightest
+    bg-beige-light
+    focus-within:bg-beige-lighter
     rounded-sm
     border
     ${p => p.$hasLeftIcon
@@ -43,6 +44,11 @@ export const InputContainer = tw.div<InputContainerProps>`
             focus-within:ring-black
         `
     }
+    ${p => p.$isTextarea
+        ?`
+            h-full
+        `
+    :``}
 `
 
 type IconProps = {

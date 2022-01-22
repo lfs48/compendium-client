@@ -1,7 +1,7 @@
 import { Spellcasting } from "./Spellcasting";
 
 export interface DndClass {
-    id: string;
+    id?: string;
     name: string;
     description: string;
     hitdie: string;
@@ -16,18 +16,17 @@ export interface DndClass {
         [title: string]: string[]
     };
     subclass_title: string;
-    subclass_feature_levels: string;
-    features: [
-        {
-            id: string;
-            level?: number;
-        }
-    ]
+    subclass_feature_levels: number[];
+    features: ClassFeature[];
+}
+
+interface ClassFeature {
+    id: string;
+    level?: number;
 }
 
 export interface PostDndClass {
-    id: string;
-    dndClass: {
+    dndclass: {
         name: string;
         description: string;
         hitdie: string;
@@ -42,7 +41,7 @@ export interface PostDndClass {
             [title: string]: string[]
         };
         subclass_title: string;
-        subclass_feature_levels: string;
+        subclass_feature_levels: number[];
     }
 }
 
@@ -63,6 +62,6 @@ export interface PatchDndClass {
             [title: string]: string[]
         };
         subclass_title?: string;
-        subclass_feature_levels?: string;
+        subclass_feature_levels?: number[];
     }
 }

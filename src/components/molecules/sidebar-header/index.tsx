@@ -7,6 +7,7 @@ interface SidebarHeaderProps {
     searchInput: string;
     handleSearch: (e:SyntheticEvent) => void;
     handleClearSearch: () => void;
+    handleCreate: () => void;
     [prop: string]: any;
 }
 
@@ -14,6 +15,7 @@ export default function SidebarHeader({
     searchInput,
     handleSearch,
     handleClearSearch,
+    handleCreate,
     ...props
 }: SidebarHeaderProps) {
     return(
@@ -23,6 +25,11 @@ export default function SidebarHeader({
                 onChange={handleSearch}
                 handleClearSearch={handleClearSearch}
             />
+            <Button
+                onClick={handleCreate}
+            >
+                New
+            </Button>
         </S.Root>
     )
 }

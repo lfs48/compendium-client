@@ -5,10 +5,11 @@ import NoResults from '@/components/atoms/no-results';
 import SidebarLineItem from '@/components/atoms/sidebar-line-item';
 import SidebarHeader from '@/components/molecules/sidebar-header';
 import SidebarTabSelect from '@/components/molecules/sidebar-tab-select';
+import { openWorkspace } from '@/reducers/UI/workspace.reducer';
 import { RootState, GameEntity } from '@/types';
 import { clearInput, handleInput } from '@/utils/component.utils';
 import { useCallback, useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import * as S from './styled';
 
 const initialInputs = {
@@ -17,6 +18,8 @@ const initialInputs = {
 };
 
 export default function Sidebar() {
+
+    const dispatch = useDispatch();
 
     const [selectedTab, setSelectedTab] = useState<GameEntity>('dndClasses');
 
@@ -57,6 +60,15 @@ export default function Sidebar() {
         )
     });
 
+    const handleCreate = () => {
+        dispatch({
+            type: openWorkspace.type,
+            payload: {
+                component: 'classForm'
+            }
+        })
+    }
+
     return(
         <S.Root>
             <S.Selectors>
@@ -67,6 +79,7 @@ export default function Sidebar() {
                     searchInput={searchInputs[selectedTab]}
                     handleSearch={(e) => handleInput(e, selectedTab, searchInputs, setSearchInputs)}
                     handleClearSearch={() => clearInput(selectedTab, searchInputs, setSearchInputs)}
+                    handleCreate={handleCreate}
                 />
                 <S.Content>
                 {queries[selectedTab].isSuccess ?

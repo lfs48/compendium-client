@@ -2,15 +2,17 @@ import { getLevelProficiency, getSpellSlots } from '@/utils/dndClass.utils';
 import { DndClass, RootState } from '@/types';
 import * as S from './styled';
 import { intToOrdinal } from '@/utils/functions.utils';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import EntityLink from '@/components/atoms/entity-link';
+import Table from '@/components/atoms/table';
 
 interface ClassTableProps {
     dndClass: DndClass;
     [prop: string]: any;
 }
 
-export default function ClassTable({
+export default React.memo( function ClassTable({
     dndClass, 
     ...props
 } :ClassTableProps) {
@@ -23,7 +25,7 @@ export default function ClassTable({
     .map( ({id}) => features[id]);
 
     const extraHeaders = Object.keys(dndClass.table_cols).map( (col, i) => {
-        return <S.HeaderCell key={i}>{col}</S.HeaderCell>
+        return <S.HeaderCell key={col}>{col}</S.HeaderCell>
     });
     let spellHeaders = [<></>];
     if (dndClass.spellcasting !== "none") {
@@ -47,23 +49,31 @@ export default function ClassTable({
                 </EntityLink>
             )
         });
-        const extraCols = Object.keys(dndClass.table_cols).map( (col, i) => {
-            return <S.Cell key={i}>{dndClass.table_cols[col][n]}</S.Cell>
+        const extraCols = Object.keys(dndClass.table_cols).map( (col) => {
+            return (
+                <S.Cell key={col}>
+                    {dndClass.table_cols[col][n]}
+                </S.Cell>
+            )
         });
         let spellCols = [<></>];
         if (dndClass.spellcasting !== "none") {
             const levelSlots = getSpellSlots(dndClass.spellcasting)[n];
             spellCols = levelSlots.map( (slots, i) => {
-                return <S.Cell key={i}>{slots > 0 ? slots : "—"}</S.Cell>
+                return(
+                    <S.Cell key={i}>
+                        {slots > 0 ? slots : "—"}
+                    </S.Cell>
+                )
             })
         }
         return(
             <S.Row key={n}>
-                <S.Cell $left>{intToOrdinal(n+1)}</S.Cell>
+                <S.Cell>{intToOrdinal(n+1)}</S.Cell>
                 <S.Cell>{`+ ${getLevelProficiency(n+1)}`}</S.Cell>
-                <S.Cell $left>
+                <S.Cell $left $full>
                     {levelFeatures}
-                    {dndClass.subclass_feature_levels.includes(n+1+'') ?
+                    {dndClass.subclass_feature_levels.includes(n+1) ?
                         <span>{dndClass.subclass_title} Feature</span>
                     :<></>}
                 </S.Cell>
@@ -73,20 +83,21 @@ export default function ClassTable({
         )
     });
 
-    return(
-        <S.Root {...props}>
-            <S.Header>
-                <tr>
-                    <S.HeaderCell $left>Level</S.HeaderCell>
-                    <S.HeaderCell>Prof</S.HeaderCell>
-                    <S.HeaderCell $left>Features</S.HeaderCell>
-                    {extraHeaders}
-                    {spellHeaders}
-                </tr>
-            </S.Header>
-            <tbody>
-                {trows}
-            </tbody>
-        </S.Root>
+    const theaders = (
+        <tr>
+            <S.HeaderCell>Level</S.HeaderCell>
+            <S.HeaderCell>Prof</S.HeaderCell>
+            <S.HeaderCell $left $full>Features</S.HeaderCell>
+            {extraHeaders}
+            {spellHeaders}
+        </tr>
     )
-}
+
+    return(
+        <Table 
+            headers={theaders}
+            rows={trows}
+            {...props}
+        />
+    )
+})

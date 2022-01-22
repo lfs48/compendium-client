@@ -9,7 +9,7 @@ export const h2 = tw.h2`
     mb-1
 `
 
-export const p = tw.p`
+export const p = tw.div`
     mb-1
 `
 

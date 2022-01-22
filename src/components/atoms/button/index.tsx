@@ -7,6 +7,7 @@ interface ButtonProps {
     loading?: boolean;
     disabled?: boolean;
     block?: boolean;
+    color?: 'blue' | 'red';
     [prop: string]: any;
 }
 
@@ -16,6 +17,7 @@ export default function Button({
     loading=false,
     disabled=false,
     block=false,
+    color='blue',
     ...props
 }: ButtonProps) {
     return(
@@ -23,6 +25,7 @@ export default function Button({
             disabled={disabled || loading}
             onClick={onClick}
             $block={block}
+            $color={color}
             {...props}
         >
             {loading &&
