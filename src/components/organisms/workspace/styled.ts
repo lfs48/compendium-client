@@ -11,3 +11,14 @@ export const Root = tw.div`
     scrollbar-left
     bg-beige-lightest
 `
+
+export const Page = tw.div`
+    w-full
+    h-full
+    bg-beige-lighter
+    border-2
+    border-black
+    px-6
+    py-4
+    rounded
+`
