@@ -5,6 +5,9 @@ import { useDispatch } from 'react-redux';
 import * as S from './styled';
 import Resize from '@atoms/resize';
 import { useMousePos } from '@/hooks/useMouse.hook';
+import Button from '@/components/atoms/button';
+import { openWorkspace } from '@/reducers/UI/workspace.reducer';
+import { GameEntity } from '@/types';
 
 const handleDragStart = ({event, x, y, styleData, setStyleData, dragging, setDragging}) => {
     event.preventDefault();
@@ -53,12 +56,16 @@ interface PanelProps {
         name: string;
         [other: string]: unknown;
     };
+    dataType: GameEntity;
+    title: string;
     children: ReactNode;
     [prop: string]: any;
 }
 
 const Panel = React.memo( function({
     data,
+    dataType,
+    title,
     children,
     ...props
 }:PanelProps) {
@@ -176,13 +183,11 @@ const Panel = React.memo( function({
                 onDoubleClick={minimized ? handleUnminimize : handleMinimize}
             >
                 <S.HeaderContent>
-                    {data.name}
+                    {title}
                 </S.HeaderContent>
-                <div>
-                    <S.Close 
-                        onMouseDown={handleClose}
-                    />
-                </div>
+                <S.Close 
+                    onMouseDown={handleClose}
+                />
             </S.Header>
             {!minimized &&
                 <>
@@ -190,9 +195,6 @@ const Panel = React.memo( function({
                     {children}
                 </S.Content>
                 <Resize styleData={styleData} setStyleData={setStyleData}/>
-                <S.Footer>
-
-                </S.Footer>
                 </>
             }
 

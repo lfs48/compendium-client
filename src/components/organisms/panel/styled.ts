@@ -59,21 +59,6 @@ export const Header = tw.header`
     cursor-move
 `
 
-export const Footer = tw.footer`
-    flex
-    justify-between
-    absolute
-    bottom-0
-    px-12
-    py-2
-    shadow-inner
-    border-t-2
-    border-black
-    w-full
-    h-12
-    bg-beige-dark
-`
-
 export const DraggableArea = tw.div`
     absolute
     top-0
@@ -124,4 +109,23 @@ export const Content = tw.div`
     scroll
     scrollbar
     bg-beige-lighter
+`
+
+export const Footer = tw.footer`
+    flex
+    justify-between
+    absolute
+    bottom-0
+    px-6
+    py-2
+    shadow-inner
+    border-t-2
+    border-black
+    w-full
+    h-12
+    bg-beige-dark
+`
+
+export const Button = `
+    w-20
 `

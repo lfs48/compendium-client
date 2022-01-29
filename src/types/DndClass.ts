@@ -1,7 +1,7 @@
 import { Spellcasting } from "./Spellcasting";
 
 export interface DndClass {
-    id?: string;
+    id: string;
     name: string;
     description: string;
     hitdie: string;
@@ -47,7 +47,7 @@ export interface PostDndClass {
 
 export interface PatchDndClass {
     id: string;
-    dndClass: {
+    dndclass: {
         name?: string;
         description?: string;
         hitdie?: string;

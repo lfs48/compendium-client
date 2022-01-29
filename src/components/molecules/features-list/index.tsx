@@ -7,12 +7,11 @@ import { intToOrdinal } from '@/utils/functions.utils';
 
 interface FeatureListProps {
     source: {
-        features: [
+        features:
             {
                 id: string;
                 level?: number;
-            }
-        ];
+            }[];
         [others: string]: any;
     };
     [prop: string]: any;

@@ -36,5 +36,6 @@ export const {
     useGetClassByIdQuery,
     useGetAllClassesQuery,
     usePostClassMutation,
-    usePatchClassMutation
+    usePatchClassMutation,
+    useDeleteClassMutation
 } = dndClassApi;

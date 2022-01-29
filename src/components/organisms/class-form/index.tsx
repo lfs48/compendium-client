@@ -8,7 +8,7 @@ import { handleInput } from '@/utils/component.utils';
 import Input from '@/components/atoms/input';
 import Select from '@/components/molecules/select';
 import Button from '@/components/atoms/button';
-import { usePostClassMutation } from '@/api/dndclasses.api';
+import { usePatchClassMutation, usePostClassMutation } from '@/api/dndclasses.api';
 import ClassFormEquipment from '@/components/molecules/class-form-equipment';
 import ClassFormTable from '@/components/molecules/class-form-table';
 import ClassFormAddFeature from '@/components/molecules/class-form-add-feature';
@@ -19,6 +19,7 @@ import { hasFeatureAtLevel } from '@/utils/dndClass.utils';
 import { closeWorkspace } from '@/reducers/UI/workspace.reducer';
 
 const initialInputs = {
+    id: '',
     name: '',
     description: '',
     hitdie: '1d8',
@@ -70,18 +71,38 @@ export default function ClassForm({
     const dispatch = useDispatch();
 
     const [triggerPost, postQuery] = usePostClassMutation();
+    const [triggerPatch, patchQuery] = usePatchClassMutation();
 
-    const [inputs, setInputs] = useState<DndClass>(dndClass);
+    const trigger = dndClass !==  null ? triggerPatch : triggerPost;
+    const query = dndClass !==  null ? patchQuery : postQuery;
+
+    const [inputs, setInputs] = useState<DndClass>(initialInputs);
     const [errors, setErrors] = useState(initialErrors);
     const [triggerOpenPanel, setTriggerOpenPanel] = useState({
         id: '',
         success: false
     });
 
+    useEffect( () => {
+        if (dndClass !== null) {
+            setInputs(dndClass);
+        } else {
+            setInputs(initialInputs);
+        }
+    }, [dndClass])
+
     const handleSave = () => {
-        triggerPost({
-            dndclass: inputs
-        })
+        const payload = dndClass !==  null ? 
+                ({
+                    id: dndClass.id,
+                    dndclass: inputs
+                })
+            :
+                ({
+                    dndclass: inputs
+                });
+        //@ts-ignore
+        trigger(payload)
         .unwrap()
         .then( res => {
             const {id} = res;
@@ -91,6 +112,9 @@ export default function ClassForm({
                 id: id || '',
                 success: true
             });
+            dispatch({
+                type: closeWorkspace.type
+            })
         })
         .catch( err => {
             setErrors(err.data.errors);
@@ -296,7 +320,7 @@ export default function ClassForm({
                 </Button>
                 <Button
                     onClick={handleSave}
-                    loading={postQuery.isLoading}
+                    loading={query.isLoading}
                     className={S.Button}
                 >
                     Save

@@ -34,26 +34,28 @@ const PanelsContainer = React.memo( function PanelsContainer() {
     .map( (id, i) => {
         if (id in panels) {
             const panel = panels[id];
-            const entity = entities[panel.panelType][panel.id];
-            return (
-                <Panel
-                    key={panel.id} 
-                    data={entity as any}
-                    onMouseDown={()=>handleSelectPanel(i)}
-                >
-                        {panel.panelType === 'dndClasses' ?
-                            <ClassPanelContent 
-                                dndClass={entity as DndClass}
-                            />
-                        :
-                            <Markdown>
-                                {entity.description}
-                            </Markdown>
-                        }
-                </Panel>
-            )
-        } else {
-            return(<></>)
+            if (id in entities[panel.panelType]) {
+                const entity = entities[panel.panelType][panel.id];
+                return (
+                    <Panel
+                        key={panel.id} 
+                        title={entity.name}
+                        data={entity as any}
+                        dataType={panel.panelType}
+                        onMouseDown={()=>handleSelectPanel(i)}
+                    >
+                            {panel.panelType === 'dndClasses' ?
+                                <ClassPanelContent 
+                                    dndClass={entity as DndClass}
+                                />
+                            :
+                                <Markdown>
+                                    {entity.description}
+                                </Markdown>
+                            }
+                    </Panel>
+                )
+            }
         }
     })
 
