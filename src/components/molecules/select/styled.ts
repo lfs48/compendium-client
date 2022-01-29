@@ -13,8 +13,7 @@ type SelectProps = {
 export const StyledSelect = tw.select<SelectProps>`
     transition-colors
     duration-200
-    bg-beige-light
-    hover:focus:bg-beige-lighter
+    bg-beige-lightest
     rounded-sm
     focus:outline-none
     px-2

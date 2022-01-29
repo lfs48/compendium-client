@@ -32,7 +32,7 @@ export const Bookmark = tw.i`
 `
 
 export const Cover = tw.div`
-    bg-beige-light
+    bg-beige
     h-full
     rounded-tr
     rounded-br

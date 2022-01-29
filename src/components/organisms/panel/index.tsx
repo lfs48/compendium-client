@@ -77,7 +77,7 @@ const Panel = React.memo( function({
         top: Math.random() * (window.innerHeight - 464 ),
         width: 400,
         height: 400,
-        minHeight: 50,
+        minHeight: 90,
         minWidth: 200,
         dragPrevX: 0,
         dragPrevY: 0
@@ -97,6 +97,7 @@ const Panel = React.memo( function({
         const newState = merge({}, styleData);
         newState.width = 200;
         newState.height = 48;
+        newState.minHeight = 48;
         setStyleData(newState);
         setTransitioning(true);
         setTimeout( () => {
@@ -109,6 +110,7 @@ const Panel = React.memo( function({
         const newState = merge({}, styleData);
         newState.width = prevDims.width;
         newState.height = prevDims.height;
+        newState.minHeight = 90;
         setStyleData(newState);
         setTransitioning(true);
         setTimeout( () => {
@@ -188,6 +190,9 @@ const Panel = React.memo( function({
                     {children}
                 </S.Content>
                 <Resize styleData={styleData} setStyleData={setStyleData}/>
+                <S.Footer>
+
+                </S.Footer>
                 </>
             }
 

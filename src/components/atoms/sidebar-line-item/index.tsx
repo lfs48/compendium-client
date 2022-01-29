@@ -1,8 +1,10 @@
 import { openPanel } from '@/reducers/UI/panels.reducer';
-import { RootState } from '@/types';
-import { useCallback, useState } from 'react';
+import { GameEntity, RootState } from '@/types';
+import { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as S from './styled';
+import { merge } from 'lodash';
+import { handleToggleFavorite, isInFavorites } from '@/utils/favorites.utils';
 
 interface SidebarLineItemProps {
     content: {
@@ -10,7 +12,7 @@ interface SidebarLineItemProps {
         name: string;
         [other: string]: unknown;
     },
-    contentType: string;
+    contentType: GameEntity;
     [prop: string]: any;
 }
 
@@ -23,6 +25,8 @@ export default function SidebarLineItem({
     const dispatch = useDispatch();
 
     const [animating, setAnimating] = useState(false);
+
+    const [isFavorite, setIsFavorite] = useState( isInFavorites(content.id, contentType) )
 
     const panels = useSelector( (state:RootState) => state.UI.panels);
 
@@ -45,6 +49,13 @@ export default function SidebarLineItem({
         }
     }, [content, contentType, panels])
 
+    const handleFavorite = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        handleToggleFavorite(content.id, contentType);
+        setIsFavorite( isInFavorites(content.id, contentType) );
+    }
+
     return(
         <S.Root
             $active={isActive}
@@ -57,6 +68,10 @@ export default function SidebarLineItem({
             >
                 {content.name}
             </S.Name>
+            <S.Favorite 
+                $isFavorited={isFavorite}
+                onClick={(e) => handleFavorite(e)}
+            />
         </S.Root>
     )
 }

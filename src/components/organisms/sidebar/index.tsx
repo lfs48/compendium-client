@@ -5,9 +5,11 @@ import NoResults from '@/components/atoms/no-results';
 import SidebarLineItem from '@/components/atoms/sidebar-line-item';
 import SidebarHeader from '@/components/molecules/sidebar-header';
 import SidebarTabSelect from '@/components/molecules/sidebar-tab-select';
+import { useLocalStorage } from '@/hooks/useLocalStorage.hook';
 import { openWorkspace } from '@/reducers/UI/workspace.reducer';
 import { RootState, GameEntity } from '@/types';
 import { clearInput, handleInput } from '@/utils/component.utils';
+import { isInFavorites } from '@/utils/favorites.utils';
 import { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as S from './styled';
@@ -50,6 +52,25 @@ export default function Sidebar() {
 
     const tabContent = Object.values(entities[selectedTab])
     .filter( (entity:any) => entity.name.toLowerCase().startsWith( searchInputs[selectedTab].toLowerCase() ))
+    .sort( (e1:any, e2:any) => {
+            const n1 = e1.name.toLowerCase();
+            const n2 = e2.name.toLowerCase();
+            const f1 = isInFavorites(e1.id, selectedTab);
+            const f2 = isInFavorites(e2.id, selectedTab);
+            if( f1 && !f2 ) {
+                return -1;
+            } else if ( f2 && !f1 ) {
+                return 1;
+            } else {
+                if (n1 > n2) {
+                    return 1
+                } else if (n2 > n1) {
+                    return -1;
+                } else {
+                    return 0;
+                }
+            }
+    })
     .map( (entity:any) => {
         return(
             <SidebarLineItem 

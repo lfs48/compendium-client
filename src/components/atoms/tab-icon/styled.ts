@@ -34,7 +34,7 @@ function tabIcon(tab:GameEntity) {
         case('dndClasses'):
             return 'fas fa-sword';
         case('features'):
-            return 'fas fa-star';
+            return 'fas fa-award';
         default:
             return '';
     }

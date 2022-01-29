@@ -18,8 +18,7 @@ export const InputContainer = tw.div<InputContainerProps>`
     relative
     transition-colors
     duration-200
-    bg-beige-light
-    focus-within:bg-beige-lighter
+    bg-beige-lightest
     rounded-sm
     border
     ${p => p.$hasLeftIcon

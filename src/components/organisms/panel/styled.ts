@@ -51,7 +51,7 @@ export const Header = tw.header`
     w-full
     h-12
     top-0
-    bg-white
+    bg-beige-dark
     px-6
     py-2
     border-b-2
@@ -64,15 +64,14 @@ export const Footer = tw.footer`
     justify-between
     absolute
     bottom-0
-    bg-white
     px-12
     py-2
     shadow-inner
-    border-t
-    border-gray-200
+    border-t-2
     border-black
     w-full
     h-12
+    bg-beige-dark
 `
 
 export const DraggableArea = tw.div`
@@ -119,7 +118,7 @@ export const Close = tw.i`
 export const Content = tw.div`
     px-6
     py-2
-    h-[calc(100%-3rem)]
+    h-[calc(100%-6rem)]
     overflow-y-auto
     overflow-x-hidden
     scroll
