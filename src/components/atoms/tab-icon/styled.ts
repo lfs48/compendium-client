@@ -8,7 +8,7 @@ type RootProps = {
 
 export const Root = tw.i<RootProps>`
     transition-colors
-    duration-500
+    duration-200
     text-white
     p-2
     bg-black
