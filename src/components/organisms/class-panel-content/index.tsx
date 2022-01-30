@@ -9,11 +9,11 @@ import ClassFeatures from '@/components/molecules/features-list';
 import ClassTable from '@/components/molecules/class-table';
 import Button from '@/components/atoms/button';
 import PanelFooter from '@/components/molecules/panel-footer';
-import { openWorkspace } from '@/reducers/UI/workspace.reducer';
 import { useDispatch } from 'react-redux';
 import Dialog from '@/components/molecules/dialog';
 import { useDeleteClassMutation } from '@/api/dndclasses.api';
 import Loading from '@/components/atoms/loading';
+import { useNavigate } from 'react-router-dom';
 
 interface ClassPanelContentProps {
     dndClass: DndClass;
@@ -26,6 +26,7 @@ const ClassPanelContent = React.memo(function ClassPanelContent({
 }: ClassPanelContentProps) {
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const [triggerDelete, {isLoading, isSuccess}] = useDeleteClassMutation();
     
@@ -48,16 +49,7 @@ const ClassPanelContent = React.memo(function ClassPanelContent({
     }
 
     const handleEdit = () => {
-        dispatch({
-            type: openWorkspace .type,
-            payload: {
-                component: 'classForm',
-                data: {
-                    id: dndClass.id,
-                    dataType: 'dndClasses'
-                }
-            }
-        })
+        navigate(`/classes/edit/${dndClass.id}`)
     }
 
     return(

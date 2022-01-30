@@ -1,14 +1,14 @@
 import React, { SyntheticEvent, useEffect, useState } from 'react';
 import { merge } from 'lodash';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Field from '@molecules/field';
-import { DndClass, Spellcasting } from '@/types';
+import { DndClass, RootState, Spellcasting } from '@/types';
 import * as S from './styled';
 import { handleInput } from '@/utils/component.utils';
 import Input from '@/components/atoms/input';
 import Select from '@/components/molecules/select';
 import Button from '@/components/atoms/button';
-import { usePatchClassMutation, usePostClassMutation } from '@/api/dndclasses.api';
+import { useGetAllClassesQuery, usePatchClassMutation, usePostClassMutation } from '@/api/dndclasses.api';
 import ClassFormEquipment from '@/components/molecules/class-form-equipment';
 import ClassFormTable from '@/components/molecules/class-form-table';
 import ClassFormAddFeature from '@/components/molecules/class-form-add-feature';
@@ -16,7 +16,8 @@ import { openPanel } from '@/reducers/UI/panels.reducer';
 import { moveObjKey, renameObjKey, snakeCaseToWords } from '@/utils/functions.utils';
 import ClassFormAddColumn from '@/components/molecules/class-form-add-column';
 import { hasFeatureAtLevel } from '@/utils/dndClass.utils';
-import { closeWorkspace } from '@/reducers/UI/workspace.reducer';
+import { useNavigate, useParams } from 'react-router-dom';
+import Loading from '@/components/atoms/loading';
 
 const initialInputs = {
     id: '',
@@ -57,24 +58,26 @@ const dieOptions = ['1d6', '1d8', '1d10', '1d12'];
 const spellcastingOptions = ['none', 'full', 'half', 'half+', 'third'];
 
 interface ClassFormProps {
-    dndClass?: DndClass;
     editing?: boolean;
     [prop: string]: any;
 }
 
 export default function ClassForm({
-    dndClass=initialInputs, 
     editing=false,
     ...props
 }: ClassFormProps) {
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const {id} = useParams();
+
+    const dndClasses = useSelector( (state:RootState) => state.entities.dndClasses)
 
     const [triggerPost, postQuery] = usePostClassMutation();
     const [triggerPatch, patchQuery] = usePatchClassMutation();
 
-    const trigger = dndClass !==  null ? triggerPatch : triggerPost;
-    const query = dndClass !==  null ? patchQuery : postQuery;
+    const trigger = editing ? triggerPatch : triggerPost;
+    const query = editing ? patchQuery : postQuery;
 
     const [inputs, setInputs] = useState<DndClass>(initialInputs);
     const [errors, setErrors] = useState(initialErrors);
@@ -84,37 +87,29 @@ export default function ClassForm({
     });
 
     useEffect( () => {
-        if (dndClass !== null) {
+        if (editing && id && id in dndClasses) {
+            const dndClass = dndClasses[id];
             setInputs(dndClass);
-        } else {
+        } else if (editing && id && !(id in dndClasses) ) {
+            navigate('/classes/new');
+        }
+        else {
             setInputs(initialInputs);
         }
-    }, [dndClass])
+    }, [id])
 
     const handleSave = () => {
-        const payload = dndClass !==  null ? 
-                ({
-                    id: dndClass.id,
-                    dndclass: inputs
-                })
-            :
-                ({
-                    dndclass: inputs
-                });
-        //@ts-ignore
-        trigger(payload)
+        trigger({
+            dndclass: inputs
+        })
         .unwrap()
         .then( res => {
             const {id} = res;
             setErrors(initialErrors);
-            setInputs(initialInputs);
             setTriggerOpenPanel({
-                id: id || '',
+                id: id,
                 success: true
             });
-            dispatch({
-                type: closeWorkspace.type
-            })
         })
         .catch( err => {
             setErrors(err.data.errors);
@@ -236,12 +231,6 @@ export default function ClassForm({
             />
         )
     })
-
-    const handleClose = () => {
-        dispatch({
-            type: closeWorkspace.type
-        })
-    }
     
     return(
         <S.Root {...props}>
@@ -313,7 +302,7 @@ export default function ClassForm({
             <S.Buttons>
                 <Button
                     color='red'
-                    onClick={handleClose}
+                    onClick={()=>navigate('/')}
                     className={S.Button}
                 >
                     Cancel

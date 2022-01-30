@@ -1,11 +1,7 @@
 import * as S from './styled';
 
-export default function Page({
-    children
-}) {
+export default function Page({...props}) {
     return(
-        <S.Root>
-            {children}
-        </S.Root>
+        <S.Root {...props} />
     )
 }

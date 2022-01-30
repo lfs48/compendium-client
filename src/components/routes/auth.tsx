@@ -9,7 +9,7 @@ export default function Auth({children}) {
     if (authenticated) {
         return( 
             <Navigate 
-                to='/dashboard'
+                to='/'
                 replace
             />
         )

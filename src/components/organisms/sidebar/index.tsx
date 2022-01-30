@@ -5,13 +5,12 @@ import NoResults from '@/components/atoms/no-results';
 import SidebarLineItem from '@/components/atoms/sidebar-line-item';
 import SidebarHeader from '@/components/molecules/sidebar-header';
 import SidebarTabSelect from '@/components/molecules/sidebar-tab-select';
-import { useLocalStorage } from '@/hooks/useLocalStorage.hook';
-import { openWorkspace } from '@/reducers/UI/workspace.reducer';
 import { RootState, GameEntity } from '@/types';
 import { clearInput, handleInput } from '@/utils/component.utils';
 import { isInFavorites } from '@/utils/favorites.utils';
 import { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import * as S from './styled';
 
 const initialInputs = {
@@ -22,6 +21,7 @@ const initialInputs = {
 export default function Sidebar() {
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const [selectedTab, setSelectedTab] = useState<GameEntity>('dndClasses');
 
@@ -82,12 +82,7 @@ export default function Sidebar() {
     });
 
     const handleCreate = () => {
-        dispatch({
-            type: openWorkspace.type,
-            payload: {
-                component: 'classForm'
-            }
-        })
+        navigate('/classes/new')
     }
 
     return(

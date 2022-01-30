@@ -4,7 +4,6 @@ import { Oval } from 'svg-loaders-react';
 export const Root = tw.div`
     h-full
     w-full
-    bg-gray-200
     flex
     justify-center
     items-center

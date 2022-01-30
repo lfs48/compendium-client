@@ -8,13 +8,14 @@ import Protected from "./protected";
 import Landing from "@pages/landing";
 import Register from "@pages/register";
 import Dashboard from "@pages/dashboard";
+import ClassForm from "../organisms/class-form";
 
 export default function AppRoutes() {
     return(
         <BrowserRouter>
             <Routes>
                 <Route 
-                    path="/"
+                    path='/login'
                     element={
                         <Auth>
                             <Landing />
@@ -22,7 +23,7 @@ export default function AppRoutes() {
                     }
                 />
                 <Route 
-                    path="/register"
+                    path='/register'
                     element={
                         <Auth>
                             <Register />
@@ -30,7 +31,7 @@ export default function AppRoutes() {
                     }
                 />
                 <Route 
-                    path="/dashboard"
+                    path='/*'
                     element={
                         <Protected>
                             <Dashboard />

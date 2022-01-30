@@ -3,6 +3,12 @@ import tw from 'tailwind-styled-components';
 export const Root = tw.div`
     w-full
     h-full
+    bg-beige-lighter
+    border-2
+    border-black
+    px-6
+    py-4
+    rounded
     flex
     flex-col
     justify-between

@@ -27,6 +27,7 @@ interface ClassFeature {
 
 export interface PostDndClass {
     dndclass: {
+        id: string;
         name: string;
         description: string;
         hitdie: string;
@@ -46,8 +47,8 @@ export interface PostDndClass {
 }
 
 export interface PatchDndClass {
-    id: string;
     dndclass: {
+        id: string;
         name?: string;
         description?: string;
         hitdie?: string;

@@ -29,7 +29,7 @@ export default function Protected({children}) {
     } else {
         return( 
             <Navigate 
-                to='/'
+                to='/login'
                 replace
             />
         )

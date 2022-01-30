@@ -18,7 +18,7 @@ export const dndClassApi = rootApi.injectEndpoints({
         }),
         patchClass: builder.mutation<DndClass, PatchDndClass>({
             query: ({...patch}) => ({
-                url: `/classes/${patch.id}`,
+                url: `/classes/${patch.dndclass.id}`,
                 method: 'PATCH',
                 body: patch
             })
