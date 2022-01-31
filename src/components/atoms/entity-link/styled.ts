@@ -9,6 +9,7 @@ export const Root = tw.div<RootProps>`
     cursor-pointer
     text-blue-500
     inline-block
+    w-fit
     ${p => p.$inline 
         ? `
         ` 

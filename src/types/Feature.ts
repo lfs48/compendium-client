@@ -4,18 +4,18 @@ export interface Feature {
     description: string;
     kind: string;
     category: string;
-    sources: [
-        {
-            id: string;
-            source_type: string;
-            level?: number;
-        }
-    ]
+    sources: Source[];
+}
+
+interface Source {
+    id: string;
+    source_type: string;
+    level?: number;
 }
 
 export interface PostFeature {
-    id: string;
     feature: {
+        id: string;
         name: string;
         description: string;
         kind: string;
@@ -24,8 +24,8 @@ export interface PostFeature {
 }
 
 export interface PatchFeature {
-    id: string;
     feature: {
+        id: string;
         name?: string;
         description?: string;
         kind?: string;

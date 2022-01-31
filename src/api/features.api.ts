@@ -12,14 +12,14 @@ export const featureApi = rootApi.injectEndpoints({
         }),
         postFeature: builder.mutation<Feature, PostFeature>({
             query: ({...post}) => ({
-                url: `/features/${post.id}`,
+                url: `/features/${post.feature.id}`,
                 method: 'POST',
                 body: post
             })
         }),
         patchFeature: builder.mutation<Feature, PatchFeature>({
             query: ({...patch}) => ({
-                url: `/features/${patch.id}`,
+                url: `/features/${patch.feature.id}`,
                 method: 'PATCH',
                 body: patch
             })
@@ -37,5 +37,6 @@ export const {
     useGetFeatureByIdQuery,
     useGetAllFeaturesQuery,
     usePostFeatureMutation,
-    usePatchFeatureMutation
+    usePatchFeatureMutation,
+    useDeleteFeatureMutation
 } = featureApi;

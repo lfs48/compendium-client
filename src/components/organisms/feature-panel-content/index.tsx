@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { DndClass } from '@/types';
+import { DndClass, Feature } from '@/types';
 import * as S from './styled';
 import Divider from '@/components/atoms/divider';
 import StartingEquipment from '@/components/molecules/starting-equipment';
@@ -14,21 +14,21 @@ import Dialog from '@/components/molecules/dialog';
 import { useDeleteClassMutation } from '@/api/dndclasses.api';
 import Loading from '@/components/atoms/loading';
 import { useNavigate } from 'react-router-dom';
+import { useDeleteFeatureMutation } from '@/api/features.api';
+import FeatureSources from '@/components/molecules/feature-sources';
 
-interface ClassPanelContentProps {
-    dndClass: DndClass;
+interface FeaturePanelContentProps {
+    feature: Feature
     [prop: string]: any;
 }
 
-const ClassPanelContent = React.memo(function ClassPanelContent({
-    dndClass,
+const FeaturePanelContent = React.memo(function({
+    feature,
     ...props
-}: ClassPanelContentProps) {
-
-    const dispatch = useDispatch();
+}: FeaturePanelContentProps) {
     const navigate = useNavigate();
 
-    const [triggerDelete, {isLoading, isSuccess}] = useDeleteClassMutation();
+    const [triggerDelete, {isLoading, isSuccess}] = useDeleteFeatureMutation();
     
     const [confirming, setConfirming] = useState(false);
 
@@ -37,7 +37,7 @@ const ClassPanelContent = React.memo(function ClassPanelContent({
     }
 
     const handleDelete = () => {
-        triggerDelete(dndClass.id)
+        triggerDelete(feature.id)
         .unwrap()
         .then( res => {
             setConfirming(false)
@@ -49,36 +49,18 @@ const ClassPanelContent = React.memo(function ClassPanelContent({
     }
 
     const handleEdit = () => {
-        navigate(`/classes/edit/${dndClass.id}`)
+        navigate(`/features/edit/${feature.id}`)
     }
 
     return(
         <>
         {(!isLoading && !isSuccess) ?
             <S.Root {...props}>
-                <ClassTable
-                    dndClass={dndClass}
-                />
                 <S.Description>
-                    {dndClass.description}
+                    {feature.description}
                 </S.Description>
                 <Divider />
-                <div>
-                    <h1>Class Features</h1>
-                    <p>{`As a ${dndClass.name.toLowerCase()}, you get the following class features.`}</p>
-                </div>
-                <ClassHitpoints
-                    dndClass={dndClass}
-                />
-                <ClassProficiencies 
-                    dndClass={dndClass}
-                />
-                <StartingEquipment 
-                    equipmentList={dndClass.equipment}
-                />
-                <ClassFeatures
-                    source={dndClass}
-                />
+                <FeatureSources feature={feature}/>
             </S.Root>
             :
             <Loading />
@@ -89,7 +71,7 @@ const ClassPanelContent = React.memo(function ClassPanelContent({
         />
         {confirming &&
             <Dialog
-                title={`Delete the ${dndClass.name} class?`}
+                title={`Delete this feature?`}
                 body='This cannot be undone.'
                 handleCancel={() => setConfirming(false)}
                 handleConfirm={handleDelete}
@@ -100,4 +82,4 @@ const ClassPanelContent = React.memo(function ClassPanelContent({
     )
 })
 
-export default ClassPanelContent;
+export default FeaturePanelContent;

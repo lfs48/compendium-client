@@ -1,10 +1,11 @@
 import Panel from '@/components/organisms/panel';
-import { DndClass, RootState } from '@/types';
+import { DndClass, GameEntity, RootState } from '@/types';
 import { useSelector } from 'react-redux';
 import Markdown from '@molecules/markdown';
 import ClassPanelContent from '@/components/organisms/class-panel-content';
 import React, { useEffect, useState } from 'react';
 import {merge} from 'lodash';
+import FeaturePanelContent from '../feature-panel-content';
 
 const PanelsContainer = React.memo( function PanelsContainer() {
 
@@ -44,15 +45,7 @@ const PanelsContainer = React.memo( function PanelsContainer() {
                         dataType={panel.panelType}
                         onMouseDown={()=>handleSelectPanel(i)}
                     >
-                            {panel.panelType === 'dndClasses' ?
-                                <ClassPanelContent 
-                                    dndClass={entity as DndClass}
-                                />
-                            :
-                                <Markdown>
-                                    {entity.description}
-                                </Markdown>
-                            }
+                        {panelContentComponent(panel.panelType, entity)}
                     </Panel>
                 )
             }
@@ -63,3 +56,18 @@ const PanelsContainer = React.memo( function PanelsContainer() {
 })
 
 export default PanelsContainer;
+
+function panelContentComponent(panelType:GameEntity, entity:any) {
+    switch(panelType) {
+        case('dndClasses'):
+            return <ClassPanelContent dndClass={entity} />
+        case('features'):
+            return <FeaturePanelContent feature={entity} />
+        default:
+            return (
+                <Markdown>
+                    {entity.description}
+                </Markdown>
+            )
+    }
+}

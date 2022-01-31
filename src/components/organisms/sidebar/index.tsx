@@ -7,6 +7,7 @@ import SidebarHeader from '@/components/molecules/sidebar-header';
 import SidebarTabSelect from '@/components/molecules/sidebar-tab-select';
 import { RootState, GameEntity } from '@/types';
 import { clearInput, handleInput } from '@/utils/component.utils';
+import { entityFormPath } from '@/utils/entities.utils';
 import { isInFavorites } from '@/utils/favorites.utils';
 import { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -82,7 +83,7 @@ export default function Sidebar() {
     });
 
     const handleCreate = () => {
-        navigate('/classes/new')
+        navigate(`/${entityFormPath(selectedTab)}/new`);
     }
 
     return(

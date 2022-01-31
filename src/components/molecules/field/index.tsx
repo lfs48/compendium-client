@@ -62,7 +62,7 @@ export default function Field({
                     <TextArea
                         value={value}
                         onChange={onChange}
-                        maxLength={5000}
+                        maxLength={10000}
                         placeholder={placeholder}
                         className={inputClasses}
                     />
