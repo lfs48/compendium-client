@@ -1,5 +1,5 @@
 import { DndClass } from '@/types';
-import { DiceRoll } from '@dice-roller/rpg-dice-roller';
+import { DiceRoll } from 'rpg-dice-roller';
 import * as S from './styled';
 
 interface ClassHitpointsProps {

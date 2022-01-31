@@ -5,8 +5,6 @@ import { useDispatch } from 'react-redux';
 import * as S from './styled';
 import Resize from '@atoms/resize';
 import { useMousePos } from '@/hooks/useMouse.hook';
-import Button from '@/components/atoms/button';
-import { openWorkspace } from '@/reducers/UI/workspace.reducer';
 import { GameEntity } from '@/types';
 
 const handleDragStart = ({event, x, y, styleData, setStyleData, dragging, setDragging}) => {
