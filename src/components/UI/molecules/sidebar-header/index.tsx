@@ -1,6 +1,8 @@
+import { RootState } from '@/types';
 import Button from '@atoms/button';
 import Search from '@molecules/search';
 import { SyntheticEvent } from 'react';
+import { useSelector } from 'react-redux';
 import * as S from './styled';
 
 interface SidebarHeaderProps {
@@ -18,6 +20,9 @@ export default function SidebarHeader({
     handleCreate,
     ...props
 }: SidebarHeaderProps) {
+
+    const gm = useSelector( (state:RootState) => state.session.gm);
+
     return(
         <S.Root {...props}>
             <Search
@@ -25,11 +30,13 @@ export default function SidebarHeader({
                 onChange={handleSearch}
                 handleClearSearch={handleClearSearch}
             />
-            <Button
-                onClick={handleCreate}
-            >
-                New
-            </Button>
+            {gm &&
+                <Button
+                    onClick={handleCreate}
+                >
+                    New
+                </Button>
+            }
         </S.Root>
     )
 }

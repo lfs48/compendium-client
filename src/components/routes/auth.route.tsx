@@ -2,7 +2,7 @@ import { Navigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RootState } from "@/types";
 
-export default function Auth({children}) {
+export default function AuthRoute({children}) {
 
     const { authenticated } = useSelector( (state:RootState) => state.session);
 

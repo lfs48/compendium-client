@@ -3,6 +3,7 @@ import Loading from '@atoms/loading';
 import { Route, Routes } from 'react-router-dom';
 import ClassForm from '@/components/concerns/classes/class-form';
 import { useGetAllFeaturesQuery } from '@/api/features.api';
+import GmRoute from './gm.route';
 
 export default function ClassRoutes() {
 
@@ -11,26 +12,32 @@ export default function ClassRoutes() {
 
     return(
         <Routes>
-        <Route
-            path='/classes/new'
-            element={
-                (getClassesQuery.isLoading || getFeaturesQuery.isLoading)
-                    ?
-                        <Loading />
-                    :
-                        <ClassForm />
-            }
-        />
-        <Route
-            path='/classes/edit/:id'
-            element={
-                (getClassesQuery.isLoading || getFeaturesQuery.isLoading)
-                    ?
-                        <Loading />
-                    :
-                        <ClassForm editing/>
-            }
-        />
+            <Route
+                path='/classes/new'
+                element={
+                    <GmRoute>
+                        {(getClassesQuery.isLoading || getFeaturesQuery.isLoading)
+                            ?
+                                <Loading />
+                            :
+                                <ClassForm />
+                        }
+                    </GmRoute>
+                }
+            />
+            <Route
+                path='/classes/edit/:id'
+                element={
+                    <GmRoute>
+                        {(getClassesQuery.isLoading || getFeaturesQuery.isLoading)
+                            ?
+                                <Loading />
+                            :
+                                <ClassForm editing/>
+                        }
+                    </GmRoute>
+                }
+            />
         </Routes>
     )
 }

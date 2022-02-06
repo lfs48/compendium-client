@@ -7,7 +7,7 @@ import { useEffect } from "react";
 import { logout } from "@/reducers/session.reducer";
 import { skipToken } from "@reduxjs/toolkit/dist/query";
 
-export default function Protected({children}) {
+export default function ProtectedRoute({children}) {
 
     const dispatch = useDispatch();
 

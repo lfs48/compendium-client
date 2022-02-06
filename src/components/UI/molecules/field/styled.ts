@@ -4,6 +4,7 @@ export const Root = tw.div`
     flex
     flex-col
     space-y-1
+    w-full
 `
 
 type InputContainerProps = {

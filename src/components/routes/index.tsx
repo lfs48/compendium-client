@@ -3,12 +3,11 @@ import {
     Route,
     BrowserRouter
  } from "react-router-dom";
-import Auth from "./auth";
-import Protected from "./protected";
+import Auth from "./auth.route";
+import Protected from "./protected.route";
 import Landing from "@pages/landing";
 import Register from "@pages/register";
 import Dashboard from "@pages/dashboard";
-import ClassForm from "../concerns/classes/class-form";
 
 export default function AppRoutes() {
     return(
