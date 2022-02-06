@@ -19,9 +19,9 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
-      "@atoms/*": ["src/components/atoms/*"],
-      "@molecules/*": ["src/components/molecules/*"],
-      "@organisms/*": ["src/components/organisms/*"],
+      "@atoms/*": ["src/components/UI/atoms/*"],
+      "@molecules/*": ["src/components/UI/molecules/*"],
+      "@organisms/*": ["src/components/UI/organisms/*"],
       "@pages/*": ["src/components/pages/*"]
     }
   }

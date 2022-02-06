@@ -1,10 +1,7 @@
-import Sidebar from '@/components/organisms/sidebar';
+import Sidebar from '@organisms/sidebar';
 import * as S from './styled';
-import PanelsContainer from '@/components/organisms/panels-container';
-import Workspace from '@/components/organisms/workspace';
-import { Route, Routes } from 'react-router-dom';
-import Protected from '@/components/routes/protected';
-import ClassForm from '@/components/organisms/class-form';
+import PanelsContainer from '@organisms/panels-container';
+import Workspace from '@organisms/workspace';
 
 export default function Dashboard() {
 

@@ -8,7 +8,7 @@ import Protected from "./protected";
 import Landing from "@pages/landing";
 import Register from "@pages/register";
 import Dashboard from "@pages/dashboard";
-import ClassForm from "../organisms/class-form";
+import ClassForm from "../concerns/classes/class-form";
 
 export default function AppRoutes() {
     return(

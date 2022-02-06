@@ -1,7 +1,7 @@
 import { useGetAllClassesQuery } from '@/api/dndclasses.api';
-import Loading from '@/components/atoms/loading';
+import Loading from '@atoms/loading';
 import { Route, Routes } from 'react-router-dom';
-import ClassForm from '@organisms/class-form';
+import ClassForm from '@/components/concerns/classes/class-form';
 import { useGetAllFeaturesQuery } from '@/api/features.api';
 
 export default function ClassRoutes() {
