@@ -22,19 +22,17 @@ export default function PanelFooter({
         <S.Root {...props}>
             {gm &&
                 <>
-                <Button
+                <S.Button
                     color='red'
                     onClick={handleDelete}
-                    className={S.Button}
                 >
                     Delete
-                </Button>
-                <Button
+                </S.Button>
+                <S.Button
                     onClick={handleEdit}
-                    className={S.Button}
                 >
                     Edit
-                </Button>
+                </S.Button>
                 </>
             }
         </S.Root>

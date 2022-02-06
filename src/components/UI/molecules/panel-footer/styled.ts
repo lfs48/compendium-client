@@ -1,4 +1,5 @@
 import tw from 'tailwind-styled-components';
+import ButtonComponent from '@atoms/button';
 
 export const Root = tw.footer`
     flex
@@ -16,6 +17,6 @@ export const Root = tw.footer`
     bg-beige-dark
 `
 
-export const Button = `
+export const Button = tw(ButtonComponent)`
     w-20
 `

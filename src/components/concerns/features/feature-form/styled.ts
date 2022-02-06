@@ -1,3 +1,6 @@
+import Field from '@molecules/field';
+import Input from '@atoms/input';
+import ButtonComponent from '@atoms/button';
 import tw from 'tailwind-styled-components';
 
 export const Root = tw.div`
@@ -37,16 +40,16 @@ export const Buttons = tw.div`
     space-x-8
 `
 
-export const Button = `
+export const Button = tw(ButtonComponent)`
     w-24
 `
 
-export const Name = `
+export const Name = tw(Input)`
     font-fancy
     text-[1.75rem] 
     font-bold leading-[2rem]
 `
 
-export const Description = `
+export const Description = tw(Field)`
     h-full
 `

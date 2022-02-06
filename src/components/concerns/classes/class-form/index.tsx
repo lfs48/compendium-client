@@ -237,11 +237,10 @@ export default function ClassForm({
             <S.Between>
                 <div className='space-y-8'>
                     <S.Grid>
-                        <Input
+                        <S.Name
                             value={inputs.name}
                             placeholder='New Class'
                             onChange={e => handleInput(e, 'name', inputs, setInputs)}
-                            className={S.Name}
                             errors={errors.name}
                         />
                         <S.Selects>
@@ -260,11 +259,10 @@ export default function ClassForm({
                                 errors={errors.spellcasting}
                             />
                         </S.Selects>
-                        <Field
+                        <S.Description
                             label='Description'
                             value={inputs.description}
                             onChange={e => handleInput(e, 'description', inputs, setInputs)}
-                            className={S.Description}
                             type='textarea'
                             errors={errors.description}
                         />
@@ -300,20 +298,18 @@ export default function ClassForm({
                     </S.Right>
             </S.Between>
             <S.Buttons>
-                <Button
+                <S.Button
                     color='red'
                     onClick={()=>navigate('/')}
-                    className={S.Button}
                 >
                     Cancel
-                </Button>
-                <Button
+                </S.Button>
+                <S.Button
                     onClick={handleSave}
                     loading={query.isLoading}
-                    className={S.Button}
                 >
                     Save
-                </Button>
+                </S.Button>
             </S.Buttons>
         </S.Root>
     )

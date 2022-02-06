@@ -1,6 +1,6 @@
 {
   "name": "compendium",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -18,7 +18,7 @@
     "remark-gfm": "^3.0.1",
     "rpg-dice-roller": "^4.5.2",
     "svg-loaders-react": "^2.2.1",
-    "tailwind-styled-components": "^2.1.1"
+    "tailwind-styled-components": "^2.1.4"
   },
   "devDependencies": {
     "@types/babel__core": "^7.1.17",
