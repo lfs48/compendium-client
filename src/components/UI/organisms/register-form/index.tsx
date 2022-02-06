@@ -1,17 +1,13 @@
 import { useRegisterMutation } from '@/api/auth.api';
 import Book from '@atoms/book';
 import Button from '@atoms/button';
-import { login } from '@/reducers/session.reducer';
 import { areAllKeysFilled, handleInput, isAnyKeyFilled } from '@/utils/component.utils';
 import Field from '@molecules/field';
 import { useCallback, useState } from 'react';
-import { useDispatch } from 'react-redux';
 import * as S from './styled';
 import Link from '@atoms/link';
 
 export default function RegisterForm() {
-
-    const dispatch = useDispatch();
 
     const [triggerRegister, {data, error, isLoading}] = useRegisterMutation();
 

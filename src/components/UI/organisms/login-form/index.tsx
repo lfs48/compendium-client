@@ -3,16 +3,13 @@ import Book from '@atoms/book';
 import Button from '@atoms/button';
 import Link from '@atoms/link';
 import ErrorList from '@molecules/error-list';
-import { login } from '@/reducers/session.reducer';
 import { areAllKeysFilled, handleInput, isAnyKeyFilled } from '@/utils/component.utils';
 import Field from '@molecules/field';
 import { useCallback, useState } from 'react';
-import { useDispatch } from 'react-redux';
 import * as S from './styled';
 
 export default function LoginForm() {
 
-    const dispatch = useDispatch();
 
     const [triggerLogin, {isLoading}] = useLoginMutation();
 
