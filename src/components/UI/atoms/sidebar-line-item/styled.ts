@@ -7,7 +7,8 @@ type RootProps = {
 
 export const Root = tw.div<RootProps>`
     py-2
-    px-4
+    pr-4
+    pl-6
     group
     cursor-pointer
     transition-colors
@@ -16,13 +17,23 @@ export const Root = tw.div<RootProps>`
     justify-between
     items-center
     space-x-2
+    bg-beige-light
+    even:bg-opacity-50
+    relative
+    before:absolute
+    before:w-4
+    before:h-full
+    before:transition-[left,background-color]
     ${p => p.$active
         ?`
-            bg-green-600
+            before:left-0
+            before:bg-green-500
+            before:hover:bg-green-600
         `
         :`
-            bg-beige-light
-            even:bg-opacity-50
+            before:-left-4
+            hover:before:-left-0
+            before:bg-yellow-500
         `
     }
 `
@@ -32,10 +43,9 @@ type NameProps = {
 }
 
 export const Name = tw.div<NameProps>`
-    transition-[margin-left]
-    duration-300
-    group-hover:ml-4
     text-lg
+    truncate
+    pr-2
     ${p => p.$animating
         ?`
             animate-wiggle

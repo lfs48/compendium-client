@@ -21,7 +21,7 @@ export const Root = tw.i<RootProps>`
     ${p => tabIcon(p.$tab)}
     ${p => p.$selected
         ?`
-            text-green-500
+            text-green-400
         `
         :`
             text-white

@@ -8,6 +8,7 @@ export const Root = tw.div`
     h-full-minus-nav
     flex
 `
+
 export const Body = tw.div`
     w-100
     bg-gray-100
