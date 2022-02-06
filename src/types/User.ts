@@ -1,6 +1,7 @@
 export interface User {
     id: string;
     username: string;
+    gm: boolean;
 }
 
 export interface PatchUser {

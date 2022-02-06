@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/types";
 import { useEffect } from "react";
 import { logout } from "@/reducers/session.reducer";
+import { skipToken } from "@reduxjs/toolkit/dist/query";
 
 export default function Protected({children}) {
 
@@ -12,7 +13,7 @@ export default function Protected({children}) {
 
     const { authenticated, id } = useSelector( (state:RootState) => state.session);
     
-    const { data, error, isLoading } = useGetUserByIdQuery(id);
+    const { data, error, isLoading } = useGetUserByIdQuery(id ?? skipToken);
 
     useEffect( () => {
         if (error) {

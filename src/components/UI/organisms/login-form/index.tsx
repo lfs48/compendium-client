@@ -34,14 +34,6 @@ export default function LoginForm() {
         .unwrap()
         .then( res => {
             setErrors(initialErrors);
-            const {token, user} = res;
-            dispatch({
-                type: login.type,
-                payload: {
-                    jwt: token,
-                    id: user.id
-                }
-            })
         })
         .catch( err => {
             setErrors(err.data.errors);
