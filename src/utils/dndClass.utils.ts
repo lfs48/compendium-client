@@ -18,17 +18,7 @@ export function sortFeatures(dndClass:DndClass) {
 }
 
 export const getLevelProficiency = (level:number) => {
-  if (level < 5) {
-    return 2;
-  } else if (level >= 5 && level < 9) {
-    return 3;
-  } else if (level >= 9 && level < 13) {
-    return 4;
-  } else if (level >= 13 && level < 17) {
-    return 5;
-  } else if (level >= 17) {
-    return 6;
-  }
+  return Math.ceil(level / 3) + 1;
 }
   
 export function getSpellSlots(spellcasting:Spellcasting) {
