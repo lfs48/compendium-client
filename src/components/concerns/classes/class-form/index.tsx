@@ -32,8 +32,6 @@ const initialInputs = {
     spellcasting: 'none' as Spellcasting,
     equipment: [] as string[],
     table_cols: {},
-    subclass_title: '',
-    subclass_feature_levels: [] as number[],
     features: []
 }
 
@@ -49,8 +47,6 @@ const initialErrors = {
     spellcasting: [] as string[],
     equipment: [] as string[],
     table_cols: [] as string[],
-    subclass_title: [] as string[],
-    subclass_feature_levels: [] as string[],
     features: [] as string[]
 }
 
@@ -206,20 +202,7 @@ export default function ClassForm({
         setInputs(newState);
     }
 
-    const handleAddSubclassFeatureLevel = (level) => {
-        const newState = merge( {}, inputs);
-        newState.subclass_feature_levels.push(level);
-        setInputs(newState);
-    }
-
-    const handleRemoveSubclassFeatureLevel = (_level) => {
-        const newState = merge( {}, inputs);
-        newState.subclass_feature_levels = newState.subclass_feature_levels
-        .filter( (level) => level !== _level)
-        setInputs(newState);
-    }
-
-    const fields = ['armor', 'weapons', 'tools', 'saves', 'skills', 'subclass_title']
+    const fields = ['armor', 'weapons', 'tools', 'saves', 'skills']
     .map( (field) => {
         return(
             <Field
@@ -287,12 +270,10 @@ export default function ClassForm({
                         <ClassFormTable 
                             dndClass={inputs}
                             handleColInput={handleColInput}
-                            handleAddSubclassFeatureLevel={handleAddSubclassFeatureLevel}
                             handleMoveColLeft={handleMoveCol(-1)}
                             handleMoveColRight={handleMoveCol(1)}
                             handleRemoveCol={handleRemoveCol}
                             handleRemoveFeature={handleRemoveFeature}
-                            handleRemoveSubclassFeatureLevel={handleRemoveSubclassFeatureLevel}
                             handleRenameCol={handleRenameCol}
                         />
                     </S.Right>

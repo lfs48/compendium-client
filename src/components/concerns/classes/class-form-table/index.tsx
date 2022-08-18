@@ -15,8 +15,6 @@ interface ClassFormTableProps {
     handleMoveColRight: (key: string) => void;
     handleMoveColLeft: (key: string) => void;
     handleRemoveFeature: (id: string, level:number) =>  void;
-    handleAddSubclassFeatureLevel: (level: number) => void;
-    handleRemoveSubclassFeatureLevel: (level: number) => void;
     [prop: string]: any;
 }
 
@@ -28,8 +26,6 @@ export default function ClassFormTable({
     handleMoveColRight,
     handleMoveColLeft,
     handleRemoveFeature,
-    handleAddSubclassFeatureLevel,
-    handleRemoveSubclassFeatureLevel,
     ...props
 }: ClassFormTableProps) {
 
@@ -137,17 +133,6 @@ export default function ClassFormTable({
                         {featureComponents}
                     </S.LevelFeatures>
                 </S.Cell>
-                <S.Cell>
-                    {dndClass.subclass_feature_levels.includes(l) ?
-                        <S.RemoveSubclassFeature
-                            onClick={() => handleRemoveSubclassFeatureLevel(l)}
-                        />
-                    :
-                        <S.AddSubclassFeature
-                            onClick={() => handleAddSubclassFeatureLevel(l)}
-                        />
-                    }
-                </S.Cell>
                 {extraCols}
             </S.Row>
         )
@@ -158,7 +143,6 @@ export default function ClassFormTable({
             <S.HeaderCell>Level</S.HeaderCell>
             <S.HeaderCell>Prof</S.HeaderCell>
             <S.HeaderCell $left $full>Features</S.HeaderCell>
-            <S.HeaderCell>Subclass?</S.HeaderCell>
             {extraHeaders}
         </tr>
     )

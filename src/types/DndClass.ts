@@ -15,8 +15,6 @@ export interface DndClass {
     table_cols: {
         [title: string]: string[]
     };
-    subclass_title: string;
-    subclass_feature_levels: number[];
     features: ClassFeature[];
 }
 
@@ -41,8 +39,6 @@ export interface PostDndClass {
         table_cols: {
             [title: string]: string[]
         };
-        subclass_title: string;
-        subclass_feature_levels: number[];
     }
 }
 
@@ -62,7 +58,5 @@ export interface PatchDndClass {
         table_cols?: {
             [title: string]: string[]
         };
-        subclass_title?: string;
-        subclass_feature_levels?: number[];
     }
 }

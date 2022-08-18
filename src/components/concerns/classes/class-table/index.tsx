@@ -73,9 +73,6 @@ export default React.memo( function ClassTable({
                 <S.Cell>{`+ ${getLevelProficiency(n+1)}`}</S.Cell>
                 <S.Cell $left $full>
                     {levelFeatures}
-                    {dndClass.subclass_feature_levels.includes(n+1) ?
-                        <span>{dndClass.subclass_title} Feature</span>
-                    :<></>}
                 </S.Cell>
                 {extraCols}
                 {spellCols}
