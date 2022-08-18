@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import * as S from './styled';
 import { merge } from 'lodash';
 import { handleToggleFavorite, isInFavorites } from '@/utils/favorites.utils';
+import { MAX_LEVEL } from '@/utils/constants.utils';
 
 interface SidebarLineItemProps {
     content: {
@@ -33,7 +34,7 @@ export default function SidebarLineItem({
     const isActive = !!panels[content.id];
 
     const handleClick = useCallback( () => {
-        if (Object.keys(panels).length < 20) {
+        if (Object.keys(panels).length < MAX_LEVEL) {
             dispatch({
                 type: openPanel.type,
                 payload: {

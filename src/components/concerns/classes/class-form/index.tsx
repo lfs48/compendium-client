@@ -18,6 +18,7 @@ import ClassFormAddColumn from '@/components/concerns/classes/class-form-add-col
 import { hasFeatureAtLevel } from '@/utils/dndClass.utils';
 import { useNavigate, useParams } from 'react-router-dom';
 import Loading from '@atoms/loading';
+import { MAX_LEVEL } from '@/utils/constants.utils';
 
 const initialInputs = {
     id: '',
@@ -133,7 +134,7 @@ export default function ClassForm({
         const newState = merge({}, inputs);
         if (! (name in newState.table_cols) ) {
             const newCols = merge({}, newState.table_cols);
-            newCols[name] = [...Array(20)].map( _ => '');
+            newCols[name] = [...Array(MAX_LEVEL)].map( _ => '');
             newState.table_cols = newCols;
         }
         setInputs(newState);

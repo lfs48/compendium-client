@@ -6,6 +6,7 @@ import { intToOrdinal } from '@/utils/functions.utils';
 import { getLevelProficiency } from '@/utils/dndClass.utils';
 import Dropdown from '@atoms/dropdown';
 import Table from '@atoms/table';
+import { MAX_LEVEL } from '@/utils/constants.utils';
 
 interface ClassFormTableProps {
     dndClass: DndClass;
@@ -100,7 +101,7 @@ export default function ClassFormTable({
         )
     });
 
-    const trows = [...Array(20).keys()].map( (n) => {
+    const trows = [...Array(MAX_LEVEL).keys()].map( (n) => {
         const l = n+1;
         const levelFeatures = dndClass.features
         .filter( ({level}) => level === l)
