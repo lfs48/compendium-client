@@ -24,7 +24,7 @@ const initialInputs = {
     id: '',
     name: '',
     description: '',
-    hitdie: '1d8',
+    hitdie: 'd8',
     saves: '',
     weapons: '',
     armor: '',
@@ -52,7 +52,7 @@ const initialErrors = {
 }
 
 const dieOptions = ['d6', 'd8', 'd10', 'd12'];
-const spellcastingOptions = ['none', 'full', 'half', 'half+', 'third'];
+const spellcastingOptions = ['none', 'full', 'half', 'third'];
 
 interface ClassFormProps {
     editing?: boolean;
