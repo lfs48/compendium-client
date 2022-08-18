@@ -22,15 +22,15 @@ export default function ClassHitpoints({
             <S.Body>
             <p>
                 <strong>Hit Dice: </strong>
-                {hitdie + ` per ${name.toLowerCase()} level`}
+                {`3${hitdie} at 1st level, plus 1${hitdie} per level after 1st`}
             </p>
             <p>
                 <strong>Hit Points at 1st Level: </strong>
-                {roll.maxTotal + " + plus your Constitution modifier"}
+                {roll.maxTotal + " + your Constitution score"}
             </p>
             <p>
                 <strong>Hit Points at Higher Levels: </strong>
-                {Math.ceil(roll.averageTotal) + ` + plus your Constitution modifier per ${name.toLowerCase()} level after 1st`}
+                {Math.ceil(roll.averageTotal) + ` + your Constitution modifier per level after 1st`}
             </p>
             </S.Body>
         </S.Root>

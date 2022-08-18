@@ -50,7 +50,7 @@ const initialErrors = {
     features: [] as string[]
 }
 
-const dieOptions = ['1d6', '1d8', '1d10', '1d12'];
+const dieOptions = ['d6', 'd8', 'd10', 'd12'];
 const spellcastingOptions = ['none', 'full', 'half', 'half+', 'third'];
 
 interface ClassFormProps {
