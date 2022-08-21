@@ -2,7 +2,7 @@ import { getLevelProficiency, getSpellSlots } from '@/utils/dndClass.utils';
 import { DndClass, RootState } from '@/types';
 import * as S from './styled';
 import { intToOrdinal } from '@/utils/functions.utils';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import EntityLink from '@/components/concerns/entities/entity-link';
 import Table from '@atoms/table';
@@ -23,7 +23,7 @@ export default React.memo( function ClassTable({
     }));
 
     const classFeatures = dndClass.features
-    .map( ({id}) => features[id]);
+    .map( (id) => features[id]);
 
     const extraHeaders = Object.keys(dndClass.table_cols).map( (col, i) => {
         return <S.HeaderCell key={col}>{col}</S.HeaderCell>
@@ -36,7 +36,7 @@ export default React.memo( function ClassTable({
     }
 
     const trows = [...Array(MAX_LEVEL).keys()].map( (n) => {
-        const levelFeatures = dndClass.features
+        const levelFeatures = classFeatures
         .filter( ({level}) => level === n+1)
         .map( ({id}) => {
             const feature = classFeatures.find(feature => feature.id === id);

@@ -4,13 +4,13 @@ export interface Feature {
     description: string;
     kind: string;
     category: string;
+    level?: number;
     sources: Source[];
 }
 
 interface Source {
     id: string;
     source_type: string;
-    level?: number;
 }
 
 export interface PostFeature {
@@ -19,7 +19,7 @@ export interface PostFeature {
         name: string;
         description: string;
         kind: string;
-        category: string;
+        level?: number;
     }
 }
 
@@ -29,6 +29,6 @@ export interface PatchFeature {
         name?: string;
         description?: string;
         kind?: string;
-        category?: string;
+        level?: number;
     }
 }

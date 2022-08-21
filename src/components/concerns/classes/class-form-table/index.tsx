@@ -36,6 +36,9 @@ export default function ClassFormTable({
         features: state.entities.features
     }));
 
+    const classFeatures = dndClass.features
+    .map( (id) => features[id]);
+
     useEffect( () => {
         if (colMenu !== -1) {
 
@@ -103,8 +106,8 @@ export default function ClassFormTable({
 
     const trows = [...Array(MAX_LEVEL).keys()].map( (n) => {
         const l = n+1;
-        const levelFeatures = dndClass.features
-        .filter( ({level}) => level === l)
+        const levelFeatures = classFeatures
+        .filter( ({level}) => level === l);
         const featureComponents = levelFeatures
         .map( ({id}, i) => {
             const feature = features[id];

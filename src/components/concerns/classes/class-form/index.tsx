@@ -15,7 +15,7 @@ import ClassFormAddFeature from '@/components/concerns/classes/class-form-add-fe
 import { openPanel } from '@/reducers/UI/panels.reducer';
 import { moveObjKey, renameObjKey, snakeCaseToWords } from '@/utils/functions.utils';
 import ClassFormAddColumn from '@/components/concerns/classes/class-form-add-column';
-import { hasFeatureAtLevel } from '@/utils/dndClass.utils';
+import { hasFeature } from '@/utils/dndClass.utils';
 import { useNavigate, useParams } from 'react-router-dom';
 import Loading from '@atoms/loading';
 import { MAX_LEVEL } from '@/utils/constants.utils';
@@ -185,21 +185,18 @@ export default function ClassForm({
         setInputs(newState);
     }
 
-    const handleAddFeature = (id, level) => {
+    const handleAddFeature = (id) => {
         const newState = merge( {}, inputs);
-        if ( !hasFeatureAtLevel(inputs, id, level)  ) {
-            newState.features.push({
-                id: id,
-                level: level
-            });
+        if ( !hasFeature(inputs, id) ) {
+            newState.features.push(id);
         }
         setInputs(newState);
     }
 
-    const handleRemoveFeature = (_id, _level) => {
+    const handleRemoveFeature = (_id) => {
         const newState = merge( {}, inputs);
         newState.features = newState.features
-        .filter( ({id, level}) => id !== _id || level !== _level)
+        .filter( (id) => id !== _id)
         setInputs(newState);
     }
 

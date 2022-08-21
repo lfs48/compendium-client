@@ -15,12 +15,7 @@ export interface DndClass {
     table_cols: {
         [title: string]: string[]
     };
-    features: ClassFeature[];
-}
-
-interface ClassFeature {
-    id: string;
-    level?: number;
+    features: string[];
 }
 
 export interface PostDndClass {
@@ -39,6 +34,7 @@ export interface PostDndClass {
         table_cols: {
             [title: string]: string[]
         };
+        features: string[];
     }
 }
 
@@ -58,5 +54,6 @@ export interface PatchDndClass {
         table_cols?: {
             [title: string]: string[]
         };
+        features: string[];
     }
 }

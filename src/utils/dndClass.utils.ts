@@ -74,9 +74,5 @@ export function getSpellSlots(spellcasting:Spellcasting) {
 }
 
 export function hasFeature(dndClass:DndClass, id:string) {
-  return !!dndClass.features.find( (feature) => feature.id === id);
-}
-
-export function hasFeatureAtLevel(dndClass:DndClass, id:string, level:number) {
-  return !!dndClass.features.find( (feature) => feature.id === id && feature.level === level);
+  return !!dndClass.features.includes(id);
 }

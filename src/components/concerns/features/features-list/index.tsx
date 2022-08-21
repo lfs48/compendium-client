@@ -7,11 +7,7 @@ import { intToOrdinal } from '@/utils/functions.utils';
 
 interface FeatureListProps {
     source: {
-        features:
-            {
-                id: string;
-                level?: number;
-            }[];
+        features: string[];
         [others: string]: any;
     };
     [prop: string]: any;
@@ -27,7 +23,7 @@ export default function FeaturesList({
     }));
 
     const featureSections = source.features
-    .map( ({id, level}) => {
+    .map( (id) => {
         const feature = features[id];
         return(
             <Collapsable
@@ -35,8 +31,8 @@ export default function FeaturesList({
                 header={
                     <span>
                         <S.Name>{feature.name}</S.Name>
-                        {level &&
-                            <S.Level>({intToOrdinal(level || '')} level)</S.Level>
+                        {feature.level &&
+                            <S.Level>({intToOrdinal(feature.level || '')} level)</S.Level>
                         }
                     </span>
                 }
