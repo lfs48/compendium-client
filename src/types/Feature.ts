@@ -3,7 +3,6 @@ export interface Feature {
     name: string;
     description: string;
     kind: string;
-    category: string;
     level?: number;
     sources: Source[];
 }

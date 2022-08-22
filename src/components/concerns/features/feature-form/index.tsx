@@ -1,39 +1,30 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Field from '@molecules/field';
 import { Feature, RootState } from '@/types';
 import * as S from './styled';
 import { handleInput } from '@/utils/component.utils';
-import Input from '@atoms/input';
 import Select from '@molecules/select';
-import Button from '@atoms/button';
 import { openPanel } from '@/reducers/UI/panels.reducer';
 import { useNavigate, useParams } from 'react-router-dom';
 import { usePatchFeatureMutation, usePostFeatureMutation } from '@/api/features.api';
+import { MAX_LEVEL } from '@/utils/constants.utils';
+import { merge } from 'lodash';
 
 const kindOptions =
 [
-    "core",
-    "major",
-    "minor",
-    "ribbon"
+    "standard",
+    "feat",
+    "boon"
 ];
 
-const categoryOptions = [
-    "action", 
-    "quick action", 
-    "reaction",
-    "passive",
-    "triggered",
-    "misc"
-];
+const levelOptions = [undefined, ...Array(MAX_LEVEL).keys()];
 
 const initialInputs = {
     id: '',
     name: '',
     description: '',
-    kind: 'core',
-    category: 'action',
+    kind: 'standard',
+    level: undefined,
     sources: []
 }
 
@@ -41,7 +32,7 @@ const initialErrors = {
     name: [] as string[],
     description: [] as string[],
     kind: [] as string[],
-    category: [] as string[]
+    level: [] as string[]
 }
 
 interface FeatureFormProps {
@@ -85,7 +76,7 @@ export default function FeatureForm({
         }
     }, [id])
 
-    const handleSave = () => {
+    const handleSave = () => {;
         trigger({
             feature: inputs
         })
@@ -119,7 +110,7 @@ export default function FeatureForm({
             });
         }
     }, [triggerOpenPanel])
-    
+
     return(
         <S.Root {...props}>
             <S.Body>
@@ -139,11 +130,11 @@ export default function FeatureForm({
                         errors={errors.kind}
                     />
                     <Select
-                        label='Category'
-                        value={inputs.category}
-                        options={categoryOptions}
-                        onChange={e => handleInput(e, 'category', inputs, setInputs)}
-                        errors={errors.category}
+                        label='Level'
+                        value={inputs.level}
+                        options={levelOptions}
+                        onChange={e => handleInput(e, 'level', inputs, setInputs)}
+                        errors={errors.level}
                     />
                 </S.Selects>
                 </S.Top>

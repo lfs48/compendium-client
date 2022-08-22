@@ -4,8 +4,8 @@ import { SyntheticEvent } from 'react';
 import * as S from './styled';
 
 interface SelectProps {
-    value: string | number;
-    options: string[] | number[];
+    value: string | number | undefined;
+    options: (string | number | undefined)[];
     label?: string;
     onChange: (event:SyntheticEvent) => void;
     errors?: string[];
@@ -29,7 +29,7 @@ export default function Select({
             <S.Option
                 key={option}
             >
-                {option}
+                {option == undefined ? '—' : option}
             </S.Option>
         )
     })
