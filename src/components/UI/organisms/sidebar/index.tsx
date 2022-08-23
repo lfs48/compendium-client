@@ -13,10 +13,12 @@ import { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import * as S from './styled';
+import { useGetAllRacesQuery } from '@/api/races.api';
 
 const initialInputs = {
     dndClasses: '',
-    features: ''
+    features: '',
+    races: ''
 };
 
 export default function Sidebar() {
@@ -30,12 +32,14 @@ export default function Sidebar() {
 
     const queries = {
         dndClasses: useGetAllClassesQuery(),
-        features: useGetAllFeaturesQuery()
+        features: useGetAllFeaturesQuery(),
+        races: useGetAllRacesQuery()
     };
 
     const entities = useSelector( (state:RootState) => ({
         dndClasses: state.entities.dndClasses,
-        features: state.entities.features
+        features: state.entities.features,
+        races: state.entities.races
     }))
 
     const tabSelectors = Object.keys(entities).map( (key) => {

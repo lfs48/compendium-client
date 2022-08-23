@@ -1,4 +1,5 @@
 import { GameEntity } from '@/types';
+import { entityIcon } from '@/utils/entities.utils';
 import tw from 'tailwind-styled-components';
 
 type RootProps = {
@@ -18,7 +19,7 @@ export const Root = tw.i<RootProps>`
     flex
     justify-center
     items-center
-    ${p => tabIcon(p.$tab)}
+    ${p => entityIcon(p.$tab)}
     ${p => p.$selected
         ?`
             text-green-400
@@ -28,14 +29,3 @@ export const Root = tw.i<RootProps>`
         `
     }
 `
-
-function tabIcon(tab:GameEntity) {
-    switch(tab) {
-        case('dndClasses'):
-            return 'fas fa-sword';
-        case('features'):
-            return 'fas fa-award';
-        default:
-            return '';
-    }
-}

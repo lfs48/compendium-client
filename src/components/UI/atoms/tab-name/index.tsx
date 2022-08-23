@@ -1,4 +1,5 @@
 import { GameEntity } from '@/types';
+import { entityName } from '@/utils/entities.utils';
 import * as S from './styled';
 
 interface TabNameProps {
@@ -14,18 +15,7 @@ export default function TabName({
         <S.Root 
             {...props}
         >
-            {tabName(tab)}
+            {entityName(tab)}
         </S.Root>
     )
-}
-
-function tabName(tab:GameEntity) {
-    switch(tab) {
-        case('dndClasses'):
-            return 'Classes';
-        case('features'):
-            return 'Features';
-        default:
-            return '';
-    }
 }
