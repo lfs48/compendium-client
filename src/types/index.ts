@@ -5,3 +5,4 @@ export type { DndClass, PostDndClass, PatchDndClass } from './DndClass';
 export type { Spellcasting } from './Spellcasting';
 export type { GameEntity } from './GameEntity';
 export type { WorkspaceComponent } from './WorkspaceComponent';
+export type { Race, PostRace, PatchRace } from './Race';

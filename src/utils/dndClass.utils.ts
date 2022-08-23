@@ -1,11 +1,11 @@
-import { DndClass, Spellcasting } from "@/types";
+import { DndClass, Feature, Spellcasting } from "@/types";
 import { merge } from 'lodash';
 
 export function sortFeatures(dndClass:DndClass) {
     const sortedFeatures = merge([], dndClass.features)
-    .sort( (f1, f2) => {
-        const l1 = f1.level;
-        const l2 = f2.level;
+    .sort( (f1:Feature, f2:Feature) => {
+        const l1 = f1.level || 0;
+        const l2 = f2.level || 0;
         if (l1 > l2) {
             return 1
         } else if (l2 > l1) {
