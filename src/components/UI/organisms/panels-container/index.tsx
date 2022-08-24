@@ -6,6 +6,7 @@ import ClassPanelContent from '@/components/concerns/classes/class-panel-content
 import React, { useEffect, useState } from 'react';
 import {merge} from 'lodash';
 import FeaturePanelContent from '@/components/concerns/features/feature-panel-content';
+import RacePanelContent from '@/components/concerns/races/race-panel-content';
 
 const PanelsContainer = React.memo( function PanelsContainer() {
 
@@ -63,6 +64,8 @@ function panelContentComponent(panelType:GameEntity, entity:any) {
             return <ClassPanelContent dndClass={entity} />
         case('features'):
             return <FeaturePanelContent feature={entity} />
+        case('races'):
+            return <RacePanelContent race={entity} />
         default:
             return (
                 <Markdown>

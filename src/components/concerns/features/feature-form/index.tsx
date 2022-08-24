@@ -90,7 +90,9 @@ export default function FeatureForm({
             });
         })
         .catch( err => {
-            setErrors(err.data.errors);
+            if (err.data && err.data.errors) {
+                setErrors(err.data.errors);
+            }
         })
     }
 

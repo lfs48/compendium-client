@@ -18,7 +18,7 @@ export const raceApi = rootApi.injectEndpoints({
         }),
         patchRace: builder.mutation<Race, PatchRace>({
             query: ({...patch}) => ({
-                url: `/races/${patch.Race.id}`,
+                url: `/races/${patch.race.id}`,
                 method: 'PATCH',
                 body: patch
             })
