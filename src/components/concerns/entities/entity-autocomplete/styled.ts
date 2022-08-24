@@ -1,10 +1,10 @@
-import Dropdown from '@atoms/dropdown';
-import Input from '@atoms/input';
 import tw from 'tailwind-styled-components';
 
-export const Root = tw.span`
+export const Root = tw.div`
     relative
     w-full
+    flex
+    items-end
 `
 
 export const List = tw.ul`

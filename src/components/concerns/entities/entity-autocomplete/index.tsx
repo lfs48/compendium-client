@@ -1,10 +1,7 @@
 import Dropdown from '@atoms/dropdown';
-import Input from '@atoms/input';
 import { GameEntity, RootState } from '@/types';
-import { handleInput } from '@/utils/component.utils';
-import React, { SyntheticEvent, useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import tw from 'tailwind-styled-components';
 import Field from '../../../UI/molecules/field';
 import * as S from './styled';
 

@@ -2,6 +2,7 @@ import Field from '@/components/UI/molecules/field';
 import ButtonComponent from '@atoms/button';
 import Input from '@atoms/input';
 import tw from 'tailwind-styled-components';
+import EntityAutocomplete from '../../entities/entity-autocomplete';
 
 export const Root = tw.div`
     w-full

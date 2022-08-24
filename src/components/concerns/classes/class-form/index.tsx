@@ -1,24 +1,21 @@
-import React, { SyntheticEvent, useEffect, useState } from 'react';
+import { SyntheticEvent, useEffect, useState } from 'react';
 import { merge } from 'lodash';
 import { useDispatch, useSelector } from 'react-redux';
 import Field from '@molecules/field';
 import { DndClass, RootState, Spellcasting } from '@/types';
 import * as S from './styled';
 import { handleInput } from '@/utils/component.utils';
-import Input from '@atoms/input';
 import Select from '@molecules/select';
-import Button from '@atoms/button';
-import { useGetAllClassesQuery, usePatchClassMutation, usePostClassMutation } from '@/api/dndclasses.api';
+import { usePatchClassMutation, usePostClassMutation } from '@/api/dndclasses.api';
 import ClassFormEquipment from '@/components/concerns/classes/class-form-equipment';
 import ClassFormTable from '@/components/concerns/classes/class-form-table';
-import ClassFormAddFeature from '@/components/concerns/classes/class-form-add-feature';
 import { openPanel } from '@/reducers/UI/panels.reducer';
 import { moveObjKey, renameObjKey, snakeCaseToWords } from '@/utils/functions.utils';
 import ClassFormAddColumn from '@/components/concerns/classes/class-form-add-column';
 import { hasFeature } from '@/utils/dndClass.utils';
 import { useNavigate, useParams } from 'react-router-dom';
-import Loading from '@atoms/loading';
 import { MAX_LEVEL } from '@/utils/constants.utils';
+import EntityAutocomplete from '../../entities/entity-autocomplete';
 
 const initialInputs = {
     id: '',
@@ -261,9 +258,12 @@ export default function ClassForm({
                             <ClassFormAddColumn
                                 handleAddColumn={handleAddCol}
                             />
-                            <ClassFormAddFeature
-                                handleAddFeature={handleAddFeature}
-                            />
+                            <div>
+                                <EntityAutocomplete
+                                    entityType='features'
+                                    handleSelect={handleAddFeature}
+                                />
+                            </div>
                         </S.TableInputs>
                         <ClassFormTable 
                             dndClass={inputs}
