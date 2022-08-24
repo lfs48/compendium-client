@@ -3,7 +3,7 @@
   "version": "0.4.1",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "node --max_old_space_size=16384 ./node_modules/vite/bin/vite.js build",
     "preview": "vite preview"
   },
   "dependencies": {
