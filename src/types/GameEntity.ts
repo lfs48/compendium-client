@@ -1,1 +1,1 @@
-export type GameEntity = 'dndClasses' | 'features' | 'races';
+export type GameEntity = 'dndClasses' | 'features' | 'races' | 'feats';

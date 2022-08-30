@@ -4,10 +4,8 @@ export function entityFormPath(entityType: GameEntity) {
     switch(entityType) {
         case('dndClasses'):
             return 'classes'
-        case('features'):
-            return 'features'
-        case('races'):
-            return 'races'
+        default:
+            return entityType;
     }
 }
 
@@ -23,11 +21,13 @@ export function apiSourceTypeToGameEntity(sourceType:string) {
 export function entityIcon(entity:GameEntity) {
     switch(entity) {
         case('dndClasses'):
-            return 'fas fa-sword';
+            return 'fas fa-helmet-battle';
         case('features'):
             return 'fas fa-award';
         case('races'):
             return 'fas fa-head-side';
+        case('feats'):
+            return 'fas fa-swords';
         default:
             return '';
     }
@@ -39,6 +39,8 @@ export function entityName(entity:GameEntity) {
             return 'Classes';
         case('features'):
             return 'Features';
+        case('feats'):
+            return 'Feats';
         default:
             return 'Races';
     }
