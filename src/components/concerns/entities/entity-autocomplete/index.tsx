@@ -6,12 +6,14 @@ import Field from '../../../UI/molecules/field';
 import * as S from './styled';
 
 interface EntityAutocompleteProps {
+    label?: string;
     entityType: GameEntity;
     handleSelect: (id: string) => void;
     [prop: string]: any;
 }
 
 export default function EntityAutocomplete({
+    label='',
     entityType, 
     handleSelect,
     ...props
@@ -56,7 +58,7 @@ export default function EntityAutocomplete({
             {...props}
         >
             <Field
-                label='Add Feature'
+                label={label}
                 value={name}
                 onChange={(e:any) => setName(e.target.value)}
                 className="w-full"

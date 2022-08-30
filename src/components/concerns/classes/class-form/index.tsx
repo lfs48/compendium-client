@@ -260,6 +260,7 @@ export default function ClassForm({
                             />
                             <div>
                                 <EntityAutocomplete
+                                    label='Add Feature'
                                     entityType='features'
                                     handleSelect={handleAddFeature}
                                 />
