@@ -1,21 +1,26 @@
 import Label from '@atoms/label';
 import ErrorList from '@molecules/error-list';
-import { SyntheticEvent } from 'react';
+import { ChangeEvent, SyntheticEvent } from 'react';
 import * as S from './styled';
 
 interface SelectProps {
-    value: string | number | undefined;
-    options: (string | number | undefined)[];
+    value?: any;
+    options: (string | number | Option)[];
     label?: string;
-    onChange: (event:SyntheticEvent) => void;
+    onChange: (event:ChangeEvent<HTMLSelectElement>) => void;
     errors?: string[];
     hasErrors?: boolean;
     defaultInput?: string;
     [prop:string]: any;
 }
 
+interface Option {
+    label: string;
+    value: any;
+}
+
 export default function Select({
-    value,
+    value=undefined,
     options,
     label,
     onChange,
@@ -25,13 +30,25 @@ export default function Select({
 }: SelectProps) {
 
     const optionComponents = options.map( (option) => {
-        return(
-            <S.Option
-                key={option}
-            >
-                {option == undefined ? '—' : option}
-            </S.Option>
-        )
+        if (typeof option == 'string' || typeof option == 'number') {
+            return(
+                <S.Option
+                    key={option}
+                    value={option}
+                >
+                    {option}
+                </S.Option>
+            )
+        } else {
+            return(
+                <S.Option
+                    key={option.value}
+                    value={option.value}
+                >
+                    {option.label}
+                </S.Option>
+            )
+        }
     })
 
     return(
@@ -41,7 +58,7 @@ export default function Select({
             {label &&
                 <Label>{label}</Label>
             }
-            <S.StyledSelect 
+            <S.StyledSelect
                 value={value}
                 onChange={onChange}
                 $hasErrors={errors.length >= 1}
