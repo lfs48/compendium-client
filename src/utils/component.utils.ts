@@ -40,3 +40,14 @@ export function isAnyKeyFilled(
 ) {
     return Object.values(obj).some( (val) => val.length > 0);
 }
+
+export function editState(
+    value: any,
+    field: string,
+    state: any, 
+    setState: React.Dispatch<React.SetStateAction<any>>
+) {
+    const newState = merge({}, state);
+    newState[field] = value;
+    setState(newState);
+}

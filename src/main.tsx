@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import { Provider } from 'react-redux';
 import { configureAppStore } from './store';
+import { RecoilRoot } from 'recoil';
 
 async function initializeApp() {
 
@@ -18,7 +19,9 @@ async function initializeApp() {
   ReactDOM.render(
     <Provider store={store}>
       <React.StrictMode>
-        <App />
+        <RecoilRoot>
+          <App />
+        </RecoilRoot>
       </React.StrictMode>
     </Provider>,
   document.getElementById('root')

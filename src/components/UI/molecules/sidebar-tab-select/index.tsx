@@ -2,24 +2,28 @@ import TabIcon from '@atoms/tab-icon';
 import TabName from '@atoms/tab-name';
 import { GameEntity } from '@/types';
 import * as S from './styled';
+import { useRecoilState } from 'recoil';
+import { sidebarAtom } from '@/recoil';
+import { editState } from '@/utils/component.utils';
 
 interface SidebarTabSelectProps {
     tab: GameEntity;
-    selected: boolean;
-    handleSelect: () => void;
     [prop: string]: any;
 }
 
 export default function SidebarTabSelect({
     tab,
-    selected,
-    handleSelect,
     ...props
 }: SidebarTabSelectProps) {
+
+    const [sidebarState, setSidebarState] = useRecoilState(sidebarAtom);
+
+    const selected = sidebarState.selectedTab === tab;
+
     return(
         <S.Root
             $selected={selected}
-            onClick={handleSelect}
+            onClick={() => editState(tab, 'selectedTab', sidebarState, setSidebarState)}
             {...props}
         >
             <TabIcon 
