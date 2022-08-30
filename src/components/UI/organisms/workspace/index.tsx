@@ -1,5 +1,6 @@
 import { useGetAllClassesQuery } from '@/api/dndclasses.api';
 import ClassRoutes from '@/components/routes/classes.routes';
+import FeatRoutes from '@/components/routes/feats.routes';
 import FeatureRoutes from '@/components/routes/features.routes';
 import RaceRoutes from '@/components/routes/races.routes';
 import * as S from './styled';
@@ -11,6 +12,7 @@ export default function Workspace() {
     return(
         <S.Root>
             <ClassRoutes />
+            <FeatRoutes />
             <FeatureRoutes />
             <RaceRoutes />
         </S.Root>
