@@ -6,7 +6,7 @@ import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import EntityLink from '@/components/concerns/entities/entity-link';
 import Table from '@atoms/table';
-import { MAX_LEVEL } from '@/utils/constants.utils';
+import { LEVEL_ARRAY } from '@/utils/constants.utils';
 
 interface ClassTableProps {
     dndClass: DndClass;
@@ -35,9 +35,9 @@ export default React.memo( function ClassTable({
         });
     }
 
-    const trows = [...Array(MAX_LEVEL).keys()].map( (n) => {
+    const trows = LEVEL_ARRAY.map( (n) => {
         const levelFeatures = classFeatures
-        .filter( ({level}) => level === n+1)
+        .filter( ({level}) => level === n)
         .map( ({id}) => {
             const feature = classFeatures.find(feature => feature.id === id);
             return(

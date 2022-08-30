@@ -14,7 +14,7 @@ import { moveObjKey, renameObjKey, snakeCaseToWords } from '@/utils/functions.ut
 import ClassFormAddColumn from '@/components/concerns/classes/class-form-add-column';
 import { hasFeature } from '@/utils/dndClass.utils';
 import { useNavigate, useParams } from 'react-router-dom';
-import { MAX_LEVEL } from '@/utils/constants.utils';
+import { LEVEL_ARRAY } from '@/utils/constants.utils';
 import EntityAutocomplete from '../../entities/entity-autocomplete';
 
 const initialInputs = {
@@ -131,7 +131,7 @@ export default function ClassForm({
         const newState = merge({}, inputs);
         if (! (name in newState.table_cols) ) {
             const newCols = merge({}, newState.table_cols);
-            newCols[name] = [...Array(MAX_LEVEL)].map( _ => '');
+            newCols[name] = LEVEL_ARRAY.map( _ => '');
             newState.table_cols = newCols;
         }
         setInputs(newState);
