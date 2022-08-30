@@ -7,23 +7,14 @@ import Select from '@molecules/select';
 import { openPanel } from '@/reducers/UI/panels.reducer';
 import { useNavigate, useParams } from 'react-router-dom';
 import { usePatchFeatureMutation, usePostFeatureMutation } from '@/api/features.api';
-import { MAX_LEVEL } from '@/utils/constants.utils';
-import { merge } from 'lodash';
+import { LEVEL_ARRAY } from '@/utils/constants.utils';
 
-const kindOptions =
-[
-    "standard",
-    "feat",
-    "boon"
-];
-
-const levelOptions = [undefined, ...Array(MAX_LEVEL).keys()];
+const levelOptions:any = [{label: '—', value: undefined}, ...LEVEL_ARRAY];
 
 const initialInputs = {
     id: '',
     name: '',
     description: '',
-    kind: 'standard',
     level: undefined,
     sources: []
 }
@@ -31,7 +22,6 @@ const initialInputs = {
 const initialErrors = {
     name: [] as string[],
     description: [] as string[],
-    kind: [] as string[],
     level: [] as string[]
 }
 
@@ -124,13 +114,6 @@ export default function FeatureForm({
                     errors={errors.name}
                 />
                 <S.Selects>
-                    <Select
-                        label='Type'
-                        value={inputs.kind}
-                        options={kindOptions}
-                        onChange={e => handleInput(e, 'kind', inputs, setInputs)}
-                        errors={errors.kind}
-                    />
                     <Select
                         label='Level'
                         value={inputs.level}

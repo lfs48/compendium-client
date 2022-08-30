@@ -2,7 +2,6 @@ export interface Feature {
     id: string;
     name: string;
     description: string;
-    kind: string;
     level?: number;
     sources: Source[];
 }
@@ -17,7 +16,6 @@ export interface PostFeature {
         id: string;
         name: string;
         description: string;
-        kind: string;
         level?: number;
     }
 }
@@ -27,7 +25,6 @@ export interface PatchFeature {
         id: string;
         name?: string;
         description?: string;
-        kind?: string;
         level?: number;
     }
 }
