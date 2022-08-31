@@ -11,6 +11,7 @@ interface SelectProps {
     errors?: string[];
     hasErrors?: boolean;
     defaultInput?: string;
+    allowNoneSelection?: boolean;
     [prop:string]: any;
 }
 
@@ -26,14 +27,15 @@ export default function Select({
     onChange,
     errors=[],
     defaultInput='',
+    allowNoneSelection=false,
     ...props
 }: SelectProps) {
 
-    const optionComponents = options.map( (option) => {
+    const optionComponents = options.map( (option, i) => {
         if (typeof option == 'string' || typeof option == 'number') {
             return(
                 <S.Option
-                    key={option}
+                    key={i}
                     value={option}
                 >
                     {option}
@@ -42,7 +44,7 @@ export default function Select({
         } else {
             return(
                 <S.Option
-                    key={option.value}
+                    key={i}
                     value={option.value}
                 >
                     {option.label}
@@ -63,6 +65,14 @@ export default function Select({
                 onChange={onChange}
                 $hasErrors={errors.length >= 1}
             >
+                {allowNoneSelection &&
+                    <S.Option
+                        key={-1}
+                        value=''
+                    >
+                        —
+                    </S.Option>
+                }
                 {optionComponents}
             </S.StyledSelect>
             {(errors && errors.length > 0) &&

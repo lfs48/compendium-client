@@ -9,8 +9,6 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { usePatchFeatureMutation, usePostFeatureMutation } from '@/api/features.api';
 import { LEVEL_ARRAY } from '@/utils/constants.utils';
 
-const levelOptions:any = [{label: '—', value: undefined}, ...LEVEL_ARRAY];
-
 const initialInputs = {
     id: '',
     name: '',
@@ -117,8 +115,9 @@ export default function FeatureForm({
                     <Select
                         label='Level'
                         value={inputs.level}
-                        options={levelOptions}
-                        onChange={e => handleInput(e, 'level', inputs, setInputs)}
+                        options={LEVEL_ARRAY}
+                        onChange={e => handleInput(e, 'level', inputs, setInputs, e.target.value || undefined)}
+                        allowNoneSelection
                         errors={errors.level}
                     />
                 </S.Selects>

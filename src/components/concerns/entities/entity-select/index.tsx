@@ -19,7 +19,7 @@ export function EntitySelect({
 }: EntitySelectProps) {
 
     const entities = useSelector( (state:RootState) => state.entities[entityType]);
-    const options = Object.values(entities)
+    let options = Object.values(entities)
     .map( (entity) => ({
         label: entity.name,
         value: entity.id
