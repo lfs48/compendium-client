@@ -24,7 +24,7 @@ export default function FeatRoutes() {
                 }
             />
             <Route
-                path='/features/edit/:id'
+                path='/feats/edit/:id'
                 element={
                     <GmRoute>
                         {(getFeatsQuery.isLoading)
