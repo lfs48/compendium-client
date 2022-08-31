@@ -13,6 +13,7 @@ import { useGetAllRacesQuery } from '@/api/races.api';
 import { useGetAllFeatsQuery } from '@/api/feats.api';
 import { useRecoilState } from 'recoil';
 import { sidebarAtom } from '@/recoil';
+import { filterEntities, sortEntities } from '@/utils/entities.utils';
 
 export default function Sidebar() {
 
@@ -43,27 +44,9 @@ export default function Sidebar() {
         )
     });
 
-    const tabContent = Object.values(entities[selectedTab])
-    .filter( (entity:any) => entity.name.toLowerCase().startsWith( searchInputs[selectedTab].name.toLowerCase() ))
-    .sort( (e1:any, e2:any) => {
-            const n1 = e1.name.toLowerCase();
-            const n2 = e2.name.toLowerCase();
-            const f1 = isInFavorites(e1.id, selectedTab);
-            const f2 = isInFavorites(e2.id, selectedTab);
-            if( f1 && !f2 ) {
-                return -1;
-            } else if ( f2 && !f1 ) {
-                return 1;
-            } else {
-                if (n1 > n2) {
-                    return 1
-                } else if (n2 > n1) {
-                    return -1;
-                } else {
-                    return 0;
-                }
-            }
-    })
+    let tabContent = Object.values(entities[selectedTab]);
+    tabContent = filterEntities(tabContent, searchInputs[selectedTab].name);
+    tabContent = sortEntities(tabContent)
     .map( (entity:any) => {
         return(
             <SidebarLineItem 
