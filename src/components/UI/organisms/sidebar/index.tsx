@@ -14,6 +14,7 @@ import { useGetAllFeatsQuery } from '@/api/feats.api';
 import { useRecoilState } from 'recoil';
 import { sidebarAtom } from '@/recoil';
 import { filterEntities, sortEntities } from '@/utils/entities.utils';
+import { filterFeats } from '@/utils/feats.util';
 
 export default function Sidebar() {
 
@@ -44,18 +45,30 @@ export default function Sidebar() {
         )
     });
 
-    let tabContent = Object.values(entities[selectedTab]);
-    tabContent = filterEntities(tabContent, searchInputs[selectedTab].name);
-    tabContent = sortEntities(tabContent)
-    .map( (entity:any) => {
-        return(
-            <SidebarLineItem 
-                key={entity.id}
-                content={entity}
-                contentType={selectedTab}
-            />
-        )
-    });
+    const getTabContent = () => {
+        let tabContent = Object.values(entities[selectedTab]);
+        switch(selectedTab) {
+            case('feats'):
+                tabContent = filterFeats(tabContent, searchInputs.feats.name, searchInputs.feats.dndClass);
+                break;
+            default:
+                tabContent = filterEntities(tabContent, searchInputs[selectedTab].name);
+                break;
+        }
+        tabContent = sortEntities(tabContent);
+        return tabContent
+        .map( (entity:any) => {
+            return(
+                <SidebarLineItem 
+                    key={entity.id}
+                    content={entity}
+                    contentType={selectedTab}
+                />
+            )
+        });
+    }
+
+    const tabContent = getTabContent();
 
     return(
         <S.Root>

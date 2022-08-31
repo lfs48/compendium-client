@@ -1,53 +1,36 @@
+import { sidebarAtom } from '@/recoil';
 import { RootState } from '@/types';
-import Button from '@atoms/button';
-import Search from '@molecules/search';
-import { SyntheticEvent } from 'react';
 import { useSelector } from 'react-redux';
-import { EntitySelect } from '../../entities/entity-select';
+import { useRecoilState } from 'recoil';
 import * as S from './styled';
+import { merge } from 'lodash';
+import { EntitySelect } from '../../entities/entity-select';
 
-interface SidebarHeaderProps {
-    searchInput: SearchInput;
-    handleSearch: (e:SyntheticEvent) => void;
-    handleClearSearch: () => void;
-    handleCreate: () => void;
+interface FeatsSidebarHeaderProps {
     [prop: string]: any;
 }
 
-interface SearchInput {
-    name: string;
-    dndclass: string;
-}
-
-export default function SidebarHeader({
-    searchInput,
-    handleSearch,
-    handleClearSearch,
-    handleCreate,
+export default function FeatsSidebarHeader({
     ...props
-}: SidebarHeaderProps) {
+}: FeatsSidebarHeaderProps) {
 
-    const gm = useSelector( (state:RootState) => state.session.gm);
+    const [sidebarState, setSidebarState] = useRecoilState(sidebarAtom);
+
+    const handleSelect = (e) => {
+        const newState = merge({}, sidebarState);
+        newState.searchInputs.feats.dndClass = e.target.value || undefined;
+        setSidebarState(newState);
+    }
 
     return(
         <S.Root {...props}>
-            <Search
-                value={searchInput.name}
-                onChange={handleSearch}
-                handleClearSearch={handleClearSearch}
-            />
             <EntitySelect
-                value={undefined}
+                label='Class'
+                value={sidebarState.searchInputs.feats.dndClass}
                 entityType='dndClasses'
-                onChange={()=>{}}
+                onChange={handleSelect}
+                allowNoneSelection
             />
-            {gm &&
-                <Button
-                    onClick={handleCreate}
-                >
-                    New
-                </Button>
-            }
         </S.Root>
     )
 }

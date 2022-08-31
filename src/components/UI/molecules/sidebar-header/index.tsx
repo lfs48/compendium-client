@@ -1,5 +1,5 @@
 import { sidebarAtom } from '@/recoil';
-import { RootState } from '@/types';
+import { GameEntity, RootState } from '@/types';
 import { clearInput, handleInput } from '@/utils/component.utils';
 import Button from '@atoms/button';
 import Search from '@molecules/search';
@@ -10,6 +10,7 @@ import * as S from './styled';
 import { merge } from 'lodash';
 import { useNavigate } from 'react-router-dom';
 import { entityFormPath } from '@/utils/entities.utils';
+import FeatsSidebarHeader from '@/components/concerns/feats/feat-sidebar-header';
 
 interface SidebarHeaderProps {
     [prop: string]: any;
@@ -42,20 +43,34 @@ export default function SidebarHeader({
         navigate(`/${entityFormPath(selectedTab)}/new`);
     }
 
+    const getTabSpecificComponents = () => {
+        switch(selectedTab) {
+            case('feats'):
+                return(
+                    <FeatsSidebarHeader />
+                )
+            default:
+                return(<></>);
+        }
+    }
+
     return(
         <S.Root {...props}>
-            <Search
-                value={searchInputs[selectedTab].name}
-                onChange={handleNameInput}
-                handleClearSearch={handleClearNameInput}
-            />
-            {gm &&
-                <Button
-                    onClick={handleCreate}
-                >
-                    New
-                </Button>
-            }
+            {getTabSpecificComponents()}
+            <S.Bottom>
+                <Search
+                    value={searchInputs[selectedTab].name}
+                    onChange={handleNameInput}
+                    handleClearSearch={handleClearNameInput}
+                />
+                {gm &&
+                    <Button
+                        onClick={handleCreate}
+                    >
+                        New
+                    </Button>
+                }
+            </S.Bottom>
         </S.Root>
     )
 }

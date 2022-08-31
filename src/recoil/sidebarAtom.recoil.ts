@@ -17,7 +17,7 @@ export const sidebarAtom = atom({
             },
             feats: {
                 name: '',
-                dndclass: ''
+                dndClass: undefined as undefined | string
             }
         }
     }
