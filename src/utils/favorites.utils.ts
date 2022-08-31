@@ -1,20 +1,16 @@
 import { GameEntity } from "@/types";
 
-export function isInFavorites(id:string, entityType:GameEntity) {
+export function isInFavorites(id:string) {
     const favorites =  JSON.parse( localStorage.getItem('favorites') || '{}');
-    return entityType in favorites && favorites[entityType].includes(id);
+    return id in favorites;
 }
 
-export function handleToggleFavorite(id:string, entityType:GameEntity) {
+export function handleToggleFavorite(id:string) {
     const favorites =  JSON.parse( localStorage.getItem('favorites') || '{}');
-    if ( isInFavorites(id, entityType) ) {
-        favorites[entityType] = favorites[entityType].filter( (id) => id !== id);
+    if ( isInFavorites(id) ) {
+        delete favorites[id];
     } else {
-        if (entityType in favorites) {
-            favorites[entityType].push(id);
-        } else {
-            favorites[entityType] = [id];
-        }
+        favorites[id] = true;
     }
     localStorage.setItem('favorites',  JSON.stringify(favorites) );
 }
