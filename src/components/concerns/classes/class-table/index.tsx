@@ -25,7 +25,7 @@ export default React.memo( function ClassTable({
     const classFeatures = dndClass.features
     .map( (id) => features[id]);
 
-    const extraHeaders = Object.keys(dndClass.table_cols).map( (col, i) => {
+    const extraHeaders = Object.keys(dndClass.table_cols).map( (col) => {
         return <S.HeaderCell key={col}>{col}</S.HeaderCell>
     });
     let spellHeaders = [<></>];
@@ -35,7 +35,7 @@ export default React.memo( function ClassTable({
         });
     }
 
-    const trows = LEVEL_ARRAY.map( (n) => {
+    const trows = LEVEL_ARRAY.map( (n, i) => {
         const levelFeatures = classFeatures
         .filter( ({level}) => level === n)
         .map( ({id}) => {
@@ -53,16 +53,16 @@ export default React.memo( function ClassTable({
         const extraCols = Object.keys(dndClass.table_cols).map( (col) => {
             return (
                 <S.Cell key={col}>
-                    {dndClass.table_cols[col][n]}
+                    {dndClass.table_cols[col][i]}
                 </S.Cell>
             )
         });
         let spellCols = [<></>];
         if (dndClass.spellcasting !== "none") {
-            const levelSlots = getSpellSlots(dndClass.spellcasting)[n];
-            spellCols = levelSlots.map( (slots, i) => {
+            const levelSlots = getSpellSlots(dndClass.spellcasting)[i];
+            spellCols = levelSlots.map( (slots, j) => {
                 return(
-                    <S.Cell key={i}>
+                    <S.Cell key={j}>
                         {slots > 0 ? slots : "—"}
                     </S.Cell>
                 )
@@ -70,8 +70,8 @@ export default React.memo( function ClassTable({
         }
         return(
             <S.Row key={n}>
-                <S.Cell>{intToOrdinal(n+1)}</S.Cell>
-                <S.Cell>{`+ ${getLevelProficiency(n+1)}`}</S.Cell>
+                <S.Cell>{intToOrdinal(n)}</S.Cell>
+                <S.Cell>{`+ ${getLevelProficiency(n)}`}</S.Cell>
                 <S.Cell $left $full>
                     {levelFeatures}
                 </S.Cell>
