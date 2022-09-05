@@ -48,7 +48,10 @@ export default function SidebarTableHeader({
             }
         }
         return(
-            <SidebarCell onClick={()=>handleSortButton(column)}>
+            <SidebarCell 
+                key={column}
+                onClick={()=>handleSortButton(column)}
+            >
                 <span>
                     {capitalize(column)}
                 </span>
