@@ -111,6 +111,11 @@
     cursor: nw-resize;
   }
 
+  .scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: gray white;
+  }
+
   .scrollbar::-webkit-scrollbar {
     width: 12px;
   }
