@@ -19,6 +19,29 @@ export const sidebarAtom = atom({
                 name: '',
                 dndClass: undefined as undefined | string
             }
+        },
+        sort: {
+            dndClasses: {
+                field: 'name',
+                dir: 1
+            },
+            features: {
+                field: 'name',
+                dir: 1
+            },
+            races: {
+                field: 'name',
+                dir: 1
+            },
+            feats: {
+                field: 'name',
+                dir: 1
+            },
         }
-    }
+    },
+    effects: [
+        ({onSet}) => {
+            onSet( (newState) => console.log(newState))
+        }
+    ]
 });

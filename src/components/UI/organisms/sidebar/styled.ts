@@ -21,11 +21,9 @@ export const Body = tw.div`
 `
 
 export const Content = tw.div`
-    divide-y
-    divide-black
-    overflow-y-auto 
-    scrollbar
     h-full
+    overflow-y-auto
+    scrollbar
 `
 
 export const Selectors = tw.div`

@@ -1,9 +1,7 @@
 import { sidebarAtom } from '@/recoil';
-import { GameEntity, RootState } from '@/types';
-import { clearInput, handleInput } from '@/utils/component.utils';
+import { RootState } from '@/types';
 import Button from '@atoms/button';
 import Search from '@molecules/search';
-import { SyntheticEvent } from 'react';
 import { useSelector } from 'react-redux';
 import { useRecoilState } from 'recoil';
 import * as S from './styled';
@@ -12,13 +10,13 @@ import { useNavigate } from 'react-router-dom';
 import { entityFormPath } from '@/utils/entities.utils';
 import FeatsSidebarHeader from '@/components/concerns/feats/feat-sidebar-header';
 
-interface SidebarHeaderProps {
+interface SidebarControlsProps {
     [prop: string]: any;
 }
 
-export default function SidebarHeader({
+export default function SidebarControls({
     ...props
-}: SidebarHeaderProps) {
+}: SidebarControlsProps) {
 
     const navigate = useNavigate();
 
