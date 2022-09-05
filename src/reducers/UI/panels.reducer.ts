@@ -1,5 +1,5 @@
 import { GameEntity } from "@/types";
-import { MAX_LEVEL } from "@/utils/constants.utils";
+import { MAX_LEVEL, MAX_PANELS } from "@/utils/constants.utils";
 import { createSlice } from "@reduxjs/toolkit";
 
 interface PanelSlice {
@@ -16,7 +16,7 @@ const panelsSlice = createSlice({
   initialState: initialState,
   reducers: {
       openPanel: (state, {payload}) => {
-        if ( Object.keys(state).length < MAX_LEVEL ) {
+        if ( Object.keys(state).length < MAX_PANELS ) {
           state[payload.id] = payload;
         }
       },
