@@ -1,6 +1,6 @@
 {
   "name": "compendium",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "scripts": {
     "dev": "vite",
     "build": "node --max_old_space_size=16384 ./node_modules/vite/bin/vite.js build",
