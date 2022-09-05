@@ -1,8 +1,9 @@
+import { Icon } from '@/types';
 import tw from 'tailwind-styled-components';
 
 type RootProps = {
     $disabled?: boolean;
-    $icon: 'check' | 'x' | 'plus';
+    $icon: Icon;
 }
 
 export const Root = tw.i<RootProps>`
@@ -21,14 +22,12 @@ export const Root = tw.i<RootProps>`
     }
 `
 
-function iconClasses(icon) {
+function iconClasses(icon:Icon) {
     switch(icon) {
-        case('check'):
-            return 'far fa-check';
         case('x'):
-            return 'fas fa-times';
-        case('plus'):
-            return 'far fa-plus';
+            return `fas fa-${icon}`;
+        default:
+            return `far fa-${icon}`
     }
 }
 
@@ -39,5 +38,7 @@ function colorClasses(icon) {
             return 'text-green-500';
         case('x'):
             return 'text-red-500';
+        default:
+            return '';
     }
 }

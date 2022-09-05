@@ -1,8 +1,9 @@
+import { Icon } from '@/types';
 import * as S from './styled';
 
 interface ClickableIconProps {
     disabled?: boolean;
-    icon: 'check' | 'x' | 'plus';
+    icon: Icon;
     onClick: (...args) => void;
     [prop:string]: any;
 }
@@ -13,7 +14,7 @@ export default function ClickableIcon({
     ...props
 }: ClickableIconProps) {
     return(
-        <S.Root 
+        <S.Root
             $icon={icon}
             $disabled={disabled}
             {...props}
