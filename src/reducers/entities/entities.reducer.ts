@@ -1,4 +1,5 @@
 import { combineReducers } from "@reduxjs/toolkit";
+import boonsReducer from "./boons.reducer";
 import dndclassesReducer from "./dndclasses.reducer";
 import featsReducer from "./feats.reducer";
 import featuresReducer from "./features.reducer";
@@ -8,7 +9,8 @@ const entitiesReducer = combineReducers({
     dndClasses: dndclassesReducer,
     features: featuresReducer,
     races: racesReducer,
-    feats: featsReducer
+    feats: featsReducer,
+    boons: boonsReducer
 });
 
 export default entitiesReducer;

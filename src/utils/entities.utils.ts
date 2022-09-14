@@ -1,6 +1,7 @@
 import { GameEntity } from "@/types";
 import { isInFavorites } from "./favorites.utils";
 import { spaceship } from "./functions.utils";
+import { capitalize } from 'lodash';
 
 export function entityFormPath(entityType: GameEntity) {
     switch(entityType) {
@@ -30,6 +31,8 @@ export function entityIcon(entity:GameEntity) {
             return 'fas fa-head-side';
         case('feats'):
             return 'fas fa-swords';
+        case('boons'):
+            return 'fas fa-sparkles'
         default:
             return '';
     }
@@ -39,12 +42,8 @@ export function entityName(entity:GameEntity) {
     switch(entity) {
         case('dndClasses'):
             return 'Classes';
-        case('features'):
-            return 'Features';
-        case('feats'):
-            return 'Feats';
         default:
-            return 'Races';
+            return capitalize(entity);
     }
 }
 
