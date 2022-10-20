@@ -11,6 +11,7 @@ import { useGetAllFeatsQuery } from '@/api/feats.api';
 import { useRecoilState } from 'recoil';
 import { sidebarAtom } from '@/recoil';
 import SidebarContent from '@molecules/sidebar-content';
+import { useGetAllBoonsQuery } from '@/api/boons.api';
 
 export default function Sidebar() {
 
@@ -21,14 +22,16 @@ export default function Sidebar() {
         dndClasses: useGetAllClassesQuery(),
         features: useGetAllFeaturesQuery(),
         races: useGetAllRacesQuery(),
-        feats: useGetAllFeatsQuery()
+        feats: useGetAllFeatsQuery(),
+        boons: useGetAllBoonsQuery()
     };
 
     const entities = useSelector( (state:RootState) => ({
         dndClasses: state.entities.dndClasses,
         features: state.entities.features,
         races: state.entities.races,
-        feats: state.entities.feats
+        feats: state.entities.feats,
+        boons: state.entities.boons
     }))
 
     const tabSelectors = Object.keys(entities).map( (key) => {

@@ -18,6 +18,7 @@ export const StyledSelect = tw.select<SelectProps>`
     focus:outline-none
     px-2
     py-1
+    disabled:bg-gray-500
     ${p => p.$hasErrors
         ?`
             ring

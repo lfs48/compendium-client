@@ -18,6 +18,11 @@ export const sidebarAtom = atom({
             feats: {
                 name: '',
                 dndClass: undefined as undefined | string
+            },
+            boons: {
+                name: '',
+                source_type: undefined as undefined | GameEntity,
+                source_id: undefined as undefined | string
             }
         },
         sort: {
@@ -37,6 +42,10 @@ export const sidebarAtom = atom({
                 field: 'name',
                 dir: 1
             },
+            boons: {
+                field: 'name',
+                dir: 1
+            }
         }
     },
     effects: [

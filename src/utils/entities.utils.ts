@@ -15,9 +15,9 @@ export function entityFormPath(entityType: GameEntity) {
 export function apiSourceTypeToGameEntity(sourceType:string) {
     switch(sourceType) {
         case('DndClass'):
-            return 'dndClasses';
+            return 'dndClasses' as GameEntity;
         case('Race'):
-            return 'races'
+            return 'races' as GameEntity;
     }
 }
 

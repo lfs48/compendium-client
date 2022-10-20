@@ -12,6 +12,7 @@ interface SelectProps {
     hasErrors?: boolean;
     defaultInput?: string;
     allowNoneSelection?: boolean;
+    disabled?: boolean;
     [prop:string]: any;
 }
 
@@ -28,6 +29,7 @@ export default function Select({
     errors=[],
     defaultInput='',
     allowNoneSelection=false,
+    disabled=false,
     ...props
 }: SelectProps) {
 
@@ -62,6 +64,7 @@ export default function Select({
             }
             <S.StyledSelect
                 value={value}
+                disabled={disabled}
                 onChange={onChange}
                 $hasErrors={errors.length >= 1}
             >

@@ -1,4 +1,5 @@
 import { useGetAllClassesQuery } from '@/api/dndclasses.api';
+import BoonRoutes from '@/components/routes/boons.routes';
 import ClassRoutes from '@/components/routes/classes.routes';
 import FeatRoutes from '@/components/routes/feats.routes';
 import FeatureRoutes from '@/components/routes/features.routes';
@@ -11,6 +12,7 @@ export default function Workspace() {
 
     return(
         <S.Root>
+            <BoonRoutes />
             <ClassRoutes />
             <FeatRoutes />
             <FeatureRoutes />
