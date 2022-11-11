@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Boon, RootState } from '@/types';
 import * as S from './styled';
 import PanelFooter from '@molecules/panel-footer';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import Dialog from '@molecules/dialog';
 import Loading from '@atoms/loading';
 import { useNavigate } from 'react-router-dom';

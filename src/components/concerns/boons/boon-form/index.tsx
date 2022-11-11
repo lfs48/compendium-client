@@ -1,13 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Boon, GameEntity, RootState } from '@/types';
+import { Boon, RootState } from '@/types';
 import * as S from './styled';
 import { handleInput } from '@/utils/component.utils';
 import Select from '@molecules/select';
 import { openPanel } from '@/reducers/UI/panels.reducer';
 import { useNavigate, useParams } from 'react-router-dom';
 import { usePatchBoonMutation, usePostBoonMutation } from '@/api/boons.api';
-import EntityAutocomplete from '../../entities/entity-autocomplete';
 import { merge } from 'lodash';
 import { EntitySelect } from '../../entities/entity-select';
 import { apiSourceTypeToGameEntity } from '@/utils/entities.utils';
