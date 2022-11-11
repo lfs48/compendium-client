@@ -8,6 +8,7 @@ import {merge} from 'lodash';
 import FeaturePanelContent from '@/components/concerns/features/feature-panel-content';
 import RacePanelContent from '@/components/concerns/races/race-panel-content';
 import FeatPanelContent from '@/components/concerns/feats/feat-panel-content';
+import BoonPanelContent from '@/components/concerns/boons/boon-panel-content';
 
 const PanelsContainer = React.memo( function PanelsContainer() {
 
@@ -69,6 +70,8 @@ function panelContentComponent(panelType:GameEntity, entity:any) {
             return <FeaturePanelContent feature={entity} />
         case('races'):
             return <RacePanelContent race={entity} />
+        case('boons'):
+            return <BoonPanelContent boon={entity} />
         default:
             return (
                 <Markdown>
