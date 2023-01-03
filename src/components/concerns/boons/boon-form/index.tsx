@@ -149,7 +149,7 @@ export default function BoonForm({
                         label='Source'
                         disabled={!apiSourceTypeToGameEntity(inputs.source_type || '')}
                         entityType={apiSourceTypeToGameEntity(inputs.source_type || '') || 'dndClasses'}
-                        onChange={e => handleInput(e, 'dnd_class_id', inputs, setInputs)}
+                        onChange={e => handleInput(e, 'source_id', inputs, setInputs)}
                         allowNoneSelection
                         errors={errors.source_id}
                     />
