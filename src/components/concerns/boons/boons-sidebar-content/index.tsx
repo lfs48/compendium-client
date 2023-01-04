@@ -11,7 +11,6 @@ import { filterBoons, sourceTypeToName } from '@/utils/boons.utils';
 import { spaceship } from '@/utils/functions.utils';
 import { useSelector } from 'react-redux';
 import { useRecoilState } from 'recoil';
-import BoonsSidebarHeader from '../boons-sidebar-header';
 
 interface BoonsSidebarContentProps {
     [prop: string]: any;
