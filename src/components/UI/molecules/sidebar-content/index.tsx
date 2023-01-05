@@ -1,6 +1,7 @@
 import BoonsSidebarContent from '@/components/concerns/boons/boons-sidebar-content';
 import EntitySidebarContent from '@/components/concerns/entities/entity-sidebar-content';
 import FeatsSidebarContent from '@/components/concerns/feats/feats-sidebar-content';
+import SpellsSidebarContent from '@/components/concerns/spells/spells-sidebar-content';
 import { sidebarAtom } from '@/recoil';
 import { useRecoilState } from 'recoil';
 import * as S from './styled';
@@ -22,6 +23,8 @@ export default function SidebarContent({
                 return <BoonsSidebarContent />
             case('feats'):
                 return <FeatsSidebarContent />
+            case('spells'):
+                return <SpellsSidebarContent />
             default:
                 return <EntitySidebarContent entityType={selectedTab}/>
         }

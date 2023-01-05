@@ -23,6 +23,11 @@ export const sidebarAtom = atom({
                 name: '',
                 source_type: undefined as undefined | GameEntity,
                 source_id: undefined as undefined | string
+            },
+            spells: {
+                name: '',
+                description: '',
+                dndClass: undefined as undefined | string
             }
         },
         sort: {
@@ -43,6 +48,10 @@ export const sidebarAtom = atom({
                 dir: 1
             },
             boons: {
+                field: 'name',
+                dir: 1
+            },
+            spells: {
                 field: 'name',
                 dir: 1
             }

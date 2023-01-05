@@ -12,6 +12,7 @@ import { useRecoilState } from 'recoil';
 import { sidebarAtom } from '@/recoil';
 import SidebarContent from '@molecules/sidebar-content';
 import { useGetAllBoonsQuery } from '@/api/boons.api';
+import { useGetAllSpellsQuery } from '@/api/spells.api';
 
 export default function Sidebar() {
 
@@ -23,7 +24,8 @@ export default function Sidebar() {
         features: useGetAllFeaturesQuery(),
         races: useGetAllRacesQuery(),
         feats: useGetAllFeatsQuery(),
-        boons: useGetAllBoonsQuery()
+        boons: useGetAllBoonsQuery(),
+        spells: useGetAllSpellsQuery()
     };
 
     const entities = useSelector( (state:RootState) => ({
@@ -31,7 +33,8 @@ export default function Sidebar() {
         features: state.entities.features,
         races: state.entities.races,
         feats: state.entities.feats,
-        boons: state.entities.boons
+        boons: state.entities.boons,
+        spells: state.entities.spells
     }))
 
     const tabSelectors = Object.keys(entities).map( (key) => {

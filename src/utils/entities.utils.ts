@@ -32,7 +32,9 @@ export function entityIcon(entity:GameEntity) {
         case('feats'):
             return 'fas fa-swords';
         case('boons'):
-            return 'fas fa-sparkles'
+            return 'fas fa-sparkles';
+        case('spells'):
+            return 'fas fa-meteor';
         default:
             return '';
     }
