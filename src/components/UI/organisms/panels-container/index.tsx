@@ -9,6 +9,7 @@ import FeaturePanelContent from '@/components/concerns/features/feature-panel-co
 import RacePanelContent from '@/components/concerns/races/race-panel-content';
 import FeatPanelContent from '@/components/concerns/feats/feat-panel-content';
 import BoonPanelContent from '@/components/concerns/boons/boon-panel-content';
+import SpellPanelContent from '@/components/concerns/spells/spell-panel-content';
 
 const PanelsContainer = React.memo( function PanelsContainer() {
 
@@ -72,6 +73,8 @@ function panelContentComponent(panelType:GameEntity, entity:any) {
             return <RacePanelContent race={entity} />
         case('boons'):
             return <BoonPanelContent boon={entity} />
+        case('spells'):
+            return <SpellPanelContent spell={entity} />
         default:
             return (
                 <Markdown>
