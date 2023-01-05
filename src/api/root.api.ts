@@ -7,7 +7,7 @@ export const rootApi = createApi({
     prepareHeaders: headers => {
         const jwt = localStorage.jwt;
         if (jwt) {
-            headers.set('Authorization', `${jwt}`)
+            headers.set('Authorization', `Bearer ${jwt}`)
         }
         return headers;
     }
