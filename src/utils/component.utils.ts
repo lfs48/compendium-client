@@ -19,6 +19,16 @@ export function handleInput(
     setState(newState);
 }
 
+export function handleToggleInput(
+    field: string,
+    state: any, 
+    setState: React.Dispatch<React.SetStateAction<any>>, 
+) {
+    const newState = merge({}, state);
+    newState[field] = !newState[field];
+    setState(newState);
+}
+
 export function clearInput(
     field: string,
     state: any, 
