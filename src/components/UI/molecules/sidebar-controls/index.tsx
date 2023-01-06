@@ -9,6 +9,7 @@ import { merge } from 'lodash';
 import { useNavigate } from 'react-router-dom';
 import { entityFormPath } from '@/utils/entities.utils';
 import FeatsSidebarHeader from '@/components/concerns/feats/feat-sidebar-header';
+import SpellsSidebarHeader from '@/components/concerns/spells/spell-sidebar-header';
 
 interface SidebarControlsProps {
     [prop: string]: any;
@@ -47,6 +48,10 @@ export default function SidebarControls({
                 return(
                     <FeatsSidebarHeader />
                 )
+            case('spells'):
+                    return(
+                        <SpellsSidebarHeader />
+                    )
             default:
                 return(<></>);
         }
