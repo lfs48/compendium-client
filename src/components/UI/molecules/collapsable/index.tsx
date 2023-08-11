@@ -14,34 +14,15 @@ export default function Collapsable({
 }: CollapsableProps) {
 
     const [collapsed, setCollapsed] = useState(false);
-    const [transitioning, setTransitioning] = useState(false);
-    const [id, _] = useState(Math.random());
-    //@ts-ignore
-    const [height, setHeight] = useState(document.getElementById(`collapsable-${id}`)?.firstChild.offsetHeight)
-    
-    useEffect( () => {
-        //@ts-ignore
-        setHeight(document.getElementById(`collapsable-${id}`)?.firstChild?.offsetHeight);
-    });
-
-    const handleCollapseToggle = (bool) => {
-        setTransitioning(true);
-        setCollapsed(bool);
-        setTimeout( () => {
-            setTransitioning(false)
-        }, 500);
-    }
 
     return(
         <S.Root {...props}>
-            <S.Header onClick={() => handleCollapseToggle(!collapsed)}>
+            <S.Header onClick={() => setCollapsed(!collapsed)}>
                 {header}
                 <S.Arrow $collapsed={collapsed} />
             </S.Header>
-        <S.Body 
-            id={`collapsable-${id}`} 
-            style={collapsed ? {height: 0} : {height: height}}
-            $transitioning={transitioning}
+        <S.Body
+            $collapsed={collapsed}
         >
             {children}
         </S.Body>

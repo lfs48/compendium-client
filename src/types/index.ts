@@ -10,3 +10,4 @@ export type { Feat, PostFeat, PatchFeat } from './Feat';
 export type { Icon } from './Icon';
 export type { Boon, PostBoon, PatchBoon } from './Boon';
 export type { Spell, PostSpell, PatchSpell } from './Spell';
+export type { Character } from './Character';

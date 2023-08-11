@@ -3,9 +3,9 @@ import tw from 'tailwind-styled-components';
 export const Root = tw.div`
     w-full-minus-sidebar
     h-full
-    py-6
+    pt-6
     pl-6
-    pr-40
+    pr-16
     overflow-y-scroll 
     scrollbar
     scrollbar-left

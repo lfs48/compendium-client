@@ -13,6 +13,7 @@ interface SelectProps {
     defaultInput?: string;
     allowNoneSelection?: boolean;
     disabled?: boolean;
+    selectClasses?: string;
     [prop:string]: any;
 }
 
@@ -30,6 +31,7 @@ export default function Select({
     defaultInput='',
     allowNoneSelection=false,
     disabled=false,
+    selectClasses='',
     ...props
 }: SelectProps) {
 
@@ -67,6 +69,7 @@ export default function Select({
                 disabled={disabled}
                 onChange={onChange}
                 $hasErrors={errors.length >= 1}
+                className={selectClasses}
             >
                 {allowNoneSelection &&
                     <S.Option

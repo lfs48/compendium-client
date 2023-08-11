@@ -7,7 +7,8 @@ interface ButtonProps {
     loading?: boolean;
     disabled?: boolean;
     block?: boolean;
-    color?: 'blue' | 'red';
+    color?: 'blue' | 'red' | 'green';
+    fill?: boolean;
     [prop: string]: any;
 }
 
@@ -17,6 +18,7 @@ export default function Button({
     loading=false,
     disabled=false,
     block=false,
+    fill=true,
     color='blue',
     ...props
 }: ButtonProps) {
@@ -26,6 +28,7 @@ export default function Button({
             onClick={onClick}
             $block={block}
             $color={color}
+            $fill={fill}
             {...props}
         >
             {loading &&

@@ -21,14 +21,7 @@ export const Root = tw.div<RootProps>`
     px-2
     space-x-2
     shadow
-    ${p => p.$selected
-        ?`
-            mr-0
-        `
-        :`
-            -mr-20
-            hover:mr-0
-        `
-    }
+    -mr-20
+    hover:mr-0
     z-10
 `

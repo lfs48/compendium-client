@@ -57,6 +57,7 @@ export function filterEntities(list:any[], name:string) {
 interface CompareOptions {
     field?: string;
     dir?: number;
+    considerFaves?: boolean;
 }
 
 export function sortEntities(list:any[], options:CompareOptions={}) {
@@ -70,10 +71,14 @@ export function compareEntities(e1:any, e2:any, options:CompareOptions={}) {
     const n2 = e2[field].toLowerCase();
     const f1 = isInFavorites(e1.id);
     const f2 = isInFavorites(e2.id);
-    if( f1 && !f2 ) {
-        return -1;
-    } else if ( f2 && !f1 ) {
-        return 1;
+    if (options.considerFaves) {
+        if( f1 && !f2 ) {
+            return -1;
+        } else if ( f2 && !f1 ) {
+            return 1;
+        } else {
+            return spaceship(n1, n2) * dir;
+        }
     } else {
         return spaceship(n1, n2) * dir;
     }

@@ -4,21 +4,13 @@ export const Root = tw.div`
 `
 
 type BodyProps = {
-    $transitioning: boolean;
+    $collapsed: boolean;
 }
 
 export const Body = tw.div<BodyProps>`
     block
     overflow-hidden
-    ${p => p.$transitioning 
-        ? `
-            transition-all
-            ease-in
-            duration-500
-        ` 
-        :`
-        `
-    }
+    ${p => p.$collapsed ? 'h-0' : ''}
 `
 
 export const Header = tw.header`
@@ -31,7 +23,7 @@ export const Header = tw.header`
     justify-between
     items-end 
     pr-6
-    mb-1
+    select-none
 `
 
 type ArrowProps = {
@@ -41,9 +33,7 @@ type ArrowProps = {
 export const Arrow = tw.i<ArrowProps>`
     fas fa-caret-right 
     transform 
-    origin-center 
-    transition-transform 
-    duration-500
+    origin-center
     ${p => p.$collapsed 
         ? `
         `
