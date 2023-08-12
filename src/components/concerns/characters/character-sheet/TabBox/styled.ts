@@ -8,7 +8,7 @@ export const Root = tw.div`
     flex-col
     items-center
     bg-beige-lightest
-    w-120
+    w-100
     h-full
 `
 export const Tabs = tw.div`

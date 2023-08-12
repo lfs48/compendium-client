@@ -1,4 +1,3 @@
-import Button from '@/components/UI/atoms/button';
 import tw from 'tailwind-styled-components';
 
 export const Root = tw.div`
@@ -7,7 +6,6 @@ export const Root = tw.div`
     bg-beige-lighter
     flex
     flex-col
-    w-[80rem]
 `
 
 export const Header = tw.div`
