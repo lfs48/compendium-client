@@ -72,9 +72,6 @@ export default function CharacterSheet({
                     <span>Level {character.level} {race.name} {dndclass.name}</span>
                 </S.Title>
                 <S.Tabs>
-                    <S.Tab>Core</S.Tab>
-                    <S.Tab>Bio</S.Tab>
-                    <S.Tab>Spells</S.Tab>
                 </S.Tabs>
             </S.Header>
             <S.Body>
