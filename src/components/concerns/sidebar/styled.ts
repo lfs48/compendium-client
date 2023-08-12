@@ -2,9 +2,8 @@ import tw from 'tailwind-styled-components';
 
 export const Root = tw.div`
     fixed
-    right-0
+    left-0
     top-12
-    left
     h-full-minus-nav
     flex
 `

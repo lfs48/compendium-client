@@ -1,8 +1,8 @@
-import SidebarCell from '../../atoms/sidebar-cell';
-import SidebarRow from '../../atoms/sidebar-row';
+import SidebarCell from '../sidebar-cell';
+import SidebarRow from '../sidebar-row';
 import { capitalize, merge } from 'lodash';
 import * as S from './styled';
-import ClickableIcon from '../../atoms/clickable-icon';
+import ClickableIcon from '../../../UI/atoms/clickable-icon';
 import { useRecoilState } from 'recoil';
 import { sidebarAtom } from '@/recoil';
 import { Icon } from '@/types';

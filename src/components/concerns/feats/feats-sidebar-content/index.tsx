@@ -1,8 +1,8 @@
 import NoResults from '@/components/UI/atoms/no-results';
-import SidebarBodyRow from '@/components/UI/atoms/sidebar-body-row';
-import SidebarCell from '@/components/UI/atoms/sidebar-cell';
-import SidebarTable from '@/components/UI/atoms/sidebar-table';
-import SidebarTableHeader from '@/components/UI/molecules/sidebar-table-header';
+import SidebarBodyRow from '@/components/concerns/sidebar/sidebar-body-row';
+import SidebarCell from '@/components/concerns/sidebar/sidebar-cell';
+import SidebarTable from '@/components/concerns/sidebar/sidebar-table';
+import SidebarTableHeader from '@/components/concerns/sidebar/sidebar-table-header';
 import { sidebarAtom } from '@/recoil';
 import { RootState } from '@/types';
 import { compareEntities } from '@/utils/entities.utils';

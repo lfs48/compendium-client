@@ -1,8 +1,8 @@
 import { useGetAllClassesQuery } from '@/api/dndclasses.api';
 import { useGetAllFeaturesQuery } from '@/api/features.api';
 import Loading from '@atoms/loading';
-import SidebarControls from '@molecules/sidebar-controls';
-import SidebarTabSelect from '@molecules/sidebar-tab-select';
+import SidebarControls from '@/components/concerns/sidebar/sidebar-controls';
+import SidebarTabSelect from '@/components/concerns/sidebar/sidebar-tab-select';
 import { RootState, GameEntity } from '@/types';
 import { useSelector } from 'react-redux';
 import * as S from './styled';
@@ -10,7 +10,7 @@ import { useGetAllRacesQuery } from '@/api/races.api';
 import { useGetAllFeatsQuery } from '@/api/feats.api';
 import { useRecoilState } from 'recoil';
 import { sidebarAtom } from '@/recoil';
-import SidebarContent from '@molecules/sidebar-content';
+import SidebarContent from '@/components/concerns/sidebar/sidebar-content';
 import { useGetAllBoonsQuery } from '@/api/boons.api';
 import { useGetAllSpellsQuery } from '@/api/spells.api';
 
@@ -49,9 +49,6 @@ export default function Sidebar() {
 
     return(
         <S.Root>
-            <S.Selectors>
-                {tabSelectors}
-            </S.Selectors>
             <S.Body>
                 <SidebarControls />
                 <S.Content>
@@ -62,6 +59,9 @@ export default function Sidebar() {
                 }
                 </S.Content>
             </S.Body>
+            <S.Selectors>
+                {tabSelectors}
+            </S.Selectors>
         </S.Root>
     )
 }

@@ -1,5 +1,5 @@
-import TabIcon from '@atoms/tab-icon';
-import TabName from '@atoms/tab-name';
+import TabIcon from '@/components/concerns/sidebar/tab-icon';
+import TabName from '@/components/concerns/sidebar/tab-name';
 import { GameEntity } from '@/types';
 import * as S from './styled';
 import { useRecoilState } from 'recoil';
