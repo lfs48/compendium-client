@@ -18,6 +18,5 @@ export const Root = tw.div<RootProps>`
     px-2
     space-x-2
     shadow
-    z-10
     has-tooltip
 `

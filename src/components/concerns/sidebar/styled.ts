@@ -13,9 +13,8 @@ export const Body = tw.div`
     bg-gray-100
     flex
     flex-col
-    border-l
+    border-r-2
     border-black
-    z-20
     relative
 `
 
