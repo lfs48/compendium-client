@@ -6,7 +6,7 @@ import { capitalize } from 'lodash';
 
 interface SavingThrowProps {
     save: string;
-    mod: number;
+    mod: string;
     prof: boolean;
     [prop: string]: any;
 }
