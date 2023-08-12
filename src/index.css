@@ -138,6 +138,22 @@
   .scrollbar-left > * {
     direction:ltr; 
   }
+
+  .has-tooltip {
+    @apply
+      relative
+  }
+
+  .tooltip {
+    @apply
+      absolute
+      hidden
+  }
+
+  .has-tooltip:hover .tooltip {
+    @apply
+      block
+  }
   
 }
 
