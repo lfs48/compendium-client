@@ -17,3 +17,13 @@ export const Bottom = tw.div`
     items-center
     space-x-4
 `
+
+type FiltersButtonProps = {
+    $show?: boolean;
+}
+
+export const FiltersButton = tw.i<FiltersButtonProps>`
+    fas fa-filter
+    cursor-pointer
+    ${p => p.$show? `` : `invisible`}
+`

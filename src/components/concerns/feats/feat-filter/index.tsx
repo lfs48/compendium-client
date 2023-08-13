@@ -6,13 +6,13 @@ import * as S from './styled';
 import { merge } from 'lodash';
 import { EntitySelect } from '../../entities/entity-select';
 
-interface FeatsSidebarHeaderProps {
+interface FeatsFilterProps {
     [prop: string]: any;
 }
 
-export default function FeatsSidebarHeader({
+export default function FeatsFilter({
     ...props
-}: FeatsSidebarHeaderProps) {
+}: FeatsFilterProps) {
 
     const [sidebarState, setSidebarState] = useRecoilState(sidebarAtom);
 

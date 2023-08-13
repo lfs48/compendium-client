@@ -6,13 +6,13 @@ import * as S from './styled';
 import { merge } from 'lodash';
 import { EntitySelect } from '../../entities/entity-select';
 
-interface SpellsSidebarHeaderProps {
+interface SpellsFilterProps {
     [prop: string]: any;
 }
 
-export default function SpellsSidebarHeader({
+export default function SpellsFilter({
     ...props
-}: SpellsSidebarHeaderProps) {
+}: SpellsFilterProps) {
 
     const [sidebarState, setSidebarState] = useRecoilState(sidebarAtom);
 
