@@ -38,10 +38,6 @@ export default function SidebarControls({
         setSidebarState(newState);
     }
 
-    const handleCreate = () => {
-        navigate(`/${entityFormPath(selectedTab)}/new`);
-    }
-
     const getTabSpecificComponents = () => {
         switch(selectedTab) {
             case('feats'):
@@ -66,13 +62,6 @@ export default function SidebarControls({
                     onChange={handleNameInput}
                     handleClearSearch={handleClearNameInput}
                 />
-                {gm &&
-                    <Button
-                        onClick={handleCreate}
-                    >
-                        New
-                    </Button>
-                }
             </S.Bottom>
         </S.Root>
     )

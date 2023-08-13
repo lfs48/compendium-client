@@ -14,7 +14,6 @@ export const Root = tw.button<RootProps>`
     px-4
     py-2
     rounded
-    relative
     font-bold
     inline-flex
     justify-center

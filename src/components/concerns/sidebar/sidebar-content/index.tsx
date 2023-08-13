@@ -5,6 +5,10 @@ import SpellsSidebarContent from '@/components/concerns/spells/spells-sidebar-co
 import { sidebarAtom } from '@/recoil';
 import { useRecoilState } from 'recoil';
 import * as S from './styled';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/types';
+import { useNavigate } from 'react-router-dom';
+import { entityFormPath } from '@/utils/entities.utils';
 
 interface SidebarContentProps {
     [prop: string]: any;
@@ -14,6 +18,8 @@ export default function SidebarContent({
     ...props
 }: SidebarContentProps) {
 
+    const navigate = useNavigate();
+    const gm = useSelector( (state:RootState) => state.session.gm);
     const [sidebarState, setSidebarState] = useRecoilState(sidebarAtom);
     const {selectedTab} = sidebarState;
 
@@ -30,5 +36,21 @@ export default function SidebarContent({
         }
     }
 
-    return getEntityContent()
+    const handleCreate = () => {
+        navigate(`/${entityFormPath(selectedTab)}/new`);
+    }
+
+    return(
+        <>
+        {getEntityContent()}
+        {gm && 
+            <S.NewButton 
+                onClick={handleCreate}
+                color='green'
+            >
+                New +
+            </S.NewButton>
+        }
+        </>
+    )
 }
