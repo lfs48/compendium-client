@@ -1,5 +1,5 @@
 import Button from '@atoms/button';
-import ModalBg from '@atoms/modal-bg';
+import Modal from '@atoms/modal';
 import * as S from './styled';
 
 interface DialogProps {
@@ -37,7 +37,7 @@ export default function Dialog({
                 </Button>
             </S.Buttons>
         </S.Root>
-        <ModalBg />
+        <Modal />
         </>
     )
 }

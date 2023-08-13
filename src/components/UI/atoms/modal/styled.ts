@@ -8,5 +8,4 @@ export const Root = tw.div`
     h-screen
     bg-black
     bg-opacity-50
-    z-40
 `
