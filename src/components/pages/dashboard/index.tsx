@@ -7,9 +7,9 @@ export default function Dashboard() {
 
     return(
         <S.Root>
+            <Sidebar />
             <Workspace />
             <PanelsContainer />
-            <Sidebar />
         </S.Root>
     )
 }
