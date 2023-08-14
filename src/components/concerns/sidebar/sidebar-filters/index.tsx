@@ -1,7 +1,6 @@
 import { GameEntity } from '@/types';
 import * as S from './styled';
 import SpellsSidebarHeader from '../../spells/spell-filter';
-import FeatsSidebarHeader from '../../feats/feat-filter';
 
 interface SidebarFilterProps {
     tab: GameEntity;
@@ -15,10 +14,6 @@ export default function SidebarFilters({
 
     const getTabSpecificComponents = () => {
         switch(tab) {
-            case('feats'):
-                return(
-                    <FeatsSidebarHeader />
-                )
             case('spells'):
                 return(
                     <SpellsSidebarHeader />

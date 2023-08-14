@@ -1,11 +1,8 @@
 import { sidebarAtom } from '@/recoil';
-import { RootState } from '@/types';
 import Search from '@molecules/search';
-import { useSelector } from 'react-redux';
 import { useRecoilState } from 'recoil';
 import * as S from './styled';
 import { merge } from 'lodash';
-import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import SidebarFilters from '../sidebar-filters';
 
@@ -40,7 +37,7 @@ export default function SidebarControls({
 
     const isFilterable = () => {
         switch(selectedTab) {
-            case('feats'):
+            case('features'):
             case('spells'):
                 return true;
             default:

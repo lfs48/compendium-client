@@ -29,10 +29,6 @@ export function entityIcon(entity:GameEntity) {
             return 'fas fa-award';
         case('races'):
             return 'fas fa-head-side';
-        case('feats'):
-            return 'fas fa-swords';
-        case('boons'):
-            return 'fas fa-sparkles';
         case('spells'):
             return 'fas fa-meteor';
         default:

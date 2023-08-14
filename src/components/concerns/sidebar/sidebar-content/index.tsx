@@ -1,6 +1,4 @@
-import BoonsSidebarContent from '@/components/concerns/boons/boons-sidebar-content';
 import EntitySidebarContent from '@/components/concerns/entities/entity-sidebar-content';
-import FeatsSidebarContent from '@/components/concerns/feats/feats-sidebar-content';
 import SpellsSidebarContent from '@/components/concerns/spells/spells-sidebar-content';
 import { sidebarAtom } from '@/recoil';
 import { useRecoilState } from 'recoil';
@@ -25,10 +23,6 @@ export default function SidebarContent({
 
     const getEntityContent = () => {
         switch(selectedTab) {
-            case('boons'):
-                return <BoonsSidebarContent />
-            case('feats'):
-                return <FeatsSidebarContent />
             case('spells'):
                 return <SpellsSidebarContent />
             default:

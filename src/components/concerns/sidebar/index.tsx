@@ -7,11 +7,9 @@ import { RootState, GameEntity } from '@/types';
 import { useSelector } from 'react-redux';
 import * as S from './styled';
 import { useGetAllRacesQuery } from '@/api/races.api';
-import { useGetAllFeatsQuery } from '@/api/feats.api';
 import { useRecoilState } from 'recoil';
 import { sidebarAtom } from '@/recoil';
 import SidebarContent from '@/components/concerns/sidebar/sidebar-content';
-import { useGetAllBoonsQuery } from '@/api/boons.api';
 import { useGetAllSpellsQuery } from '@/api/spells.api';
 
 export default function Sidebar() {
@@ -23,8 +21,6 @@ export default function Sidebar() {
         dndClasses: useGetAllClassesQuery(),
         features: useGetAllFeaturesQuery(),
         races: useGetAllRacesQuery(),
-        feats: useGetAllFeatsQuery(),
-        boons: useGetAllBoonsQuery(),
         spells: useGetAllSpellsQuery()
     };
 
@@ -32,8 +28,6 @@ export default function Sidebar() {
         dndClasses: state.entities.dndClasses,
         features: state.entities.features,
         races: state.entities.races,
-        feats: state.entities.feats,
-        boons: state.entities.boons,
         spells: state.entities.spells
     }))
 

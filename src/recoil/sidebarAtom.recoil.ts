@@ -15,15 +15,6 @@ export const sidebarAtom = atom({
             races: {
                 name: ''
             },
-            feats: {
-                name: '',
-                dndClass: undefined as undefined | string
-            },
-            boons: {
-                name: '',
-                source_type: undefined as undefined | GameEntity,
-                source_id: undefined as undefined | string
-            },
             spells: {
                 name: '',
                 description: '',
@@ -40,14 +31,6 @@ export const sidebarAtom = atom({
                 dir: 1
             },
             races: {
-                field: 'name',
-                dir: 1
-            },
-            feats: {
-                field: 'name',
-                dir: 1
-            },
-            boons: {
                 field: 'name',
                 dir: 1
             },

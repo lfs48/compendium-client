@@ -3,6 +3,8 @@ export interface Feature {
     name: string;
     description: string;
     level?: number;
+    prereq?: string;
+    kind: 'core' | 'major' | 'minor';
     sources: Source[];
 }
 
@@ -17,6 +19,8 @@ export interface PostFeature {
         name: string;
         description: string;
         level?: number;
+        prereq?: string;
+        kind: 'core' | 'major' | 'minor';
     }
 }
 
@@ -26,5 +30,7 @@ export interface PatchFeature {
         name?: string;
         description?: string;
         level?: number;
+        prereq?: string;
+        kind?: 'core' | 'major' | 'minor';
     }
 }
