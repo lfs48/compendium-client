@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { DndClass, Feature } from '@/types';
+import { DndClass, Feature, RootState } from '@/types';
 import * as S from './styled';
 import Divider from '@atoms/divider';
 import PanelFooter from '@molecules/panel-footer';

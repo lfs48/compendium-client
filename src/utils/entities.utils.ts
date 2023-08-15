@@ -21,6 +21,17 @@ export function apiSourceTypeToGameEntity(sourceType:string) {
     }
 }
 
+export function gameEntityToApiSourceType(entityType:GameEntity) {
+    switch(entityType) {
+        case('dndClasses'):
+            return 'DndClass';
+        case('races'):
+            return 'Race';
+        default:
+            return '';
+    }
+}
+
 export function entityIcon(entity:GameEntity) {
     switch(entity) {
         case('dndClasses'):

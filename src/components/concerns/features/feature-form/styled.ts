@@ -53,3 +53,18 @@ export const Name = tw(Input)`
 export const Description = tw(Field)`
     h-full
 `
+
+export const SourceList = tw.div`
+    flex
+    space-x-2
+`
+
+export const SourceInputs = tw.div`
+    flex 
+    space-x-2
+`
+
+export const Source = tw.div`
+    cursor-pointer
+    hover:text-red-500
+`

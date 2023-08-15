@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Feature, RootState } from '@/types';
+import { Feature, GameEntity, RootState } from '@/types';
 import * as S from './styled';
 import { handleInput } from '@/utils/component.utils';
 import Select from '@molecules/select';
@@ -8,13 +8,23 @@ import { openPanel } from '@/reducers/UI/panels.reducer';
 import { useNavigate, useParams } from 'react-router-dom';
 import { usePatchFeatureMutation, usePostFeatureMutation } from '@/api/features.api';
 import { LEVEL_ARRAY } from '@/utils/constants.utils';
+import EntityAutocomplete from '../../entities/entity-autocomplete';
+import { apiSourceTypeToGameEntity, gameEntityToApiSourceType } from '@/utils/entities.utils';
+import { merge } from 'lodash';
 
 const initialInputs = {
     id: '',
     name: '',
     description: '',
     level: undefined,
+    kind: 'core' as 'core'|'major'|'minor',
+    prereq: '',
     sources: []
+}
+
+const initialSourceInputs = {
+    sourceType: 'dndClasses' as GameEntity,
+    id: ''
 }
 
 const initialErrors = {
@@ -37,7 +47,10 @@ export default function FeatureForm({
     const navigate = useNavigate();
     const {id} = useParams();
 
-    const features = useSelector( (state:RootState) => state.entities.features)
+    const {features, entities} = useSelector( (state:RootState) => ({
+        features: state.entities.features,
+        entities: state.entities
+    }))
 
     const [triggerPost, postQuery] = usePostFeatureMutation();
     const [triggerPatch, patchQuery] = usePatchFeatureMutation();
@@ -51,6 +64,7 @@ export default function FeatureForm({
         id: '',
         success: false
     });
+    const [sourceInputs, setSourceInputs] = useState(initialSourceInputs);
 
     useEffect( () => {
         if (editing && id && id in features) {
@@ -101,6 +115,40 @@ export default function FeatureForm({
         }
     }, [triggerOpenPanel])
 
+    const addSource = (id:string) => {
+        const newState = merge({},inputs);
+        newState.sources.push({
+            source_type: gameEntityToApiSourceType(sourceInputs.sourceType),
+            id: id
+        });
+        setInputs(newState);
+        setSourceInputs(initialSourceInputs);
+        console.log(newState);
+    }
+
+    const removeSource = (id:string) => {
+        const newState = merge({},inputs);
+        newState.sources = inputs.sources.filter( (source) => source.id !== id);
+        setInputs(newState);   
+    }
+
+    const sources = inputs.sources.map( (source) => {
+        const sourceType = apiSourceTypeToGameEntity(source.source_type);
+        if (!!sourceType && sourceType in entities) {
+            const entity = entities[sourceType][source.id];
+            return(
+                <S.Source 
+                    key={source.id} 
+                    onClick={()=>removeSource(source.id)}
+                >
+                    {entity.name}
+                </S.Source>
+            )
+        } else {
+            return <></>
+        }
+    })
+
     return(
         <S.Root {...props}>
             <S.Body>
@@ -112,6 +160,12 @@ export default function FeatureForm({
                     errors={errors.name}
                 />
                 <S.Selects>
+                    <Select
+                        label='Kind'
+                        value={inputs.kind}
+                        options={['core','major','minor']}
+                        onChange={e => handleInput(e, 'level', inputs, setInputs, e.target.value || undefined)}
+                    />
                     <Select
                         label='Level'
                         value={inputs.level}
@@ -129,6 +183,25 @@ export default function FeatureForm({
                     type='textarea'
                     errors={errors.description}
                 />
+                <div>
+                    <div>Sources</div>
+                    <S.SourceInputs>
+                        <Select
+                            label='Type'
+                            value={sourceInputs.sourceType}
+                            options={['dndClasses', 'races']}
+                            onChange={e => handleInput(e, 'sourceType', sourceInputs, setSourceInputs, e.target.value || undefined)}
+                        />
+                        <EntityAutocomplete
+                            label='Name'
+                            entityType={sourceInputs.sourceType}
+                            handleSelect={addSource}
+                        />
+                    </S.SourceInputs>
+                    <S.SourceList>
+                        {sources}
+                    </S.SourceList>
+                </div>
             </S.Body>
             <S.Buttons>
                 <S.Button
