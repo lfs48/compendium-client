@@ -27,7 +27,7 @@ export const sidebarAtom = atom({
                 source: '',
                 kind: '',
                 levelDir: '>',
-                level: 1
+                level: undefined as undefined | number
             }
         },
         sort: {
