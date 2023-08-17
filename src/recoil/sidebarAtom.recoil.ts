@@ -21,6 +21,15 @@ export const sidebarAtom = atom({
                 dndClass: undefined as undefined | string
             }
         },
+        filters: {
+            features: {
+                sourceType: '',
+                source: '',
+                kind: '',
+                levelDir: '>',
+                level: 1
+            }
+        },
         sort: {
             dndClasses: {
                 field: 'name',

@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '@/types';
 import { useNavigate } from 'react-router-dom';
 import { entityFormPath } from '@/utils/entities.utils';
+import FeaturesSidebarContent from '../../features/features-sidebar-content';
 
 interface SidebarContentProps {
     [prop: string]: any;
@@ -23,6 +24,8 @@ export default function SidebarContent({
 
     const getEntityContent = () => {
         switch(selectedTab) {
+            case('features'):
+                return <FeaturesSidebarContent />
             case('spells'):
                 return <SpellsSidebarContent />
             default:

@@ -6,7 +6,7 @@ import * as S from './styled';
 
 interface EntitySelectProps {
     value?: any;
-    entityType: GameEntity;
+    entityType?: GameEntity;
     onChange: (event:ChangeEvent<HTMLSelectElement>) => void;
     [prop: string]: any;
 }
@@ -18,12 +18,16 @@ export function EntitySelect({
     ...props
 }: EntitySelectProps) {
 
-    const entities = useSelector( (state:RootState) => state.entities[entityType]);
-    let options = Object.values(entities)
-    .map( (entity) => ({
-        label: entity.name,
-        value: entity.id
-    }));
+    const entities = useSelector( (state:RootState) => state.entities);
+    let options = [] as {label:string, value:string}[];
+    if (entityType && entityType in entities) {
+        options = Object.values(entities[entityType])
+        .map( (entity) => ({
+            label: entity.name,
+            value: entity.id
+        }));
+    
+    }
 
     return(
         <Select
