@@ -164,7 +164,7 @@ export default function FeatureForm({
                         label='Kind'
                         value={inputs.kind}
                         options={['core','major','minor']}
-                        onChange={e => handleInput(e, 'level', inputs, setInputs, e.target.value || undefined)}
+                        onChange={e => handleInput(e, 'kind', inputs, setInputs, e.target.value || undefined)}
                     />
                     <Select
                         label='Level'
