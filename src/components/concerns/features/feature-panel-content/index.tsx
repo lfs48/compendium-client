@@ -8,6 +8,9 @@ import Loading from '@atoms/loading';
 import { useNavigate } from 'react-router-dom';
 import { useDeleteFeatureMutation } from '@/api/features.api';
 import FeatureSources from '@/components/concerns/features/feature-sources';
+import { useSelector } from 'react-redux';
+import { apiSourceTypeToGameEntity } from '@/utils/entities.utils';
+import FeatureTagline from '../feature-tagline';
 
 interface FeaturePanelContentProps {
     feature: Feature
@@ -18,7 +21,10 @@ const FeaturePanelContent = React.memo(function({
     feature,
     ...props
 }: FeaturePanelContentProps) {
+
     const navigate = useNavigate();
+
+    const entities = useSelector( (state:RootState) => state.entities);
 
     const [triggerDelete, {isLoading, isSuccess}] = useDeleteFeatureMutation();
     
@@ -48,6 +54,7 @@ const FeaturePanelContent = React.memo(function({
         <>
         {(!isLoading && !isSuccess) ?
             <S.Root {...props}>
+                <FeatureTagline feature={feature}/>
                 <S.Description>
                     {feature.description}
                 </S.Description>
