@@ -77,7 +77,8 @@ const ClassPanelContent = React.memo(function ClassPanelContent({
                     equipmentList={dndClass.equipment}
                 />
                 <ClassFeatures
-                    source={dndClass}
+                    featureIDs={dndClass.features}
+                    kind='core'
                 />
             </S.Root>
             :

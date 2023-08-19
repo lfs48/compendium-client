@@ -6,15 +6,14 @@ import * as S from './styled';
 import { intToOrdinal } from '@/utils/functions.utils';
 
 interface FeatureListProps {
-    source: {
-        features: string[];
-        [others: string]: any;
-    };
+    featureIDs: string[];
+    kind?: 'core' | 'major' | 'minor';
     [prop: string]: any;
 }
 
 export default function FeaturesList({
-    source,
+    featureIDs,
+    kind,
     ...props
 }: FeatureListProps) {
 
@@ -22,7 +21,12 @@ export default function FeaturesList({
         features: state.entities.features
     }));
 
-    const featureSections = source.features
+    let filtered = featureIDs;
+    if (kind) {
+        filtered = featureIDs.filter( (id) => features[id].kind === kind);
+    }
+
+    const featureSections = filtered
     .map( (id) => {
         const feature = features[id];
         return(
