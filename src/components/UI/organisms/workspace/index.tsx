@@ -8,6 +8,8 @@ import { useGetAllClassesQuery } from '@/api/dndclasses.api';
 import { useGetAllFeaturesQuery } from '@/api/features.api';
 import { useGetAllRacesQuery } from '@/api/races.api';
 import { useGetAllSpellsQuery } from '@/api/spells.api';
+import ItemRoutes from '@/components/routes/items.route';
+import { useGetAllItemsQuery } from '@/api/items.api';
 
 export default function Workspace() {
 
@@ -15,7 +17,8 @@ export default function Workspace() {
         dndClasses: useGetAllClassesQuery(),
         features: useGetAllFeaturesQuery(),
         races: useGetAllRacesQuery(),
-        spells: useGetAllSpellsQuery()
+        spells: useGetAllSpellsQuery(),
+        items: useGetAllItemsQuery()
     };
 
     return(
@@ -24,10 +27,12 @@ export default function Workspace() {
             <RaceRoutes />
             <FeatureRoutes />
             <SpellRoutes />
+            <ItemRoutes />
             {queries.dndClasses.isSuccess &&
             queries.features.isSuccess &&
             queries.races.isSuccess &&
-            queries.spells.isSuccess
+            queries.spells.isSuccess &&
+            queries.items.isSuccess
             }
         </S.Root>
     )

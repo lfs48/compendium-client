@@ -10,12 +10,22 @@ export function handleInput(
 ) {
     event.preventDefault();
     const newState = merge({}, state);
-    if (value) {
+    if (value !== undefined) {
         newState[field] = value;
     } else {
         let target = event.target as HTMLInputElement
         newState[field] = target.value;
     }
+    setState(newState);
+}
+
+export function toggleInput(
+    field: string,
+    state: any, 
+    setState: React.Dispatch<React.SetStateAction<any>>, 
+) {
+    const newState = merge({}, state);
+    newState[field] = !state[field]
     setState(newState);
 }
 
