@@ -1,3 +1,5 @@
+import { ItemKind, ItemRarity, ItemBulk } from "@/enums";
+
 export interface Item {
     id: string;
     name: string;
@@ -5,7 +7,7 @@ export interface Item {
     kind: ItemKind;
     rarity: ItemRarity;
     magic: boolean;
-    bulk: number;
+    bulk: ItemBulk;
     value: string;
 }
 
@@ -17,7 +19,7 @@ export interface PostItem {
         kind: ItemKind;
         rarity: ItemRarity;
         magic?: boolean;
-        bulk: number;
+        bulk: ItemBulk;
         value: string;
     }
 }
@@ -30,26 +32,7 @@ export interface PatchItem {
         kind?: ItemKind;
         rarity?: ItemRarity;
         magic?: boolean;
-        bulk?: number;
+        bulk?: ItemBulk;
         value?: string;
     }
-}
-
-export enum ItemKind {
-    Armor='armor',
-    Weapon='weapon',
-    Tool='tool',
-    Commodity='commodity',
-    Gear='gear',
-    Treasure='treasure',
-    Wondrous='wondrous',
-    Consumable='consumable'
-}
-
-export enum ItemRarity {
-    Common='common',
-    Uncommon='uncommon',
-    Rare='rare',
-    Legendary='legendary',
-    Artifact='artifact'
 }
