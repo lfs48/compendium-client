@@ -19,6 +19,9 @@ export const sidebarAtom = atom({
                 name: '',
                 description: '',
                 dndClass: undefined as undefined | string
+            },
+            items: {
+                name: ''
             }
         },
         filters: {
@@ -44,6 +47,10 @@ export const sidebarAtom = atom({
                 dir: 1
             },
             spells: {
+                field: 'name',
+                dir: 1
+            },
+            items: {
                 field: 'name',
                 dir: 1
             }

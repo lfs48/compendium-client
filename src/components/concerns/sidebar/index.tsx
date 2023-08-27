@@ -11,6 +11,7 @@ import { useRecoilState } from 'recoil';
 import { sidebarAtom } from '@/recoil';
 import SidebarContent from '@/components/concerns/sidebar/sidebar-content';
 import { useGetAllSpellsQuery } from '@/api/spells.api';
+import { useGetAllItemsQuery } from '@/api/items.api';
 
 export default function Sidebar() {
 
@@ -21,14 +22,16 @@ export default function Sidebar() {
         dndClasses: useGetAllClassesQuery(),
         features: useGetAllFeaturesQuery(),
         races: useGetAllRacesQuery(),
-        spells: useGetAllSpellsQuery()
+        spells: useGetAllSpellsQuery(),
+        items: useGetAllItemsQuery()
     };
 
     const entities = useSelector( (state:RootState) => ({
         dndClasses: state.entities.dndClasses,
         features: state.entities.features,
         races: state.entities.races,
-        spells: state.entities.spells
+        spells: state.entities.spells,
+        items: state.entities.items
     }))
 
     const tabSelectors = Object.keys(entities).map( (key) => {

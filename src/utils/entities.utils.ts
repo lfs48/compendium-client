@@ -42,6 +42,8 @@ export function entityIcon(entity:GameEntity) {
             return 'fas fa-head-side';
         case('spells'):
             return 'fas fa-meteor';
+        case('items'):
+            return 'fas fa-flask-potion';
         default:
             return '';
     }
