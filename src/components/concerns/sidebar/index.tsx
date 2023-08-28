@@ -12,6 +12,7 @@ import { sidebarAtom } from '@/recoil';
 import SidebarContent from '@/components/concerns/sidebar/sidebar-content';
 import { useGetAllSpellsQuery } from '@/api/spells.api';
 import { useGetAllItemsQuery } from '@/api/items.api';
+import SidebarHide from './sidebar-hide';
 
 export default function Sidebar() {
 
@@ -45,7 +46,7 @@ export default function Sidebar() {
     });
 
     return(
-        <S.Root>
+        <S.Root $open={sidebarState.UI.sidebarOpen}>
             <S.Body>
                 <SidebarControls />
                 <S.Content>
@@ -55,6 +56,7 @@ export default function Sidebar() {
                     <Loading />
                 }
                 </S.Content>
+                <SidebarHide />
             </S.Body>
             <S.Selectors>
                 {tabSelectors}

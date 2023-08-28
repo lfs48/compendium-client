@@ -1,7 +1,14 @@
 import tw from 'tailwind-styled-components';
 
-export const Root = tw.div`
+type RootProps = {
+    $open: boolean;
+}
+
+export const Root = tw.div<RootProps>`
     flex
+    ${p => p.$open ? '-ml-0' : '-ml-[28rem]'}
+    transition-[margin-left]
+    duration-700
 `
 
 export const Body = tw.div`
