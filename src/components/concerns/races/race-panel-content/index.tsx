@@ -58,7 +58,7 @@ const RacePanelContent = React.memo(function RacePanelContent({
                 <Divider />
                 <h1>Racial Features</h1>
                 <FeatureList
-                    source={race}
+                    featureIDs={race.features}
                 />
             </S.Root>
             :
