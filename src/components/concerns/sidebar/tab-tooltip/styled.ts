@@ -9,6 +9,7 @@ export const Root = tw.div`
     left-14
     rounded-sm
     px-2
+    z-50
 `
 
 export const Content = tw.div`
