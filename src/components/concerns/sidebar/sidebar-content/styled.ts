@@ -6,8 +6,11 @@ export const Root = tw.div`
     h-full
 `;
 
-export const NewButton = tw(Button)`
-    absolute 
-    bottom-4 
-    right-4
+export const NewButtonContainer = tw.div`
+    absolute
+    bottom-4
+    w-full
+    flex
+    justify-end
+    pr-4
 `

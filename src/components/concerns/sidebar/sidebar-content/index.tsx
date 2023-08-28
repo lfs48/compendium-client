@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import { entityFormPath } from '@/utils/entities.utils';
 import FeaturesSidebarContent from '../../features/features-sidebar-content';
 import ItemsSidebarContent from '../../items/items-sidebar-content';
+import Button from '@/components/UI/atoms/button';
 
 interface SidebarContentProps {
     [prop: string]: any;
@@ -44,12 +45,14 @@ export default function SidebarContent({
         <>
         {getEntityContent()}
         {gm && 
-            <S.NewButton 
-                onClick={handleCreate}
-                color='green'
-            >
-                New +
-            </S.NewButton>
+            <S.NewButtonContainer>
+                <Button 
+                    onClick={handleCreate}
+                    color='green'
+                >
+                    New +
+                </Button>
+            </S.NewButtonContainer>
         }
         </>
     )
