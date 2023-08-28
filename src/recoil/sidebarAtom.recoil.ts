@@ -6,6 +6,9 @@ export const sidebarAtom = atom({
     key: 'sidebarState',
     default: {
         selectedTab: 'dndClasses' as GameEntity,
+        UI: {
+            filterOpen: false
+        },
         searchInputs: {
             dndClasses: {
                 name: ''

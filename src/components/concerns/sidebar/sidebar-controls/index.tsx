@@ -15,9 +15,8 @@ export default function SidebarControls({
 }: SidebarControlsProps) {
 
     const [sidebarState, setSidebarState] = useRecoilState(sidebarAtom);
+    const {filterOpen} = sidebarState.UI;
     const {selectedTab, searchInputs} = sidebarState;
-
-    const [filtersOpen, setFiltersOpen] = useState(false);
 
     const handleNameInput = (e) => {
         const newState = merge({}, sidebarState);
@@ -31,9 +30,15 @@ export default function SidebarControls({
         setSidebarState(newState);
     }
 
+    const setFilterState = (open:boolean) => {
+        const newState = merge({}, sidebarState);
+        newState.UI.filterOpen = open;
+        setSidebarState(newState);
+    }
+
     useEffect( () => {
-        setFiltersOpen(false);
-    }, [selectedTab])
+        setFilterState(false);
+    }, [selectedTab]);
 
     const isFilterable = () => {
         switch(selectedTab) {
@@ -55,10 +60,10 @@ export default function SidebarControls({
                     onChange={handleNameInput}
                     handleClearSearch={handleClearNameInput}
                 />
-                <S.FiltersButton $show={isFilterable()} onClick={()=>setFiltersOpen(!filtersOpen)}/>
+                <S.FiltersButton $show={isFilterable()} onClick={()=>setFilterState(!filterOpen)}/>
             </S.Bottom>
         </S.Root>
-        {isFilterable() && filtersOpen &&
+        {isFilterable() && filterOpen &&
             <SidebarFilters tab={selectedTab}/>
         }
         </>
