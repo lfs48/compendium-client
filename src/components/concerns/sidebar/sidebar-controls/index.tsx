@@ -39,6 +39,7 @@ export default function SidebarControls({
         switch(selectedTab) {
             case('features'):
             case('spells'):
+            case('items'):
                 return true;
             default:
                 return false;

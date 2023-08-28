@@ -8,6 +8,7 @@ import { RootState } from '@/types';
 import { useNavigate } from 'react-router-dom';
 import { entityFormPath } from '@/utils/entities.utils';
 import FeaturesSidebarContent from '../../features/features-sidebar-content';
+import ItemsSidebarContent from '../../items/items-sidebar-content';
 
 interface SidebarContentProps {
     [prop: string]: any;
@@ -28,6 +29,8 @@ export default function SidebarContent({
                 return <FeaturesSidebarContent />
             case('spells'):
                 return <SpellsSidebarContent />
+            case('items'):
+                return <ItemsSidebarContent />
             default:
                 return <EntitySidebarContent entityType={selectedTab}/>
         }

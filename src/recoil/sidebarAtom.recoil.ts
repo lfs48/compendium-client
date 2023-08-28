@@ -1,3 +1,4 @@
+import { ItemBulk, ItemKind, ItemRarity } from "@/enums";
 import { GameEntity } from "@/types";
 import { atom } from "recoil";
 
@@ -31,6 +32,13 @@ export const sidebarAtom = atom({
                 kind: '',
                 levelDir: '>',
                 level: undefined as undefined | number
+            },
+            items: {
+                magic: undefined as undefined | string,
+                rarity: undefined as undefined | ItemRarity,
+                kind: undefined as undefined | ItemKind,
+                bulkDir: '>',
+                bulk: undefined as undefined | ItemBulk
             }
         },
         sort: {
