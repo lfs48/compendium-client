@@ -70,25 +70,32 @@ interface CompareOptions {
 }
 
 export function sortEntities(list:any[], options:CompareOptions={}) {
-    return list.sort( (a,b) => compareEntities(a,b, options) );
+    const considerFaves = options.considerFaves !== undefined ? options.considerFaves : true;
+    return list.sort( (a,b) => {
+        if (considerFaves) {
+            return compareFaves(a,b, options);
+        } else {
+            return compareEntities(a,b, options);
+        }
+    });
 }
 
 export function compareEntities(e1:any, e2:any, options:CompareOptions={}) {
-    const field = options.field || 'name';
-    const dir = options.dir || 1;
+    const field = options.field !== undefined ? options.field : 'name';
+    const dir = options.dir !== undefined ? options.dir : 1;
     const n1 = e1[field].toLowerCase();
     const n2 = e2[field].toLowerCase();
+    return spaceship(n1, n2) * dir;
+}
+
+export function compareFaves(e1:any, e2:any, options:CompareOptions={}) {
     const f1 = isInFavorites(e1.id);
     const f2 = isInFavorites(e2.id);
-    if (options.considerFaves) {
-        if( f1 && !f2 ) {
-            return -1;
-        } else if ( f2 && !f1 ) {
-            return 1;
-        } else {
-            return spaceship(n1, n2) * dir;
-        }
+    if( f1 && !f2 ) {
+        return -1;
+    } else if ( f2 && !f1 ) {
+        return 1;
     } else {
-        return spaceship(n1, n2) * dir;
+        return compareEntities(e1, e2, options);
     }
 }
