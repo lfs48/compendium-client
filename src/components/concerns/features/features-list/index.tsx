@@ -4,31 +4,36 @@ import Collapsable from '@molecules/collapsable';
 import Markdown from '@molecules/markdown';
 import * as S from './styled';
 import { intToOrdinal } from '@/utils/functions.utils';
+import { sortEntities } from '@/utils/entities.utils';
 
 interface FeatureListProps {
     featureIDs: string[];
     kind?: 'core' | 'major' | 'minor';
+    sort?: string;
     [prop: string]: any;
 }
 
 export default function FeaturesList({
     featureIDs,
     kind,
+    sort,
     ...props
 }: FeatureListProps) {
 
-    const {features} = useSelector( (state:RootState) => ({
-        features: state.entities.features
-    }));
+    const features = useSelector( (state:RootState) => state.entities.features);
 
-    let filtered = featureIDs;
+    const featureList = featureIDs.map( (id) => features[id]);
+
+    let filtered = featureList;
     if (kind) {
-        filtered = featureIDs.filter( (id) => features[id].kind === kind);
+        filtered = featureList.filter( (feature) => feature.kind === kind);
+    }
+    if (sort) {
+        filtered = sortEntities(filtered, {field: sort});
     }
 
     const featureSections = filtered
-    .map( (id) => {
-        const feature = features[id];
+    .map( (feature) => {
         return(
             <Collapsable
                 key={feature.id}

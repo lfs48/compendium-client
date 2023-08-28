@@ -79,6 +79,7 @@ const ClassPanelContent = React.memo(function ClassPanelContent({
                 <ClassFeatures
                     featureIDs={dndClass.features}
                     kind='core'
+                    sort='level'
                 />
             </S.Root>
             :
