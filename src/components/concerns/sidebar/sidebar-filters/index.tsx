@@ -35,7 +35,7 @@ export default function SidebarFilters({
 
     return(
         <S.Root {...props}>
-            Filters
+            <S.Header>Filters</S.Header>
             {getTabSpecificComponents()}
         </S.Root>
     )
