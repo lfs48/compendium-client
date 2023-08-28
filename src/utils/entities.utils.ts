@@ -83,8 +83,8 @@ export function sortEntities(list:any[], options:CompareOptions={}) {
 export function compareEntities(e1:any, e2:any, options:CompareOptions={}) {
     const field = options.field !== undefined ? options.field : 'name';
     const dir = options.dir !== undefined ? options.dir : 1;
-    const n1 = e1[field].toLowerCase();
-    const n2 = e2[field].toLowerCase();
+    const n1 = e1[field] ? (e1[field]+'').toLowerCase() : '';
+    const n2 = e2[field] ? (e2[field]+'').toLowerCase() : '';
     return spaceship(n1, n2) * dir;
 }
 
