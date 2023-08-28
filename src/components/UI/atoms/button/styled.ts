@@ -21,6 +21,7 @@ export const Root = tw.button<RootProps>`
     disabled:bg-gray-400
     disabled:text-gray-700
     disabled:cursor-default
+    relative
     ${p => p.$block ? 'w-full' : ''}
     ${p => colorClasses(p.$color, p.$fill)}
 `
@@ -47,7 +48,7 @@ type ContentProps = {
 }
 
 export const Content = tw.div<ContentProps>`
-    ${p => p.$loading ? 'opacity-0' : 'opacity-100'}
+    ${p => p.$loading ? 'invisible' : 'visible'}
 `
 
 function colorClasses(color, fill) {
