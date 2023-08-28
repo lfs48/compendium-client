@@ -49,7 +49,10 @@ export default function SpellsSidebarContent({
             {filtered.length > 0 ?
                 <>
                 <SidebarTableHeader
-                    columns={['name', 'rank']}
+                    columns={[
+                        {label: 'name', field: 'name'},
+                        {label: 'rank', field: 'rank'}
+                    ]}
                 />
                 {components}
                 </>
