@@ -5,7 +5,7 @@ import SidebarTable from '@/components/concerns/sidebar/sidebar-table';
 import SidebarTableHeader from '@/components/concerns/sidebar/sidebar-table-header';
 import { sidebarAtom } from '@/recoil';
 import { RootState } from '@/types';
-import { compareEntities } from '@/utils/entities.utils';
+import { compareEntities, sortEntities } from '@/utils/entities.utils';
 import { isInFavorites } from '@/utils/favorites.utils';
 import { filterSpells } from '@/utils/spells.util';
 import { intToOrdinal, spaceship } from '@/utils/functions.utils';
@@ -29,15 +29,7 @@ export default function SpellsSidebarContent({
     }));
 
     const filtered = filterSpells(spells, searchInputs.spells.name, searchInputs.spells.dndClass);
-    const sorted = filtered.sort( (s1, s2) => {
-        if ( !isInFavorites(s1.id) && isInFavorites(s2.id) ) {
-            return 1;
-        } else if ( isInFavorites(s1.id) && !isInFavorites(s2.id) ) {
-            return -1;
-        } else {
-            return compareEntities(s1, s2, {dir: dir, field: sort.spells.field});
-        }
-    })
+    const sorted = sortEntities(filtered);
     const components = sorted
     .map( (spell) => {
         return(
