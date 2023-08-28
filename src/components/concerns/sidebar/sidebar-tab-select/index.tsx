@@ -1,11 +1,11 @@
 import TabIcon from '@/components/concerns/sidebar/tab-icon';
-import TabName from '@/components/concerns/sidebar/tab-tooltip';
 import { GameEntity } from '@/types';
 import * as S from './styled';
 import { useRecoilState } from 'recoil';
 import { sidebarAtom } from '@/recoil';
 import { editState } from '@/utils/component.utils';
-import TabTooltip from '@/components/concerns/sidebar/tab-tooltip';
+import Tooltip from '@/components/UI/atoms/tooltip';
+import { entityName } from '@/utils/entities.utils';
 
 interface SidebarTabSelectProps {
     tab: GameEntity;
@@ -31,7 +31,12 @@ export default function SidebarTabSelect({
                 tab={tab}
                 selected={selected}
             />
-            <TabTooltip tab={tab}/>
+            <Tooltip
+                dir='right'
+                children={
+                    <div>{entityName(tab)}</div>
+                }
+            />
         </S.Root>
     )
 }
