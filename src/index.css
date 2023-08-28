@@ -147,12 +147,16 @@
   .tooltip {
     @apply
       absolute
-      hidden
+      opacity-0
+      invisible
+      transition-all
+      duration-200
   }
 
   .has-tooltip:hover .tooltip {
     @apply
-      block
+      opacity-100
+      visible
   }
   
 }
