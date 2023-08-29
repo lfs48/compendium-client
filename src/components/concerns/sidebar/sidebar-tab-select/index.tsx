@@ -4,7 +4,7 @@ import * as S from './styled';
 import { useRecoilState } from 'recoil';
 import { sidebarAtom } from '@/recoil';
 import { editState } from '@/utils/component.utils';
-import Tooltip from '@/components/UI/atoms/tooltip';
+import Tooltip from '@/components/UI/atoms/speech-bubble';
 import { entityName } from '@/utils/entities.utils';
 
 interface SidebarTabSelectProps {
@@ -31,7 +31,7 @@ export default function SidebarTabSelect({
                 tab={tab}
                 selected={selected}
             />
-            <Tooltip
+            <S.Tooltip
                 dir='right'
                 children={
                     <div>{entityName(tab)}</div>

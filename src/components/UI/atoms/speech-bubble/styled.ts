@@ -6,15 +6,13 @@ type DirProps = {
 
 export const Root = tw.div<DirProps>`
     text-sm
-    font-bold
+    font-semibold
     bg-beige-light
-    tooltip
     rounded-sm
-    z-50
-    ${p => p.$dir === 'left' ? 'right-16' : ''}
+    ${p => p.$dir === 'left' ? 'right-full transform -translate-x-4' : ''}
     ${p => p.$dir === 'top' ? '-top-12 transform -translate-x-1/2' : ''}
-    ${p => p.$dir === 'right' ? 'left-14' : ''}
-    ${p => p.$dir === 'bottom' ? 'top-14 -translate-x-1/2' : ''}
+    ${p => p.$dir === 'right' ? 'left-full transform translate-x-2' : ''}
+    ${p => p.$dir === 'bottom' ? 'top-full transform -translate-x-1/2 translate-y-1/2' : ''}
 `
 
 export const Content = tw.div`
@@ -44,7 +42,7 @@ export const Arrow = tw.div<DirProps>`
             border-x-transparent
         `
     }
-    ${p => p.$dir === 'left' ? 'border-lbeige-light border-r-transparent -right-4' : ''}
+    ${p => p.$dir === 'left' ? 'border-l-beige-light border-r-transparent -right-4' : ''}
     ${p => p.$dir === 'right' ? 'border-r-beige-light border-l-transparent -left-4' : ''}
     ${p => p.$dir === 'top' ? 'border-t-beige-light border-b-transparent -bottom-4' : ''}
     ${p => p.$dir === 'bottom' ? 'border-b-beige-light border-t-transparent -top-4' : ''}

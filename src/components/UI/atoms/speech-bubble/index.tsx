@@ -3,17 +3,17 @@ import { entityName } from '@/utils/entities.utils';
 import * as S from './styled';
 import { ReactNode } from 'react';
 
-interface TooltipProps {
+interface SpeechBubbleProps {
     dir: 'left' | 'right' | 'top' | 'bottom';
     children: ReactNode;
     [prop: string]: any;
 }
 
-export default function Tooltip({
+export default function SpeechBubble({
     dir,
     children,
     ...props
-}: TooltipProps) {
+}: SpeechBubbleProps) {
     return(
         <S.Root
             $dir={dir}

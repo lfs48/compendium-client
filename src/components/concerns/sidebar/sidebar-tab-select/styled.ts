@@ -1,3 +1,4 @@
+import SpeechBubble from '@/components/UI/atoms/speech-bubble';
 import tw from 'tailwind-styled-components';
 
 type RootProps = {
@@ -19,4 +20,9 @@ export const Root = tw.div<RootProps>`
     space-x-2
     shadow
     has-tooltip
+`
+
+export const Tooltip = tw(SpeechBubble)`
+    tooltip
+    z-50
 `
