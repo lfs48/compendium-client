@@ -5,7 +5,6 @@ import * as S from './styled';
 import { merge } from 'lodash';
 import { useEffect, useState } from 'react';
 import SidebarFilters from '../sidebar-filters';
-import Tooltip from '@/components/UI/atoms/tooltip';
 
 interface SidebarControlsProps {
     [prop: string]: any;
