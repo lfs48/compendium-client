@@ -48,7 +48,10 @@ export default function SidebarFilters({
     }
 
     return(
-        <S.Root {...props}>
+        <S.Root
+            $open={filterOpen}
+            {...props}
+        >
             <S.Header>
                 <div>Filters</div>
                 <Close

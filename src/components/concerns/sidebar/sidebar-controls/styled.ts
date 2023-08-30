@@ -1,3 +1,4 @@
+import Button from '@/components/UI/atoms/button';
 import tw from 'tailwind-styled-components';
 
 export const Root = tw.div`
@@ -20,10 +21,18 @@ export const Bottom = tw.div`
 
 type FiltersButtonProps = {
     $show?: boolean;
+    $open?: boolean;
 }
 
-export const FiltersButton = tw.i<FiltersButtonProps>`
-    fas fa-filter
+export const FiltersButton = tw.button<FiltersButtonProps>`
+    fas 
+    fa-filter
+    bg-beige-light
     cursor-pointer
     ${p => p.$show? `` : `invisible`}
+    ${p => p.$open? `bg-beige-dark` : `bg-beige hover:bg-beige-dark`}
+    has-tooltip
+    p-2
+    rounded
+    transition-colors
 `

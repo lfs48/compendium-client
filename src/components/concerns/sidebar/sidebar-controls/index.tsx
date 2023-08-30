@@ -5,6 +5,7 @@ import * as S from './styled';
 import { merge } from 'lodash';
 import { useEffect, useState } from 'react';
 import SidebarFilters from '../sidebar-filters';
+import Tooltip from '@/components/UI/atoms/tooltip';
 
 interface SidebarControlsProps {
     [prop: string]: any;
@@ -36,10 +37,6 @@ export default function SidebarControls({
         setSidebarState(newState);
     }
 
-    useEffect( () => {
-        setFilterState(false);
-    }, [selectedTab]);
-
     const isFilterable = () => {
         switch(selectedTab) {
             case('features'):
@@ -51,6 +48,10 @@ export default function SidebarControls({
         }
     }
 
+    useEffect( () => {
+        setFilterState(false);
+    }, [selectedTab]);
+
     return(
         <>
         <S.Root {...props}>
@@ -60,12 +61,12 @@ export default function SidebarControls({
                     onChange={handleNameInput}
                     handleClearSearch={handleClearNameInput}
                 />
-                <S.FiltersButton $show={isFilterable()} onClick={()=>setFilterState(!filterOpen)}/>
+                <S.FiltersButton $show={isFilterable()} $open={filterOpen} onClick={()=>setFilterState(!filterOpen)} />
             </S.Bottom>
         </S.Root>
-        {isFilterable() && filterOpen &&
-            <SidebarFilters tab={selectedTab}/>
-        }
+        <SidebarFilters
+            tab={selectedTab}
+        />
         </>
     )
 }
