@@ -10,6 +10,7 @@ import { sortEntities } from '@/utils/entities.utils';
 import NoResults from '@/components/UI/atoms/no-results';
 import SidebarTable from '../../sidebar/sidebar-table';
 import { bulkEnumToInt } from '@/utils/items.util';
+import { Entity } from '@/enums';
 
 export default function ItemsSidebarContent() {
 
@@ -50,7 +51,7 @@ export default function ItemsSidebarContent() {
             <SidebarBodyRow
                 key={item.id}
                 id={item.id}
-                contentType='items'
+                contentType={Entity.items}
             >
                 <SidebarCell>{item.name}</SidebarCell>
             </SidebarBodyRow>
