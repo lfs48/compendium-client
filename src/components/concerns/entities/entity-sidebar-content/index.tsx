@@ -8,9 +8,6 @@ import SidebarCell from '@/components/concerns/sidebar/sidebar-cell';
 import SidebarTable from '@/components/concerns/sidebar/sidebar-table';
 import SidebarTableHeader from '@/components/concerns/sidebar/sidebar-table-header';
 import NoResults from '@atoms/no-results';
-import { editState } from '@/utils/component.utils';
-import { useEffect } from 'react';
-import { merge } from 'lodash';
 
 interface EntitySidebarContentProps {
     entityType: GameEntity;
@@ -23,12 +20,12 @@ export default function EntitySidebarContent({
 }: EntitySidebarContentProps) {
 
     const [sidebarState, setSidebarState] = useRecoilState(sidebarAtom);
-    const {searchInputs, sort} = sidebarState;
+    const {search, sort} = sidebarState[entityType];
 
     const entities = useSelector( (state:RootState) => Object.values(state.entities[entityType]) )
 
-    const filtered = filterEntities(entities, searchInputs[entityType].name);
-    const sorted = sortEntities(filtered, {dir: sort[entityType].dir})
+    const filtered = filterEntities(entities, search);
+    const sorted = sortEntities(filtered, {dir: sort.dir})
     const components = sorted
     .map( (entity:any) =>
             <SidebarBodyRow 

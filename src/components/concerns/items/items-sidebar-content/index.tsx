@@ -14,12 +14,14 @@ import { bulkEnumToInt } from '@/utils/items.util';
 export default function ItemsSidebarContent() {
 
     const [sidebarState, setSidebarState] = useRecoilState(sidebarAtom);
-    const {field, dir} = sidebarState.sort.items;
+    const {search, sort, filters} = sidebarState.items;
+    const {field, dir} = sort;
+    const {kind, bulk, bulkDir, rarity, magic} = filters;
 
     const items = useSelector( (state:RootState) => state.entities.items);
 
     const filtered = Object.values(items).filter( (item) => {
-        const {kind, bulk, bulkDir, rarity, magic} = sidebarState.filters.items;
+        const nameMatch = item.name.toLowerCase().startsWith( search.toLowerCase() );
         const kindMatch = kind ? kind === item.kind : true;
         const rarityMatch = rarity ? rarity === item.rarity : true;
         const magicMatch = magic ? magic === item.magic.toString() : true;
@@ -35,7 +37,7 @@ export default function ItemsSidebarContent() {
                 bulkMatch = itemBulkNum < filterBulkNum;
             }
         }
-        return kindMatch && rarityMatch && magicMatch && bulkMatch;
+        return nameMatch && kindMatch && rarityMatch && magicMatch && bulkMatch;
     });
 
     const sorted = sortEntities(filtered, {

@@ -16,17 +16,18 @@ export default function SidebarControls({
 
     const [sidebarState, setSidebarState] = useRecoilState(sidebarAtom);
     const {filterOpen} = sidebarState.UI;
-    const {selectedTab, searchInputs} = sidebarState;
+    const {selectedTab} = sidebarState;
+    const search = sidebarState[selectedTab].search;
 
     const handleNameInput = (e) => {
         const newState = merge({}, sidebarState);
-        newState.searchInputs[selectedTab].name = e.target.value;
+        newState[selectedTab].search = e.target.value;
         setSidebarState(newState);
     }
 
     const handleClearNameInput = () => {
         const newState = merge({}, sidebarState);
-        newState.searchInputs[selectedTab].name = '';
+        newState[selectedTab].search = '';
         setSidebarState(newState);
     }
 
@@ -56,7 +57,7 @@ export default function SidebarControls({
         <S.Root {...props}>
             <S.Bottom>
                 <Search
-                    value={searchInputs[selectedTab].name}
+                    value={search}
                     onChange={handleNameInput}
                     handleClearSearch={handleClearNameInput}
                 />

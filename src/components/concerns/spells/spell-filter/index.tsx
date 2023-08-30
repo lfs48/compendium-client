@@ -1,6 +1,4 @@
 import { sidebarAtom } from '@/recoil';
-import { RootState } from '@/types';
-import { useSelector } from 'react-redux';
 import { useRecoilState } from 'recoil';
 import * as S from './styled';
 import { merge } from 'lodash';
@@ -15,10 +13,11 @@ export default function SpellsFilter({
 }: SpellsFilterProps) {
 
     const [sidebarState, setSidebarState] = useRecoilState(sidebarAtom);
+    const {filters} = sidebarState.spells
 
-    const handleSelect = (e) => {
+    const handleSelect = (field) => (e) => {
         const newState = merge({}, sidebarState);
-        newState.searchInputs.spells.dndClass = e.target.value || undefined;
+        newState.spells.filters[field] = e.target.value || undefined;
         setSidebarState(newState);
     }
 
@@ -26,9 +25,9 @@ export default function SpellsFilter({
         <S.Root {...props}>
             <EntitySelect
                 label='Class'
-                value={sidebarState.searchInputs.spells.dndClass}
+                value={filters.description}
                 entityType='dndClasses'
-                onChange={handleSelect}
+                onChange={handleSelect('description')}
                 allowNoneSelection
             />
         </S.Root>

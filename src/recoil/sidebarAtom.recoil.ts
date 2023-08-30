@@ -10,61 +10,58 @@ export const sidebarAtom = atom({
             sidebarOpen: true,
             filterOpen: false
         },
-        searchInputs: {
-            dndClasses: {
-                name: ''
-            },
-            features: {
-                name: ''
-            },
-            races: {
-                name: ''
-            },
-            spells: {
-                name: '',
-                description: '',
-                dndClass: undefined as undefined | string
-            },
-            items: {
-                name: ''
+        dndClasses: {
+            search: '',
+            sort: {
+                field: 'name',
+                dir: 1
             }
         },
-        filters: {
-            features: {
+        features: {
+            search: 'name',
+            sort: {
+                field: 'name',
+                dir: 1
+            },
+            filters: {
                 sourceType: '',
                 source: '',
                 kind: '',
                 levelDir: '>',
                 level: undefined as undefined | number
+            }
+        },
+        races: {
+            search: 'name',
+            sort: {
+                field: 'name',
+                dir: 1
+            }
+        },
+        spells:  {
+            search: 'name',
+            sort: {
+                field: 'name',
+                dir: 1
             },
-            items: {
+            filters: {
+                rank: undefined as undefined | number,
+                dndClass: undefined as undefined | string,
+                description: ''
+            }
+        },
+        items: {
+            search: 'name',
+            sort: {
+                field: 'name',
+                dir: 1
+            },
+            filters: {
                 magic: undefined as undefined | string,
                 rarity: undefined as undefined | ItemRarity,
                 kind: undefined as undefined | ItemKind,
                 bulkDir: '>',
                 bulk: undefined as undefined | ItemBulk
-            }
-        },
-        sort: {
-            dndClasses: {
-                field: 'name',
-                dir: 1
-            },
-            features: {
-                field: 'name',
-                dir: 1
-            },
-            races: {
-                field: 'name',
-                dir: 1
-            },
-            spells: {
-                field: 'name',
-                dir: 1
-            },
-            items: {
-                field: 'name',
-                dir: 1
             }
         }
     },

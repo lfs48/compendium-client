@@ -21,14 +21,14 @@ export default function SpellsSidebarContent({
 }: SpellsSidebarContentProps) {
 
     const [sidebarState, setSidebarState] = useRecoilState(sidebarAtom);
-    const { searchInputs, sort } = sidebarState;
-    const { dir } = sort.spells;
+    const { search, sort, filters } = sidebarState.spells;
+    const { field, dir } = sort
 
     const {spells} = useSelector( (state:RootState) => ({
         spells: Object.values(state.entities.spells)
     }));
 
-    const filtered = filterSpells(spells, searchInputs.spells.name, searchInputs.spells.dndClass);
+    const filtered = filterSpells(spells, search, filters.dndClass);
     const sorted = sortEntities(filtered);
     const components = sorted
     .map( (spell) => {

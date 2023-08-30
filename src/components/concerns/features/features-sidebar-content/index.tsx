@@ -15,15 +15,18 @@ import { spaceship } from '@/utils/functions.utils';
 export default function FeaturesSidebarContent() {
 
     const [sidebarState, setSidebarState] = useRecoilState(sidebarAtom);
-    const {field, dir} = sidebarState.sort.features;
+    const {search, sort, filters} = sidebarState.features;
+    const {field, dir} = sort;
+    const {sourceType, source, kind, levelDir, level} = filters;
 
     const {features, entities} = useSelector( (state:RootState) => ({
         features: state.entities.features,
         entities: state.entities
     }));
 
-    const filtered = Object.values(features).filter( (feature) => {
-        const {sourceType, source, kind, levelDir, level} = sidebarState.filters.features;
+    const filtered = Object.values(features)
+    .filter( (feature) => {
+        const nameMatch = feature.name.toLowerCase().startsWith( search.toLowerCase() );
         let kindMatch = true;
         if (kind) {
             kindMatch = feature.kind === kind;
@@ -50,7 +53,7 @@ export default function FeaturesSidebarContent() {
                 return false;
             }
         }
-        return kindMatch && sourceTypeMatch && sourceMatch && levelMatch;
+        return nameMatch && kindMatch && sourceTypeMatch && sourceMatch && levelMatch;
     });
 
     let sorted = filtered;

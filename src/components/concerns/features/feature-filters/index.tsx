@@ -17,10 +17,11 @@ export default function FeatureFilters({
 }:FeatureFiltersProps) {
 
     const [sidebarState, setSidebarState] = useRecoilState(sidebarAtom);
+    const {filters} = sidebarState.features;
 
     const handleSelect = (field) => (e) => {
         const newState = merge({}, sidebarState);
-        newState.filters.features[field] = e.target.value || undefined;
+        newState.features.filters[field] = e.target.value || undefined;
         setSidebarState(newState);
     }
 
@@ -28,7 +29,7 @@ export default function FeatureFilters({
         <S.Root {...props}>
             <Select
                 label='Type'
-                value={sidebarState.filters.features.kind}
+                value={filters.kind}
                 options={[
                     {label: 'Core', value: 'core'},
                     {label: 'Feat', value: 'major'},
@@ -41,13 +42,13 @@ export default function FeatureFilters({
                 <Label>Level</Label>
                 <S.SelectsLine>
                     <Select
-                        value={sidebarState.filters.features.levelDir}
+                        value={filters.levelDir}
                         options={['=', '>', '<']}
                         onChange={handleSelect('levelDir')}
-                        disabled={!sidebarState.filters.features.level}
+                        disabled={!filters.level}
                     />
                     <Select
-                        value={sidebarState.filters.features.level}
+                        value={filters.level}
                         options={LEVEL_ARRAY}
                         onChange={handleSelect('level')}
                         allowNoneSelection
@@ -58,17 +59,17 @@ export default function FeatureFilters({
                 <Label>Source</Label>
                 <S.SelectsLine>
                     <Select
-                        value={sidebarState.filters.features.sourceType}
+                        value={filters.sourceType}
                         options={['DndClass', 'Race']}
                         onChange={handleSelect('sourceType')}
                         allowNoneSelection
                     />
                     <EntitySelect
-                        value={sidebarState.filters.features.source}
-                        entityType={apiSourceTypeToGameEntity(sidebarState.filters.features.sourceType)}
+                        value={filters.source}
+                        entityType={apiSourceTypeToGameEntity(filters.sourceType)}
                         onChange={handleSelect('source')}
                         allowNoneSelection
-                        disabled={!sidebarState.filters.features.sourceType}
+                        disabled={!filters.sourceType}
                     />
                 </S.SelectsLine>
             </div>

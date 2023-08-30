@@ -25,6 +25,7 @@ export default function SidebarTableHeader({
 
     const [sidebarState, setSidebarState] = useRecoilState(sidebarAtom);
     const { selectedTab } = sidebarState;
+    const {sort} = sidebarState[selectedTab];
 
     const handleSortButton = (field:string) => {
         const newState = merge({}, sidebarState);
@@ -39,8 +40,8 @@ export default function SidebarTableHeader({
     }
 
     const headers = columns.map( ({label, field}) => {
-        const currentCol = sidebarState.sort[selectedTab].field;
-        const dir = sidebarState.sort[selectedTab].dir;
+        const currentCol = sort.field;
+        const dir = sort.dir;
         let icon = 'fas fa-';
         if (currentCol === field) {
             if (dir == 1) {
