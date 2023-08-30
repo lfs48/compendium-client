@@ -3,7 +3,7 @@ import { useGetAllFeaturesQuery } from '@/api/features.api';
 import Loading from '@atoms/loading';
 import SidebarControls from '@/components/concerns/sidebar/sidebar-controls';
 import SidebarTabSelect from '@/components/concerns/sidebar/sidebar-tab-select';
-import { RootState, GameEntity } from '@/types';
+import { RootState } from '@/types';
 import { useSelector } from 'react-redux';
 import * as S from './styled';
 import { useGetAllRacesQuery } from '@/api/races.api';
@@ -13,6 +13,7 @@ import SidebarContent from '@/components/concerns/sidebar/sidebar-content';
 import { useGetAllSpellsQuery } from '@/api/spells.api';
 import { useGetAllItemsQuery } from '@/api/items.api';
 import SidebarHide from './sidebar-hide';
+import { Entity } from '@/enums';
 
 export default function Sidebar() {
 
@@ -36,7 +37,7 @@ export default function Sidebar() {
     }))
 
     const tabSelectors = Object.keys(entities).map( (key) => {
-        const tab = key as GameEntity;
+        const tab = key as Entity;
         return(
             <SidebarTabSelect 
                 key={tab}

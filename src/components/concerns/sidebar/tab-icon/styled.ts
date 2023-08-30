@@ -1,9 +1,9 @@
-import { GameEntity } from '@/types';
+import { Entity } from '@/enums';
 import { entityIcon } from '@/utils/entities.utils';
 import tw from 'tailwind-styled-components';
 
 type RootProps = {
-    $tab: GameEntity;
+    $tab: Entity
     $selected?: boolean;
 }
 

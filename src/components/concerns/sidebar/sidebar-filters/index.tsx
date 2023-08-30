@@ -1,4 +1,3 @@
-import { GameEntity } from '@/types';
 import * as S from './styled';
 import SpellsSidebarHeader from '../../spells/spell-filter';
 import FeatureFilters from '../../features/feature-filters';
@@ -8,9 +7,10 @@ import { useRecoilState } from 'recoil';
 import { sidebarAtom } from '@/recoil';
 import { merge } from 'lodash';
 import Close from '@/components/UI/atoms/close';
+import { Entity } from '@/enums';
 
 interface SidebarFilterProps {
-    tab: GameEntity;
+    tab: Entity;
     [prop:string]: any;
 }
 

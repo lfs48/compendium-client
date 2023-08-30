@@ -1,11 +1,10 @@
-import { ItemBulk, ItemKind, ItemRarity } from "@/enums";
-import { GameEntity } from "@/types";
+import { APIEntity, Entity, ItemBulk, ItemKind, ItemRarity } from "@/enums";
 import { atom } from "recoil";
 
 export const sidebarAtom = atom({
     key: 'sidebarState',
     default: {
-        selectedTab: 'dndClasses' as GameEntity,
+        selectedTab: Entity.dndClasses,
         UI: {
             sidebarOpen: true,
             filterOpen: false
@@ -24,7 +23,7 @@ export const sidebarAtom = atom({
                 dir: 1
             },
             filters: {
-                sourceType: '',
+                sourceType: undefined as undefined | APIEntity,
                 source: '',
                 kind: '',
                 levelDir: '>',

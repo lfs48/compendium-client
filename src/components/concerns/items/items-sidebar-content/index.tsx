@@ -6,7 +6,7 @@ import { sidebarAtom } from '@/recoil';
 import SidebarBodyRow from '../../sidebar/sidebar-body-row';
 import SidebarCell from '../../sidebar/sidebar-cell';
 import SidebarTableHeader from '../../sidebar/sidebar-table-header';
-import { apiSourceTypeToGameEntity, sortEntities } from '@/utils/entities.utils';
+import { sortEntities } from '@/utils/entities.utils';
 import NoResults from '@/components/UI/atoms/no-results';
 import SidebarTable from '../../sidebar/sidebar-table';
 import { bulkEnumToInt } from '@/utils/items.util';

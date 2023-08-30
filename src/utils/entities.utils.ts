@@ -1,57 +1,67 @@
-import { GameEntity } from "@/types";
 import { isInFavorites } from "./favorites.utils";
 import { spaceship } from "./functions.utils";
 import { capitalize } from 'lodash';
+import { APIEntity, Entity } from "@/enums";
 
-export function entityFormPath(entityType: GameEntity) {
+export function entityFormPath(entityType: Entity) {
     switch(entityType) {
-        case('dndClasses'):
+        case(Entity.dndClasses):
             return 'classes'
         default:
-            return entityType;
+            return entityType.toLowerCase();
     }
 }
 
-export function apiSourceTypeToGameEntity(sourceType:string) {
-    switch(sourceType) {
-        case('DndClass'):
-            return 'dndClasses' as GameEntity;
-        case('Race'):
-            return 'races' as GameEntity;
-    }
-}
-
-export function gameEntityToApiSourceType(entityType:GameEntity) {
+export function apiEntityToClientEntity(entityType:APIEntity) {
     switch(entityType) {
-        case('dndClasses'):
-            return 'DndClass';
-        case('races'):
-            return 'Race';
-        default:
-            return '';
+        case(APIEntity.DndClass):
+            return Entity.dndClasses;
+        case(APIEntity.Race):
+            return Entity.races;
+        case(APIEntity.Feature):
+            return Entity.features;
+        case(APIEntity.Spell):
+            return Entity.spells;
+        case(APIEntity.Item):
+            return Entity.items;
     }
 }
 
-export function entityIcon(entity:GameEntity) {
+export function clientEntityToAPIEntity(entityType:Entity) {
+    switch(entityType) {
+        case(Entity.dndClasses):
+            return APIEntity.DndClass;
+        case(Entity.features):
+            return APIEntity.Feature;
+        case(Entity.items):
+            return APIEntity.Item;
+        case(Entity.races):
+            return APIEntity.Race;
+        case(Entity.spells):
+            return APIEntity.Spell;
+    }
+}
+
+export function entityIcon(entity:Entity) {
     switch(entity) {
-        case('dndClasses'):
+        case(Entity.dndClasses):
             return 'fas fa-swords';
-        case('features'):
+        case(Entity.features):
             return 'fas fa-award';
-        case('races'):
+        case(Entity.races):
             return 'fas fa-child';
-        case('spells'):
+        case(Entity.spells):
             return 'fas fa-meteor';
-        case('items'):
+        case(Entity.items):
             return 'fas fa-flask-potion';
         default:
             return '';
     }
 }
 
-export function entityName(entity:GameEntity) {
+export function entityName(entity:Entity) {
     switch(entity) {
-        case('dndClasses'):
+        case(Entity.dndClasses):
             return 'Classes';
         default:
             return capitalize(entity);

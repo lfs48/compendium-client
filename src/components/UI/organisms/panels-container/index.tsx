@@ -1,5 +1,5 @@
 import Panel from '@molecules/panel';
-import { GameEntity, RootState } from '@/types';
+import { RootState } from '@/types';
 import { useSelector } from 'react-redux';
 import Markdown from '@molecules/markdown';
 import ClassPanelContent from '@/components/concerns/classes/class-panel-content';
@@ -9,6 +9,7 @@ import FeaturePanelContent from '@/components/concerns/features/feature-panel-co
 import RacePanelContent from '@/components/concerns/races/race-panel-content';
 import SpellPanelContent from '@/components/concerns/spells/spell-panel-content';
 import ItemPanelContent from '@/components/concerns/items/item-panel-content';
+import { Entity } from '@/enums';
 
 const PanelsContainer = React.memo( function PanelsContainer() {
 
@@ -44,8 +45,7 @@ const PanelsContainer = React.memo( function PanelsContainer() {
                     <Panel
                         key={panel.id} 
                         title={entity.name}
-                        data={entity as any}
-                        dataType={panel.panelType}
+                        entity={entity as any}
                         onMouseDown={()=>handleSelectPanel(i)}
                     >
                         {panelContentComponent(panel.panelType, entity)}
@@ -60,7 +60,7 @@ const PanelsContainer = React.memo( function PanelsContainer() {
 
 export default PanelsContainer;
 
-function panelContentComponent(panelType:GameEntity, entity:any) {
+function panelContentComponent(panelType:Entity, entity:any) {
     switch(panelType) {
         case('dndClasses'):
             return <ClassPanelContent dndClass={entity} />

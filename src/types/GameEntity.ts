@@ -1,1 +1,0 @@
-export type GameEntity = 'dndClasses' | 'features' | 'races' | 'spells' | 'items';

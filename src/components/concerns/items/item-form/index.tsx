@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Item, GameEntity, RootState } from '@/types';
+import { Item, RootState } from '@/types';
 import * as S from './styled';
 import { handleInput, toggleInput } from '@/utils/component.utils';
 import Select from '@molecules/select';
@@ -9,8 +9,6 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { usePatchItemMutation, usePostItemMutation } from '@/api/items.api';
 import { ItemBulk, ItemKind, ItemRarity } from '@/enums';
 import Checkbox from '@/components/UI/atoms/checkbox';
-import { merge } from 'lodash';
-import Field from '@/components/UI/molecules/field';
 
 const initialInputs = {
     id: '',

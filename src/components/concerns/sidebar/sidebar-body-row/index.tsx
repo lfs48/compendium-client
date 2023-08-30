@@ -1,14 +1,15 @@
 import { openPanel } from '@/reducers/UI/panels.reducer';
-import { GameEntity, RootState } from '@/types';
+import { RootState } from '@/types';
 import { MAX_PANELS } from '@/utils/constants.utils';
 import { handleToggleFavorite, isInFavorites } from '@/utils/favorites.utils';
 import { ReactNode, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as S from './styled';
+import { Entity } from '@/enums';
 
 interface SidebarBodyRowProps {
     id: string;
-    contentType: GameEntity;
+    contentType: Entity;
     children: ReactNode;
     [prop: string]: any;
 }

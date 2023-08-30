@@ -1,5 +1,5 @@
 import { sidebarAtom } from '@/recoil';
-import { GameEntity, RootState } from '@/types';
+import { RootState } from '@/types';
 import { useSelector } from 'react-redux';
 import { useRecoilState } from 'recoil';
 import { filterEntities, sortEntities } from '@/utils/entities.utils';
@@ -8,9 +8,10 @@ import SidebarCell from '@/components/concerns/sidebar/sidebar-cell';
 import SidebarTable from '@/components/concerns/sidebar/sidebar-table';
 import SidebarTableHeader from '@/components/concerns/sidebar/sidebar-table-header';
 import NoResults from '@atoms/no-results';
+import { Entity } from '@/enums';
 
 interface EntitySidebarContentProps {
-    entityType: GameEntity;
+    entityType: Entity;
     [prop: string]: any;
 }
 

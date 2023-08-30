@@ -1,11 +1,11 @@
 import * as S from './styled';
 import { useDispatch } from 'react-redux';
 import { openPanel } from '@/reducers/UI/panels.reducer';
-import { GameEntity } from '@/types';
+import { Entity } from '@/enums';
 
 interface EntityLinkProps {
     id: string;
-    entityType: GameEntity;
+    entityType: Entity;
     inline?: boolean;
     [prop: string]: any;
 }

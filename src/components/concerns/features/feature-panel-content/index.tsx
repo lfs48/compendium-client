@@ -9,7 +9,6 @@ import { useNavigate } from 'react-router-dom';
 import { useDeleteFeatureMutation } from '@/api/features.api';
 import FeatureSources from '@/components/concerns/features/feature-sources';
 import { useSelector } from 'react-redux';
-import { apiSourceTypeToGameEntity } from '@/utils/entities.utils';
 import FeatureTagline from '../feature-tagline';
 
 interface FeaturePanelContentProps {

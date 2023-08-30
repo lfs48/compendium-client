@@ -1,8 +1,8 @@
-import { GameEntity } from '@/types';
+import { Entity } from '@/enums';
 import * as S from './styled';
 
 interface TabIconProps {
-    tab: GameEntity;
+    tab: Entity;
     selected: boolean;
     [prop: string]: any;
 }

@@ -1,5 +1,3 @@
-import { GameEntity } from "@/types";
-
 export function isInFavorites(id:string) {
     const favorites =  JSON.parse( localStorage.getItem('favorites') || '{}');
     return id in favorites;

@@ -4,9 +4,10 @@ import * as S from './styled';
 import { merge } from 'lodash';
 import { EntitySelect } from '../../entities/entity-select';
 import Select from '@/components/UI/molecules/select';
-import { apiSourceTypeToGameEntity } from '@/utils/entities.utils';
 import { LEVEL_ARRAY } from '@/utils/constants.utils';
 import Label from '@/components/UI/atoms/label';
+import { APIEntity } from '@/enums';
+import { apiEntityToClientEntity } from '@/utils/entities.utils';
 
 interface FeatureFiltersProps {
     [prop: string]: any;
@@ -60,13 +61,13 @@ export default function FeatureFilters({
                 <S.SelectsLine>
                     <Select
                         value={filters.sourceType}
-                        options={['DndClass', 'Race']}
+                        options={[APIEntity.DndClass, APIEntity.Race]}
                         onChange={handleSelect('sourceType')}
                         allowNoneSelection
                     />
                     <EntitySelect
                         value={filters.source}
-                        entityType={apiSourceTypeToGameEntity(filters.sourceType)}
+                        entityType={filters.sourceType ? apiEntityToClientEntity(filters.sourceType) : undefined}
                         onChange={handleSelect('source')}
                         allowNoneSelection
                         disabled={!filters.sourceType}

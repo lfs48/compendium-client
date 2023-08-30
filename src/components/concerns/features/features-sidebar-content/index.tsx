@@ -6,11 +6,12 @@ import { sidebarAtom } from '@/recoil';
 import SidebarBodyRow from '../../sidebar/sidebar-body-row';
 import SidebarCell from '../../sidebar/sidebar-cell';
 import SidebarTableHeader from '../../sidebar/sidebar-table-header';
-import { apiSourceTypeToGameEntity, sortEntities } from '@/utils/entities.utils';
+import { apiEntityToClientEntity, sortEntities } from '@/utils/entities.utils';
 import NoResults from '@/components/UI/atoms/no-results';
 import SidebarTable from '../../sidebar/sidebar-table';
 import { apiFeatureKindToClientFeatureType } from '@/utils/features.utils';
 import { spaceship } from '@/utils/functions.utils';
+import { Entity } from '@/enums';
 
 export default function FeaturesSidebarContent() {
 
@@ -69,7 +70,7 @@ export default function FeaturesSidebarContent() {
                     sourceNames[i] = 'multiple';
                 } else if (sources.length === 1) {
                     const {id, source_type} = sources[0];
-                    const sourceType = apiSourceTypeToGameEntity(source_type);
+                    const sourceType = apiEntityToClientEntity(source_type);
                     if (sourceType && sourceType in entities) {
                         sourceNames[i] = entities[sourceType][id].name.toLowerCase();
                     }
@@ -89,7 +90,7 @@ export default function FeaturesSidebarContent() {
         let length = feature.sources.length;
         if (feature.sources && feature.sources.length >= 1) {
             const {source_type, id} = feature.sources[0];
-            const sourceType = apiSourceTypeToGameEntity(source_type);
+            const sourceType = apiEntityToClientEntity(source_type);
             if (length === 1 && sourceType && sourceType in entities) {
                 const {name} = entities[sourceType][id];
                 source = name;
@@ -101,7 +102,7 @@ export default function FeaturesSidebarContent() {
             <SidebarBodyRow
                 key={feature.id}
                 id={feature.id}
-                contentType='features'
+                contentType={Entity.features}
             >
                 <SidebarCell>{feature.name}</SidebarCell>
                 <SidebarCell>{apiFeatureKindToClientFeatureType(feature.kind)}</SidebarCell>

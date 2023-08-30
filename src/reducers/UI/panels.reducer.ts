@@ -1,11 +1,11 @@
-import { GameEntity } from "@/types";
+import { Entity } from "@/enums";
 import { MAX_LEVEL, MAX_PANELS } from "@/utils/constants.utils";
 import { createSlice } from "@reduxjs/toolkit";
 
 interface PanelSlice {
   [id: string]: {
     id: string;
-    panelType: GameEntity;
+    panelType: Entity;
   }
 }
 

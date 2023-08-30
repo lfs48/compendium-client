@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import * as S from './styled';
 import Resize from '@atoms/resize';
 import { useMousePos } from '@/hooks/useMouse.hook';
-import { GameEntity } from '@/types';
+import { Entity } from '@/enums';
 
 const handleDragStart = ({event, x, y, styleData, setStyleData, dragging, setDragging}) => {
     event.preventDefault();
@@ -49,20 +49,18 @@ const _handleDrag = ({x, y, styleData, setStyleData, dragging}) => {
 const handleDrag = throttle(_handleDrag, 10);
 
 interface PanelProps {
-    data: {
+    entity: {
         id: string;
         name: string;
         [other: string]: unknown;
     };
-    dataType: GameEntity;
     title: string;
     children: ReactNode;
     [prop: string]: any;
 }
 
 const Panel = React.memo( function({
-    data,
-    dataType,
+    entity,
     title,
     children,
     ...props
@@ -153,12 +151,12 @@ const Panel = React.memo( function({
             const action = {
                 type: closePanel.type,
                 payload: {
-                    id: data.id
+                    id: entity.id
                 }
             };
             dispatch(action);
         }, 450);
-    }, [data, styleData]);
+    }, [entity, styleData]);
 
     return(
         <S.Root

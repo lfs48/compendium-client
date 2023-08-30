@@ -1,14 +1,13 @@
 import TabIcon from '@/components/concerns/sidebar/tab-icon';
-import { GameEntity } from '@/types';
 import * as S from './styled';
 import { useRecoilState } from 'recoil';
 import { sidebarAtom } from '@/recoil';
 import { editState } from '@/utils/component.utils';
-import Tooltip from '@/components/UI/atoms/speech-bubble';
 import { entityName } from '@/utils/entities.utils';
+import { Entity } from '@/enums';
 
 interface SidebarTabSelectProps {
-    tab: GameEntity;
+    tab: Entity;
     [prop: string]: any;
 }
 

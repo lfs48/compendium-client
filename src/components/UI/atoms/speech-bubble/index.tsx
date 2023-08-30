@@ -1,5 +1,3 @@
-import { GameEntity } from '@/types';
-import { entityName } from '@/utils/entities.utils';
 import * as S from './styled';
 import { ReactNode } from 'react';
 

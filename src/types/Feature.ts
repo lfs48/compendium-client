@@ -1,3 +1,5 @@
+import { APIEntity } from "@/enums";
+
 export interface Feature {
     id: string;
     name: string;
@@ -10,7 +12,7 @@ export interface Feature {
 
 interface Source {
     id: string;
-    source_type: string;
+    source_type: APIEntity;
 }
 
 export interface PostFeature {

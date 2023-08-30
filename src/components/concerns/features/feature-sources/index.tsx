@@ -1,6 +1,6 @@
 import EntityLink from '@/components/concerns/entities/entity-link';
-import { Feature, GameEntity, RootState } from '@/types';
-import { apiSourceTypeToGameEntity } from '@/utils/entities.utils';
+import { Feature, RootState } from '@/types';
+import { apiEntityToClientEntity } from '@/utils/entities.utils';
 import { useSelector } from 'react-redux';
 import * as S from './styled';
 
@@ -18,7 +18,7 @@ export default function FeatureSources({
 
     const sources = feature.sources
     .map( ({id, source_type}) => {
-        const entityType = apiSourceTypeToGameEntity(source_type);
+        const entityType = apiEntityToClientEntity(source_type);
         if (entityType && entityType in entities && id in entities[entityType]) {
             const {name} = entities[entityType][id];
             return(

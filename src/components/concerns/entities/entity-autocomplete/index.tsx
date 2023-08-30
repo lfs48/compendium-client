@@ -1,13 +1,14 @@
 import Dropdown from '@atoms/dropdown';
-import { GameEntity, RootState } from '@/types';
+import { RootState } from '@/types';
 import { useCallback, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import Field from '../../../UI/molecules/field';
 import * as S from './styled';
+import { Entity } from '@/enums';
 
 interface EntityAutocompleteProps {
     label?: string;
-    entityType: GameEntity;
+    entityType: Entity;
     handleSelect: (id: string) => void;
     [prop: string]: any;
 }

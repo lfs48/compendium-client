@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Feature, GameEntity, RootState } from '@/types';
+import { Feature, RootState } from '@/types';
 import * as S from './styled';
 import { handleInput } from '@/utils/component.utils';
 import Select from '@molecules/select';
@@ -9,8 +9,9 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { usePatchFeatureMutation, usePostFeatureMutation } from '@/api/features.api';
 import { LEVEL_ARRAY } from '@/utils/constants.utils';
 import EntityAutocomplete from '../../entities/entity-autocomplete';
-import { apiSourceTypeToGameEntity, gameEntityToApiSourceType } from '@/utils/entities.utils';
 import { merge } from 'lodash';
+import { Entity } from '@/enums';
+import { apiEntityToClientEntity, clientEntityToAPIEntity } from '@/utils/entities.utils';
 
 const initialInputs = {
     id: '',
@@ -23,7 +24,7 @@ const initialInputs = {
 }
 
 const initialSourceInputs = {
-    sourceType: 'dndClasses' as GameEntity,
+    sourceType: Entity.dndClasses,
     id: ''
 }
 
@@ -118,7 +119,7 @@ export default function FeatureForm({
     const addSource = (id:string) => {
         const newState = merge({},inputs);
         newState.sources.push({
-            source_type: gameEntityToApiSourceType(sourceInputs.sourceType),
+            source_type: clientEntityToAPIEntity(sourceInputs.sourceType),
             id: id
         });
         setInputs(newState);
@@ -133,7 +134,7 @@ export default function FeatureForm({
     }
 
     const sources = inputs.sources.map( (source) => {
-        const sourceType = apiSourceTypeToGameEntity(source.source_type);
+        const sourceType = apiEntityToClientEntity(source.source_type);
         if (!!sourceType && sourceType in entities) {
             const entity = entities[sourceType][source.id];
             return(
