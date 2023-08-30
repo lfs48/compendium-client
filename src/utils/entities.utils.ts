@@ -35,11 +35,11 @@ export function gameEntityToApiSourceType(entityType:GameEntity) {
 export function entityIcon(entity:GameEntity) {
     switch(entity) {
         case('dndClasses'):
-            return 'fas fa-helmet-battle';
+            return 'fas fa-swords';
         case('features'):
             return 'fas fa-award';
         case('races'):
-            return 'fas fa-head-side';
+            return 'fas fa-child';
         case('spells'):
             return 'fas fa-meteor';
         case('items'):
