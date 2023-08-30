@@ -18,7 +18,7 @@ export const sidebarAtom = atom({
             }
         },
         features: {
-            search: 'name',
+            search: '',
             sort: {
                 field: 'name',
                 dir: 1
@@ -32,14 +32,14 @@ export const sidebarAtom = atom({
             }
         },
         races: {
-            search: 'name',
+            search: '',
             sort: {
                 field: 'name',
                 dir: 1
             }
         },
         spells:  {
-            search: 'name',
+            search: '',
             sort: {
                 field: 'name',
                 dir: 1
@@ -51,7 +51,7 @@ export const sidebarAtom = atom({
             }
         },
         items: {
-            search: 'name',
+            search: '',
             sort: {
                 field: 'name',
                 dir: 1
