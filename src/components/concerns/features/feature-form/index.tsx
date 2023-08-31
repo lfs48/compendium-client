@@ -10,7 +10,7 @@ import { usePatchFeatureMutation, usePostFeatureMutation } from '@/api/features.
 import { LEVEL_ARRAY } from '@/utils/constants.utils';
 import EntityAutocomplete from '../../entities/entity-autocomplete';
 import { merge } from 'lodash';
-import { Entity } from '@/enums';
+import { Entity, FeatureKind } from '@/enums';
 import { apiEntityToClientEntity, clientEntityToAPIEntity } from '@/utils/entities.utils';
 
 const initialInputs = {
@@ -18,7 +18,7 @@ const initialInputs = {
     name: '',
     description: '',
     level: undefined,
-    kind: 'core' as 'core'|'major'|'minor',
+    kind: FeatureKind.Core,
     prereq: '',
     sources: []
 }
@@ -164,7 +164,7 @@ export default function FeatureForm({
                     <Select
                         label='Kind'
                         value={inputs.kind}
-                        options={['core','major','minor']}
+                        options={Object.values(FeatureKind)}
                         onChange={e => handleInput(e, 'kind', inputs, setInputs, e.target.value || undefined)}
                     />
                     <Select

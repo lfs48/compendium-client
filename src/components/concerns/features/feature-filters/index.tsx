@@ -6,7 +6,7 @@ import { EntitySelect } from '../../entities/entity-select';
 import Select from '@/components/UI/molecules/select';
 import { LEVEL_ARRAY } from '@/utils/constants.utils';
 import Label from '@/components/UI/atoms/label';
-import { APIEntity } from '@/enums';
+import { APIEntity, FeatureKind } from '@/enums';
 import { apiEntityToClientEntity } from '@/utils/entities.utils';
 
 interface FeatureFiltersProps {
@@ -32,9 +32,9 @@ export default function FeatureFilters({
                 label='Type'
                 value={filters.kind}
                 options={[
-                    {label: 'Core', value: 'core'},
-                    {label: 'Feat', value: 'major'},
-                    {label: 'Boon', value: 'minor'}
+                    {label: 'Core', value: FeatureKind.Core},
+                    {label: 'Feat', value: FeatureKind.Major},
+                    {label: 'Boon', value: FeatureKind.Minor}
                 ]}
                 onChange={handleSelect('kind')}
                 allowNoneSelection

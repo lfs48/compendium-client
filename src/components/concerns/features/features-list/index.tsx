@@ -5,10 +5,11 @@ import Markdown from '@molecules/markdown';
 import * as S from './styled';
 import { intToOrdinal } from '@/utils/functions.utils';
 import { sortEntities } from '@/utils/entities.utils';
+import { FeatureKind } from '@/enums';
 
 interface FeatureListProps {
     featureIDs: string[];
-    kind?: 'core' | 'major' | 'minor';
+    kind?: FeatureKind;
     sort?: string;
     [prop: string]: any;
 }

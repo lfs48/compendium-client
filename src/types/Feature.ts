@@ -1,4 +1,4 @@
-import { APIEntity } from "@/enums";
+import { APIEntity, FeatureKind } from "@/enums";
 
 export interface Feature {
     id: string;
@@ -6,7 +6,7 @@ export interface Feature {
     description: string;
     level?: number;
     prereq?: string;
-    kind: 'core' | 'major' | 'minor';
+    kind: FeatureKind;
     sources: Source[];
 }
 
@@ -22,7 +22,7 @@ export interface PostFeature {
         description: string;
         level?: number;
         prereq?: string;
-        kind: 'core' | 'major' | 'minor';
+        kind: FeatureKind;
     }
 }
 
@@ -33,6 +33,6 @@ export interface PatchFeature {
         description?: string;
         level?: number;
         prereq?: string;
-        kind?: 'core' | 'major' | 'minor';
+        kind?: FeatureKind;
     }
 }

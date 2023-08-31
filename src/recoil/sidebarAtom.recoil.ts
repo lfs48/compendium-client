@@ -1,4 +1,4 @@
-import { APIEntity, Entity, ItemBulk, ItemKind, ItemRarity } from "@/enums";
+import { APIEntity, Entity, FeatureKind, ItemBulk, ItemKind, ItemRarity } from "@/enums";
 import { atom } from "recoil";
 
 export const sidebarAtom = atom({
@@ -25,7 +25,7 @@ export const sidebarAtom = atom({
             filters: {
                 sourceType: undefined as undefined | APIEntity,
                 source: '',
-                kind: '',
+                kind: undefined as undefined | FeatureKind,
                 levelDir: '>',
                 level: undefined as undefined | number
             }

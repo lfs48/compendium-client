@@ -14,6 +14,7 @@ import Dialog from '@molecules/dialog';
 import { useDeleteClassMutation } from '@/api/dndclasses.api';
 import Loading from '@atoms/loading';
 import { useNavigate } from 'react-router-dom';
+import { FeatureKind } from '@/enums';
 
 interface ClassPanelContentProps {
     dndClass: DndClass;
@@ -78,7 +79,7 @@ const ClassPanelContent = React.memo(function ClassPanelContent({
                 />
                 <ClassFeatures
                     featureIDs={dndClass.features}
-                    kind='core'
+                    kind={FeatureKind.Core}
                     sort='level'
                 />
             </S.Root>

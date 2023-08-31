@@ -3,6 +3,7 @@ import * as S from './styled';
 import { useSelector } from 'react-redux';
 import { apiFeatureKindToClientFeatureType } from '@/utils/features.utils';
 import { apiEntityToClientEntity } from '@/utils/entities.utils';
+import { FeatureKind } from '@/enums';
 
 interface FeatureTaglineProps {
     feature: Feature;
@@ -31,7 +32,7 @@ export default function FeatureTagline({
         str += `General `;
     }
 
-    if (feature.kind === 'core') {
+    if (feature.kind === FeatureKind.Core) {
         str += ' Feature'
     } else {
         str += apiFeatureKindToClientFeatureType(feature.kind);
