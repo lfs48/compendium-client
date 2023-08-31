@@ -2,7 +2,6 @@ import * as S from './styled';
 import SpellsSidebarHeader from '../../spells/spell-filter';
 import FeatureFilters from '../../features/feature-filters';
 import ItemFilters from '../../items/item-filters';
-import ClickableIcon from '@/components/UI/atoms/clickable-icon';
 import { useRecoilState } from 'recoil';
 import { sidebarAtom } from '@/recoil';
 import { merge } from 'lodash';

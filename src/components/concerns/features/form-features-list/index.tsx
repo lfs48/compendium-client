@@ -2,6 +2,7 @@ import ClickableIcon from '@/components/UI/atoms/clickable-icon';
 import { RootState } from '@/types';
 import { useSelector } from 'react-redux';
 import * as S from './styled';
+import { Icon } from '@/enums';
 
 interface FormFeatureListProps {
     featureIds: string[];
@@ -21,7 +22,7 @@ export default function FormFeatureList({
             <S.Line key={feature.id}>
                 <span>{feature.name}</span>
                 <ClickableIcon 
-                    icon='x'
+                    icon={Icon.X}
                     onClick={() => handleRemove(feature.id)}
                 />
             </S.Line>

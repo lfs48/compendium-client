@@ -4,6 +4,7 @@ import Field from '../../../UI/molecules/field';
 import { handleInput } from '@/utils/component.utils';
 import Label from '@atoms/label';
 import ClickableIcon from '@atoms/clickable-icon';
+import { Icon } from '@/enums';
 
 interface ClassFormEquipmentProps {
     equipment: string[];
@@ -55,7 +56,7 @@ export default function ClassFormEquipment({
                             <S.LineContent>
                                 <span>{line}</span>
                                 <ClickableIcon 
-                                    icon='x'
+                                    icon={Icon.X}
                                     onClick={() => handleRemoveLine(i)} 
                                 />
                             </S.LineContent>
@@ -74,7 +75,7 @@ export default function ClassFormEquipment({
                     />
                     <S.AddingControls>
                         <ClickableIcon
-                            icon='check'
+                            icon={Icon.Check}
                             disabled={!addEnabled}
                             onClick={_handleAddLine} 
                         />

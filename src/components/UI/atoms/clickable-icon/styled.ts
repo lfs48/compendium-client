@@ -1,4 +1,4 @@
-import { Icon } from '@/types';
+import { Icon } from '@/enums';
 import tw from 'tailwind-styled-components';
 
 type RootProps = {
@@ -24,7 +24,7 @@ export const Root = tw.i<RootProps>`
 
 function iconClasses(icon:Icon) {
     switch(icon) {
-        case('x'):
+        case(Icon.X):
             return `fas fa-${icon}`;
         default:
             return `far fa-${icon}`
@@ -33,10 +33,10 @@ function iconClasses(icon:Icon) {
 
 function colorClasses(icon) {
     switch(icon) {
-        case('check'):
-        case('plus'):
+        case(Icon.Check):
+        case(Icon.Plus):
             return 'text-green-500';
-        case('x'):
+        case(Icon.X):
             return 'text-red-500';
         default:
             return '';

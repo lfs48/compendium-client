@@ -1,4 +1,4 @@
-import { Icon } from '@/types';
+import { Icon } from '@/enums';
 import * as S from './styled';
 
 interface ClickableIconProps {
