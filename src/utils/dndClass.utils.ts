@@ -1,4 +1,5 @@
-import { DndClass, Feature, Spellcasting } from "@/types";
+import { Spellcasting } from "@/enums";
+import { DndClass, Feature } from "@/types";
 import { merge } from 'lodash';
 
 export function sortFeatures(dndClass:DndClass) {
@@ -23,7 +24,7 @@ export const getLevelProficiency = (level:number) => {
   
 export function getSpellSlots(spellcasting:Spellcasting) {
   switch(spellcasting) {
-    case('full'): 
+    case(Spellcasting.Full): 
       return [
         [4, 0, 0, 0],
         [5, 0, 0, 0],
@@ -38,7 +39,7 @@ export function getSpellSlots(spellcasting:Spellcasting) {
         [6, 5, 4, 2],
         [6, 5, 4, 3]
       ];
-    case('half'): 
+    case(Spellcasting.Half): 
       return [
         [4, 0, 0, 0],
         [4, 0, 0, 0],
@@ -53,7 +54,7 @@ export function getSpellSlots(spellcasting:Spellcasting) {
         [4, 3, 2, 0],
         [4, 3, 2, 0],
       ];
-    case('third'): 
+    case(Spellcasting.Third): 
         return [
           [0, 0, 0, 0],
           [2, 0, 0, 0],
@@ -75,4 +76,8 @@ export function getSpellSlots(spellcasting:Spellcasting) {
 
 export function hasFeature(dndClass:DndClass, id:string) {
   return !!dndClass.features.includes(id);
+}
+
+export function isSpellcaster(dndClass:DndClass) {
+  return dndClass.spellcasting !== Spellcasting.None;
 }

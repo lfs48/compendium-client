@@ -1,4 +1,4 @@
-import { getLevelProficiency, getSpellSlots } from '@/utils/dndClass.utils';
+import { getLevelProficiency, getSpellSlots, isSpellcaster } from '@/utils/dndClass.utils';
 import { DndClass, RootState } from '@/types';
 import * as S from './styled';
 import { intToOrdinal } from '@/utils/functions.utils';
@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux';
 import EntityLink from '@/components/concerns/entities/entity-link';
 import Table from '@atoms/table';
 import { LEVEL_ARRAY } from '@/utils/constants.utils';
+import { Entity } from '@/enums';
 
 interface ClassTableProps {
     dndClass: DndClass;
@@ -29,7 +30,7 @@ export default React.memo( function ClassTable({
         return <S.HeaderCell key={col}>{col}</S.HeaderCell>
     });
     let spellHeaders = [<></>];
-    if (dndClass.spellcasting !== "none") {
+    if ( isSpellcaster(dndClass) ) {
         spellHeaders = getSpellSlots(dndClass.spellcasting)[1].map( (_, i) => {
             return <S.HeaderCell key={i}>{intToOrdinal(i+1)}</S.HeaderCell>
         });
@@ -44,7 +45,7 @@ export default React.memo( function ClassTable({
                 <EntityLink 
                     key={id} 
                     id={id}
-                    entityType='features'
+                    entityType={Entity.features}
                 >
                     {feature?.name}
                 </EntityLink>
@@ -58,7 +59,7 @@ export default React.memo( function ClassTable({
             )
         });
         let spellCols = [<></>];
-        if (dndClass.spellcasting !== "none") {
+        if ( isSpellcaster(dndClass) ) {
             const levelSlots = getSpellSlots(dndClass.spellcasting)[i];
             spellCols = levelSlots.map( (slots, j) => {
                 return(

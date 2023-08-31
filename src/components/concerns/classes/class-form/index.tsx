@@ -2,7 +2,7 @@ import { SyntheticEvent, useEffect, useState } from 'react';
 import { merge } from 'lodash';
 import { useDispatch, useSelector } from 'react-redux';
 import Field from '@molecules/field';
-import { DndClass, RootState, Spellcasting } from '@/types';
+import { DndClass, RootState } from '@/types';
 import * as S from './styled';
 import { handleInput } from '@/utils/component.utils';
 import Select from '@molecules/select';
@@ -16,6 +16,7 @@ import { hasFeature } from '@/utils/dndClass.utils';
 import { useNavigate, useParams } from 'react-router-dom';
 import { LEVEL_ARRAY } from '@/utils/constants.utils';
 import EntityAutocomplete from '../../entities/entity-autocomplete';
+import { Entity, Spellcasting } from '@/enums';
 
 const initialInputs = {
     id: '',
@@ -27,7 +28,7 @@ const initialInputs = {
     armor: '',
     skills: '',
     tools: '',
-    spellcasting: 'none' as Spellcasting,
+    spellcasting: Spellcasting.None,
     equipment: [] as string[],
     table_cols: {},
     features: []
@@ -49,7 +50,6 @@ const initialErrors = {
 }
 
 const dieOptions = ['d6', 'd8', 'd10', 'd12'];
-const spellcastingOptions = ['none', 'full', 'half', 'third'];
 
 interface ClassFormProps {
     editing?: boolean;
@@ -232,7 +232,7 @@ export default function ClassForm({
                             <Select
                                 label='Spellcasting'
                                 value={inputs.spellcasting}
-                                options={spellcastingOptions}
+                                options={Object.values(Spellcasting)}
                                 onChange={e => handleInput(e, 'spellcasting', inputs, setInputs)}
                                 errors={errors.spellcasting}
                             />
@@ -261,7 +261,7 @@ export default function ClassForm({
                             <div>
                                 <EntityAutocomplete
                                     label='Add Feature'
-                                    entityType='features'
+                                    entityType={Entity.features}
                                     handleSelect={handleAddFeature}
                                 />
                             </div>

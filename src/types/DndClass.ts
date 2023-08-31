@@ -1,4 +1,4 @@
-import { Spellcasting } from "./Spellcasting";
+import { Spellcasting } from "@/enums";
 
 export interface DndClass {
     id: string;
