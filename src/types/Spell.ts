@@ -3,15 +3,12 @@ export interface Spell {
     name: string;
     description: string;
     rank: string;
-    verbal: boolean;
-    somatic: boolean;
-    material: boolean;
-    material_description?: string;
+    material?: string;
     concentration: boolean;
     duration: string;
     range: string;
     casting_time: string;
-    higher_level?: string;
+    upcast?: string[];
     dnd_class_ids: string[];
 }
 
@@ -21,15 +18,12 @@ export interface PostSpell {
         name: string;
         description: string;
         rank: string;
-        verbal: boolean;
-        somatic: boolean;
-        material: boolean;
-        material_description?: string;
+        material?: string;
         concentration: boolean;
         duration: string;
         range: string;
         casting_time: string;
-        higher_level?: string;
+        upcast?: string[];
         dnd_class_ids: string[];
     }
 }
@@ -40,15 +34,12 @@ export interface PatchSpell {
         name?: string;
         description?: string;
         rank?: string;
-        verbal?: boolean;
-        somatic?: boolean;
-        material?: boolean;
-        material_description?: string;
+        material?: string;
         concentration?: boolean;
         duration?: string;
         range?: string;
         casting_time?: string;
-        higher_level?: string;
-        dnd_class_ids?: string[];
+        upcast?: string[];
+        dnd_class_ids: string[];
     }
 }
