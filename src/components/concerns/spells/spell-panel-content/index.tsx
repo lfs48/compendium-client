@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import { Spell, RootState } from '@/types';
 import * as S from './styled';
-import Divider from '@atoms/divider';
 import PanelFooter from '@molecules/panel-footer';
 import { useDispatch, useSelector } from 'react-redux';
 import Dialog from '@molecules/dialog';
-import { useDeleteClassMutation } from '@/api/dndclasses.api';
 import Loading from '@atoms/loading';
 import { useNavigate } from 'react-router-dom';
 import { useDeleteSpellMutation } from '@/api/spells.api';
@@ -65,6 +63,7 @@ const SpellPanelContent = React.memo(function SpellPanelContent({
                 {spell.material &&
                     <span><b>Material: </b>{spell.material}</span>
                 }
+                <span><b>Aspects: </b>{spell.aspects.length > 0 ? spell.aspects.join(', ') : 'None'}</span>
                 <S.DescriptionBlock>
                     <S.Description>{spell.description}</S.Description>
                     {spell.upcast && 

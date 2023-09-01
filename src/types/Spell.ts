@@ -1,3 +1,5 @@
+import { SpellAspect } from "@/enums";
+
 export interface Spell {
     id: string;
     name: string;
@@ -9,6 +11,7 @@ export interface Spell {
     range: string;
     casting_time: string;
     upcast?: string[];
+    aspects: SpellAspect[];
     dnd_class_ids: string[];
 }
 
