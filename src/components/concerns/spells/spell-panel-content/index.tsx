@@ -10,6 +10,8 @@ import Loading from '@atoms/loading';
 import { useNavigate } from 'react-router-dom';
 import { useDeleteSpellMutation } from '@/api/spells.api';
 import { intToOrdinal } from '@/utils/functions.utils';
+import EntityLink from '../../entities/entity-link';
+import { Entity } from '@/enums';
 
 interface SpellPanelContentProps {
     spell: Spell;
@@ -59,13 +61,35 @@ const SpellPanelContent = React.memo(function SpellPanelContent({
                 <i>{intToOrdinal(spell.rank)} rank spell</i>
                 <span><b>Casting Time: </b>{spell.casting_time}</span>
                 <span><b>Range: </b>{spell.range}</span>
-                <span><b>Components: </b>{spell.verbal ? 'V ' : ''}{spell.somatic ? 'S ' : ''}{spell.material ? 'M ' : ''}{spell.material && spell.material_description ? `(${spell.material_description})` : ''}</span>
                 <span><b>Duration: </b>{spell.concentration ? `Concentration, up to ${spell.duration}` : spell.duration }</span>
-                <span><b>Classes: </b> {sourceClassNames}</span>
-                <S.Description>
-                    {spell.description}
-                </S.Description>
-                {spell.higher_level ? <span><b>At Higher Levels: </b> {spell.higher_level} </span>: ''}
+                {spell.material &&
+                    <span><b>Material: </b>{spell.material}</span>
+                }
+                <S.DescriptionBlock>
+                    <S.Description>{spell.description}</S.Description>
+                    {spell.upcast && 
+                    spell.upcast.map( (desc, i) => {
+                        const rank = parseInt(spell.rank) + i + 1;
+                        const str = `***At ${intToOrdinal(rank)} rank${rank < 4 ? ' and above' : ''}.*** ${desc}`
+                        return (
+                            <S.Description key={i}>
+                                {str}
+                            </S.Description>
+                        )
+                    })
+                }
+                </S.DescriptionBlock>
+                <div>
+                    {sourceClasses.map( (dndClass) => 
+                        <EntityLink
+                            key={dndClass.id}
+                            id={dndClass.id}
+                            entityType={Entity.dndClasses}
+                        >
+                            {dndClass.name}
+                        </EntityLink>
+                    )}
+                </div>
             </S.Root>
             :
             <Loading />

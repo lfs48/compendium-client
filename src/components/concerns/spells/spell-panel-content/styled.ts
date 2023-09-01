@@ -6,9 +6,13 @@ export const Root = tw.div`
     flex-col
 `
 
+export const DescriptionBlock = tw.div`
+    my-4
+    space-y-1
+`
+
 export const Description = tw(Markdown)`
-    italic
-    my-6
+
 `
 
 export const Block = tw.div`
