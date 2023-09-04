@@ -59,6 +59,7 @@ const SpellPanelContent = React.memo(function SpellPanelContent({
                 <i>{intToOrdinal(spell.rank)} rank spell</i>
                 <span><b>Casting Time: </b>{spell.casting_time}</span>
                 <span><b>Range: </b>{spell.range}</span>
+                <span><b>Targets: </b>{spell.targets}</span>
                 <span><b>Duration: </b>{spell.concentration ? `Concentration, up to ${spell.duration}` : spell.duration }</span>
                 {spell.material &&
                     <span><b>Material: </b>{spell.material}</span>

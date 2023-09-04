@@ -9,6 +9,7 @@ export interface Spell {
     concentration: boolean;
     duration: string;
     range: string;
+    targets: string;
     casting_time: string;
     upcast?: string[];
     aspects: SpellAspect[];
@@ -25,6 +26,7 @@ export interface PostSpell {
         concentration: boolean;
         duration: string;
         range: string;
+        targets: string;
         casting_time: string;
         upcast?: string[];
         dnd_class_ids: string[];
@@ -41,6 +43,7 @@ export interface PatchSpell {
         concentration?: boolean;
         duration?: string;
         range?: string;
+        targets?: string;
         casting_time?: string;
         upcast?: string[];
         dnd_class_ids: string[];
