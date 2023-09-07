@@ -21,6 +21,7 @@ interface FieldProps {
     defaultInput?: string;
     inputContainerClasses?: string;
     inputClasses?: string;
+    disabled?: boolean;
     [prop:string]: any;
 }
 
@@ -40,6 +41,7 @@ export default function Field({
     defaultInput='',
     inputContainerClasses='',
     inputClasses='',
+    disabled=false,
     ...props
 }: FieldProps) {
 
@@ -64,6 +66,7 @@ export default function Field({
                         maxLength={10000}
                         placeholder={placeholder}
                         className={inputClasses}
+                        disabled={disabled}
                     />
                 :
                     <Input 
@@ -74,6 +77,7 @@ export default function Field({
                         placeholder={placeholder}
                         default={defaultInput}
                         className={inputClasses}
+                        disabled={disabled}
                     />
                 }
                 {leftIcon &&

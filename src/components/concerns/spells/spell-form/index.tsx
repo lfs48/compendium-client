@@ -13,35 +13,35 @@ import { EntitySelect } from '../../entities/entity-select';
 import ClassMultiselect from '../../classes/class-multiselect';
 import Field from '@/components/UI/molecules/field';
 import Checkbox from '@/components/UI/atoms/checkbox';
+import { Entity } from '@/enums';
 
 const initialInputs = {
     id: '',
     name: '',
     description: '',
-    rank: '',
-    verbal: false,
-    somatic: false,
-    material: false,
-    material_description: '',
+    rank: '0',
     concentration: false,
     duration: 'Instantaneous',
     range: '',
+    targets: '',
     casting_time: '1 action',
-    higher_level: '',
+    upcast: [],
+    aspects: [],
     dnd_class_ids: [] as string[]
 }
 
 const initialErrors = {
-    id: '',
     name: [] as string[],
     description: [] as string[],
     rank: [] as string[],
     components: [] as string[],
-    material_description: [] as string[],
+    material: [] as string[],
     duration: [] as string[],
     range: [] as string[],
+    targets: [] as string[],
     casting_time: [] as string[],
-    higher_level: undefined as string | undefined,
+    upcast: undefined as string | undefined,
+    aspects: [] as string [],
     dnd_class_ids: [] as string[]
 }
 
@@ -75,30 +75,17 @@ export default function SpellForm({
     });
 
     useEffect( () => {
-        if (editing && id && id in spells) {
-            const spell = merge({}, spells[id]);
-            if (!spell.higher_level) {
-                spell.higher_level = '';
-            }
-            if (!spell.material_description) {
-                spell.material_description = '';
-            }
-            setInputs(spell);
-        } else if (editing && id && !(id in spells) ) {
+        if (editing && id && !(id in spells) ) {
             navigate('/spells/new');
-        }
-        else {
+        } else {
             setInputs(initialInputs);
         }
     }, [id])
 
     const cleanInputs = () => {
         const newState = merge({}, inputs);
-        if (!inputs.material || inputs.material_description === '') {
+        if (!inputs.material || inputs.material === '') {
             delete newState.material_description;
-        }
-        if (inputs.higher_level === '') {
-            delete newState.higher_level;
         }
         return newState;
     };
@@ -131,7 +118,7 @@ export default function SpellForm({
                 type: openPanel.type,
                 payload: {
                     id: id,
-                    panelType: 'spells'
+                    panelType: Entity.spells
                 }
             })
             setTriggerOpenPanel({
@@ -151,16 +138,16 @@ export default function SpellForm({
         setInputs(newState);
     }
 
-    const vsmInputs = ['verbal', 'somatic', 'material'].map( component => {
-        return(
-            <Checkbox
-                key={component}
-                label={component}
-                checked={inputs[component]} 
-                onChange={() => handleToggleInput(component, inputs, setInputs)}
-            />
-        )
-    })
+    const handleToggleMaterial = () => {
+        const newState = merge({}, inputs);
+        const checked = inputs.material !== undefined;
+        if (checked) {
+            delete newState.material;
+        } else {
+            newState.material = '';
+        }
+        setInputs(newState);
+    }
 
     return(
         <S.Root {...props}>
@@ -177,58 +164,61 @@ export default function SpellForm({
                     handleSelect={handleSelectClass}
                 />
                 </S.Top>
-                <Select
-                    value={inputs.rank}
-                    label='Rank'
-                    onChange={(e)=>handleInput(e, 'rank', inputs, setInputs)}
-                    options={['0', '1', '2', '3', '4']}
-                    defaultInput='0'
-                />
-                <Field
-                    value={inputs.casting_time}
-                    label='Casting Time'
-                    onChange={(e)=>handleInput(e, 'casting_time', inputs, setInputs)}
-                    placeholder='1 action'
-                />
-                <Field
-                    value={inputs.range}
-                    label='Range'
-                    onChange={(e)=>handleInput(e, 'range', inputs, setInputs)}
-                    placeholder='Self'
-                />
-                <Field
-                    value={inputs.duration}
-                    label='Duration'
-                    onChange={(e)=>handleInput(e, 'duration', inputs, setInputs)}
-                    placeholder='Instantaneous'
-                />
-                <Checkbox
-                    label='Concentration?'
-                    checked={inputs.concentration} 
-                    onChange={() => handleToggleInput('concentration', inputs, setInputs)}
-                />
-                {vsmInputs}
-                {inputs.material &&
-                    <Field
-                        value={inputs.material_description || ''}
-                        label='Material Description'
-                        onChange={(e)=>handleInput(e, 'material_description', inputs, setInputs)}
-                        placeholder='At least 50oz of bat guano'
+                <div className='flex space-x-2'>
+                    <Select
+                        value={inputs.rank}
+                        label='Rank'
+                        onChange={(e)=>handleInput(e, 'rank', inputs, setInputs)}
+                        options={['0', '1', '2', '3', '4']}
                     />
-                }
+                    <Field
+                        value={inputs.casting_time}
+                        label='Casting Time'
+                        onChange={(e)=>handleInput(e, 'casting_time', inputs, setInputs)}
+                        placeholder='1 action'
+                    />
+                    <Field
+                        value={inputs.range}
+                        label='Range'
+                        onChange={(e)=>handleInput(e, 'range', inputs, setInputs)}
+                        placeholder='Short'
+                    />
+                    <Field
+                        value={inputs.targets}
+                        label='Targets'
+                        onChange={(e)=>handleInput(e, 'targets', inputs, setInputs)}
+                        placeholder='Self'
+                    />
+                    <Field
+                        value={inputs.duration}
+                        label='Duration'
+                        onChange={(e)=>handleInput(e, 'duration', inputs, setInputs)}
+                        placeholder='Instantaneous'
+                    />
+                    <Checkbox
+                        label='Concentration?'
+                        checked={inputs.concentration} 
+                        onChange={() => handleToggleInput('concentration', inputs, setInputs)}
+                    />
+                    <Checkbox
+                        label='Material?'
+                        checked={'material' in inputs} 
+                        onChange={handleToggleMaterial}
+                    />
+                    <Field
+                        value={inputs.material || ''}
+                        label='Material'
+                        onChange={(e)=>handleInput(e, 'material', inputs, setInputs)}
+                        placeholder='At least 50oz of bat guano'
+                        disabled={!('material' in inputs)}
+                    />
+                </div>
                 <S.Description
                     label='Description'
                     value={inputs.description}
                     onChange={e => handleInput(e, 'description', inputs, setInputs)}
                     type='textarea'
                     errors={errors.description}
-                />
-                <S.Description
-                    label='At Higher Levels'
-                    value={inputs.higher_level}
-                    onChange={e => handleInput(e, 'higher_level', inputs, setInputs)}
-                    type='textarea'
-                    errors={errors.higher_level}
                 />
             </S.Body>
             <S.Buttons>

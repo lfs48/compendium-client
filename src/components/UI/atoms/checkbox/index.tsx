@@ -1,3 +1,4 @@
+import Label from '../label';
 import * as S from './styled';
 
 interface CheckboxProps {
@@ -21,7 +22,7 @@ export default function Checkbox({
                 onChange={onChange}
             ></input>
             {label &&
-                <label>{label}</label>
+                <Label>{label}</Label>
             }
         </S.Root>
     )
