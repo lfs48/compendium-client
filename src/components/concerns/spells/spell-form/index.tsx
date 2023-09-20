@@ -76,9 +76,10 @@ export default function SpellForm({
     });
 
     useEffect( () => {
-        if (editing && id && !(id in spells) ) {
-            navigate('/spells/new');
+        if (editing && id && (id in spells) ) {
+            setInputs(spells[id])
         } else {
+            navigate('/spells/new');
             setInputs(initialInputs);
         }
     }, [id])
