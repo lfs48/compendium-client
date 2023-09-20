@@ -51,5 +51,6 @@ export const Name = tw(Input)`
 `
 
 export const Description = tw(Field)`
-    h-full
+    first:h-52
+    h-32
 `

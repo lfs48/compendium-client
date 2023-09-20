@@ -14,6 +14,7 @@ import ClassMultiselect from '../../classes/class-multiselect';
 import Field from '@/components/UI/molecules/field';
 import Checkbox from '@/components/UI/atoms/checkbox';
 import { Entity } from '@/enums';
+import { intToOrdinal } from '@/utils/functions.utils';
 
 const initialInputs = {
     id: '',
@@ -149,6 +150,33 @@ export default function SpellForm({
         setInputs(newState);
     }
 
+    const handleUpcastInput = (i, e) => {
+        const numRank = parseInt(inputs.rank);
+        const newState = merge({}, inputs);
+        const upcast = inputs.upcast;
+        if (upcast) {
+            upcast[i] = e.target.value;
+            newState.upcast = upcast;
+        }
+        setInputs(newState);
+    }
+
+    const upcastFields = [0,1,2].map( (i) => {
+        const numRank = parseInt(inputs.rank);
+        if (numRank >= 1 && numRank + i <= 3) {
+            const label = `${intToOrdinal(numRank+i+1)} Rank or Higher`
+            return(
+                <S.Description
+                    key={i}
+                    label={label}
+                    value={!!inputs.upcast ? inputs.upcast[i] : ''}
+                    onChange={(e) => handleUpcastInput(i,e)}
+                    type='textarea'
+                />
+            )
+        }
+    })
+
     return(
         <S.Root {...props}>
             <S.Body>
@@ -213,13 +241,16 @@ export default function SpellForm({
                         disabled={!('material' in inputs)}
                     />
                 </div>
-                <S.Description
-                    label='Description'
-                    value={inputs.description}
-                    onChange={e => handleInput(e, 'description', inputs, setInputs)}
-                    type='textarea'
-                    errors={errors.description}
-                />
+                <div>
+                    <S.Description
+                        label='Description'
+                        value={inputs.description}
+                        onChange={e => handleInput(e, 'description', inputs, setInputs)}
+                        type='textarea'
+                        errors={errors.description}
+                    />
+                    {upcastFields}
+                </div>
             </S.Body>
             <S.Buttons>
                 <S.Button
