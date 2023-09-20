@@ -10,4 +10,5 @@ export const Root = tw.textarea`
     h-full
     resize-none
     scrollbar
+    disabled:bg-gray-300
 `
