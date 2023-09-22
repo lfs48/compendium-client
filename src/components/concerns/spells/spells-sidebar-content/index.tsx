@@ -11,6 +11,7 @@ import { filterSpells } from '@/utils/spells.util';
 import { intToOrdinal, spaceship } from '@/utils/functions.utils';
 import { useSelector } from 'react-redux';
 import { useRecoilState } from 'recoil';
+import { Entity } from '@/enums';
 
 interface SpellsSidebarContentProps {
     [prop: string]: any;
@@ -22,13 +23,34 @@ export default function SpellsSidebarContent({
 
     const [sidebarState, setSidebarState] = useRecoilState(sidebarAtom);
     const { search, sort, filters } = sidebarState.spells;
-    const { field, dir } = sort
+    const { field, dir } = sort;
+    const {rank, rankDir, description, aspects} = filters;
 
     const {spells} = useSelector( (state:RootState) => ({
         spells: Object.values(state.entities.spells)
     }));
 
-    const filtered = filterSpells(spells, search, filters.dndClass);
+    const filtered = spells.filter( (spell) => {
+
+        let rankMatch = true;
+        if (rank) {
+            if (rankDir === 0) {
+                rankMatch = spell.rank === rank;
+            } else {
+                rankMatch = parseInt(spell.rank) * rankDir > parseInt(rank) * rankDir;
+            }
+        }
+
+        let aspectMatch = true;
+        if (aspects.length > 0) {
+            aspectMatch = aspects.some( aspect => spell.aspects.includes(aspect) );
+        }
+        let descriptionMatch = true;
+        if (description && description.length > 0) {
+            descriptionMatch = spell.description.includes(description);
+        }
+        return rankMatch && aspectMatch && descriptionMatch;
+    })
     const sorted = sortEntities(filtered);
     const components = sorted
     .map( (spell) => {
@@ -36,7 +58,7 @@ export default function SpellsSidebarContent({
             <SidebarBodyRow 
                 key={spell.id}
                 id={spell.id}
-                contentType='spells'
+                contentType={Entity.spells}
             >
                 <SidebarCell>{spell.name}</SidebarCell>
                 <SidebarCell>{intToOrdinal(spell.rank)}</SidebarCell>
