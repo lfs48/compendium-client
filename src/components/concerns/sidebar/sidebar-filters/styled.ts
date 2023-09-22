@@ -6,19 +6,16 @@ type RootProps = {
 
 export const Root = tw.div<RootProps>`
     absolute
-    -right-40
-    top-14
+    top-2
     bg-beige-light
-    border
-    border-black
-    rounded-sm
+    rounded
     w-80
     p-4
     z-40
     shadow-lg
     transition-all
     duration-500
-    ${p => p.$open ? `visible opacity-100 top-14` : `invisible opacity-0 top-8`}
+    ${p => p.$open ? `visible opacity-100 -right-100` : `invisible opacity-0 -right-80`}
 `
 
 export const Header = tw.div`
