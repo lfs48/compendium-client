@@ -13,7 +13,6 @@ export interface Spell {
     casting_time: string;
     upcast?: string[];
     aspects: SpellAspect[];
-    dnd_class_ids: string[];
 }
 
 export interface PostSpell {
@@ -29,7 +28,6 @@ export interface PostSpell {
         targets: string;
         casting_time: string;
         upcast?: string[];
-        dnd_class_ids: string[];
     }
 }
 
@@ -46,6 +44,5 @@ export interface PatchSpell {
         targets?: string;
         casting_time?: string;
         upcast?: string[];
-        dnd_class_ids: string[];
     }
 }

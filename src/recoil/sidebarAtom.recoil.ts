@@ -1,4 +1,4 @@
-import { APIEntity, Entity, FeatureKind, ItemBulk, ItemKind, ItemRarity } from "@/enums";
+import { APIEntity, Entity, FeatureKind, ItemBulk, ItemKind, ItemRarity, SpellAspect } from "@/enums";
 import { atom } from "recoil";
 
 export const sidebarAtom = atom({
@@ -44,9 +44,10 @@ export const sidebarAtom = atom({
                 dir: 1
             },
             filters: {
-                rank: undefined as undefined | number,
-                dndClass: undefined as undefined | string,
-                description: ''
+                rank: undefined as undefined | string,
+                rankDir: 0,
+                description: '',
+                aspects: [] as SpellAspect[]
             }
         },
         items: {

@@ -6,6 +6,7 @@ export enum Spellcasting {
 }
 
 export enum SpellAspect {
+    Arcane='arcane',
     Abjuration='abjuration',
     Conjuration='conjuration',
     Divination='divination',
@@ -13,12 +14,14 @@ export enum SpellAspect {
     Illusion='illusion',
     Necromancy='necromancy',
     Transmutation='transmutation',
+    Elemental='elemental',
     Air='air',
     Earth='earth',
     Fire='fire',
-    Nature='nature',
     Storm='storm',
     Water='water',
     Holy='holy',
-    Unholy='unholy'
+    Unholy='unholy',
+    Nature='nature',
+    Spirit='spirit'
 }

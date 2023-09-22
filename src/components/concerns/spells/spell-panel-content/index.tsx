@@ -29,10 +29,6 @@ const SpellPanelContent = React.memo(function SpellPanelContent({
     
     const [confirming, setConfirming] = useState(false);
 
-    const dndClasses = useSelector( (state:RootState) => state.entities.dndClasses)
-    const sourceClasses = spell.dnd_class_ids.map( (id) => dndClasses[id]);
-    const sourceClassNames = sourceClasses.map( (c) => c.name).join(', ');
-
     const handleConfirm = () => {
         setConfirming(true);
     }
@@ -86,17 +82,6 @@ const SpellPanelContent = React.memo(function SpellPanelContent({
                     })
                 }
                 </S.DescriptionBlock>
-                <div>
-                    {sourceClasses.map( (dndClass) => 
-                        <EntityLink
-                            key={dndClass.id}
-                            id={dndClass.id}
-                            entityType={Entity.dndClasses}
-                        >
-                            {dndClass.name}
-                        </EntityLink>
-                    )}
-                </div>
             </S.Root>
             :
             <Loading />

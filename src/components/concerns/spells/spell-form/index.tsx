@@ -130,16 +130,6 @@ export default function SpellForm({
         }
     }, [triggerOpenPanel])
 
-    const handleSelectClass = (id:string) => {
-        const newState = merge({}, inputs);
-        if (inputs.dnd_class_ids.includes(id)) {
-            newState.dnd_class_ids = inputs.dnd_class_ids.filter( old_id => old_id !== id);
-        } else {
-            newState.dnd_class_ids.push(id);
-        }
-        setInputs(newState);
-    }
-
     const handleToggleMaterial = () => {
         const newState = merge({}, inputs);
         const checked = inputs.material !== undefined;
@@ -199,10 +189,6 @@ export default function SpellForm({
                     placeholder='New Spell'
                     onChange={e => handleInput(e, 'name', inputs, setInputs)}
                     errors={errors.name}
-                />
-                <ClassMultiselect 
-                    value={inputs.dnd_class_ids}
-                    handleSelect={handleSelectClass}
                 />
                 </S.Top>
                 <div className='flex space-x-2'>
