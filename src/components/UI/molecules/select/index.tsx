@@ -14,6 +14,7 @@ interface SelectProps {
     allowNoneSelection?: boolean;
     disabled?: boolean;
     selectClasses?: string;
+    multiple?: boolean;
     [prop:string]: any;
 }
 
@@ -32,6 +33,7 @@ export default function Select({
     allowNoneSelection=false,
     disabled=false,
     selectClasses='',
+    multiple=false,
     ...props
 }: SelectProps) {
 
@@ -70,6 +72,7 @@ export default function Select({
                 onChange={onChange}
                 $hasErrors={errors.length >= 1}
                 className={selectClasses}
+                multiple={multiple}
             >
                 {allowNoneSelection &&
                     <S.Option
