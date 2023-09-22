@@ -13,7 +13,7 @@ import { EntitySelect } from '../../entities/entity-select';
 import ClassMultiselect from '../../classes/class-multiselect';
 import Field from '@/components/UI/molecules/field';
 import Checkbox from '@/components/UI/atoms/checkbox';
-import { Entity } from '@/enums';
+import { Entity, SpellAspect } from '@/enums';
 import { intToOrdinal } from '@/utils/functions.utils';
 
 const initialInputs = {
@@ -152,7 +152,6 @@ export default function SpellForm({
     }
 
     const handleUpcastInput = (i, e) => {
-        const numRank = parseInt(inputs.rank);
         const newState = merge({}, inputs);
         const upcast = inputs.upcast;
         if (upcast) {
@@ -177,6 +176,19 @@ export default function SpellForm({
             )
         }
     })
+
+    const handleSelectAspect = (e) => {
+        const aspect = e.target.value;
+        const newState = merge({}, inputs);
+        const aspects = inputs.aspects;
+        if (aspects.includes(aspect)) {
+            newState.aspects = aspects.filter( (el) => el != aspect);
+        } else {
+            aspects.push(aspect);
+            newState.aspects = aspects;
+        }
+        setInputs(newState);
+    }
 
     return(
         <S.Root {...props}>
@@ -240,6 +252,15 @@ export default function SpellForm({
                         onChange={(e)=>handleInput(e, 'material', inputs, setInputs)}
                         placeholder='At least 50oz of bat guano'
                         disabled={!('material' in inputs)}
+                    />
+                </div>
+                <div>
+                    <Select
+                        label='Aspects'
+                        value={inputs.aspects}
+                        options={Object.values(SpellAspect)}
+                        onChange={(e)=>handleSelectAspect(e)}
+                        multiple
                     />
                 </div>
                 <div>
