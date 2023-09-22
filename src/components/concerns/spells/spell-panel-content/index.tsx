@@ -10,6 +10,7 @@ import { useDeleteSpellMutation } from '@/api/spells.api';
 import { intToOrdinal } from '@/utils/functions.utils';
 import EntityLink from '../../entities/entity-link';
 import { Entity } from '@/enums';
+import { merge, capitalize } from 'lodash';
 
 interface SpellPanelContentProps {
     spell: Spell;
@@ -52,11 +53,18 @@ const SpellPanelContent = React.memo(function SpellPanelContent({
         navigate(`/spells/edit/${spell.id}`)
     }
 
+    const aspects = merge([],spell.aspects);
+    let aspectsString = 'No aspects';
+    if (aspects.length >= 1) {
+        aspectsString = aspects.sort().map( aspect => capitalize(aspect) ).join(', ');
+    }
+    
+
     return(
         <>
         {(!isLoading && !isSuccess) ?
             <S.Root {...props}>
-                <i>{intToOrdinal(spell.rank)} rank spell</i>
+                <i>{intToOrdinal(spell.rank)} rank spell ({aspectsString})</i>
                 <span><b>Casting Time: </b>{spell.casting_time}</span>
                 <span><b>Range: </b>{spell.range}</span>
                 <span><b>Targets: </b>{spell.targets}</span>
@@ -64,7 +72,6 @@ const SpellPanelContent = React.memo(function SpellPanelContent({
                 {spell.material &&
                     <span><b>Material: </b>{spell.material}</span>
                 }
-                <span><b>Aspects: </b>{spell.aspects.length > 0 ? spell.aspects.join(', ') : 'None'}</span>
                 <S.DescriptionBlock>
                     <S.Description>{spell.description}</S.Description>
                     {spell.upcast && 
