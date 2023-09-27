@@ -16,6 +16,11 @@
       text-lg
       font-bold
   }
+  
+  strong {
+    @apply
+      font-semibold
+  }
 
   .filled-padding {
     background-image: linear-gradient(white, white), linear-gradient(var(--tw-gradient-stops)) !important;
