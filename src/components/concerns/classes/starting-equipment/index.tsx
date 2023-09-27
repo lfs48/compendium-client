@@ -1,25 +1,24 @@
+import Markdown from '@/components/UI/molecules/markdown';
 import * as S from './styled';
 
 interface EquipmentProps {
-    equipmentList: string[];
+    equipment: string;
     [prop: string]: any;
 }
 
 export default function StartingEquipment({
-    equipmentList,
+    equipment,
     ...props
 }: EquipmentProps) {
     return(
         <S.Root {...props}>
             <h2>Equipment</h2>
             <p>
-                You start with the following equipment, in addition to the equipment granted by your background.
+                You start with the following equipment, in addition to the equipment purchased with your starting gold.
             </p>
-            <S.List>
-                {equipmentList.map( (line, i) => {
-                    return <li key={i}>{line}</li>
-                })}
-            </S.List>
+            <Markdown>
+                {equipment}
+            </Markdown>
         </S.Root>
     )
 }

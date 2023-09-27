@@ -53,7 +53,7 @@ export const Name = tw(Input)`
     font-bold leading-[2rem]
 `
 
-export const Description = tw(Field)`
+export const BigField = tw(Field)`
     col-span-2 
     row-[span_30_/_span_30]
 `

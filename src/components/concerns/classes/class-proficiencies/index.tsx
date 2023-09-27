@@ -11,7 +11,7 @@ export default function ClassProficiencies({
     ...props
 }: ClassHitpointsProps) {
 
-    const {armor, weapons, tools, saves, skills} = dndClass;
+    const {armor, weapons, defenses, skills} = dndClass;
 
     return(
         <S.Root {...props}>
@@ -26,12 +26,8 @@ export default function ClassProficiencies({
                     {weapons}
                 </p>
                 <p>
-                    <strong>Tools: </strong>
-                    {tools}
-                </p>
-                <p>
-                    <strong>Saving Throws: </strong>
-                    {saves}
+                    <strong>Defenses: </strong>
+                    {defenses}
                 </p>
                 <p>
                     <strong>Skills: </strong>

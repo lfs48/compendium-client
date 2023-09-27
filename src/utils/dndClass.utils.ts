@@ -21,6 +21,13 @@ export function sortFeatures(dndClass:DndClass) {
 export const getLevelProficiency = (level:number) => {
   return Math.ceil(level / 3) + 1;
 }
+
+export const getLevelHP = (baseHP:number, level:number) => {
+  const multiplier = Math.ceil( (level) / 3);
+  const classHP = (baseHP * multiplier) + level + '';
+  const conHP = `${multiplier > 1 ? `${multiplier}×` : ''}CON`;
+  return `${classHP} + ${conHP}`
+}
   
 export function getSpellSlots(spellcasting:Spellcasting) {
   switch(spellcasting) {

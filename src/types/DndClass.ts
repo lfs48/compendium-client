@@ -4,13 +4,12 @@ export interface DndClass {
     id: string;
     name: string;
     description: string;
-    hitdie: string;
+    hp: string;
     armor: string;
     weapons: string;
-    tools: string;
-    saves: string;
+    defenses: string;
     skills: string; 
-    equipment: string[]; 
+    equipment: string; 
     spellcasting: Spellcasting;
     table_cols: {
         [title: string]: string[]
@@ -23,13 +22,12 @@ export interface PostDndClass {
         id: string;
         name: string;
         description: string;
-        hitdie: string;
+        hp: string;
         armor: string;
         weapons: string;
-        tools: string;
-        saves: string;
+        defenses: string;
         skills: string; 
-        equipment: string[]; 
+        equipment: string; 
         spellcasting: Spellcasting;
         table_cols: {
             [title: string]: string[]
@@ -43,13 +41,12 @@ export interface PatchDndClass {
         id: string;
         name?: string;
         description?: string;
-        hitdie?: string;
+        hp?: string;
         armor?: string;
         weapons?: string;
-        tools?: string;
-        saves?: string;
+        defenses?: string;
         skills?: string; 
-        equipment?: string[]; 
+        equipment?: string; 
         spellcasting?: Spellcasting;
         table_cols?: {
             [title: string]: string[]

@@ -3,18 +3,15 @@ import { DndClass } from '@/types';
 import * as S from './styled';
 import Divider from '@atoms/divider';
 import StartingEquipment from '@/components/concerns/classes/starting-equipment';
-import ClassHitpoints from '@/components/concerns/classes/class-hitpoints';
 import ClassProficiencies from '@/components/concerns/classes/class-proficiencies';
-import ClassFeatures from '@/components/concerns/features/features-list';
 import ClassTable from '@/components/concerns/classes/class-table';
-import Button from '@atoms/button';
 import PanelFooter from '@molecules/panel-footer';
 import { useDispatch } from 'react-redux';
 import Dialog from '@molecules/dialog';
 import { useDeleteClassMutation } from '@/api/dndclasses.api';
 import Loading from '@atoms/loading';
 import { useNavigate } from 'react-router-dom';
-import { FeatureKind } from '@/enums';
+import ClassFeatures from '../class-features';
 
 interface ClassPanelContentProps {
     dndClass: DndClass;
@@ -64,23 +61,14 @@ const ClassPanelContent = React.memo(function ClassPanelContent({
                     {dndClass.description}
                 </S.Description>
                 <Divider />
-                <div>
-                    <h1>Class Features</h1>
-                    <p>{`As a ${dndClass.name.toLowerCase()}, you get the following class features.`}</p>
-                </div>
-                <ClassHitpoints
-                    dndClass={dndClass}
-                />
                 <ClassProficiencies 
                     dndClass={dndClass}
                 />
                 <StartingEquipment 
-                    equipmentList={dndClass.equipment}
+                    equipment={dndClass.equipment}
                 />
                 <ClassFeatures
-                    featureIDs={dndClass.features}
-                    kind={FeatureKind.Core}
-                    sort='level'
+                    dndClass={dndClass}
                 />
             </S.Root>
             :

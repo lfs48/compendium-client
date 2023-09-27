@@ -7,7 +7,6 @@ import * as S from './styled';
 import { handleInput } from '@/utils/component.utils';
 import Select from '@molecules/select';
 import { usePatchClassMutation, usePostClassMutation } from '@/api/dndclasses.api';
-import ClassFormEquipment from '@/components/concerns/classes/class-form-equipment';
 import ClassFormTable from '@/components/concerns/classes/class-form-table';
 import { openPanel } from '@/reducers/UI/panels.reducer';
 import { moveObjKey, renameObjKey, snakeCaseToWords } from '@/utils/functions.utils';
@@ -22,14 +21,13 @@ const initialInputs = {
     id: '',
     name: '',
     description: '',
-    hitdie: 'd8',
-    saves: '',
+    hp: '',
+    defenses: '',
     weapons: '',
     armor: '',
     skills: '',
-    tools: '',
     spellcasting: Spellcasting.None,
-    equipment: [] as string[],
+    equipment: '',
     table_cols: {},
     features: []
 }
@@ -37,8 +35,8 @@ const initialInputs = {
 const initialErrors = {
     name: [] as string[],
     description: [] as string[],
-    hitdie: [] as string[],
-    saves: [] as string[],
+    hp: [] as string[],
+    defenses: [] as string[],
     weapons: [] as string[],
     armor: [] as string[],
     skills: [] as string[],
@@ -48,8 +46,6 @@ const initialErrors = {
     table_cols: [] as string[],
     features: [] as string[]
 }
-
-const dieOptions = ['d6', 'd8', 'd10', 'd12'];
 
 interface ClassFormProps {
     editing?: boolean;
@@ -170,18 +166,6 @@ export default function ClassForm({
         setInputs(newState);
     }
 
-    const addEquipmentLine = (line:string) => {
-        const newState = merge({}, inputs);
-        newState.equipment.push(line);
-        setInputs(newState);
-    }
-
-    const removeEquipmentLine = (index:number) => {
-        const newState = merge({}, inputs);
-        newState.equipment = newState.equipment.filter( (_, i) => i !== index);
-        setInputs(newState);
-    }
-
     const handleAddFeature = (id) => {
         const newState = merge( {}, inputs);
         if ( !hasFeature(inputs, id) ) {
@@ -197,7 +181,7 @@ export default function ClassForm({
         setInputs(newState);
     }
 
-    const fields = ['armor', 'weapons', 'tools', 'saves', 'skills']
+    const fields = ['armor', 'weapons', 'defenses', 'skills']
     .map( (field) => {
         return(
             <Field
@@ -205,6 +189,7 @@ export default function ClassForm({
                 label={snakeCaseToWords(field)}
                 value={inputs[field]}
                 errors={errors[field]}
+                maxLength={50}
                 onChange={e => handleInput(e, field, inputs, setInputs)}
             />
         )
@@ -224,10 +209,10 @@ export default function ClassForm({
                         <S.Selects>
                             <Select
                                 label='Hit Die'
-                                value={inputs.hitdie}
-                                options={dieOptions}
-                                onChange={e => handleInput(e, 'hitdie', inputs, setInputs)}
-                                errors={errors.hitdie}
+                                value={inputs.hp}
+                                options={['6','8','10','12']}
+                                onChange={e => handleInput(e, 'hp', inputs, setInputs)}
+                                errors={errors.hp}
                             />
                             <Select
                                 label='Spellcasting'
@@ -237,7 +222,7 @@ export default function ClassForm({
                                 errors={errors.spellcasting}
                             />
                         </S.Selects>
-                        <S.Description
+                        <S.BigField
                             label='Description'
                             value={inputs.description}
                             onChange={e => handleInput(e, 'description', inputs, setInputs)}
@@ -245,13 +230,14 @@ export default function ClassForm({
                             errors={errors.description}
                         />
                         {fields}
-                    </S.Grid>
-                    <ClassFormEquipment
-                            equipment={inputs.equipment}
-                            handleAddLine={addEquipmentLine}
-                            handleRemoveLine={removeEquipmentLine}
+                        <S.BigField
+                            label='Equipment'
+                            value={inputs.equipment}
+                            onChange={e => handleInput(e, 'equipment', inputs, setInputs)}
+                            type='textarea'
                             errors={errors.equipment}
-                    />
+                        />
+                    </S.Grid>
                 </div>
                     <S.Right>
                         <S.TableInputs>

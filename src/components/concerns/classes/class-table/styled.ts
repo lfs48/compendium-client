@@ -2,6 +2,7 @@ import tw from 'tailwind-styled-components';
 
 type CellProps = {
     $left?: boolean;
+    $wide?: boolean;
     $full?: boolean;
 }
 
@@ -22,7 +23,7 @@ export const HeaderCell = tw.th<CellProps>`
         ?`
         `
         :`
-            w-12
+            ${p.$wide ? 'w-32' : 'w-12'}
         `
     }
 `
@@ -41,7 +42,7 @@ export const Cell = tw.td<CellProps>`
         ?`
         `
         :`
-            w-12
+            ${p.$wide ? 'w-32' : 'w-12'}
         `
     }
     ${p => p.$left

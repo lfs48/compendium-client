@@ -121,14 +121,14 @@ export default function ClassFormTable({
                 <S.Cell key={col}>
                     <S.ColValInput
                         type='text'
-                        value={dndClass.table_cols[col][n]}
-                        onChange={(e) => handleColInput(e, col, n)}
+                        value={dndClass.table_cols[col][l]}
+                        onChange={(e) => handleColInput(e, col, l)}
                     />
                 </S.Cell>
             )
         });
         return(
-            <S.Row>
+            <S.Row key={l}>
                 <S.Cell>{intToOrdinal(l)}</S.Cell>
                 <S.Cell>{`+ ${getLevelProficiency(l)}`}</S.Cell>
                 <S.Cell $left $full>
