@@ -4,10 +4,16 @@ import { DiceRoll } from 'rpg-dice-roller';
 
 export function valueString(item:Item) {
     const {value} = item;
-    const expression = item.value.split('*').join('x');
-    const roll = new DiceRoll(value);
-    const avg = roll.averageTotal;
-    return `${expression} (~${avg}gp)`
+    if (value.match(/\A\d+\z/)) {
+        return value + 'gp';
+    } else if (value.match(/^\d+d\d+($|\×\d+$)/)) {
+        const rollable = value.split('×')[0];
+        const roll = new DiceRoll(rollable);
+        const avg = roll.averageTotal;
+        return `${value} (~${avg}gp)`;
+    } else {
+        return value;
+    }
 }
 
 export function bulkEnumToInt(bulk:ItemBulk) {
