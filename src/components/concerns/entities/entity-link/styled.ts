@@ -5,7 +5,7 @@ type RootProps = {
 }
 
 export const Root = tw.div<RootProps>`
-    font-bold
+    font-semibold
     cursor-pointer
     text-blue-500
     inline-block
@@ -17,7 +17,6 @@ export const Root = tw.div<RootProps>`
             bg-gray-300
             rounded
             px-2
-            py-1
         `
     }
 `
