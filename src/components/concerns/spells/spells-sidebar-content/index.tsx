@@ -31,6 +31,10 @@ export default function SpellsSidebarContent({
     }));
 
     const filtered = spells.filter( (spell) => {
+        let nameMatch = true;
+        if (search && search.length > 0) {
+            nameMatch = spell.name.toLowerCase().startsWith(search.toLowerCase());
+        }
 
         let rankMatch = true;
         if (rank) {
@@ -49,7 +53,7 @@ export default function SpellsSidebarContent({
         if (description && description.length > 0) {
             descriptionMatch = spell.description.includes(description);
         }
-        return rankMatch && aspectMatch && descriptionMatch;
+        return nameMatch && rankMatch && aspectMatch && descriptionMatch;
     })
     const sorted = sortEntities(filtered, {field: field, dir: dir});
     const components = sorted
