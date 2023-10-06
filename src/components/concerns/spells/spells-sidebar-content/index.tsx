@@ -51,7 +51,7 @@ export default function SpellsSidebarContent({
         }
         return rankMatch && aspectMatch && descriptionMatch;
     })
-    const sorted = sortEntities(filtered);
+    const sorted = sortEntities(filtered, {field: field, dir: dir});
     const components = sorted
     .map( (spell) => {
         return(
