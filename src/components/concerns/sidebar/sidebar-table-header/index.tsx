@@ -29,12 +29,13 @@ export default function SidebarTableHeader({
 
     const handleSortButton = (field:string) => {
         const newState = merge({}, sidebarState);
-        const currentCol = newState.sort[selectedTab].field;
-        if (currentCol == field) {
-            newState.sort[selectedTab].dir *= -1;
+        const {sort} = newState[selectedTab];
+        const currentCol = sort.field;
+        if (currentCol && currentCol == field) {
+            newState[selectedTab].sort.dir *= -1;
         } else {
-            newState.sort[selectedTab].field = field;
-            newState.sort[selectedTab].dir = 1;
+            newState[selectedTab].sort.field = field;
+            newState[selectedTab].sort.dir = 1;
         }
         setSidebarState(newState);
     }
