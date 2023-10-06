@@ -56,7 +56,7 @@ export default function SidebarTableHeader({
             }
         }
         return(
-            <SidebarCell 
+            <S.HeaderCell 
                 key={field}
                 onClick={()=>handleSortButton(field)}
             >
@@ -66,13 +66,13 @@ export default function SidebarTableHeader({
                 <i
                     className={icon}
                 />
-            </SidebarCell>
+            </S.HeaderCell>
         )
     });
 
     return(
-        <SidebarRow {...props}>
+        <S.Root {...props}>
             {headers}
-        </SidebarRow>
+        </S.Root>
     )
 }

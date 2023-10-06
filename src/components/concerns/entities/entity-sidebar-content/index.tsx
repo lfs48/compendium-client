@@ -41,15 +41,10 @@ export default function EntitySidebarContent({
     );
 
     return(
-        <SidebarTable {...props}>
-            {filtered.length > 0 ?
-                <>            
-                <SidebarTableHeader />
-                {components}
-                </>
-            :
-                <NoResults />
-            }
-        </SidebarTable>
+        <SidebarTable 
+            headers={<SidebarTableHeader />}
+            body={filtered.length > 0 ? components : <NoResults/>}
+            {...props}
+        />
     )
 }

@@ -13,7 +13,7 @@ import { apiFeatureKindToClientFeatureType } from '@/utils/features.utils';
 import { spaceship } from '@/utils/functions.utils';
 import { Entity } from '@/enums';
 
-export default function FeaturesSidebarContent() {
+export default function FeaturesSidebarContent({...props}) {
 
     const [sidebarState, setSidebarState] = useRecoilState(sidebarAtom);
     const {search, sort, filters} = sidebarState.features;
@@ -112,9 +112,8 @@ export default function FeaturesSidebarContent() {
     })
 
     return(
-        <SidebarTable>
-            {rows.length > 0 ?
-                <>
+        <SidebarTable
+            headers={
                 <SidebarTableHeader 
                     columns={[
                         {label: 'name', field: 'name'},
@@ -122,11 +121,9 @@ export default function FeaturesSidebarContent() {
                         {label: 'source', field: 'source'}
                     ]}
                 />
-                {rows}
-                </>
-            :
-                <NoResults />
             }
-        </SidebarTable>
+            body={rows.length > 0 ? rows : <NoResults />}
+            {...props}
+        />
     )
 }

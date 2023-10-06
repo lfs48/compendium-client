@@ -1,10 +1,21 @@
-import tw from 'tailwind-styled-components';
+import { ReactNode } from 'react';
+import * as S from './styled';
 
-const SidebarTable = tw.div`
-    w-full
-    h-full
-    divide-y
-    divide-black
-`;
+interface SidebarTableProps {
+    headers: ReactNode;
+    body: ReactNode;
+    [prop:string]: any;
+}
 
-export default SidebarTable;
+export default function SidebarTable({
+    headers,
+    body,
+    ...props
+}: SidebarTableProps) {
+    return(
+        <S.Root {...props}>
+            {headers}
+            {body}
+        </S.Root>
+    )
+}

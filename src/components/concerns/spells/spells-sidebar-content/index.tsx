@@ -67,20 +67,17 @@ export default function SpellsSidebarContent({
     })
     
     return(
-        <SidebarTable {...props}>
-            {filtered.length > 0 ?
-                <>
+        <SidebarTable 
+            headers={
                 <SidebarTableHeader
                     columns={[
                         {label: 'name', field: 'name'},
                         {label: 'rank', field: 'rank'}
                     ]}
                 />
-                {components}
-                </>
-            :
-                <NoResults />
             }
-        </SidebarTable>
+            body={filtered.length > 0 ? components : <NoResults />}
+            {...props}
+        />
     )
 }

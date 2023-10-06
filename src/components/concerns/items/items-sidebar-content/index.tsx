@@ -12,7 +12,7 @@ import SidebarTable from '../../sidebar/sidebar-table';
 import { bulkEnumToInt } from '@/utils/items.util';
 import { Entity } from '@/enums';
 
-export default function ItemsSidebarContent() {
+export default function ItemsSidebarContent({...props}) {
 
     const [sidebarState, setSidebarState] = useRecoilState(sidebarAtom);
     const {search, sort, filters} = sidebarState.items;
@@ -59,19 +59,16 @@ export default function ItemsSidebarContent() {
     })
 
     return(
-        <SidebarTable>
-            {rows.length > 0 ?
-                <>
+        <SidebarTable
+            headers={
                 <SidebarTableHeader 
                     columns={[
                         {label: 'name', field: 'name'},
                     ]}
                 />
-                {rows}
-                </>
-            :
-                <NoResults />
             }
-        </SidebarTable>
+            body={rows.length > 0 ? rows : <NoResults />}
+            {...props}
+        />
     )
 }
