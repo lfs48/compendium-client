@@ -73,7 +73,7 @@ export default React.memo( function ClassTable({
             <S.Row key={n}>
                 <S.Cell>{intToOrdinal(n)}</S.Cell>
                 <S.Cell>{`+ ${getLevelProficiency(n)}`}</S.Cell>
-                <S.Cell $left $wide>{getLevelHP( parseInt(dndClass.hp), n)}</S.Cell>
+                <S.Cell $left>{getLevelHP( parseInt(dndClass.hp), n)}</S.Cell>
                 <S.Cell $left $full>
                     {levelFeatures}
                 </S.Cell>
@@ -87,7 +87,7 @@ export default React.memo( function ClassTable({
         <tr>
             <S.HeaderCell>Level</S.HeaderCell>
             <S.HeaderCell>Prof</S.HeaderCell>
-            <S.HeaderCell $left $wide>HP</S.HeaderCell>
+            <S.HeaderCell $left>HP</S.HeaderCell>
             <S.HeaderCell $left $full>Features</S.HeaderCell>
             {extraHeaders}
             {spellHeaders}

@@ -2,7 +2,6 @@ import tw from 'tailwind-styled-components';
 
 type CellProps = {
     $left?: boolean;
-    $wide?: boolean;
     $full?: boolean;
 }
 
@@ -19,13 +18,7 @@ export const HeaderCell = tw.th<CellProps>`
             px-2
         `
     }
-    ${p => p.$full
-        ?`
-        `
-        :`
-            ${p.$wide ? 'w-32' : 'w-12'}
-        `
-    }
+    ${p => p.$full ? '' : 'w-12'}
 `
 
 export const Row = tw.tr`
@@ -38,13 +31,7 @@ export const Row = tw.tr`
 
 export const Cell = tw.td<CellProps>`
     py-1
-    ${p => p.$full
-        ?`
-        `
-        :`
-            ${p.$wide ? 'w-32' : 'w-12'}
-        `
-    }
+    ${p => p.$full ? '' : 'w-12'}
     ${p => p.$left
         ?`
             text-left
@@ -56,4 +43,5 @@ export const Cell = tw.td<CellProps>`
             px-2
         `
     }
+    truncate
 `
