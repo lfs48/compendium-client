@@ -4,8 +4,8 @@ export const Root = tw.nav`
     h-12
     sticky
     bg-beige-lighter
-    border-b-2
-    border-beige-darkest
+    border-b
+    border-black
     flex
     justify-between
     items-center
