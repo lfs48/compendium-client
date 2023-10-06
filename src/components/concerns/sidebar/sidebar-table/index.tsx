@@ -12,10 +12,15 @@ export default function SidebarTable({
     body,
     ...props
 }: SidebarTableProps) {
+
     return(
         <S.Root {...props}>
-            {headers}
-            {body}
+            <S.HeaderContainer>
+                {headers}
+            </S.HeaderContainer>
+            <S.BodyContainer>
+                {body}
+            </S.BodyContainer>
         </S.Root>
     )
 }

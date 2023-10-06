@@ -3,6 +3,19 @@ import tw from 'tailwind-styled-components';
 export const Root = tw.div`
     w-full
     h-full
-    divide-y
-    divide-black
+    relative
 `;
+
+export const HeaderContainer = tw.div`
+    sticky
+    top-0
+    z-[1]
+`
+
+export const BodyContainer = tw.div`
+    divide-y
+    divide-gray-400
+    overflow-auto
+    h-[calc(100vh-8.65rem)]
+    scrollbar
+`

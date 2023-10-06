@@ -23,8 +23,6 @@ export const Body = tw.div`
 
 export const Content = tw.div`
     h-full
-    overflow-y-auto
-    scrollbar
 `
 
 export const Selectors = tw.div`
