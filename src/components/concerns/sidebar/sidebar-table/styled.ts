@@ -13,9 +13,8 @@ export const HeaderContainer = tw.div`
 `
 
 export const BodyContainer = tw.div`
-    divide-y
-    divide-gray-400
     overflow-auto
     h-[calc(100vh-8.65rem)]
     scrollbar
+    bg-beige-lighter
 `

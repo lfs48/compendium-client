@@ -7,6 +7,7 @@ export const Root = tw(SidebarRow)`
     border-b-black
     sticky
     top-0
+    bg-beige
 `
 
 export const HeaderCell = tw(SidebarCell)`

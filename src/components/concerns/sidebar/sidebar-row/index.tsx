@@ -10,8 +10,6 @@ const SidebarRow = tw.span`
     flex
     items-center
     space-x-2
-    first:bg-beige
-    bg-beige-light
 `
 
 export default SidebarRow;

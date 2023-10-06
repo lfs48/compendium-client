@@ -22,12 +22,17 @@ export const Root = tw(SidebarRow)<SidebarBodyRowProps>`
             before:left-0
             before:bg-green-500
             before:hover:bg-green-600
+            odd:bg-opacity-80
+            even:bg-opacity-20
         `
         :`
+            odd:bg-white
+            even:bg-black
             before:-left-4
             hover:before:-left-0
             before:bg-yellow-500
-            odd:bg-opacity-80
+            odd:bg-opacity-50
+            even:bg-opacity-10
         `
     }
 `
