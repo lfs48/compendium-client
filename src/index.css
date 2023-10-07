@@ -126,22 +126,22 @@
   }
 
   .scrollbar::-webkit-scrollbar-track {
-      background: #f1f1f1;
+    background: #f1f1f1;
   }
 
   .scrollbar::-webkit-scrollbar-thumb {
-      background: #888;
-      border: 2px solid rgba(0, 0, 0, 0);
-      border-radius: 10px;
-      background-clip: padding-box;
+    background: #888;
+    border: 2px solid rgba(0, 0, 0, 0);
+    border-radius: 10px;
+    background-clip: padding-box;
   }
 
   .scrollbar-left {
-    direction:rtl; 
+    direction:rtl;
   }
 
   .scrollbar-left > * {
-    direction:ltr; 
+    direction:ltr;
   }
 
   .has-tooltip {
