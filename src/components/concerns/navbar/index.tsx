@@ -1,9 +1,10 @@
 import { useGetUserByIdQuery } from '@/api/users.api';
-import Logout from '@atoms/logout';
+import Logout from './logout';
 import { RootState } from '@/types';
 import { useSelector } from 'react-redux';
 import * as S from './styled';
 import { skipToken } from '@reduxjs/toolkit/dist/query';
+import DarkMode from './darkmode';
 
 export default function Navbar() {
 
@@ -15,6 +16,7 @@ export default function Navbar() {
         <S.Root>
             <S.Left></S.Left>
             <S.Right>
+                <DarkMode />
                 {(authenticated && data) &&
                     <>
                     <span>{data.username}</span>
