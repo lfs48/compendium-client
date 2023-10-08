@@ -2,7 +2,7 @@ import { getLevelHP, getLevelProficiency, getSpellSlots, isSpellcaster } from '@
 import { DndClass, RootState } from '@/types';
 import * as S from './styled';
 import { intToOrdinal } from '@/utils/functions.utils';
-import React, { useEffect } from 'react';
+import React, { ReactNode, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import EntityLink from '@/components/concerns/entities/entity-link';
 import Table from '@atoms/table';
@@ -29,7 +29,7 @@ export default React.memo( function ClassTable({
     const extraHeaders = Object.keys(dndClass.table_cols).map( (col) => {
         return <S.HeaderCell key={col}>{col}</S.HeaderCell>
     });
-    let spellHeaders = [<></>];
+    let spellHeaders = [] as ReactNode[];
     if ( isSpellcaster(dndClass) ) {
         spellHeaders = getSpellSlots(dndClass.spellcasting)[1].map( (_, i) => {
             return <S.HeaderCell key={i}>{intToOrdinal(i+1)}</S.HeaderCell>
@@ -58,7 +58,7 @@ export default React.memo( function ClassTable({
                 </S.Cell>
             )
         });
-        let spellCols = [<></>];
+        let spellCols = [] as ReactNode[];
         if ( isSpellcaster(dndClass) ) {
             const levelSlots = getSpellSlots(dndClass.spellcasting)[i];
             spellCols = levelSlots.map( (slots, j) => {
