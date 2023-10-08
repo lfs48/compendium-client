@@ -43,8 +43,28 @@ module.exports = {
           dark: '#E3BE78',
           darkest: '#D9A545'
         },
+        blue: {
+          DEFAULT: '#0B135B',
+          dark: '#070B36',
+          darker: '#040825',
+          darkest: '#020412'
+        },
+        gray: {
+          lightest: '#DEDEE3',
+          lighter: '#BDBDC7',
+          light: '#9C9CAB',
+          DEFAULT: '#7B7B8E',
+          dark: '#545463',
+          darker: '#27272B',
+          darkest: '#1D1D20'
+        },
         orange: {
           DEFAULT: '#AF4319'
+        },
+        purple: {
+          light: '#855988',
+          DEFAULT: '#6B4984',
+          dark: '#483475'
         }
       },
       keyframes: {
