@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "@babel/core": "^7.16.5",
+    "@dice-roller/rpg-dice-roller": "github:dice-roller/rpg-dice-roller",
     "@reduxjs/toolkit": "^1.7.1",
     "lodash": "^4.17.21",
     "react": "^17.0.2",
@@ -18,7 +19,7 @@
     "recoil": "^0.7.5",
     "redux": "^4.1.2",
     "remark-gfm": "^3.0.1",
-    "rpg-dice-roller": "^4.5.2",
+    "rpg-dice-roller": "^5.0.0",
     "svg-loaders-react": "^2.2.1",
     "tailwind-styled-components": "^2.1.4"
   },
