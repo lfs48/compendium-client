@@ -14,8 +14,10 @@ export default function DarkMode() {
         const root = document.getElementById('root');
         if(active) {
             root?.classList.add('dark');
+            localStorage.setItem('darkmode','true');
         } else {
             root?.classList.remove('dark');
+            localStorage.setItem('darkmode','false');
         }
     }, [active]);
 
