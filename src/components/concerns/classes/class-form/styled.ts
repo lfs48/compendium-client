@@ -3,16 +3,9 @@ import ButtonComponent from '@atoms/button';
 import Input from '@atoms/input';
 import tw from 'tailwind-styled-components';
 import EntityAutocomplete from '../../entities/entity-autocomplete';
+import Form from '@/components/UI/atoms/form';
 
-export const Root = tw.div`
-    w-full
-    h-full
-    bg-beige-lighter
-    border-2
-    border-black
-    px-6
-    py-4
-    rounded
+export const Root = tw(Form)`
     flex
     flex-col
     justify-between

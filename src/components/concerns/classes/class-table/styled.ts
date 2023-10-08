@@ -24,9 +24,13 @@ export const HeaderCell = tw.th<CellProps>`
 export const Row = tw.tr`
     odd:bg-black 
     odd:bg-opacity-10
+    dark:odd:bg-white
+    dark:odd:bg-opacity-10
     last:border-b
     last:border-black
     last:border-opacity-10
+    dark:last:border-white
+    dark:last:border-opacity-10
 `
 
 export const Cell = tw.td<CellProps>`

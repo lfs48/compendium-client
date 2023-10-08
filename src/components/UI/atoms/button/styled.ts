@@ -59,6 +59,9 @@ function colorClasses(color, fill) {
                     bg-blue-600
                     hover:bg-blue-700
                     text-white
+                    dark:bg-gray-200
+                    dark:hover:bg-gray-400
+                    dark:text-black
                 `
             case('red'):
             return`

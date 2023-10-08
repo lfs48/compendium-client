@@ -18,12 +18,13 @@ export const Root = tw(SidebarRow)<SidebarBodyRowProps>`
     w-full
     ${p => p.$active
         ?`
-            bg-beige
+            odd:bg-beige
+            even:bg-beige-dark
+            dark:odd:bg-purple
+            dark:even:bg-purple-dark
             before:left-0
             before:bg-green-500
             before:hover:bg-green-600
-            odd:bg-opacity-80
-            even:bg-opacity-20
         `
         :`
             odd:bg-white
@@ -31,7 +32,7 @@ export const Root = tw(SidebarRow)<SidebarBodyRowProps>`
             before:-left-4
             hover:before:-left-0
             before:bg-yellow-500
-            odd:bg-opacity-50
+            odd:bg-opacity-20
             even:bg-opacity-10
         `
     }

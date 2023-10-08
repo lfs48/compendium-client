@@ -16,7 +16,10 @@ export default function Toggle({
 
     return(
         <S.Root onClick={handleToggle}>
-            <S.Circle $active={active}/>
+            <S.Circle 
+                $active={active}
+                className={circleClass}
+            />
         </S.Root>
     )
 }

@@ -7,6 +7,7 @@ export const Root = tw.div`
     -translate-x-1/2
     -translate-y-1/2
     bg-beige-light
+    dark:bg-gray-darker
     p-6
     rounded
     z-50

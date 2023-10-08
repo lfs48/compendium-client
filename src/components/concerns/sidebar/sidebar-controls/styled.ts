@@ -10,6 +10,7 @@ export const Root = tw.div`
     sticky
     top-0
     bg-beige-light
+    dark:bg-gray-600
     space-y-2
 `
 
@@ -30,7 +31,15 @@ export const FiltersButton = tw.button<FiltersButtonProps>`
     bg-beige-light
     cursor-pointer
     ${p => p.$show? `` : `invisible`}
-    ${p => p.$open? `bg-beige-dark` : `bg-beige-light hover:bg-beige-dark`}
+    ${p => p.$open? `
+        bg-beige-dark
+        dark:bg-blue-darker
+    `:`
+        bg-beige-light 
+        dark:bg-gray-600
+        hover:bg-beige-dark
+        dark:hover:bg-blue-darker
+    `}
     has-tooltip
     p-2
     rounded

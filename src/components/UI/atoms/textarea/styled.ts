@@ -1,7 +1,7 @@
 import tw from 'tailwind-styled-components';
 
 export const Root = tw.textarea`
-    bg-inherit
+    bg-transparent
     focus:outline-none
     rounded-sm
     px-2

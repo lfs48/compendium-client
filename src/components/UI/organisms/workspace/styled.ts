@@ -4,6 +4,6 @@ export const Root = tw.div`
     h-full
     w-full-minus-nav
     p-6
-    overflow-y-scroll 
+    overflow-y-auto
     scrollbar
 `

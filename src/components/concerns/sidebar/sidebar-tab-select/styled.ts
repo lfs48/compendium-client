@@ -12,6 +12,7 @@ export const Root = tw.div<RootProps>`
     rounded-br-full
     cursor-pointer
     bg-beige-dark
+    dark:bg-gray-400
     flex
     justify-between
     items-center

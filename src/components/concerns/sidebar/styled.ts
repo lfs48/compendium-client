@@ -6,18 +6,18 @@ type RootProps = {
 
 export const Root = tw.div<RootProps>`
     flex
-    ${p => p.$open ? '-ml-0' : '-ml-[28rem]'}
+    ${p => p.$open ? '-ml-0' : '-ml-[31rem]'}
     transition-[margin-left]
     duration-700
 `
 
 export const Body = tw.div`
     w-100
-    bg-gray-100
     flex
     flex-col
     border-r-2
     border-black
+    dark:border-gray-400
     relative
 `
 

@@ -19,6 +19,7 @@ export const InputContainer = tw.div<InputContainerProps>`
     transition-colors
     duration-200
     bg-beige-lightest
+    dark:bg-gray
     rounded-sm
     border
     ${p => p.$hasLeftIcon
@@ -39,8 +40,10 @@ export const InputContainer = tw.div<InputContainerProps>`
         `
         :`
             border-black
+            dark:border-gray-700
             focus-within:ring-1
             focus-within:ring-black
+            dark:focus-within:ring-white
         `
     }
     ${p => p.$isTextarea

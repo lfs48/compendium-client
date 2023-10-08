@@ -1,10 +1,6 @@
+import Page from '@/components/UI/atoms/page';
 import tw from 'tailwind-styled-components';
 
-export const Root = tw.div`
+export const Root = tw(Page)`
     p-6
-    flex
-    justify-center
-    items-center
-    h-full
-    bg-beige-lightest
 `

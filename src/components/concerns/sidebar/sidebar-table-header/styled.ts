@@ -3,11 +3,13 @@ import SidebarRow from '../sidebar-row';
 import SidebarCell from '../sidebar-cell';
 
 export const Root = tw(SidebarRow)`
-    border-b
-    border-b-black
     sticky
     top-0
+    border-b
+    border-b-black
+    dark:border-b-gray-400
     bg-beige-light
+    dark:bg-gray-600
 `
 
 export const HeaderCell = tw(SidebarCell)`

@@ -17,4 +17,5 @@ export const BodyContainer = tw.div`
     h-[calc(100vh-8.65rem)]
     scrollbar
     bg-beige-lighter
+    dark:bg-gray-800
 `

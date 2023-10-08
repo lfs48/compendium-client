@@ -10,6 +10,7 @@ export const Root = tw.div<RootProps>`
     absolute
     border-2
     border-black
+    dark:border-gray-400
     bg-beige-lighter
     shadow-panel
     z-40
@@ -52,6 +53,7 @@ export const Header = tw.header`
     h-12
     top-0
     bg-beige-dark
+    dark:bg-gray-600
     px-6
     py-2
     border-b-2
@@ -109,21 +111,7 @@ export const Content = tw.div`
     scroll
     scrollbar
     bg-beige-lighter
-`
-
-export const Footer = tw.footer`
-    flex
-    justify-between
-    absolute
-    bottom-0
-    px-6
-    py-2
-    shadow-inner
-    border-t-2
-    border-black
-    w-full
-    h-12
-    bg-beige-dark
+    dark:bg-gray-800
 `
 
 export const Button = `

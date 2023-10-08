@@ -1,8 +1,9 @@
+import Page from '@atoms/page';
 import tw from 'tailwind-styled-components';
 
-export const Root = tw.div`
+export const Root = tw(Page)`
     w-full
     h-full-minus-nav
     flex
-    bg-beige-lightest
+    p-0
 `

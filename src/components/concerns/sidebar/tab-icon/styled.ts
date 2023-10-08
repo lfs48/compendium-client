@@ -10,9 +10,9 @@ type RootProps = {
 export const Root = tw.i<RootProps>`
     transition-colors
     duration-200
-    text-white
     p-2
     bg-black
+    dark:bg-gray-200
     rounded-full
     w-8
     h-8
@@ -22,10 +22,12 @@ export const Root = tw.i<RootProps>`
     ${p => entityIcon(p.$tab)}
     ${p => p.$selected
         ?`
-            text-green-400
+            text-green-600
+            dark:text-purple-light
         `
         :`
             text-white
+            dark:text-black
         `
     }
 `

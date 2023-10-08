@@ -15,6 +15,7 @@ export const Root = tw.footer`
     w-full
     h-12
     bg-beige-dark
+    dark:bg-gray-600
 `
 
 export const Button = tw(ButtonComponent)`

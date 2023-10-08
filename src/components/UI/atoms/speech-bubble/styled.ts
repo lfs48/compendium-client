@@ -8,6 +8,8 @@ export const Root = tw.div<DirProps>`
     text-sm
     font-semibold
     bg-beige
+    dark:bg-gray-200
+    dark:text-black
     rounded-sm
     shadow
     ${p => p.$dir === 'left' ? 'right-full transform -translate-x-4' : ''}
@@ -43,9 +45,29 @@ export const Arrow = tw.div<DirProps>`
             border-x-transparent
         `
     }
-    ${p => p.$dir === 'left' ? 'border-l-beige border-r-transparent -right-4' : ''}
-    ${p => p.$dir === 'right' ? 'border-r-beige border-l-transparent -left-4' : ''}
-    ${p => p.$dir === 'top' ? 'border-t-beige border-b-transparent -bottom-4' : ''}
-    ${p => p.$dir === 'bottom' ? 'border-b-beige border-t-transparent -top-4' : ''}
+    ${p => p.$dir === 'left' ?`
+        border-l-beige 
+        dark:border-l-gray-200
+        border-r-transparent 
+        -right-4
+    `:''}
+    ${p => p.$dir === 'right' ?`
+        border-r-beige
+        dark:border-r-gray-200
+        border-l-transparent
+        -left-4
+    `:''}
+    ${p => p.$dir === 'top' ?`
+        border-t-beige
+        dark:border-t-gray-200
+        border-b-transparent 
+        -bottom-4`
+    :''}
+    ${p => p.$dir === 'bottom' ?`
+        border-b-beige
+        dark:border-t-gray-200
+        border-t-transparent 
+        -top-4`
+    :''}
 
 `

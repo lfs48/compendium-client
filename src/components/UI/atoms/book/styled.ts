@@ -11,6 +11,8 @@ export const Root = tw.div`
     filled-padding
     from-beige-darkest
     to-beige-darkest
+    dark:from-blue-darker
+    dark:to-blue-darker
 `
 
 export const Spine = tw.div`
@@ -18,12 +20,20 @@ export const Spine = tw.div`
     left-0 
     h-full 
     w-8 
-    shadow-right
+    shadow-right-sm
+    dark:border-y
+    dark:border-l
+    dark:rounded-tl
+    dark:rounded-bl
+    dark:border-y-gray-700
+    dark:border-l-gray-700
+    dark:border-r
+    dark:border-r-gray-800
 `
 
 export const Bookmark = tw.i`
-    fad 
-    fa-bookmark 
+    fas
+    fa-bookmark
     absolute 
     top-[-0.25rem] 
     left-2 
@@ -32,8 +42,12 @@ export const Bookmark = tw.i`
 `
 
 export const Cover = tw.div`
-    bg-beige
     h-full
     rounded-tr
     rounded-br
+    bg-beige
+    dark:bg-blue-dark
+    dark:border-y
+    dark:border-r
+    dark:border-gray-700
 `

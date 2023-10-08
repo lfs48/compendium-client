@@ -2,16 +2,9 @@ import Field from '@molecules/field';
 import Input from '@atoms/input';
 import ButtonComponent from '@atoms/button';
 import tw from 'tailwind-styled-components';
+import Form from '@/components/UI/atoms/form';
 
-export const Root = tw.div`
-    w-full
-    h-full
-    bg-beige-lighter
-    border-2
-    border-black
-    px-6
-    py-4
-    rounded
+export const Root = tw(Form)`
     flex
     flex-col
     justify-between

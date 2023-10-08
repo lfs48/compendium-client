@@ -1,11 +1,12 @@
 import tw from 'tailwind-styled-components';
 
 export const Input = tw.input`
-    bg-inherit
+    bg-transparent
     focus:outline-none
     rounded-sm
     px-2
     py-1
     w-full
     disabled:bg-gray-300
+    dark:disabled:bg-gray-dark
 `
