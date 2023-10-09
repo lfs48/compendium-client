@@ -1,6 +1,7 @@
 import Routes from "@/components/routes"
 import Navbar from "@/components/UI/navbar"
 import tw from "tailwind-styled-components"
+import Footer from "@/components/UI/footer"
 
 const Root = tw.div`
   w-full 
@@ -15,6 +16,7 @@ function App() {
     <Root>
       <Navbar />
       <Routes />
+      <Footer />
     </Root>
   )
 }
