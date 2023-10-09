@@ -2,16 +2,22 @@
 
 ## [0.1.1] - 2023-10-09
 
+### Additions
+
+- Added an app footer.
+
 ### Improvements
 
-- Add descriptive text 
+- Added additional descriptive text to some panels.
+- Various small UI adjustments.
 
 ### Fixes
-Various minor bug fixes, UI adjustments, and optimizations.
 
-### Under the hood
+- Fixed an issue with spell filtering by aspect.
 
-- Reorganized 
+### Optimizations
+
+- Reorganized project directories
 
 ## [0.1.0] - 2023-10-08
 
