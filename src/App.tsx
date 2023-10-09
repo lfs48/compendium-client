@@ -1,5 +1,5 @@
 import Routes from "@/components/routes"
-import Navbar from "@/components/concerns/navbar"
+import Navbar from "@/components/UI/navbar"
 import tw from "tailwind-styled-components"
 
 const Root = tw.div`
