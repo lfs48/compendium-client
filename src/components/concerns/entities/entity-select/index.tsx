@@ -1,4 +1,4 @@
-import Select from '@/components/UI/molecules/select';
+import Select from '@/components/UI/select';
 import { RootState } from '@/types';
 import { ChangeEvent } from 'react';
 import { useSelector } from 'react-redux';

@@ -1,5 +1,5 @@
 import tw from 'tailwind-styled-components';
-import Button from '@/components/UI/atoms/button';
+import Button from '@/components/UI/button';
 
 export const Root = tw.div`
     w-full

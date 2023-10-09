@@ -1,7 +1,7 @@
 import Sidebar from '@/components/concerns/sidebar';
 import * as S from './styled';
-import PanelsContainer from '@organisms/panels-container';
-import Workspace from '@organisms/workspace';
+import PanelsContainer from '@/components/UI/panels-container';
+import Workspace from '@/components/UI/workspace';
 
 export default function Dashboard() {
 

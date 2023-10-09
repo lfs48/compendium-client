@@ -1,5 +1,5 @@
 import { useGetAllClassesQuery } from '@/api/dndclasses.api';
-import Loading from '@atoms/loading';
+import Loading from '@/components/UI/loading';
 import { Route, Routes } from 'react-router-dom';
 import ClassForm from '@/components/concerns/classes/class-form';
 import { useGetAllFeaturesQuery } from '@/api/features.api';

@@ -2,8 +2,8 @@ import { sidebarAtom } from '@/recoil';
 import { useRecoilState } from 'recoil';
 import * as S from './styled';
 import { merge } from 'lodash';
-import Select from '@/components/UI/molecules/select';
-import Label from '@/components/UI/atoms/label';
+import Select from '@/components/UI/select';
+import Label from '@/components/UI/label';
 import { ItemBulk, ItemKind, ItemRarity } from '@/enums';
 
 interface ItemFiltersProps {

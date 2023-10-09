@@ -1,9 +1,9 @@
-import Input from '@atoms/input';
-import Label from '@atoms/label';
-import ErrorList from '@molecules/error-list';
+import Input from '@/components/UI/input';
+import Label from '@/components/UI/label';
+import ErrorList from '@/components/UI/error-list';
 import { SyntheticEvent, useState } from 'react';
 import * as S from './styled';
-import TextArea from '@atoms/textarea';
+import TextArea from '@/components/UI/textarea';
 
 interface FieldProps {
     value: string | number;

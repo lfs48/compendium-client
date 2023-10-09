@@ -1,6 +1,6 @@
 import { useGetAllClassesQuery } from '@/api/dndclasses.api';
 import { useGetAllFeaturesQuery } from '@/api/features.api';
-import Loading from '@atoms/loading';
+import Loading from '@/components/UI/loading';
 import SidebarControls from '@/components/concerns/sidebar/sidebar-controls';
 import SidebarTabSelect from '@/components/concerns/sidebar/sidebar-tab-select';
 import { RootState } from '@/types';

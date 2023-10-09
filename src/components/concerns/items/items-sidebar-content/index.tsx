@@ -7,7 +7,7 @@ import SidebarBodyRow from '../../sidebar/sidebar-body-row';
 import SidebarCell from '../../sidebar/sidebar-cell';
 import SidebarTableHeader from '../../sidebar/sidebar-table-header';
 import { sortEntities } from '@/utils/entities.utils';
-import NoResults from '@/components/UI/atoms/no-results';
+import NoResults from '@/components/UI/no-results';
 import SidebarTable from '../../sidebar/sidebar-table';
 import { bulkEnumToInt } from '@/utils/items.util';
 import { Entity } from '@/enums';

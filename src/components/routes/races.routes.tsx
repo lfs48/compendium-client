@@ -1,5 +1,5 @@
 import { useGetAllRacesQuery } from '@/api/races.api';
-import Loading from '@atoms/loading';
+import Loading from '@/components/UI/loading';
 import { Route, Routes } from 'react-router-dom';
 import RaceForm from '../concerns/races/race-form';
 import GmRoute from './gm.route';

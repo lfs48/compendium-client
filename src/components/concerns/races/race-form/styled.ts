@@ -1,8 +1,8 @@
-import Field from '@molecules/field';
-import Input from '@atoms/input';
-import ButtonComponent from '@atoms/button';
+import Field from '@/components/UI/field';
+import Input from '@/components/UI/input';
+import ButtonComponent from '@/components/UI/button';
 import tw from 'tailwind-styled-components';
-import Form from '@/components/UI/atoms/form';
+import Form from '@/components/UI/form';
 
 export const Root = tw(Form)`
     flex

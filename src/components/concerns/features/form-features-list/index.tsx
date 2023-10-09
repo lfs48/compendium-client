@@ -1,4 +1,4 @@
-import ClickableIcon from '@/components/UI/atoms/clickable-icon';
+import ClickableIcon from '@/components/UI/clickable-icon';
 import { RootState } from '@/types';
 import { useSelector } from 'react-redux';
 import * as S from './styled';

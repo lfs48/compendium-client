@@ -1,8 +1,8 @@
-import Dropdown from '@atoms/dropdown';
+import Dropdown from '@/components/UI/dropdown';
 import { RootState } from '@/types';
 import { useCallback, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import Field from '../../../UI/molecules/field';
+import Field from '../../../UI/field';
 import * as S from './styled';
 import { Entity } from '@/enums';
 

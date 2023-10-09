@@ -1,11 +1,11 @@
 import { useRegisterMutation } from '@/api/auth.api';
-import Book from '@atoms/book';
-import Button from '@atoms/button';
+import Book from '@/components/UI/book';
+import Button from '@/components/UI/button';
 import { areAllKeysFilled, handleInput, isAnyKeyFilled } from '@/utils/component.utils';
-import Field from '@molecules/field';
+import Field from '@/components/UI/field';
 import { useCallback, useState } from 'react';
 import * as S from './styled';
-import Link from '@atoms/link';
+import Link from '@/components/UI/link';
 
 export default function RegisterForm() {
 

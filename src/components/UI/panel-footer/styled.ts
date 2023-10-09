@@ -1,5 +1,5 @@
 import tw from 'tailwind-styled-components';
-import ButtonComponent from '@atoms/button';
+import ButtonComponent from '@/components/UI/button';
 
 export const Root = tw.footer`
     flex

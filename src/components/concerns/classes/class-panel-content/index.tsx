@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { DndClass } from '@/types';
 import * as S from './styled';
-import Divider from '@atoms/divider';
+import Divider from '@/components/UI/divider';
 import StartingEquipment from '@/components/concerns/classes/starting-equipment';
 import ClassProficiencies from '@/components/concerns/classes/class-proficiencies';
 import ClassTable from '@/components/concerns/classes/class-table';
-import PanelFooter from '@molecules/panel-footer';
+import PanelFooter from '@/components/UI/panel-footer';
 import { useDispatch } from 'react-redux';
-import Dialog from '@molecules/dialog';
+import Dialog from '@/components/UI/dialog';
 import { useDeleteClassMutation } from '@/api/dndclasses.api';
-import Loading from '@atoms/loading';
+import Loading from '@/components/UI/loading';
 import { useNavigate } from 'react-router-dom';
 import ClassFeatures from '../class-features';
 

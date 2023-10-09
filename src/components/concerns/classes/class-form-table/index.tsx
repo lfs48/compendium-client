@@ -4,8 +4,8 @@ import { useSelector } from 'react-redux';
 import { DndClass, RootState } from '@/types';
 import { intToOrdinal } from '@/utils/functions.utils';
 import { getLevelProficiency } from '@/utils/dndClass.utils';
-import Dropdown from '@atoms/dropdown';
-import Table from '@atoms/table';
+import Dropdown from '@/components/UI/dropdown';
+import Table from '@/components/UI/table';
 import { LEVEL_ARRAY } from '@/utils/constants.utils';
 
 interface ClassFormTableProps {

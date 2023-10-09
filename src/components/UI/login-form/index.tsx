@@ -1,10 +1,10 @@
 import { useLoginMutation } from '@/api/auth.api';
-import Book from '@atoms/book';
-import Button from '@atoms/button';
-import Link from '@atoms/link';
-import ErrorList from '@molecules/error-list';
+import Book from '@/components/UI/book';
+import Button from '@/components/UI/button';
+import Link from '@/components/UI/link';
+import ErrorList from '@/components/UI/error-list';
 import { areAllKeysFilled, handleInput, isAnyKeyFilled } from '@/utils/component.utils';
-import Field from '@molecules/field';
+import Field from '@/components/UI/field';
 import { useCallback, useState } from 'react';
 import * as S from './styled';
 

@@ -3,11 +3,11 @@ import { useRecoilState } from 'recoil';
 import * as S from './styled';
 import { merge } from 'lodash';
 import { EntitySelect } from '../../entities/entity-select';
-import Select from '@/components/UI/molecules/select';
-import Label from '@/components/UI/atoms/label';
+import Select from '@/components/UI/select';
+import Label from '@/components/UI/label';
 import { SpellAspect } from '@/enums';
-import Close from '@/components/UI/atoms/close';
-import Field from '@/components/UI/molecules/field';
+import Close from '@/components/UI/close';
+import Field from '@/components/UI/field';
 import { handleInput } from '@/utils/component.utils';
 
 interface SpellsFilterProps {

@@ -1,4 +1,4 @@
-import Markdown from '@/components/UI/molecules/markdown';
+import Markdown from '@/components/UI/markdown';
 import * as S from './styled';
 
 interface EquipmentProps {

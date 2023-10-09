@@ -1,4 +1,4 @@
-import Link from '@atoms/link';
+import Link from '@/components/UI/link';
 import tw from 'tailwind-styled-components';
 
 export const Root = tw.div`

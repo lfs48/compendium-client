@@ -1,4 +1,4 @@
-import Button from '@/components/UI/atoms/button';
+import Button from '@/components/UI/button';
 import tw from 'tailwind-styled-components';
 
 export const Root = tw.div`

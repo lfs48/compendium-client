@@ -1,6 +1,6 @@
 import React from 'react';
 import * as S from './styled';
-import Button from '@atoms/button';
+import Button from '@/components/UI/button';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/types';
 

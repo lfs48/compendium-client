@@ -1,4 +1,4 @@
-import Select from '@/components/UI/molecules/select';
+import Select from '@/components/UI/select';
 import { modifierToString } from '@/utils/character.utils';
 import { snakeCaseToWords } from '@/utils/functions.utils';
 import { ProficientIndicator } from '../ProficientIndicator';

@@ -1,5 +1,5 @@
 import tw from 'tailwind-styled-components';
-import Checkbox from '@/components/UI/atoms/checkbox';
+import Checkbox from '@/components/UI/checkbox';
 
 export const Root = tw.div`
     border-2

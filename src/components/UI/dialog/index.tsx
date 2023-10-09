@@ -1,5 +1,5 @@
-import Button from '@atoms/button';
-import Modal from '@atoms/modal';
+import Button from '@/components/UI/button';
+import Modal from '@/components/UI/modal';
 import * as S from './styled';
 
 interface DialogProps {

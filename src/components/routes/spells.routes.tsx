@@ -1,4 +1,4 @@
-import Loading from '@atoms/loading';
+import Loading from '@/components/UI/loading';
 import { Route, Routes } from 'react-router-dom';
 import GmRoute from './gm.route';
 import { useGetAllSpellsQuery } from '@/api/spells.api';

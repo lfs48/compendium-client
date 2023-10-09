@@ -1,4 +1,4 @@
-import NoResults from '@/components/UI/atoms/no-results';
+import NoResults from '@/components/UI/no-results';
 import SidebarBodyRow from '@/components/concerns/sidebar/sidebar-body-row';
 import SidebarCell from '@/components/concerns/sidebar/sidebar-cell';
 import SidebarTable from '@/components/concerns/sidebar/sidebar-table';

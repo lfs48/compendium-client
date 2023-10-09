@@ -1,4 +1,4 @@
-import Collapsable from '@/components/UI/molecules/collapsable';
+import Collapsable from '@/components/UI/collapsable';
 import { RootState } from '@/types';
 import { useSelector } from 'react-redux';
 import * as S from './styled';

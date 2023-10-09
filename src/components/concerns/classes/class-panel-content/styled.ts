@@ -1,5 +1,5 @@
 import tw from 'tailwind-styled-components';
-import Markdown from '@molecules/markdown';
+import Markdown from '@/components/UI/markdown';
 
 export const Root = tw.div`
     space-y-4

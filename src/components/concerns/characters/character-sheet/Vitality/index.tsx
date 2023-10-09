@@ -1,4 +1,4 @@
-import Checkbox from '@/components/UI/atoms/checkbox';
+import Checkbox from '@/components/UI/checkbox';
 import { BubbleLabel } from '../BubbleLabel';
 import * as S from './styled';
 

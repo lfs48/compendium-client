@@ -1,4 +1,4 @@
-import SpeechBubble from '@/components/UI/atoms/speech-bubble';
+import SpeechBubble from '@/components/UI/speech-bubble';
 import tw from 'tailwind-styled-components';
 
 type RootProps = {

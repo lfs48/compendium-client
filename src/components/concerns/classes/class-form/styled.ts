@@ -1,9 +1,9 @@
-import Field from '@/components/UI/molecules/field';
-import ButtonComponent from '@atoms/button';
-import Input from '@atoms/input';
+import Field from '@/components/UI/field';
+import ButtonComponent from '@/components/UI/button';
+import Input from '@/components/UI/input';
 import tw from 'tailwind-styled-components';
 import EntityAutocomplete from '../../entities/entity-autocomplete';
-import Form from '@/components/UI/atoms/form';
+import Form from '@/components/UI/form';
 
 export const Root = tw(Form)`
     flex

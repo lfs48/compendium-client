@@ -1,7 +1,7 @@
-import Panel from '@molecules/panel';
+import Panel from '@/components/UI/panel';
 import { RootState } from '@/types';
 import { useSelector } from 'react-redux';
-import Markdown from '@molecules/markdown';
+import Markdown from '@/components/UI/markdown';
 import ClassPanelContent from '@/components/concerns/classes/class-panel-content';
 import React, { useEffect, useState } from 'react';
 import {merge} from 'lodash';

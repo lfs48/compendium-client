@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { Race } from '@/types';
 import * as S from './styled';
-import Divider from '@atoms/divider';
+import Divider from '@/components/UI/divider';
 import FeatureList from '@/components/concerns/features/features-list';
-import PanelFooter from '@molecules/panel-footer';
+import PanelFooter from '@/components/UI/panel-footer';
 import { useDispatch } from 'react-redux';
-import Dialog from '@molecules/dialog';
+import Dialog from '@/components/UI/dialog';
 import { useDeleteClassMutation } from '@/api/dndclasses.api';
-import Loading from '@atoms/loading';
+import Loading from '@/components/UI/loading';
 import { useNavigate } from 'react-router-dom';
 import { useDeleteRaceMutation } from '@/api/races.api';
 import { anOrA } from '@/utils/functions.utils';

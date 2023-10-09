@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Spell, RootState } from '@/types';
 import * as S from './styled';
-import PanelFooter from '@molecules/panel-footer';
+import PanelFooter from '@/components/UI/panel-footer';
 import { useDispatch, useSelector } from 'react-redux';
-import Dialog from '@molecules/dialog';
-import Loading from '@atoms/loading';
+import Dialog from '@/components/UI/dialog';
+import Loading from '@/components/UI/loading';
 import { useNavigate } from 'react-router-dom';
 import { useDeleteSpellMutation } from '@/api/spells.api';
 import { intToOrdinal } from '@/utils/functions.utils';

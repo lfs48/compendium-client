@@ -1,5 +1,5 @@
-import Page from '@atoms/page';
-import LoginForm from '@organisms/login-form';
+import Page from '@/components/UI/page';
+import LoginForm from '@/components/UI/login-form';
 
 export default function Landing() {
 

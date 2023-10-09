@@ -3,12 +3,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Item, RootState } from '@/types';
 import * as S from './styled';
 import { handleInput, toggleInput } from '@/utils/component.utils';
-import Select from '@molecules/select';
+import Select from '@/components/UI/select';
 import { openPanel } from '@/reducers/UI/panels.reducer';
 import { useNavigate, useParams } from 'react-router-dom';
 import { usePatchItemMutation, usePostItemMutation } from '@/api/items.api';
 import { ItemBulk, ItemKind, ItemRarity } from '@/enums';
-import Checkbox from '@/components/UI/atoms/checkbox';
+import Checkbox from '@/components/UI/checkbox';
 
 const initialInputs = {
     id: '',

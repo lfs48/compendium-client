@@ -1,5 +1,5 @@
 import { useGetAllItemsQuery } from '@/api/items.api';
-import Loading from '@atoms/loading';
+import Loading from '@/components/UI/loading';
 import { Route, Routes } from 'react-router-dom';
 import ItemForm from '@/components/concerns/items/item-form';
 import { useGetAllFeaturesQuery } from '@/api/features.api';

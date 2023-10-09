@@ -19,9 +19,7 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
-      "@atoms/*": ["src/components/UI/atoms/*"],
-      "@molecules/*": ["src/components/UI/molecules/*"],
-      "@organisms/*": ["src/components/UI/organisms/*"],
+      "@UI/*": ["src/components/UI*"],
       "@pages/*": ["src/components/pages/*"]
     }
   }

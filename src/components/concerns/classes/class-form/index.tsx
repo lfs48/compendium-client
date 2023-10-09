@@ -1,11 +1,11 @@
 import { SyntheticEvent, useEffect, useState } from 'react';
 import { merge } from 'lodash';
 import { useDispatch, useSelector } from 'react-redux';
-import Field from '@molecules/field';
+import Field from '@/components/UI/field';
 import { DndClass, RootState } from '@/types';
 import * as S from './styled';
 import { handleInput } from '@/utils/component.utils';
-import Select from '@molecules/select';
+import Select from '@/components/UI/select';
 import { usePatchClassMutation, usePostClassMutation } from '@/api/dndclasses.api';
 import ClassFormTable from '@/components/concerns/classes/class-form-table';
 import { openPanel } from '@/reducers/UI/panels.reducer';

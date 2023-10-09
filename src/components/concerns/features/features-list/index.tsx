@@ -1,7 +1,7 @@
 import { DndClass, Feature, RootState } from '@/types';
 import { useSelector } from 'react-redux';
-import Collapsable from '@molecules/collapsable';
-import Markdown from '@molecules/markdown';
+import Collapsable from '@/components/UI/collapsable';
+import Markdown from '@/components/UI/markdown';
 import * as S from './styled';
 import { intToOrdinal } from '@/utils/functions.utils';
 import { sortEntities } from '@/utils/entities.utils';

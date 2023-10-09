@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { Item, RootState } from '@/types';
 import * as S from './styled';
-import Divider from '@atoms/divider';
-import PanelFooter from '@molecules/panel-footer';
+import Divider from '@/components/UI/divider';
+import PanelFooter from '@/components/UI/panel-footer';
 import { useDispatch, useSelector } from 'react-redux';
-import Dialog from '@molecules/dialog';
+import Dialog from '@/components/UI/dialog';
 import { useDeleteClassMutation } from '@/api/dndclasses.api';
-import Loading from '@atoms/loading';
+import Loading from '@/components/UI/loading';
 import { useNavigate } from 'react-router-dom';
 import { useDeleteItemMutation } from '@/api/items.api';
 import { intToOrdinal } from '@/utils/functions.utils';

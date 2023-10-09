@@ -1,6 +1,6 @@
 import { useGetUserByIdQuery } from "@/api/users.api";
 import { Navigate, Route } from "react-router-dom";
-import Loading from "@atoms/loading";
+import Loading from "@/components/UI/loading";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/types";
 import { useEffect } from "react";

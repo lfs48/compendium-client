@@ -1,4 +1,4 @@
-import Field from '@molecules/field';
+import Field from '@/components/UI/field';
 import { SyntheticEvent } from 'react';
 import * as S from './styled';
 
