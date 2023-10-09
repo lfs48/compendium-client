@@ -1,8 +1,8 @@
 import NoResults from '@/components/UI/no-results';
-import SidebarBodyRow from '@/components/concerns/sidebar/sidebar-body-row';
-import SidebarCell from '@/components/concerns/sidebar/sidebar-cell';
-import SidebarTable from '@/components/concerns/sidebar/sidebar-table';
-import SidebarTableHeader from '@/components/concerns/sidebar/sidebar-table-header';
+import SidebarBodyRow from '@/components/pages/dashboard/sidebar/sidebar-body-row';
+import SidebarCell from '@/components/pages/dashboard/sidebar/sidebar-cell';
+import SidebarTable from '@/components/pages/dashboard/sidebar/sidebar-table';
+import SidebarTableHeader from '@/components/pages/dashboard/sidebar/sidebar-table-header';
 import { sidebarAtom } from '@/recoil';
 import { RootState } from '@/types';
 import { compareEntities, sortEntities } from '@/utils/entities.utils';

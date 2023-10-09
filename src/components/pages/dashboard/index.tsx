@@ -1,4 +1,4 @@
-import Sidebar from '@/components/concerns/sidebar';
+import Sidebar from './sidebar';
 import * as S from './styled';
 import PanelsContainer from '@/components/UI/panels-container';
 import Workspace from '@/components/UI/workspace';

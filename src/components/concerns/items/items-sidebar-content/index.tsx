@@ -3,12 +3,12 @@ import * as S from './styled';
 import { RootState } from '@/types';
 import { useRecoilState } from 'recoil';
 import { sidebarAtom } from '@/recoil';
-import SidebarBodyRow from '../../sidebar/sidebar-body-row';
-import SidebarCell from '../../sidebar/sidebar-cell';
-import SidebarTableHeader from '../../sidebar/sidebar-table-header';
+import SidebarBodyRow from '../../../pages/dashboard/sidebar/sidebar-body-row';
+import SidebarCell from '../../../pages/dashboard/sidebar/sidebar-cell';
+import SidebarTableHeader from '../../../pages/dashboard/sidebar/sidebar-table-header';
 import { sortEntities } from '@/utils/entities.utils';
 import NoResults from '@/components/UI/no-results';
-import SidebarTable from '../../sidebar/sidebar-table';
+import SidebarTable from '../../../pages/dashboard/sidebar/sidebar-table';
 import { bulkEnumToInt } from '@/utils/items.util';
 import { Entity } from '@/enums';
 

@@ -7,8 +7,8 @@ import { useSelector } from 'react-redux';
 import { RootState } from '@/types';
 import { useNavigate } from 'react-router-dom';
 import { entityFormPath } from '@/utils/entities.utils';
-import FeaturesSidebarContent from '../../features/features-sidebar-content';
-import ItemsSidebarContent from '../../items/items-sidebar-content';
+import FeaturesSidebarContent from '../../../../concerns/features/features-sidebar-content';
+import ItemsSidebarContent from '../../../../concerns/items/items-sidebar-content';
 import Button from '@/components/UI/button';
 
 interface SidebarContentProps {

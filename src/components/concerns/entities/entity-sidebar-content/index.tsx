@@ -3,10 +3,10 @@ import { RootState } from '@/types';
 import { useSelector } from 'react-redux';
 import { useRecoilState } from 'recoil';
 import { filterEntities, sortEntities } from '@/utils/entities.utils';
-import SidebarBodyRow from '@/components/concerns/sidebar/sidebar-body-row';
-import SidebarCell from '@/components/concerns/sidebar/sidebar-cell';
-import SidebarTable from '@/components/concerns/sidebar/sidebar-table';
-import SidebarTableHeader from '@/components/concerns/sidebar/sidebar-table-header';
+import SidebarBodyRow from '@/components/pages/dashboard/sidebar/sidebar-body-row';
+import SidebarCell from '@/components/pages/dashboard/sidebar/sidebar-cell';
+import SidebarTable from '@/components/pages/dashboard/sidebar/sidebar-table';
+import SidebarTableHeader from '@/components/pages/dashboard/sidebar/sidebar-table-header';
 import NoResults from '@/components/UI/no-results';
 import { Entity } from '@/enums';
 

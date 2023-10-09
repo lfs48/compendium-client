@@ -1,7 +1,7 @@
 import * as S from './styled';
-import SpellsSidebarHeader from '../../spells/spell-filter';
-import FeatureFilters from '../../features/feature-filters';
-import ItemFilters from '../../items/item-filters';
+import SpellsSidebarHeader from '../../../../concerns/spells/spell-filter';
+import FeatureFilters from '../../../../concerns/features/feature-filters';
+import ItemFilters from '../../../../concerns/items/item-filters';
 import { useRecoilState } from 'recoil';
 import { sidebarAtom } from '@/recoil';
 import { merge } from 'lodash';

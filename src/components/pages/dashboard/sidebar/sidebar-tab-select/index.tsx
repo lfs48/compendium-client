@@ -1,4 +1,4 @@
-import TabIcon from '@/components/concerns/sidebar/tab-icon';
+import TabIcon from '@/components/pages/dashboard/sidebar/tab-icon';
 import * as S from './styled';
 import { useRecoilState } from 'recoil';
 import { sidebarAtom } from '@/recoil';
