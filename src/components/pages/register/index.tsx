@@ -1,5 +1,5 @@
 import Page from '@/components/UI/page';
-import RegisterForm from '@/components/UI/register-form';
+import RegisterForm from './register-form';
 
 export default function Register() {
 
