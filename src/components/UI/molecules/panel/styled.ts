@@ -41,6 +41,7 @@ export const Root = tw.div<RootProps>`
     ${p => p.$minimized && p.$stage >= 2
         ?`
             opacity-20
+            dark:opacity-50
         `
     :``}
 `
