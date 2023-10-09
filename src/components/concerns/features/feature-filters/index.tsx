@@ -44,7 +44,11 @@ export default function FeatureFilters({
                 <S.SelectsLine>
                     <Select
                         value={filters.levelDir}
-                        options={['=', '>', '<']}
+                        options={[
+                            {label: '=', value: 0},
+                            {label: '>', value: 1},
+                            {label: '<', value: -1}
+                        ]}
                         onChange={handleSelect('levelDir')}
                         disabled={!filters.level}
                     />

@@ -26,7 +26,7 @@ export const sidebarAtom = atom({
                 sourceType: undefined as undefined | APIEntity,
                 source: '',
                 kind: undefined as undefined | FeatureKind,
-                levelDir: '>',
+                levelDir: 0,
                 level: undefined as undefined | number
             }
         },
