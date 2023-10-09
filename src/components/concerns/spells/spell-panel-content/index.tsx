@@ -11,6 +11,7 @@ import { intToOrdinal } from '@/utils/functions.utils';
 import EntityLink from '../../entities/entity-link';
 import { Entity } from '@/enums';
 import { merge, capitalize } from 'lodash';
+import { spellAspectsString, spellRankString } from '@/utils/spells.util';
 
 interface SpellPanelContentProps {
     spell: Spell;
@@ -49,18 +50,11 @@ const SpellPanelContent = React.memo(function SpellPanelContent({
         navigate(`/spells/edit/${spell.id}`)
     }
 
-    const aspects = merge([],spell.aspects);
-    let aspectsString = 'No aspects';
-    if (aspects.length >= 1) {
-        aspectsString = aspects.sort().map( aspect => capitalize(aspect) ).join(', ');
-    }
-    
-
     return(
         <>
         {(!isLoading && !isSuccess) ?
             <S.Root {...props}>
-                <i>{intToOrdinal(spell.rank)} rank spell ({aspectsString})</i>
+                <i>{spellRankString(spell)} ({spellAspectsString(spell)})</i>
                 <span><b>Casting Time: </b>{spell.casting_time}</span>
                 <span><b>Range: </b>{spell.range}</span>
                 <span><b>Targets: </b>{spell.targets}</span>
