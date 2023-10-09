@@ -10,6 +10,7 @@ import { useDeleteClassMutation } from '@/api/dndclasses.api';
 import Loading from '@atoms/loading';
 import { useNavigate } from 'react-router-dom';
 import { useDeleteRaceMutation } from '@/api/races.api';
+import { anOrA } from '@/utils/functions.utils';
 
 interface RacePanelContentProps {
     race: Race;
@@ -57,7 +58,7 @@ const RacePanelContent = React.memo(function RacePanelContent({
                 </S.Description>
                 <Divider />
                 <h1>Racial Features</h1>
-                <p>{`As a ${race.name.toLowerCase()}, you get the following racial features.`}</p>
+                <p>{`As ${anOrA(race.name)} ${race.name.toLowerCase()}, you get the following racial features.`}</p>
                 <FeatureList
                     featureIDs={race.features}
                 />

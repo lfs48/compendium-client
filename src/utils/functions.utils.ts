@@ -65,3 +65,15 @@ export function spaceship(a:any, b:any) {
         return 0;
     }
 }
+
+export function anOrA(nextWord: string) {
+    if (nextWord.length > 0 && isVowel(nextWord[0]) ) {
+        return 'an';
+    } else {
+        return 'a';
+    }
+}
+
+function isVowel(char: string) {
+    return "aeiouAEIOU".includes(char); 
+}
