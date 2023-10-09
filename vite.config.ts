@@ -7,6 +7,9 @@ export default defineConfig({
   plugins: [
     react(),
   ],
+  define: {
+    APP_VERSION: JSON.stringify(process.env.npm_package_version)
+  },
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
