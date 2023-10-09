@@ -1,14 +1,33 @@
 import { Spell } from "@/types";
 import { intToOrdinal } from "./functions.utils";
 import { capitalize, merge } from 'lodash';
+import { SpellAspect } from "@/enums";
 
-export function filterSpells(list:Spell[], name:string, dndClass:string='') {
-    return list
-    .filter( (spell:Spell) => {
-        const nameMatch = spell.name.toLowerCase().startsWith( name.toLowerCase() );
-        const classMatch = !dndClass || spell.dnd_class_ids.includes(dndClass);
-        return nameMatch && classMatch;
-    })
+interface filterSpellsOptions {
+    name?: string;
+    description?: string;
+    rank?: string;
+    rankDir?: number;
+    aspects?: SpellAspect[];
+}
+
+export function filterSpells(list:Spell[], options:filterSpellsOptions) {
+    const {name, description, rank, rankDir, aspects} = options;
+    list.filter( (spell:Spell) => {
+        const nameMatch = name ? spell.name.toLowerCase().startsWith( name.toLowerCase() ) : true;
+        const descMatch = description ? spell.description.toLowerCase().includes( description.toLowerCase() ) : true;
+        const aspectMatch = aspects ? aspects.some( aspect => spell.aspects.includes(aspect) ) : true;
+
+        let rankMatch = true;
+        if ( rank && rankDir) {
+            rankMatch = parseInt(spell.rank) * rankDir > parseInt(rank) * rankDir;
+        } else if (rank) {
+            rankMatch = parseInt(spell.rank) === parseInt(rank);
+        }
+
+        return nameMatch && descMatch && rankMatch && aspectMatch;
+    });
+    return list;
 }
 
 export function spellRankString(spell:Spell) {

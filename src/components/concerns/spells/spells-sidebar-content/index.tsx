@@ -30,30 +30,12 @@ export default function SpellsSidebarContent({
         spells: Object.values(state.entities.spells)
     }));
 
-    const filtered = spells.filter( (spell) => {
-        let nameMatch = true;
-        if (search && search.length > 0) {
-            nameMatch = spell.name.toLowerCase().startsWith(search.toLowerCase());
-        }
-
-        let rankMatch = true;
-        if (rank) {
-            if (rankDir === 0) {
-                rankMatch = spell.rank === rank;
-            } else {
-                rankMatch = parseInt(spell.rank) * rankDir > parseInt(rank) * rankDir;
-            }
-        }
-
-        let aspectMatch = true;
-        if (aspects.length > 0) {
-            aspectMatch = aspects.some( aspect => spell.aspects.includes(aspect) );
-        }
-        let descriptionMatch = true;
-        if (description && description.length > 0) {
-            descriptionMatch = spell.description.includes(description);
-        }
-        return nameMatch && rankMatch && aspectMatch && descriptionMatch;
+    const filtered = filterSpells(spells, {
+        name: search,
+        description:description,
+        rank: rank,
+        rankDir: rankDir,
+        aspects: aspects
     })
     const sorted = sortEntities(filtered, {field: field, dir: dir});
     const components = sorted
