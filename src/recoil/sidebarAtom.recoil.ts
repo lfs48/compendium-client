@@ -27,7 +27,7 @@ export const sidebarAtom = atom({
                 source: '',
                 kind: undefined as undefined | FeatureKind,
                 levelDir: 0,
-                level: undefined as undefined | number
+                level: undefined as undefined | string
             }
         },
         races: {
