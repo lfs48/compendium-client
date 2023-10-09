@@ -16,7 +16,7 @@ export function filterSpells(list:Spell[], options:filterSpellsOptions) {
     const filtered = list.filter( (spell:Spell) => {
         const nameMatch = name ? spell.name.toLowerCase().startsWith( name.toLowerCase() ) : true;
         const descMatch = description ? spell.description.toLowerCase().includes( description.toLowerCase() ) : true;
-        const aspectMatch = aspects ? aspects.some( aspect => spell.aspects.includes(aspect) ) : true;
+        const aspectMatch = aspects && aspects.length > 0 ? aspects.some( aspect => spell.aspects.includes(aspect) ) : true;
 
         let rankMatch = true;
         if ( rank && rankDir) {
