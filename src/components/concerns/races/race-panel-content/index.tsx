@@ -57,6 +57,7 @@ const RacePanelContent = React.memo(function RacePanelContent({
                 </S.Description>
                 <Divider />
                 <h1>Racial Features</h1>
+                <p>{`As a ${race.name.toLowerCase()}, you get the following racial features.`}</p>
                 <FeatureList
                     featureIDs={race.features}
                 />
