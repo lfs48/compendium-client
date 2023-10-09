@@ -1,5 +1,5 @@
 import Page from '@/components/UI/page';
-import LoginForm from '@/components/UI/login-form';
+import LoginForm from './login-form';
 
 export default function Landing() {
 
