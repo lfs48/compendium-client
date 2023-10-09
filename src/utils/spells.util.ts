@@ -13,7 +13,7 @@ interface filterSpellsOptions {
 
 export function filterSpells(list:Spell[], options:filterSpellsOptions) {
     const {name, description, rank, rankDir, aspects} = options;
-    list.filter( (spell:Spell) => {
+    const filtered = list.filter( (spell:Spell) => {
         const nameMatch = name ? spell.name.toLowerCase().startsWith( name.toLowerCase() ) : true;
         const descMatch = description ? spell.description.toLowerCase().includes( description.toLowerCase() ) : true;
         const aspectMatch = aspects ? aspects.some( aspect => spell.aspects.includes(aspect) ) : true;
@@ -27,7 +27,7 @@ export function filterSpells(list:Spell[], options:filterSpellsOptions) {
 
         return nameMatch && descMatch && rankMatch && aspectMatch;
     });
-    return list;
+    return filtered;
 }
 
 export function spellRankString(spell:Spell) {
