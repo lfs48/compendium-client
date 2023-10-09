@@ -19,10 +19,12 @@ export function filterSpells(list:Spell[], options:filterSpellsOptions) {
         const aspectMatch = aspects && aspects.length > 0 ? aspects.some( aspect => spell.aspects.includes(aspect) ) : true;
 
         let rankMatch = true;
-        if ( rank && rankDir) {
-            rankMatch = parseInt(spell.rank) * rankDir > parseInt(rank) * rankDir;
-        } else if (rank) {
-            rankMatch = parseInt(spell.rank) === parseInt(rank);
+        if (rank !== undefined && rankDir !== undefined) {
+            if (rankDir == 0) {
+                rankMatch = parseInt(spell.rank) === parseInt(rank);
+            } else {
+                rankMatch = parseInt(spell.rank) * rankDir > parseInt(rank) * rankDir;
+            }
         }
 
         return nameMatch && descMatch && rankMatch && aspectMatch;
