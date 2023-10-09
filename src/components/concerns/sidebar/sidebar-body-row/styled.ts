@@ -57,6 +57,6 @@ export const Favorite = tw(SidebarCell)<FavoriteProps>`
             far`
     }
     text-right
-    w-full
     pr-4
+    w-8
 `
