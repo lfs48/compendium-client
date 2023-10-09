@@ -22,6 +22,6 @@ export default function ClassFeatures({
                 kind={FeatureKind.Core}
                 sort='level'
             />
-    </S.Root>
+        </S.Root>
     )
 }

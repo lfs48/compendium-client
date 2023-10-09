@@ -1,6 +1,7 @@
 import tw from 'tailwind-styled-components';
 
 export const Root = tw.div`
+    space-y-4
 `
 
 export const Name = tw.span`
