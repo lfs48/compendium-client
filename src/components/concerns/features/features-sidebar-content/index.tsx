@@ -9,7 +9,7 @@ import SidebarTableHeader from '../../../pages/dashboard/sidebar/sidebar-table-h
 import { apiEntityToClientEntity, sortEntities } from '@/utils/entities.utils';
 import NoResults from '@/components/UI/no-results';
 import SidebarTable from '../../../pages/dashboard/sidebar/sidebar-table';
-import { apiFeatureKindToClientFeatureType } from '@/utils/features.utils';
+import { apiFeatureKindToClientFeatureType, filterFeatures } from '@/utils/features.utils';
 import { spaceship } from '@/utils/functions.utils';
 import { Entity } from '@/enums';
 
@@ -21,41 +21,18 @@ export default function FeaturesSidebarContent({...props}) {
     const {sourceType, source, kind, levelDir, level} = filters;
 
     const {features, entities} = useSelector( (state:RootState) => ({
-        features: state.entities.features,
+        features: Object.values(state.entities.features),
         entities: state.entities
     }));
-
-    const filtered = Object.values(features)
-    .filter( (feature) => {
-        const nameMatch = feature.name.toLowerCase().startsWith( search.toLowerCase() );
-        let kindMatch = true;
-        if (kind) {
-            kindMatch = feature.kind === kind;
-        }
-        let sourceTypeMatch = true;
-        if (sourceType) {
-            sourceTypeMatch = feature.sources.some( (source) => source.source_type === sourceType );
-        }
-        let sourceMatch = true;
-        if (sourceType && source) {
-            sourceMatch = feature.sources.some( (s) => source === s.id );
-        }
-        let levelMatch = true;
-        if (level) {
-            if (feature.level) { 
-                if (levelDir === '=') {
-                    levelMatch = feature.level === level;
-                } else if (levelDir === '>') {
-                    levelMatch = feature.level > level;
-                } else if (levelDir === '<') {
-                    levelMatch = feature.level < level;
-                }
-            } else {
-                return false;
-            }
-        }
-        return nameMatch && kindMatch && sourceTypeMatch && sourceMatch && levelMatch;
-    });
+1
+    const filtered = filterFeatures(features, {
+        name: search,
+        kind: kind,
+        level: level,
+        levelDir: levelDir,
+        sourceType: sourceType,
+        source: source
+    })
 
     let sorted = filtered;
 
