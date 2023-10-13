@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import * as S from './styled';
 import { skipToken } from '@reduxjs/toolkit/dist/query';
 import DarkMode from './darkmode';
+import Collections from './collections';
 
 export default function Navbar() {
 
@@ -14,7 +15,9 @@ export default function Navbar() {
 
     return(
         <S.Root>
-            <S.Left></S.Left>
+            <S.Left>
+                <Collections />
+            </S.Left>
             <S.Right>
                 <DarkMode />
                 {(authenticated && data) &&

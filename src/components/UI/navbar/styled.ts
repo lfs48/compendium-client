@@ -13,6 +13,7 @@ export const Root = tw.nav`
     items-center
     px-12
     w-full
+    z-10
 `
 
 export const Left = tw.div`
