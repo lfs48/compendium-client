@@ -18,11 +18,11 @@ export const Root = tw.button<RootProps>`
     inline-flex
     justify-center
     items-center
-    disabled:bg-gray-400
-    disabled:text-gray-700
     disabled:cursor-default
     relative
+    disabled:text-gray-700
     ${p => p.$block ? 'w-full' : ''}
+    ${p => p.$fill ? `disabled:bg-gray-400` :''}
     ${p => colorClasses(p.$color, p.$fill)}
 `
 
