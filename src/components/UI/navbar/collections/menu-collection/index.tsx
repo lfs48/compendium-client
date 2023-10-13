@@ -5,6 +5,7 @@ import { apiEntityToClientEntity, entityName } from '@/utils/entities.utils';
 import Collapsable from '@/components/UI/collapsable';
 import { openPanel } from '@/reducers/UI/panels.reducer';
 import { Entity } from '@/enums';
+import CollectionTitle from '../collection-title';
 
 interface CollectionProps {
     collection: Collection;
@@ -52,6 +53,7 @@ export default function MenuCollection({
 
     return(
         <S.Root {...props}>
+            <CollectionTitle collection={collection} />
             {
                 Object.values(Entity).map( (key) => {
                     const typeEntities = entitiesBytype[key];
