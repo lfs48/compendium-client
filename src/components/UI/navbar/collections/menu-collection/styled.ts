@@ -1,6 +1,7 @@
 import tw from 'tailwind-styled-components';
 
 export const Root = tw.div`
+    space-y-2
 `
 
 export const SectionHeader = tw.div`
@@ -8,6 +9,7 @@ export const SectionHeader = tw.div`
 `
 export const SectionContent = tw.div`
     pl-2
+    space-y-0.5
 `
 
 export const PanelLink = tw.div`
