@@ -3,6 +3,7 @@ import * as S from './styled';
 import { RootState } from '@/types';
 import { useRecoilState } from 'recoil';
 import { collectionMenuAtom } from '@/recoil';
+import NewCollection from '../new-collection';
 
 export default function CollectionList() {
 
@@ -17,6 +18,8 @@ export default function CollectionList() {
 
     return(
         <S.Root>
+            <NewCollection />
+            <div>
             {Object.values(collections).map( ({id, title}) =>
                 <S.Line
                     key={id}
@@ -25,6 +28,7 @@ export default function CollectionList() {
                     {title}
                 </S.Line>
             )}
+            </div>
         </S.Root>
     )
 }
