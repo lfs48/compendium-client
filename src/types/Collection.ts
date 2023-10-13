@@ -12,7 +12,10 @@ export interface CollectionEntity {
 }
 
 export interface PostCollection {
-    collection: Collection;
+    collection: {
+        title: string;
+        entities: CollectionEntity[];
+    };
 }
 
 export interface PatchCollection {
