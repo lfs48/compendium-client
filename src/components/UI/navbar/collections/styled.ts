@@ -17,6 +17,9 @@ export const Menu = tw(Dropdown)`
     w-100
     h-100
     bg-beige
+    dark:bg-gray-dark
+    dark:border
+    dark:border-gray
     space-y-2
     py-2
     px-4
