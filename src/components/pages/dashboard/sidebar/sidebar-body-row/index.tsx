@@ -1,12 +1,13 @@
 import { openPanel } from '@/reducers/UI/panels.reducer';
 import { RootState } from '@/types';
 import { MAX_PANELS } from '@/utils/constants.utils';
-import { ReactNode, useState } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as S from './styled';
 import { Entity } from '@/enums';
 import Dropdown from '@/components/UI/dropdown';
 import SidebarContextMenu from '../sidebar-context-menu';
+import SidebarRow from '../sidebar-row';
 
 interface SidebarBodyRowProps {
     id: string;
@@ -24,13 +25,14 @@ export default function SidebarBodyRow({
 
     const dispatch = useDispatch();
 
+    const [hovering, setHovering] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
 
     const panels = useSelector( (state:RootState) => state.UI.panels);
 
     const isActive = !!panels[id];
 
-    const handleClick = (e) => {
+    const handleOpenPanel = () => {
         dispatch({
             type: openPanel.type,
             payload: {
@@ -40,29 +42,21 @@ export default function SidebarBodyRow({
         })
     }
 
-    const handleRightClick = (e) => {
-        e.preventDefault();
-        setMenuOpen(true);
-
-        function closeMenu() {
-            setMenuOpen(false);
-        }
-
-        window.addEventListener("click", closeMenu);
-
-        return function cleanupMenuListener() {
-            window.removeEventListener("click", closeMenu);
-        }
-    }
-
     return(
         <S.Root
-            $active={isActive}
-            onClick={(e)=>handleClick(e)}
-            onContextMenu={(e)=>handleRightClick(e)}
+            $active={isActive || menuOpen}
+            onMouseEnter={()=>setHovering(true)}
+            onMouseLeave={()=>setHovering(false)}
             {...props}
         >
-            {children}
+            <SidebarRow 
+                onClick={handleOpenPanel}
+            >
+                {children}
+            </SidebarRow>
+            {hovering &&
+                <S.ThreeDot onClick={()=>setMenuOpen(true)}/>
+            }
             <SidebarContextMenu
                 open={menuOpen}
                 entityID={id}

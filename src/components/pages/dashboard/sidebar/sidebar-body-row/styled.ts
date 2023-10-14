@@ -3,11 +3,11 @@ import SidebarCell from '../sidebar-cell';
 import SidebarRow from '../sidebar-row';
 import Dropdown from '@/components/UI/dropdown';
 
-type SidebarBodyRowProps = {
+type RootProps = {
     $active: boolean;
 }
 
-export const Root = tw(SidebarRow)<SidebarBodyRowProps>`
+export const Root = tw.div<RootProps>`
     relative
     cursor-pointer
     before:absolute
@@ -36,6 +36,19 @@ export const Root = tw(SidebarRow)<SidebarBodyRowProps>`
             even:bg-opacity-10
         `
     }
+`
+
+export const ThreeDot = tw.i`
+    far
+    fa-ellipsis-h
+    text-lg 
+    cursor-pointer 
+    transition-colors
+    absolute
+    right-0
+    text-right
+    pr-4
+    w-8
 `
 
 export const ContextMenu = tw(Dropdown)`
