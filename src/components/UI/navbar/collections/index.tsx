@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import * as S from './styled';
 import Dropdown from '../../dropdown';
 import { useGetAllUserCollectionsQuery } from '@/api/collections.api';
@@ -11,6 +11,7 @@ import { useRecoilState } from 'recoil';
 import { collectionMenuAtom } from '@/recoil';
 import CollectionList from './collection-list';
 import CollectionMenuHeader from './collection-menu-header';
+import useClickOutside from '@/hooks/useClickOutside.hook';
 
 export default function Collections() {
 
@@ -20,22 +21,10 @@ export default function Collections() {
 
     const query = useGetAllUserCollectionsQuery();
 
+    const menuRef = useRef(null);
+    useClickOutside(menuRef, () => setMenuOpen(false));
+
     const collections = useSelector( (state:RootState) => state.entities.collections);
-
-    useEffect( () => {
-        if (menuOpen) {
-
-            function closeMenu() {
-                setMenuOpen(false);
-            }
-
-            window.addEventListener("click", closeMenu);
-    
-            return function cleanupMenuListener() {
-                window.removeEventListener("click", closeMenu);
-            }
-        }
-    }, [menuOpen]);
 
     const handleClickMenu = (e) => {
         e.preventDefault(); 
@@ -43,7 +32,7 @@ export default function Collections() {
     }
 
     return(
-        <S.Root onClick={handleClickMenu}>
+        <S.Root ref={menuRef}>
             <S.Icon
                 onClick={()=>setMenuOpen(!menuOpen)}
             />

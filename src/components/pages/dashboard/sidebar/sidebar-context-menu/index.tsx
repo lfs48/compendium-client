@@ -1,9 +1,10 @@
 import { Entity } from '@/enums';
 import * as S from './styled';
-import { useEffect, useState } from 'react';
+import { ForwardedRef, forwardRef, useEffect, useRef, useState } from 'react';
 import CollectionSubmenu from './collection-submenu';
 import { useMousePos } from '@/hooks/useMouse.hook';
 import { createPortal } from 'react-dom';
+import useClickOutside from '@/hooks/useClickOutside.hook';
 
 interface SidebarContextMenuProps {
     open: boolean;
@@ -12,14 +13,15 @@ interface SidebarContextMenuProps {
     [prop: string]: any;
 }
 
-export default function SidebarContextMenu({
+function render({
     open,
     entityID,
     entityType,
     ...props
-}: SidebarContextMenuProps) {
+}: SidebarContextMenuProps, ref:ForwardedRef<any>) {
 
     const mousePos = useMousePos();
+
 
     const [collectionMenuOpen, setCollectionMenuOpen] = useState(false);
     const [pos, setPos] = useState({x:0,y:0});
@@ -34,7 +36,7 @@ export default function SidebarContextMenu({
         if (open) {
             setPos({
                 x: mousePos.x + 15,
-                y: mousePos.y + 5
+                y: mousePos.y
             });
         }
     }, [open])
@@ -44,6 +46,7 @@ export default function SidebarContextMenu({
         <S.Root
             open={open}
             style={({left:pos.x,top:pos.y})}
+            ref={ref}
             {...props}
         >
             <S.Content>
@@ -61,3 +64,6 @@ export default function SidebarContextMenu({
     , document.body)
     )
 }
+
+const SidebarContextMenu = forwardRef(render);
+export default SidebarContextMenu;
