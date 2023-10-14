@@ -46,9 +46,11 @@ export const ThreeDot = tw.i`
     transition-colors
     absolute
     right-0
+    top-2
     text-right
     pr-4
     w-8
+    leading-none
 `
 
 export const ContextMenu = tw(Dropdown)`
