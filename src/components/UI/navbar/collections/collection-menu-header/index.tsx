@@ -3,7 +3,7 @@ import * as S from './styled';
 import { useRecoilState } from 'recoil';
 import { collectionMenuAtom } from '@/recoil';
 
-export default function CollectionMenuHeader(...props) {
+export default function CollectionMenuHeader({...props}) {
 
     const [collectionMenuState, setCollectionMenuState] = useRecoilState(collectionMenuAtom);
 
