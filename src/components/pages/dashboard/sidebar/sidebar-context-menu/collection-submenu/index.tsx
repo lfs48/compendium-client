@@ -5,6 +5,8 @@ import { Entity } from '@/enums';
 import { usePatchCollectionMutation, usePostCollectionMutation } from '@/api/collections.api';
 import { merge } from 'lodash';
 import { clientEntityToAPIEntity } from '@/utils/entities.utils';
+import { useRecoilState } from 'recoil';
+import { collectionMenuAtom } from '@/recoil';
 
 interface CollectionSubmenuProps {
     open: boolean;
@@ -19,6 +21,8 @@ export default function CollectionSubmenu({
     entityType,
     ...props
 }: CollectionSubmenuProps) {
+
+    const [collectionMenuState, setCollectionMenuState] = useRecoilState(collectionMenuAtom);
 
     const collections = useSelector( (state:RootState) => Object.values(state.entities.collections));
 
@@ -44,7 +48,7 @@ export default function CollectionSubmenu({
 
     const handleAddToCollection = (collection:Collection) => {
         const newEntities = merge([],collection.entities);
-        if ( !newEntities.some( (e) => e.id !== entityID) ) {
+        if ( !newEntities.some( (e) => e.id === entityID) ) {
             newEntities.push({
                 id: entityID,
                 entity_type: clientEntityToAPIEntity(entityType)
