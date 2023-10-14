@@ -1,7 +1,6 @@
 import { openPanel } from '@/reducers/UI/panels.reducer';
 import { RootState } from '@/types';
 import { MAX_PANELS } from '@/utils/constants.utils';
-import { handleToggleFavorite, isInFavorites } from '@/utils/favorites.utils';
 import { ReactNode, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as S from './styled';
@@ -25,20 +24,11 @@ export default function SidebarBodyRow({
 
     const dispatch = useDispatch();
 
-    const [isFavorite, setIsFavorite] = useState( isInFavorites(id) )
-
     const [menuOpen, setMenuOpen] = useState(false);
 
     const panels = useSelector( (state:RootState) => state.UI.panels);
 
     const isActive = !!panels[id];
-
-    const handleFavorite = (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        handleToggleFavorite(id);
-        setIsFavorite( isInFavorites(id) );
-    }
 
     const handleClick = (e) => {
         dispatch({
@@ -73,10 +63,6 @@ export default function SidebarBodyRow({
             {...props}
         >
             {children}
-            <S.Favorite
-                $isFavorited={isFavorite}
-                onClick={(e) => handleFavorite(e)}
-            />
             <SidebarContextMenu
                 open={menuOpen}
                 entityID={id}

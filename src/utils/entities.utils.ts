@@ -1,4 +1,3 @@
-import { isInFavorites } from "./favorites.utils";
 import { spaceship } from "./functions.utils";
 import { capitalize } from 'lodash';
 import { APIEntity, Entity } from "@/enums";
@@ -76,17 +75,11 @@ export function filterEntities(list:any[], name:string) {
 interface CompareOptions {
     field?: string;
     dir?: number;
-    considerFaves?: boolean;
 }
 
 export function sortEntities(list:any[], options:CompareOptions={}) {
-    const considerFaves = options.considerFaves !== undefined ? options.considerFaves : true;
     return list.sort( (a,b) => {
-        if (considerFaves) {
-            return compareFaves(a,b, options);
-        } else {
-            return compareEntities(a,b, options);
-        }
+        return compareEntities(a,b, options);
     });
 }
 
@@ -102,17 +95,5 @@ export function compareEntities(e1:any, e2:any, options:CompareOptions={}) {
         return spaceship(n1,n2);
     } else {
         return comp;
-    }
-}
-
-export function compareFaves(e1:any, e2:any, options:CompareOptions={}) {
-    const f1 = isInFavorites(e1.id);
-    const f2 = isInFavorites(e2.id);
-    if( f1 && !f2 ) {
-        return -1;
-    } else if ( f2 && !f1 ) {
-        return 1;
-    } else {
-        return compareEntities(e1, e2, options);
     }
 }

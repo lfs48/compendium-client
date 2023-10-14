@@ -6,7 +6,6 @@ import SidebarTableHeader from '@/components/pages/dashboard/sidebar/sidebar-tab
 import { sidebarAtom } from '@/recoil';
 import { RootState } from '@/types';
 import { compareEntities, sortEntities } from '@/utils/entities.utils';
-import { isInFavorites } from '@/utils/favorites.utils';
 import { filterSpells } from '@/utils/spells.util';
 import { intToOrdinal, spaceship } from '@/utils/functions.utils';
 import { useSelector } from 'react-redux';

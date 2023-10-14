@@ -38,29 +38,6 @@ export const Root = tw(SidebarRow)<SidebarBodyRowProps>`
     }
 `
 
-type FavoriteProps = {
-    $isFavorited: boolean;
-}
-
-export const Favorite = tw(SidebarCell)<FavoriteProps>`
-    fa-star 
-    text-lg 
-    cursor-pointer 
-    transition-colors
-    absolute
-    right-0
-    ${p => p.$isFavorited 
-        ?`
-            text-yellow-500 fas
-        ` 
-        :`
-            far`
-    }
-    text-right
-    pr-4
-    w-8
-`
-
 export const ContextMenu = tw(Dropdown)`
     bottom-4
     right-20
