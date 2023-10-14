@@ -1,3 +1,4 @@
+import Dropdown from '@/components/UI/dropdown';
 import tw from 'tailwind-styled-components';
 
 export const Root = tw.div`
@@ -7,14 +8,17 @@ export const Root = tw.div`
     items-end
 `
 
-export const List = tw.ul`
+export const List = tw(Dropdown)`
+    bottom-0
+    transform
+    translate-y-full
     w-full
     divide-y
     divide-y-gray
     rounded-b
 `
 
-export const Line = tw.li`
+export const Line = tw.div`
     w-full
     transition-colors
     duration-200

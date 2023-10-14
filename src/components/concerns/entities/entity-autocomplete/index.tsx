@@ -66,16 +66,14 @@ export default function EntityAutocomplete({
                 onFocus={()=>setDropdownOpen(true)}
                 onBlur={()=>setDropdownOpen(false)}
             />
-            <Dropdown 
+            <S.List
                 open={dropdownOpen}
             >
-                <S.List>
-                    {filteredEntities}
-                    { (nameFilled && filteredEntities.length < 1) &&
-                        <S.Line>No matches</S.Line>
-                    }
-                </S.List>
-            </Dropdown>
+                {filteredEntities}
+                { (nameFilled && filteredEntities.length < 1) &&
+                    <S.Line>No matches</S.Line>
+                }
+            </S.List>
         </S.Root>
     )
 }
