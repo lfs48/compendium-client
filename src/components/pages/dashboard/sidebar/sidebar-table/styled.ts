@@ -13,7 +13,7 @@ export const HeaderContainer = tw.div`
 `
 
 export const BodyContainer = tw.div`
-    overflow-auto
+    overflow-y-auto
     h-[calc(100vh-8.65rem)]
     scrollbar
     bg-beige-lighter

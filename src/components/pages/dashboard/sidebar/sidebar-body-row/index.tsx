@@ -6,6 +6,8 @@ import { ReactNode, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as S from './styled';
 import { Entity } from '@/enums';
+import Dropdown from '@/components/UI/dropdown';
+import SidebarContextMenu from '../sidebar-context-menu';
 
 interface SidebarBodyRowProps {
     id: string;
@@ -25,6 +27,8 @@ export default function SidebarBodyRow({
 
     const [isFavorite, setIsFavorite] = useState( isInFavorites(id) )
 
+    const [menuOpen, setMenuOpen] = useState(false);
+
     const panels = useSelector( (state:RootState) => state.UI.panels);
 
     const isActive = !!panels[id];
@@ -36,7 +40,7 @@ export default function SidebarBodyRow({
         setIsFavorite( isInFavorites(id) );
     }
 
-    const handleClick = () => {
+    const handleClick = (e) => {
         dispatch({
             type: openPanel.type,
             payload: {
@@ -46,16 +50,37 @@ export default function SidebarBodyRow({
         })
     }
 
+    const handleRightClick = (e) => {
+        e.preventDefault();
+        setMenuOpen(true);
+
+        function closeMenu() {
+            setMenuOpen(false);
+        }
+
+        window.addEventListener("click", closeMenu);
+
+        return function cleanupMenuListener() {
+            window.removeEventListener("click", closeMenu);
+        }
+    }
+
     return(
-        <S.Root 
+        <S.Root
             $active={isActive}
-            onClick={handleClick}
+            onClick={(e)=>handleClick(e)}
+            onContextMenu={(e)=>handleRightClick(e)}
             {...props}
         >
             {children}
             <S.Favorite
                 $isFavorited={isFavorite}
                 onClick={(e) => handleFavorite(e)}
+            />
+            <SidebarContextMenu
+                open={menuOpen}
+                entityID={id}
+                entityType={contentType}
             />
         </S.Root>
     )

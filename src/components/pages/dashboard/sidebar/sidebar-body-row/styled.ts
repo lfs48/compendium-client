@@ -1,13 +1,13 @@
 import tw from 'tailwind-styled-components';
 import SidebarCell from '../sidebar-cell';
 import SidebarRow from '../sidebar-row';
+import Dropdown from '@/components/UI/dropdown';
 
 type SidebarBodyRowProps = {
     $active: boolean;
 }
 
 export const Root = tw(SidebarRow)<SidebarBodyRowProps>`
-    overflow-x-hidden
     relative
     cursor-pointer
     before:absolute
@@ -59,4 +59,12 @@ export const Favorite = tw(SidebarCell)<FavoriteProps>`
     text-right
     pr-4
     w-8
+`
+
+export const ContextMenu = tw(Dropdown)`
+    bottom-4
+    right-20
+    w-60
+    bg-beige
+    dark:bg-gray
 `
