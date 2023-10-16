@@ -15,7 +15,6 @@ export const Icon = tw.i`
 
 export const Menu = tw(Dropdown)`
     w-100
-    h-100
     bg-beige
     dark:bg-gray-dark
     dark:border
