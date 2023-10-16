@@ -1,4 +1,4 @@
-import { ForwardedRef, forwardRef } from 'react';
+import { ForwardedRef, forwardRef, useEffect, useState } from 'react';
 import * as S from './styled';
 
 interface DropdownProps {
@@ -10,13 +10,18 @@ function render({
     open,
     ...props
 }: DropdownProps, ref:ForwardedRef<any>) {
-    return(
-        <S.Root
-            $open={open}
-            ref={ref}
-            {...props}
-        />
-    )
+
+    if (open) {
+        return(
+            <S.Root
+                ref={ref}
+                {...props}
+            />
+        )
+    } else {
+        return <></>
+    }
+    
 }
 
 const Dropdown = forwardRef(render);
