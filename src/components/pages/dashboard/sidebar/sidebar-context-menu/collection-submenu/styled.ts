@@ -5,6 +5,7 @@ export const Root = tw(Dropdown)`
     top-0
     right-0
     bg-beige
+    dark:bg-gray-dark
     transform
     translate-x-full
     pb-2

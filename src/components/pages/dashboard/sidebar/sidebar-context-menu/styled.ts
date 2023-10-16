@@ -3,7 +3,7 @@ import tw from 'tailwind-styled-components';
 
 export const Root = tw(Dropdown)`
     bg-beige
-    dark:bg-gray
+    dark:bg-gray-dark
     w-60
 `
 
