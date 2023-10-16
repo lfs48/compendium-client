@@ -60,7 +60,7 @@ function render({
                 />
             </S.Content>
         </S.Root>
-    , document.getElementById('root') || document.body)
+    , document.getElementById('app') || document.body)
     )
 }
 
