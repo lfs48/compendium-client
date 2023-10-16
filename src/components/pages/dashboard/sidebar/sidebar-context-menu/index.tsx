@@ -4,7 +4,6 @@ import { ForwardedRef, forwardRef, useEffect, useRef, useState } from 'react';
 import CollectionSubmenu from './collection-submenu';
 import { useMousePos } from '@/hooks/useMouse.hook';
 import { createPortal } from 'react-dom';
-import useClickOutside from '@/hooks/useClickOutside.hook';
 
 interface SidebarContextMenuProps {
     open: boolean;
@@ -61,7 +60,7 @@ function render({
                 />
             </S.Content>
         </S.Root>
-    , document.body)
+    , document.getElementById('root') || document.body)
     )
 }
 
