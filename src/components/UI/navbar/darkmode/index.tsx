@@ -13,10 +13,10 @@ export default function DarkMode() {
     useEffect( () => {
         const root = document.getElementById('root');
         if(active) {
-            root?.classList.add('dark');
+            document.body.classList.add('dark');
             localStorage.setItem('darkmode','true');
         } else {
-            root?.classList.remove('dark');
+            document.body.classList.remove('dark');
             localStorage.setItem('darkmode','false');
         }
     }, [active]);
