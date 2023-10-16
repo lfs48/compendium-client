@@ -6,7 +6,6 @@ export const Input = tw.input`
     rounded-sm
     px-2
     py-1
-    w-full
     disabled:bg-gray-300
     dark:disabled:bg-gray-dark
 `
