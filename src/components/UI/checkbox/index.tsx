@@ -4,22 +4,23 @@ import * as S from './styled';
 interface CheckboxProps {
     label?: string;
     checked: boolean;
-    onChange: () => void;
+    onChange?: () => void;
     [prop: string]: any;
 }
 
 export default function Checkbox({
     label=undefined,
     checked,
-    onChange,
+    onChange=undefined,
     ...props
 }: CheckboxProps) {
     return(
-        <S.Root>
+        <S.Root {...props}>
             <input
                 type='checkbox'
                 checked={checked}
                 onChange={onChange}
+                readOnly={onChange === undefined}
             ></input>
             {label &&
                 <Label>{label}</Label>
