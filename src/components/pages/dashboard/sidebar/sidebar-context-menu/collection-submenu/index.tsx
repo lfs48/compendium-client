@@ -7,6 +7,8 @@ import { merge } from 'lodash';
 import { clientEntityToAPIEntity } from '@/utils/entities.utils';
 import { useRecoilState } from 'recoil';
 import { collectionMenuAtom } from '@/recoil';
+import Checkbox from '@/components/UI/checkbox';
+import { collectionContainsEntity } from '@/utils/collections.utils';
 
 interface CollectionSubmenuProps {
     open: boolean;
@@ -76,7 +78,10 @@ export default function CollectionSubmenu({
                     key={collection.id}
                     onClick={()=>handleAddToCollection(collection)}
                 >
-                    {collection.title}
+                    <Checkbox
+                        checked={ collectionContainsEntity(collection, entityID) }
+                    />
+                    <div>{collection.title}</div>
                 </S.Line>
             ))}
         </S.Root>

@@ -5,9 +5,9 @@ export const Root = tw(Dropdown)`
     top-0
     right-0
     bg-beige
-    w-40
     transform
     translate-x-full
+    pb-2
 `
 
 export const Line = tw.div`
@@ -19,4 +19,6 @@ export const Line = tw.div`
     cursor-pointer
     first:border-b
     first:border-gray
+    flex
+    space-x-2
 `
