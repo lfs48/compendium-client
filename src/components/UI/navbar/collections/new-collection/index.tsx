@@ -24,6 +24,7 @@ export default function NewCollection() {
         .unwrap()
         .then( (res) => {
             setCollectionMenuState({
+                ...collectionMenuState,
                 selectedCollectionID: res.id
             });
         })

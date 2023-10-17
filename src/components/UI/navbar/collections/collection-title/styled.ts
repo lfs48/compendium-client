@@ -21,6 +21,11 @@ export const Title = tw.div`
     py-[0.19rem]
 `
 
+export const Right = tw.div`
+    flex
+    space-x-4
+`
+
 export const Icon = tw.i`
     text-sm 
     flex 
@@ -35,4 +40,8 @@ export const EditIcon = tw(Icon)`
 
 export const SaveIcon = tw(Icon)`
     fas fa-check
+`
+
+export const DeleteIcon = tw(Icon)`
+    fas fa-trash
 `

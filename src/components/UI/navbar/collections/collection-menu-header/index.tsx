@@ -9,6 +9,7 @@ export default function CollectionMenuHeader({...props}) {
 
     const handleBack = () => {
         setCollectionMenuState({
+            ...collectionMenuState,
             selectedCollectionID: null
         });
     }

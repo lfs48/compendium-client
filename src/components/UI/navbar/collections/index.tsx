@@ -12,17 +12,22 @@ import { collectionMenuAtom } from '@/recoil';
 import CollectionList from './collection-list';
 import CollectionMenuHeader from './collection-menu-header';
 import useClickOutside from '@/hooks/useClickOutside.hook';
+import DeleteCollectionDialog from './delete-collection-dialog';
 
 export default function Collections() {
 
     const [menuOpen, setMenuOpen] = useState(false);
     const [collectionMenuState, setCollectionMenuState] = useRecoilState(collectionMenuAtom);
-    const {selectedCollectionID} = collectionMenuState;
+    const {deleting, selectedCollectionID} = collectionMenuState;
 
     const query = useGetAllUserCollectionsQuery();
 
     const menuRef = useRef(null);
-    useClickOutside(menuRef, () => setMenuOpen(false));
+    useClickOutside(menuRef, () => {
+        if (!deleting) {
+            setMenuOpen(false);
+        }
+    });
 
     const collections = useSelector( (state:RootState) => state.entities.collections);
 
@@ -36,24 +41,29 @@ export default function Collections() {
             <S.Icon
                 onClick={()=>setMenuOpen(!menuOpen)}
             />
-                <S.Menu
-                    open={menuOpen}
-                >
-                {query.isSuccess ?
-                    <>
-                    <CollectionMenuHeader />
-                    {selectedCollectionID ?
-                        <MenuCollection
-                            collection={collections[selectedCollectionID]}
-                        />
-                    :
-                        <CollectionList />
-                    }
-                    </>
+            <S.Menu
+                open={menuOpen}
+            >
+            {query.isSuccess ?
+                <>
+                <CollectionMenuHeader />
+                { (!!selectedCollectionID && !!collections[selectedCollectionID]) ?
+                    <MenuCollection
+                        collection={collections[selectedCollectionID]}
+                    />
                 :
-                    <Loading />
+                    <CollectionList />
                 }
-                </S.Menu>
+                </>
+            :
+                <Loading />
+            }
+            </S.Menu>
+            {deleting &&
+                <DeleteCollectionDialog
+                    collectionID={selectedCollectionID || ''}
+                />
+            }
         </S.Root>
     )
 }

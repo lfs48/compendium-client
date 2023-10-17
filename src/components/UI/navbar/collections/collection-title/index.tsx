@@ -1,8 +1,9 @@
 import { Collection } from '@/types';
 import * as S from './styled';
 import { useState } from 'react';
-import Input from '@/components/UI/input';
 import { usePatchCollectionMutation } from '@/api/collections.api';
+import { useRecoilState } from 'recoil';
+import { collectionMenuAtom } from '@/recoil';
 
 interface CollectionTitleProps {
     collection: Collection;
@@ -16,6 +17,8 @@ export default function CollectionTitle({
 
     const [editingTitle, setEditingTitle] = useState(false);
     const [titleInput, setTitleInput] = useState(collection.title);
+
+    const [collectionMenuState, setCollectionMenuState] = useRecoilState(collectionMenuAtom);
 
     const [triggerPatch, patchQuery] = usePatchCollectionMutation();
 
@@ -36,27 +39,36 @@ export default function CollectionTitle({
         })
     }
 
+    const handleDelete = () => {
+        setCollectionMenuState({
+            ...collectionMenuState,
+            deleting: true
+        })
+    }
+
     return(
         <S.Root {...props}>
-        {editingTitle ?
-            <>
-            <S.TitleInput
-                value={titleInput}
-                onChange={(e)=>setTitleInput(e.target.value)}
-            />
-            <S.SaveIcon
-                onClick={handleSave}
-            />
-            </>
+            {editingTitle ?
+                <S.TitleInput
+                    value={titleInput}
+                    onChange={(e)=>setTitleInput(e.target.value)}
+                />
+            :
+                <S.Title>{collection.title}</S.Title>
+            }
+            <S.Right>
+                {editingTitle ?
+                    <S.SaveIcon
+                        onClick={handleSave}
+                    />
 
-        :
-            <>
-            <S.Title>{collection.title}</S.Title>
-            <S.EditIcon
-                onClick={()=>setEditingTitle(true)}
-            />
-            </>
-        }
+                :
+                    <S.EditIcon
+                        onClick={()=>setEditingTitle(true)}
+                    />
+                }
+                <S.DeleteIcon onClick={handleDelete}/>
+            </S.Right>
         </S.Root>
     )
 }

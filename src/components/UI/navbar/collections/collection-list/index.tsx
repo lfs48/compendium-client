@@ -12,6 +12,7 @@ export default function CollectionList() {
 
     const handleSelectCollection = (id:string) => {
         setCollectionMenuState({
+            ...collectionMenuState,
             selectedCollectionID: id
         });
     }

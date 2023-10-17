@@ -14,7 +14,7 @@ export const Line = tw.div`
     even:bg-black
     odd:bg-opacity-0
     even:bg-opacity-10
-    odd:hover:bg-opacity-30
-    even:hover:bg-opacity-20
+    odd:hover:bg-opacity-20
+    even:hover:bg-opacity-40
     transition-[background]
 `
