@@ -12,6 +12,7 @@ export const TitleInput = tw(Input)`
     font-semibold 
     py-0 
     bg-beige-light
+    dark:bg-gray-light
 `
 
 export const Title = tw.div`
