@@ -48,23 +48,25 @@ export default function CollectionSubmenu({
         .catch( (err) => console.log(err) )
     }
 
-    const handleAddToCollection = (collection:Collection) => {
-        const newEntities = merge([],collection.entities);
-        if ( !newEntities.some( (e) => e.id === entityID) ) {
+    const handleToggleCollection = (collection:Collection) => {
+        let newEntities = merge([],collection.entities);
+        if ( collectionContainsEntity(collection, entityID) ) {
+            newEntities = newEntities.filter( (e) => e.id !== entityID);
+        } else {
             newEntities.push({
                 id: entityID,
                 entity_type: clientEntityToAPIEntity(entityType)
             });
-            patchTrigger({
-                collection: {
-                    id: collection.id,
-                    entities: newEntities
-                }
-            })
-            .unwrap()
-            .then( (res) => console.log(res))
-            .catch( (err) => console.log(err) )
         }
+        patchTrigger({
+            collection: {
+                id: collection.id,
+                entities: newEntities
+            }
+        })
+        .unwrap()
+        .then( (res) => console.log(res))
+        .catch( (err) => console.log(err) )
     }
 
     return(
@@ -76,7 +78,7 @@ export default function CollectionSubmenu({
             {collections.map( (collection) => (
                 <S.Line 
                     key={collection.id}
-                    onClick={()=>handleAddToCollection(collection)}
+                    onClick={()=>handleToggleCollection(collection)}
                 >
                     <Checkbox
                         checked={ collectionContainsEntity(collection, entityID) }
