@@ -23,7 +23,7 @@ function render({
 
 
     const [collectionMenuOpen, setCollectionMenuOpen] = useState(false);
-    const [pos, setPos] = useState({x:0,y:0});
+    const [pos, setPos] = useState({x:-1,y:-1});
 
     const handleOpenCollectionMenu = (e) => {
         e.preventDefault();
@@ -40,10 +40,12 @@ function render({
         }
     }, [open])
 
+    const hasPos = (pos.x > 0 && pos.y > 0)
+
     return(
         createPortal(
         <S.Root
-            open={open}
+            open={open && hasPos}
             style={({left:pos.x,top:pos.y})}
             ref={ref}
             {...props}
