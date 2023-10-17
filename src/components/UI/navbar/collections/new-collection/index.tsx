@@ -14,7 +14,7 @@ export default function NewCollection() {
     const [triggerPost, {isLoading}] = usePostCollectionMutation();
 
     const handleNew = () => {
-        const title = `New Collection ${collections.length > 1 && collections.length + 1}`;
+        const title = `New Collection${collections.length > 1 ? ` ${collections.length + 1}` : ''}`;
         triggerPost({
             collection: {
                 title: title,
