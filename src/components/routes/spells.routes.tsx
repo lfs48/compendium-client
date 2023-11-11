@@ -1,12 +1,8 @@
-import Loading from '@/components/UI/loading';
 import { Route, Routes } from 'react-router-dom';
 import GmRoute from './gm.route';
-import { useGetAllSpellsQuery } from '@/api/spells.api';
 import SpellForm from '@/components/concerns/spells/spell-form';
 
 export default function SpellRoutes() {
-
-    const getSpellsQuery = useGetAllSpellsQuery();
 
     return(
         <Routes>
@@ -14,12 +10,7 @@ export default function SpellRoutes() {
                 path='/spells/new'
                 element={
                     <GmRoute>
-                        {(getSpellsQuery.isLoading)
-                            ?
-                                <Loading />
-                            :
-                                <SpellForm />
-                        }
+                        <SpellForm />
                     </GmRoute>
                 }
             />
@@ -27,12 +18,7 @@ export default function SpellRoutes() {
                 path='/spells/edit/:id'
                 element={
                     <GmRoute>
-                        {(getSpellsQuery.isLoading)
-                            ?
-                                <Loading />
-                            :
-                                <SpellForm editing />
-                        }
+                        <SpellForm editing />
                     </GmRoute>
                 }
             />

@@ -1,12 +1,8 @@
-import { useGetAllRacesQuery } from '@/api/races.api';
-import Loading from '@/components/UI/loading';
 import { Route, Routes } from 'react-router-dom';
 import RaceForm from '../concerns/races/race-form';
 import GmRoute from './gm.route';
 
 export default function RaceRoutes() {
-
-    const getRacesQuery = useGetAllRacesQuery();
 
     return(
         <Routes>
@@ -14,12 +10,7 @@ export default function RaceRoutes() {
                 path='/races/new'
                 element={
                     <GmRoute>
-                        {(getRacesQuery.isLoading)
-                            ?
-                                <Loading />
-                            :
-                                <RaceForm />
-                        }
+                        <RaceForm />
                     </GmRoute>
                 }
             />
@@ -27,12 +18,7 @@ export default function RaceRoutes() {
                 path='/races/edit/:id'
                 element={
                     <GmRoute>
-                        {(getRacesQuery.isLoading)
-                            ?
-                                <Loading />
-                            :
-                                <RaceForm editing />
-                        }
+                        <RaceForm editing />
                     </GmRoute>
                 }
             />

@@ -1,14 +1,9 @@
-import { useGetAllClassesQuery } from '@/api/dndclasses.api';
 import Loading from '@/components/UI/loading';
 import { Route, Routes } from 'react-router-dom';
 import ClassForm from '@/components/concerns/classes/class-form';
-import { useGetAllFeaturesQuery } from '@/api/features.api';
 import GmRoute from './gm.route';
 
 export default function ClassRoutes() {
-
-    const getClassesQuery = useGetAllClassesQuery ();
-    const getFeaturesQuery = useGetAllFeaturesQuery();
 
     return(
         <Routes>
@@ -16,12 +11,7 @@ export default function ClassRoutes() {
                 path='/classes/new'
                 element={
                     <GmRoute>
-                        {(getClassesQuery.isLoading || getFeaturesQuery.isLoading)
-                            ?
-                                <Loading />
-                            :
-                                <ClassForm />
-                        }
+                        <ClassForm />
                     </GmRoute>
                 }
             />
@@ -29,12 +19,7 @@ export default function ClassRoutes() {
                 path='/classes/edit/:id'
                 element={
                     <GmRoute>
-                        {(getClassesQuery.isLoading || getFeaturesQuery.isLoading)
-                            ?
-                                <Loading />
-                            :
-                                <ClassForm editing/>
-                        }
+                        <ClassForm editing/>
                     </GmRoute>
                 }
             />
