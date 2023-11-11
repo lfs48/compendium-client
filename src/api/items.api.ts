@@ -2,9 +2,13 @@ import { Item } from '@/types';
 import { PatchItem, PostItem } from '@/types/Item';
 import { rootApi } from './root.api';
 
+interface IndexRes {
+    items: Item[];
+}
+
 export const itemApi = rootApi.injectEndpoints({
     endpoints: (builder) => ({
-        getAllItems: builder.query<Item[], void>({
+        getAllItems: builder.query<IndexRes, void>({
             query: () => `items`
         }),
         getItemById: builder.query<Item, string>({

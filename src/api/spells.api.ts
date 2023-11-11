@@ -1,9 +1,13 @@
 import { Spell, PostSpell, PatchSpell } from '@/types';
 import { rootApi } from './root.api';
 
+interface IndexRes {
+    spells: Spell[];
+}
+
 export const spellApi = rootApi.injectEndpoints({
     endpoints: (builder) => ({
-        getAllSpells: builder.query<Spell[], void>({
+        getAllSpells: builder.query<IndexRes, void>({
             query: () => `spells`
         }),
         getSpellById: builder.query<Spell, string>({

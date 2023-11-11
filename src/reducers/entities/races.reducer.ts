@@ -3,6 +3,7 @@ import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import { rootApi } from "@/api/root.api";
 import { raceApi } from '@/api/races.api';
 import { merge } from 'lodash';
+import { entitiesApi } from '@/api/entities.api';
 
 interface RacesReducer {
     [id: string]: Race;
@@ -18,9 +19,12 @@ const racesSlice = createSlice({
   extraReducers: (builder) => {
     builder
     .addMatcher(
+      isAnyOf(
         raceApi.endpoints.getAllRaces.matchFulfilled,
+        entitiesApi.endpoints.getAllEntities.matchFulfilled
+      ),
         (state, { payload }) => {
-            payload.forEach( (race) => {
+            payload.races.forEach( (race) => {
                 const newRace = merge( {}, race );
                 state[race.id] = newRace;
             })

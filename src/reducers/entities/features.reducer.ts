@@ -1,6 +1,7 @@
 import { Feature } from '@/types';
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import { featureApi } from '@/api/features.api';
+import { entitiesApi } from '@/api/entities.api';
 
 interface FeaturesState {
     [id: string]: Feature;
@@ -15,9 +16,12 @@ const featuresSlice = createSlice({
   extraReducers: (builder) => {
     builder
     .addMatcher(
+      isAnyOf(
         featureApi.endpoints.getAllFeatures.matchFulfilled,
+        entitiesApi.endpoints.getAllEntities.matchFulfilled
+      ),
         (state, { payload }) => {
-            payload.forEach( (feature) => {
+            payload.features.forEach( (feature) => {
                 state[feature.id] = feature;
             })
         }

@@ -1,9 +1,13 @@
 import { Race, PostRace, PatchRace } from '@/types';
 import { rootApi } from './root.api';
 
+interface IndexRes {
+    races: Race[];
+}
+
 export const raceApi = rootApi.injectEndpoints({
     endpoints: (builder) => ({
-        getAllRaces: builder.query<Race[], void>({
+        getAllRaces: builder.query<IndexRes, void>({
             query: () => `races`
         }),
         getRaceById: builder.query<Race, string>({

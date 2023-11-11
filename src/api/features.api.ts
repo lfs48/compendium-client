@@ -2,9 +2,13 @@ import { Feature } from '@/types';
 import { PatchFeature, PostFeature } from '@/types/Feature';
 import { rootApi } from './root.api';
 
+interface IndexRes {
+    features: Feature[];
+}
+
 export const featureApi = rootApi.injectEndpoints({
     endpoints: (builder) => ({
-        getAllFeatures: builder.query<Feature[], void>({
+        getAllFeatures: builder.query<IndexRes, void>({
             query: () => `features`
         }),
         getFeatureById: builder.query<Feature, string>({

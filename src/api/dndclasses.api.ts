@@ -1,9 +1,13 @@
 import { DndClass, PostDndClass, PatchDndClass } from '@/types';
 import { rootApi } from './root.api';
 
+interface IndexRes {
+    dnd_classes: DndClass[];
+}
+
 export const dndClassApi = rootApi.injectEndpoints({
     endpoints: (builder) => ({
-        getAllClasses: builder.query<DndClass[], void>({
+        getAllClasses: builder.query<IndexRes, void>({
             query: () => `classes`
         }),
         getClassById: builder.query<DndClass, string>({

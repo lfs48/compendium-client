@@ -1,6 +1,7 @@
 import { Spell } from '@/types';
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import { spellApi } from '@/api/spells.api';
+import { entitiesApi } from '@/api/entities.api';
 
 interface SpellsState {
     [id: string]: Spell;
@@ -15,9 +16,12 @@ const spellsSlice = createSlice({
   extraReducers: (builder) => {
     builder
     .addMatcher(
+      isAnyOf(
         spellApi.endpoints.getAllSpells.matchFulfilled,
+        entitiesApi.endpoints.getAllEntities.matchFulfilled
+      ),
         (state, { payload }) => {
-            payload.forEach( (spellure) => {
+            payload.spells.forEach( (spellure) => {
                 state[spellure.id] = spellure;
             })
         }
