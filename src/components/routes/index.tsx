@@ -8,10 +8,14 @@ import Protected from "./protected.route";
 import Landing from "@pages/landing";
 import Register from "@pages/register";
 import Dashboard from "@pages/dashboard";
+import Navbar from "../UI/navbar";
+import Footer from "../UI/footer";
 
 export default function AppRoutes() {
     return(
         <BrowserRouter>
+            <Navbar />
+            <Footer />
             <Routes>
                 <Route 
                     path='/login'

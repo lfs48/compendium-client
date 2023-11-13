@@ -14,9 +14,7 @@ function App() {
 
   return (
     <Root id='app'>
-      <Navbar />
       <Routes />
-      <Footer />
     </Root>
   )
 }
