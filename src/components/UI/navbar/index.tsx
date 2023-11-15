@@ -17,7 +17,9 @@ export default function Navbar() {
     return(
         <S.Root>
             <S.Left>
-                <Collections />
+                {(authenticated && data) &&
+                    <Collections />
+                }
             </S.Left>
             <S.Right>
                 <DarkMode />
