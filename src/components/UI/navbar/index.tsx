@@ -6,6 +6,7 @@ import * as S from './styled';
 import { skipToken } from '@reduxjs/toolkit/dist/query';
 import DarkMode from './darkmode';
 import Collections from './collections';
+import AuthLinks from './auth-links';
 
 export default function Navbar() {
 
@@ -20,11 +21,13 @@ export default function Navbar() {
             </S.Left>
             <S.Right>
                 <DarkMode />
-                {(authenticated && data) &&
+                {(authenticated && data) ?
                     <>
                     <span>{data.username}</span>
                     <Logout />
                     </>
+                :
+                    <AuthLinks />
                 }
             </S.Right>
         </S.Root>

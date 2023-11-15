@@ -10,7 +10,7 @@ export default function Logout({...props}) {
     const handleLogout = useCallback( () => {
         dispatch({
             type: logout.type
-        })
+        });
     }, [])
 
     return(
