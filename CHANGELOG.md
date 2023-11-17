@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.2.1] - 2023-11-16
+
+## Additions
+
+- Users can now access the dashboard without needing to create an account or log in. Some features still require authentication to access.
+
+### Improvements
+
+- Optimized the way data is fetched when the app first loads.
+
+### Fixes
+
+- Fixed an issue where the user's first created collection would have an erronous default name set.
+
 ## [0.2.0] - 2023-10-17
 
 ### Additions
