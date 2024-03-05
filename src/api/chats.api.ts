@@ -3,7 +3,7 @@ import { rootApi } from './root.api';
 
 export const chatsApi = rootApi.injectEndpoints({
     endpoints: (builder) => ({
-        getChat: builder.query<Chat, void>({
+        getChat: builder.query<Chat[], void>({
             query: () => `chats`
         }),
         postMessage: builder.mutation<Message, PostMessage>({

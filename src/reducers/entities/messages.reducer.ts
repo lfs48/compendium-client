@@ -19,9 +19,11 @@ const messagesSlice = createSlice({
         chatsApi.endpoints.getChat.matchFulfilled
       ),
         (state, { payload }) => {
-            payload.messages.forEach( (message) => {
+          payload.forEach( (chat) =>
+            chat.messages.forEach( (message) => {
                 state[message.id] = message;
             })
+          )
         }
       )
       .addMatcher(
