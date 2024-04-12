@@ -11,6 +11,23 @@ export const Root = tw.div`
     border-l-2
     border-black
     dark:border-gray-400
-    py-2
-    px-4
+    flex
+    flex-col
+    justify-between
+`
+
+export const Body = tw.div`
+    h-full
+    relative
+    flex
+    flex-col
+    justify-between
+`
+
+export const Messages = tw.div`
+    flex
+    flex-col
+    space-y-2
+    w-full
+    p-2
 `
