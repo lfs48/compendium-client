@@ -14,6 +14,7 @@ export default function ChatSend() {
     const [input, setInput] = useState('');
 
     const handleSend = () => {
+        setInput('');
         trigger({
             message: {
                 body: input,
