@@ -7,7 +7,7 @@ import { RootState } from '@/types';
 
 export default function ChatSend() {
 
-    const [trigger, postQuery] = usePostMessageMutation();
+    const [trigger, {isLoading}] = usePostMessageMutation();
 
     const user_id = useSelector( (state:RootState) => state.session.id) || ''
 
@@ -33,6 +33,7 @@ export default function ChatSend() {
             <S.Bottom>
                 <Button
                     onClick={handleSend}
+                    loading={isLoading}
                 >
                     Send
                 </Button>
