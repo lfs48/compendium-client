@@ -1,9 +1,9 @@
 import { Message } from '@/types';
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
-import { chatsApi } from '@/api/chats.api';
+import { chatsApi } from '@/api/messages.api';
 
 interface MessagesState {
-    [id: string]: Message;
+  [id: string]: Message;
 }
 
 const initialState: MessagesState = {};
@@ -16,7 +16,7 @@ const messagesSlice = createSlice({
     builder
     .addMatcher(
       isAnyOf(
-        chatsApi.endpoints.getChat.matchFulfilled
+        chatsApi.endpoints.getAllMessages.matchFulfilled
       ),
         (state, { payload }) => {
           payload.forEach( (chat) =>
