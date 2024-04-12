@@ -11,7 +11,11 @@ const initialState: MessagesState = {};
 const messagesSlice = createSlice({
   name: 'messages',
   initialState: initialState,
-  reducers: {},
+  reducers: {
+    receiveMessage: (state, { payload }) => {
+      state[payload.id] = payload;
+    }
+  },
   extraReducers: (builder) => {
     builder
     .addMatcher(
@@ -20,21 +24,22 @@ const messagesSlice = createSlice({
       ),
         (state, { payload }) => {
           payload.messages.forEach( (message) => {
-                state[message.id] = message;
+            state[message.id] = message;
           })
         })
       .addMatcher(
         isAnyOf(
-            chatsApi.endpoints.postMessage.matchFulfilled
+          chatsApi.endpoints.postMessage.matchFulfilled
         ),
         (state, { payload }) => {
-            state[payload.id] = payload;
+          state[payload.id] = payload;
         }
       );
   }
 });
 
 export const {
+  receiveMessage
 } = messagesSlice.actions;
 
 export default messagesSlice.reducer;

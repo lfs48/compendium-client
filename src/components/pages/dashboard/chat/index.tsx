@@ -5,6 +5,7 @@ import ChatMessage from './chat-message';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/types';
 import ChatSend from './chat-send';
+import { ChatSocketManager } from './chat-socket-manager';
 
 export default function Chat() {
 
@@ -19,6 +20,7 @@ export default function Chat() {
             }
             {isSuccess &&
                 <S.Body>
+                    <ChatSocketManager />
                     <S.Messages>
                         {messages.map( (message) => (
                             <ChatMessage
