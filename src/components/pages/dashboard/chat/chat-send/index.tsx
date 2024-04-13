@@ -1,5 +1,5 @@
 import * as S from './styled';
-import { useState } from 'react';
+import { KeyboardEvent, SyntheticEvent, useState } from 'react';
 import Button from '@/components/UI/button';
 import { usePostMessageMutation } from '@/api/messages.api';
 import { useSelector } from 'react-redux';
@@ -12,6 +12,13 @@ export default function ChatSend() {
     const user_id = useSelector( (state:RootState) => state.session.id) || ''
 
     const [input, setInput] = useState('');
+
+    const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            handleSend();
+        }
+    }
 
     const handleSend = () => {
         setInput('');
@@ -28,7 +35,9 @@ export default function ChatSend() {
         <S.Root>
             <S.MessageTextfield
                 value={input}
+                onKeyDown={handleKeyDown}
                 onChange={(e) => setInput(e.target.value)}
+                onEnter
             />
             <S.Bottom>
                 <Button
