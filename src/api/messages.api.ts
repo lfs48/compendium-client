@@ -7,8 +7,8 @@ interface MessageIndex {
 
 export const chatsApi = rootApi.injectEndpoints({
     endpoints: (builder) => ({
-        getAllMessages: builder.query<MessageIndex, void>({
-            query: () => `/messages`
+        getAllMessages: builder.query<MessageIndex, number>({
+            query: (page) => `/messages?page=${page}`
         }),
         postMessage: builder.mutation<Message, PostMessage>({
             query: ({...post}) => ({

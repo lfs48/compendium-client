@@ -2,6 +2,7 @@ import tw from 'tailwind-styled-components';
 
 export const Root = tw.div`
     flex
+    mb-2
 `
 
 export const Name = tw.div`
