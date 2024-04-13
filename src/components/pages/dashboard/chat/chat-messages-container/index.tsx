@@ -37,7 +37,7 @@ export default function ChatMessagesContainer() {
             const box = boxRef.current;
             const bot = botRef.current;
             const last = lastRef.current;
-            const isScrolledToBot = box.scrollHeight - box.scrollTop - box.clientHeight <= last.clientHeight + 5;
+            const isScrolledToBot = box.scrollHeight - box.scrollTop - box.clientHeight <= last.clientHeight + 10;
             if(isScrolledToBot) {
                 bot.scrollIntoView();
             }
