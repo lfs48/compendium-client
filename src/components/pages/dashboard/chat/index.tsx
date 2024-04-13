@@ -6,12 +6,12 @@ import { useSelector } from 'react-redux';
 import { RootState } from '@/types';
 import ChatSend from './chat-send';
 import { ChatSocketManager } from './chat-socket-manager';
+import { useEffect, useRef } from 'react';
+import ChatMessagesContainer from './chat-messages-container';
 
 export default function Chat() {
 
     const {isLoading, isSuccess} = useGetAllMessagesQuery();
-
-    const messages = useSelector( (state:RootState) => Object.values(state.entities.messages) )
 
     return(
         <S.Root>
@@ -21,14 +21,7 @@ export default function Chat() {
             {isSuccess &&
                 <S.Body>
                     <ChatSocketManager />
-                    <S.Messages>
-                        {messages.map( (message) => (
-                            <ChatMessage
-                                key={message.id}
-                                message={message}
-                            />
-                        ))}
-                    </S.Messages>
+                    <ChatMessagesContainer />
                     <ChatSend />
                 </S.Body>
             }

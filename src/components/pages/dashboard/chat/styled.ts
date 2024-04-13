@@ -18,16 +18,6 @@ export const Root = tw.div`
 
 export const Body = tw.div`
     h-full
-    relative
     flex
     flex-col
-    justify-between
-`
-
-export const Messages = tw.div`
-    flex
-    flex-col
-    space-y-2
-    w-full
-    p-2
 `

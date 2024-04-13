@@ -4,8 +4,6 @@ import TextArea from '@/components/UI/textarea';
 import tw from 'tailwind-styled-components';
 
 export const Root = tw.div`
-    absolute
-    bottom-0
     h-48
     w-full
     border-t-2

@@ -1,22 +1,28 @@
 import { Message } from '@/types';
 import * as S from './styled';
+import { ForwardedRef, forwardRef } from 'react';
 
 interface ChatMessageProps {
     message: Message;
     [prop: string]: any;
 }
 
-export default function ChatMessage({
+const ChatMessage = forwardRef( function({
     message,
     ...props
-}: ChatMessageProps) {
+}: ChatMessageProps, ref:ForwardedRef<any>) {
 
     const {user, body} = message;
     
     return(
-        <S.Root {...props}>
+        <S.Root
+            ref={ref}
+            {...props}
+        >
             <S.Name>{user}:</S.Name>
             <S.Body> {body}</S.Body>
         </S.Root>
     )
-}
+})
+
+export default ChatMessage;
