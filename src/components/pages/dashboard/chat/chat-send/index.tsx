@@ -9,7 +9,7 @@ export default function ChatSend() {
 
     const [trigger, {isLoading}] = usePostMessageMutation();
 
-    const user_id = useSelector( (state:RootState) => state.session.id) || ''
+    const {id, authenticated} = useSelector( (state:RootState) => state.session)
 
     const [input, setInput] = useState('');
 
@@ -21,14 +21,16 @@ export default function ChatSend() {
     }
 
     const handleSend = () => {
-        setInput('');
-        trigger({
-            message: {
-                body: input,
-                kind: 'text',
-                user_id: user_id
-            }
-        })
+        if (id) {
+            setInput('');
+            trigger({
+                message: {
+                    body: input,
+                    kind: 'text',
+                    user_id: id
+                }
+            })
+        }
     }
 
     return(
@@ -37,12 +39,15 @@ export default function ChatSend() {
                 value={input}
                 onKeyDown={handleKeyDown}
                 onChange={(e) => setInput(e.target.value)}
+                placeholder={!authenticated ? 'Log in or sign up to send messages' : ''}
+                disabled={!authenticated}
                 onEnter
             />
             <S.Bottom>
                 <Button
                     onClick={handleSend}
                     loading={isLoading}
+                    disabled={!authenticated}
                 >
                     Send
                 </Button>
