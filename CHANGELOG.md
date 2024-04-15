@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.3.0] - 2024-4-15
+
+## Additions
+
+- Added a chatroom through which users can send and read messages.
+
 ## [0.2.1] - 2023-11-16
 
 ## Additions
