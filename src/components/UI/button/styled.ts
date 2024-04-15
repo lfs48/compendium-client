@@ -5,6 +5,7 @@ type RootProps = {
     $block?: boolean;
     $color: string;
     $fill: boolean;
+    disabled: boolean;
 }
 
 export const Root = tw.button<RootProps>`
@@ -22,8 +23,8 @@ export const Root = tw.button<RootProps>`
     relative
     disabled:text-gray-700
     ${p => p.$block ? 'w-full' : ''}
-    ${p => p.$fill ? `disabled:bg-gray-400` :''}
-    ${p => colorClasses(p.$color, p.$fill)}
+    ${p => p.$fill ? `` :''}
+    ${p => colorClasses(p.$color, p.$fill, p.disabled)}
 `
 
 export const LoadingContainer = tw.div`
@@ -51,7 +52,12 @@ export const Content = tw.div<ContentProps>`
     ${p => p.$loading ? 'invisible' : 'visible'}
 `
 
-function colorClasses(color, fill) {
+function colorClasses(color, fill, disabled=false) {
+    if (disabled) {
+        return`
+            bg-gray-400
+        `
+    }
     if (fill) {
         switch(color) {
             default:
