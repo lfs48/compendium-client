@@ -9,7 +9,9 @@ export function ChatSocketManager() {
 
     const dispatch = useDispatch();
     
-    const { sendMessage, lastMessage, readyState } = useWebSocket(url);
+    const { sendMessage, lastMessage, readyState } = useWebSocket(url,{
+        queryParams: {token: localStorage.jwt }
+    });
 
     useEffect( () => {
         if (readyState === ReadyState.OPEN) {
