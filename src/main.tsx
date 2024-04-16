@@ -16,7 +16,7 @@ async function initializeApp() {
     event.dataTransfer?.setDragImage(img, 0, 0);
   }, false);
 
-  const container = document.getElementById('root');
+  const container = document.getElementById('root') as HTMLElement;
   const root = createRoot(container);
   root.render(
     <Provider store={store}>
