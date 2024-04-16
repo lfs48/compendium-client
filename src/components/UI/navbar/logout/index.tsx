@@ -17,6 +17,10 @@ export default function Logout({...props}) {
         <S.Root 
             onClick={handleLogout}
             {...props}
-        />
+        >
+            <S.Tooltip
+                dir='bottom'
+            >Log out</S.Tooltip>
+        </S.Root>
     )
 }
