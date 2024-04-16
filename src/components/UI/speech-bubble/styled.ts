@@ -12,10 +12,10 @@ export const Root = tw.div<DirProps>`
     dark:text-black
     rounded-sm
     shadow
-    ${p => p.$dir === 'left' ? 'right-full transform -translate-x-4' : ''}
+    ${p => p.$dir === 'left' ? 'transform -translate-x-4' : ''}
     ${p => p.$dir === 'top' ? '-top-12 transform -translate-x-1/2' : ''}
     ${p => p.$dir === 'right' ? 'left-full transform translate-x-2' : ''}
-    ${p => p.$dir === 'bottom' ? 'top-full transform -translate-x-1/2 translate-y-1/2' : ''}
+    ${p => p.$dir === 'bottom' ? 'left-1/2 transform -translate-x-1/2 translate-y-1/2' : ''}
 `
 
 export const Content = tw.div`
@@ -65,7 +65,7 @@ export const Arrow = tw.div<DirProps>`
     :''}
     ${p => p.$dir === 'bottom' ?`
         border-b-beige
-        dark:border-t-gray-200
+        dark:border-b-gray-200
         border-t-transparent 
         -top-4`
     :''}

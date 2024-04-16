@@ -156,6 +156,7 @@
       invisible
       transition-all
       duration-200
+      font-sans
   }
 
   .has-tooltip:hover .tooltip {
