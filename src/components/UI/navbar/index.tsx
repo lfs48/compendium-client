@@ -3,7 +3,7 @@ import Logout from './logout';
 import { RootState } from '@/types';
 import { useSelector } from 'react-redux';
 import * as S from './styled';
-import { skipToken } from '@reduxjs/toolkit/dist/query';
+import { skipToken } from '@reduxjs/toolkit/query';
 import DarkMode from './darkmode';
 import Collections from './collections';
 import AuthLinks from './auth-links';

@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/types";
 import { useEffect } from "react";
 import { logout } from "@/reducers/session.reducer";
-import { skipToken } from "@reduxjs/toolkit/dist/query";
+import { skipToken } from "@reduxjs/toolkit/query";
 
 export default function ProtectedRoute({children}) {
 
