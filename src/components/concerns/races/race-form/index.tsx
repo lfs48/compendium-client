@@ -10,6 +10,7 @@ import { usePatchRaceMutation, usePostRaceMutation } from '@/api/races.api';
 import EntityAutocomplete from '../../entities/entity-autocomplete';
 import FormFeatureList from '../../features/form-features-list';
 import { merge } from 'lodash';
+import { Entity } from '@/enums';
 
 const initialInputs = {
     id: '',
@@ -137,7 +138,7 @@ export default function RaceForm({
                     </S.Left>
                     <S.Right>
                         <EntityAutocomplete 
-                            entityType='features' 
+                            entityType={Entity.features}
                             handleSelect={handleAddFeature}
                         />
                         <FormFeatureList 
