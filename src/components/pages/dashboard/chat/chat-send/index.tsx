@@ -41,7 +41,6 @@ export default function ChatSend() {
                 onChange={(e) => setInput(e.target.value)}
                 placeholder={!authenticated ? 'Log in or sign up to send messages' : ''}
                 disabled={!authenticated}
-                onEnter
             />
             <S.Bottom>
                 <Button
