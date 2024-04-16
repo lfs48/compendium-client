@@ -14,6 +14,7 @@ export const Root = tw.nav`
     px-12
     w-full
     z-10
+    text-xl
 `
 
 export const Left = tw.div`
@@ -21,7 +22,6 @@ export const Left = tw.div`
 
 export const Right = tw.div`
     space-x-8
-    text-xl
     font-bold
     flex
     items-center

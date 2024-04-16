@@ -1,16 +1,18 @@
 import tw from 'tailwind-styled-components';
 import Dropdown from '../../dropdown';
+import SpeechBubble from '../../speech-bubble';
 
 export const Root = tw.div`
     relative
     z-50
+    leading-none
 `
 
 export const Icon = tw.i`
     fas 
     fa-folder
-    text-3xl 
     cursor-pointer
+    has-tooltip
 `
 
 export const Menu = tw(Dropdown)`
@@ -22,4 +24,9 @@ export const Menu = tw(Dropdown)`
     space-y-2
     py-2
     px-4
+`
+
+export const Tooltip = tw(SpeechBubble)`
+    tooltip
+    z-50
 `

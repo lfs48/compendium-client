@@ -40,7 +40,15 @@ export default function Collections() {
         <S.Root ref={menuRef}>
             <S.Icon
                 onClick={()=>setMenuOpen(!menuOpen)}
-            />
+            >
+                {!menuOpen &&
+                    <S.Tooltip
+                        dir='bottom'
+                    >
+                        Collections
+                    </S.Tooltip>
+                }
+            </S.Icon>
             <S.Menu
                 open={menuOpen}
             >
