@@ -18,15 +18,9 @@ export default function Sidebar() {
 
     const { isSuccess } = useGetAllEntitiesQuery();
 
-    const entities = useAppSelector( (state) => ({
-        dndClasses: state.entities.dndClasses,
-        features: state.entities.features,
-        races: state.entities.races,
-        spells: state.entities.spells,
-        items: state.entities.items
-    }))
+    const entities = ['dndClasses', 'features', 'races', 'items', 'spells'];
 
-    const tabSelectors = Object.keys(entities).map( (key) => {
+    const tabSelectors = entities.map( (key) => {
         const tab = key as Entity;
         return(
             <SidebarTabSelect 
