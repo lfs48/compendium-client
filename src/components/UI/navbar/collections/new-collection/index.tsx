@@ -9,7 +9,8 @@ export default function NewCollection() {
 
     const [collectionMenuState, setCollectionMenuState] = useRecoilState(collectionMenuAtom);
 
-    const collections = useSelector( (state:RootState) => Object.values(state.entities.collections) );
+    const collectionsObj = useSelector( (state:RootState) => state.entities.collections );
+    const collections = Object.values(collectionsObj);
 
     const [triggerPost, {isLoading}] = usePostCollectionMutation();
 

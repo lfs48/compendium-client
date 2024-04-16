@@ -48,10 +48,8 @@ export default function FeatureForm({
     const navigate = useNavigate();
     const {id} = useParams();
 
-    const {features, entities} = useSelector( (state:RootState) => ({
-        features: state.entities.features,
-        entities: state.entities
-    }))
+    const entities = useSelector( (state:RootState) => state.entities )
+    const {features} = entities;
 
     const [triggerPost, postQuery] = usePostFeatureMutation();
     const [triggerPatch, patchQuery] = usePatchFeatureMutation();

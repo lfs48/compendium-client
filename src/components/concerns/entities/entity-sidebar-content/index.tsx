@@ -23,13 +23,13 @@ export default function EntitySidebarContent({
     const [sidebarState, setSidebarState] = useRecoilState(sidebarAtom);
     const {search, sort} = sidebarState[entityType];
 
-    const entities = useSelector( (state:RootState) => Object.values(state.entities[entityType]) )
+    const entities = useSelector( (state:RootState) => state.entities[entityType] )
 
-    const filtered = filterEntities(entities, search);
+    const filtered = filterEntities( Object.values(entities), search);
     const sorted = sortEntities(filtered, {dir: sort.dir})
     const components = sorted
     .map( (entity:any) =>
-            <SidebarBodyRow 
+            <SidebarBodyRow
                 key={entity.id}
                 id={entity.id}
                 contentType={entityType}

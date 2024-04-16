@@ -11,7 +11,8 @@ export default function ProtectedRoute({children}) {
 
     const dispatch = useDispatch();
 
-    const { authenticated, id } = useSelector( (state:RootState) => state.session);
+    const id = useSelector( (state:RootState) => state.session.id)
+    const authenticated = !!id;
     
     const { data, error, isLoading } = useGetUserByIdQuery(id ?? skipToken);
 

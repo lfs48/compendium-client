@@ -25,9 +25,7 @@ export default function EntityAutocomplete({
 
     const nameFilled = name.length >= 1;
 
-    const {entities} = useSelector( (state:RootState) => ({
-        entities: state.entities[entityType]
-    }));
+    const entities = useSelector( (state:RootState) => state.entities[entityType]);
 
     const _handleSelect = useCallback( (id:string) => {
         handleSelect(id);

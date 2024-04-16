@@ -20,12 +20,9 @@ export default function FeaturesSidebarContent({...props}) {
     const {field, dir} = sort;
     const {sourceType, source, kind, levelDir, level} = filters;
 
-    const {features, entities} = useSelector( (state:RootState) => ({
-        features: Object.values(state.entities.features),
-        entities: state.entities
-    }));
+    const entities = useSelector( (state:RootState) => state.entities);
 1
-    const filtered = filterFeatures(features, {
+    const filtered = filterFeatures( Object.values(entities.features), {
         name: search,
         kind: kind,
         level: level,

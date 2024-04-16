@@ -18,17 +18,17 @@ export default function ChatMessagesContainer() {
 
     const [firstRef, inView, entry] = useInView();
 
-    const messages = useSelector( (state:RootState) => Object.values(state.entities.messages) );
-    const sortedMessages = messages.sort( (a,b) => a.created_at.localeCompare(b.created_at) )
-    const [length, setLength] = useState(messages.length)
+    const messages = useSelector( (state:RootState) => state.entities.messages );
+    const sortedMessages =  Object.values(messages).sort( (a,b) => a.created_at.localeCompare(b.created_at) )
+    const [length, setLength] = useState(sortedMessages.length)
 
     useEffect( () => {
         botRef.current?.scrollIntoView();
     }, [])
 
     useEffect( () => {
-        if (messages.length > length) {
-            setLength(messages.length)
+        if (sortedMessages.length > length) {
+            setLength(sortedMessages.length)
         }
     }, [messages])
 
@@ -60,7 +60,7 @@ export default function ChatMessagesContainer() {
     const els = sortedMessages.map( (message, i) => {
         let ref = null as any;
         if (i === 0) { ref = firstRef }
-        if (i === messages.length - 1) { ref = lastRef }
+        if (i === sortedMessages.length - 1) { ref = lastRef }
         const node = (
             <ChatMessage
                 key={message.id}

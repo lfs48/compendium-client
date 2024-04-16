@@ -9,7 +9,8 @@ export default function ChatSend() {
 
     const [trigger, {isLoading}] = usePostMessageMutation();
 
-    const {id, authenticated} = useSelector( (state:RootState) => state.session)
+    const id = useSelector( (state:RootState) => state.session.id)
+    const authenticated = !!id;
 
     const [input, setInput] = useState('');
 

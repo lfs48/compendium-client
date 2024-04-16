@@ -10,7 +10,8 @@ import AuthLinks from './auth-links';
 
 export default function Navbar() {
 
-    const { authenticated, id } = useSelector( (state:RootState) => state.session);
+    const id = useSelector( (state:RootState) => state.session.id)
+    const authenticated = !!id;
     
     const { data } = useGetUserByIdQuery(id ?? skipToken);
 

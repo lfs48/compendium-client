@@ -32,9 +32,7 @@ export default function ClassFormTable({
 
     const [colMenu, setColMenu] = useState(-1);
 
-    const {features} = useSelector( (state:RootState) => ({
-        features: state.entities.features
-    }));
+    const features = useSelector( (state:RootState) =>state.entities.features );
 
     const classFeatures = dndClass.features
     .map( (id) => features[id]);

@@ -4,7 +4,7 @@ import { RootState } from "@/types";
 
 export default function AuthRoute({children}) {
 
-    const { authenticated } = useSelector( (state:RootState) => state.session);
+    const authenticated = useSelector( (state:RootState) => state.session.authenticated);
 
     if (authenticated) {
         return( 

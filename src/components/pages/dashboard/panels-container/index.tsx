@@ -13,10 +13,8 @@ import { Entity } from '@/enums';
 
 const PanelsContainer = React.memo( function PanelsContainer() {
 
-    const {panels, entities} = useSelector( (state:RootState) => ({
-        panels: state.UI.panels,
-        entities: state.entities
-    }))
+    const panels = useSelector( (state:RootState) =>state.UI.panels )
+    const entities = useSelector( (state:RootState) => state.entities )
 
     const [panelIds, setPanelIds] = useState(Object.values(panels).map( ({id}) => id))
 
