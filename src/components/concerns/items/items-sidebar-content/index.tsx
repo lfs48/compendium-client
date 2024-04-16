@@ -1,4 +1,4 @@
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '@/hooks/useAppSelector.hook';
 import * as S from './styled';
 import { RootState } from '@/types';
 import { useRecoilState } from 'recoil';
@@ -19,7 +19,7 @@ export default function ItemsSidebarContent({...props}) {
     const {field, dir} = sort;
     const {kind, bulk, bulkDir, rarity, magic} = filters;
 
-    const items = useSelector( (state:RootState) => state.entities.items);
+    const items = useAppSelector( (state) => state.entities.items);
 
     const filtered = Object.values(items).filter( (item) => {
         const nameMatch = item.name.toLowerCase().startsWith( search.toLowerCase() );

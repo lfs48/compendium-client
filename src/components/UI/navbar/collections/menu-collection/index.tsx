@@ -1,6 +1,7 @@
-import { Collection, RootState } from '@/types';
+import { Collection } from '@/types';
 import * as S from './styled';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { useAppSelector } from '@/hooks/useAppSelector.hook';
 import { apiEntityToClientEntity, entityName } from '@/utils/entities.utils';
 import Collapsable from '@/components/UI/collapsable';
 import { openPanel } from '@/reducers/UI/panels.reducer';
@@ -19,7 +20,7 @@ export default function MenuCollection({
 
     const dispatch = useDispatch();
 
-    const entities = useSelector( (state:RootState) => state.entities);
+    const entities = useAppSelector( (state) => state.entities);
 
     const entitiesBytype = {};
     Object.values(Entity).forEach( (key) => {

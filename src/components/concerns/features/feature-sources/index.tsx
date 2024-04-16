@@ -1,7 +1,7 @@
 import EntityLink from '@/components/concerns/entities/entity-link';
 import { Feature, RootState } from '@/types';
 import { apiEntityToClientEntity } from '@/utils/entities.utils';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '@/hooks/useAppSelector.hook';
 import * as S from './styled';
 
 interface FeatureSourcesProps {
@@ -14,7 +14,7 @@ export default function FeatureSources({
     ...props
 }: FeatureSourcesProps) {
 
-    const entities = useSelector( (state:RootState) => state.entities);
+    const entities = useAppSelector( (state) => state.entities);
 
     const sources = feature.sources
     .map( ({id, source_type}) => {

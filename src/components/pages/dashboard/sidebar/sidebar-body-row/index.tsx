@@ -1,11 +1,9 @@
 import { openPanel } from '@/reducers/UI/panels.reducer';
-import { RootState } from '@/types';
-import { MAX_PANELS } from '@/utils/constants.utils';
-import { ReactNode, useEffect, useRef, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { ReactNode, useRef, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useAppSelector } from '@/hooks/useAppSelector.hook';
 import * as S from './styled';
 import { Entity } from '@/enums';
-import Dropdown from '@/components/UI/dropdown';
 import SidebarContextMenu from '../sidebar-context-menu';
 import useClickOutside from '@/hooks/useClickOutside.hook';
 import SidebarRow from '../sidebar-row';
@@ -32,7 +30,7 @@ export default function SidebarBodyRow({
     const menuRef = useRef(null);
     useClickOutside(menuRef, () => setMenuOpen(false) );
 
-    const panels = useSelector( (state:RootState) => state.UI.panels);
+    const panels = useAppSelector( (state) => state.UI.panels);
 
     const isActive = !!panels[id];
 

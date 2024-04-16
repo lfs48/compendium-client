@@ -1,5 +1,5 @@
 import { RootState } from '@/types';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '@/hooks/useAppSelector.hook';
 import * as S from './styled';
 import { isSpellcaster } from '@/utils/dndClass.utils';
 
@@ -15,7 +15,7 @@ export default function ClassMultiselect({
     ...props
 }: ClassMultiselectProps) {
 
-    const dndclasses = useSelector( (state:RootState) => state.entities.dndClasses);
+    const dndclasses = useAppSelector( (state) => state.entities.dndClasses);
 
     const bubbles = Object.values(dndclasses).map( (dndclass) => {
         if ( isSpellcaster(dndclass) ) {

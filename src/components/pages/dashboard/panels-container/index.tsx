@@ -1,6 +1,6 @@
 import Panel from '@/components/UI/panel';
 import { RootState } from '@/types';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '@/hooks/useAppSelector.hook';
 import Markdown from '@/components/UI/markdown';
 import ClassPanelContent from '@/components/concerns/classes/class-panel-content';
 import React, { useEffect, useState } from 'react';
@@ -13,8 +13,8 @@ import { Entity } from '@/enums';
 
 const PanelsContainer = React.memo( function PanelsContainer() {
 
-    const panels = useSelector( (state:RootState) =>state.UI.panels )
-    const entities = useSelector( (state:RootState) => state.entities )
+    const panels = useAppSelector( (state) =>state.UI.panels )
+    const entities = useAppSelector( (state) => state.entities )
 
     const [panelIds, setPanelIds] = useState(Object.values(panels).map( ({id}) => id))
 

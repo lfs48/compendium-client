@@ -2,7 +2,7 @@ import Loading from '@/components/UI/loading';
 import SidebarControls from '@/components/pages/dashboard/sidebar/sidebar-controls';
 import SidebarTabSelect from '@/components/pages/dashboard/sidebar/sidebar-tab-select';
 import { RootState } from '@/types';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '@/hooks/useAppSelector.hook';
 import * as S from './styled';
 import { useRecoilState } from 'recoil';
 import { sidebarAtom } from '@/recoil';
@@ -18,7 +18,7 @@ export default function Sidebar() {
 
     const { isSuccess } = useGetAllEntitiesQuery();
 
-    const entities = useSelector( (state:RootState) => ({
+    const entities = useAppSelector( (state) => ({
         dndClasses: state.entities.dndClasses,
         features: state.entities.features,
         races: state.entities.races,

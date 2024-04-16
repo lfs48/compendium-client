@@ -1,16 +1,14 @@
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Spell, RootState } from '@/types';
+import { useDispatch } from 'react-redux';
+import { useAppSelector } from '@/hooks/useAppSelector.hook';
+import { Spell } from '@/types';
 import * as S from './styled';
 import { handleInput, handleToggleInput } from '@/utils/component.utils';
 import Select from '@/components/UI/select';
 import { openPanel } from '@/reducers/UI/panels.reducer';
 import { useNavigate, useParams } from 'react-router-dom';
 import { usePatchSpellMutation, usePostSpellMutation } from '@/api/spells.api';
-import EntityAutocomplete from '../../entities/entity-autocomplete';
 import { merge } from 'lodash';
-import { EntitySelect } from '../../entities/entity-select';
-import ClassMultiselect from '../../classes/class-multiselect';
 import Field from '@/components/UI/field';
 import Checkbox from '@/components/UI/checkbox';
 import { Entity, SpellAspect } from '@/enums';
@@ -60,7 +58,7 @@ export default function SpellForm({
     const navigate = useNavigate();
     const {id} = useParams();
 
-    const spells = useSelector( (state:RootState) => state.entities.spells)
+    const spells = useAppSelector( (state) => state.entities.spells)
 
     const [triggerPost, postQuery] = usePostSpellMutation();
     const [triggerPatch, patchQuery] = usePatchSpellMutation();

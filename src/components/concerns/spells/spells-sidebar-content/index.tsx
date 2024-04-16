@@ -8,7 +8,7 @@ import { RootState } from '@/types';
 import { compareEntities, sortEntities } from '@/utils/entities.utils';
 import { filterSpells } from '@/utils/spells.util';
 import { intToOrdinal, spaceship } from '@/utils/functions.utils';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '@/hooks/useAppSelector.hook';
 import { useRecoilState } from 'recoil';
 import { Entity } from '@/enums';
 import { useEffect, useState } from 'react';
@@ -26,7 +26,7 @@ export default function SpellsSidebarContent({
     const { field, dir } = sort;
     const {rank, rankDir, description, aspects} = filters;
 
-    const spells = useSelector( (state:RootState) => state.entities.spells );
+    const spells = useAppSelector( (state) => state.entities.spells );
 
     const filtered = filterSpells( Object.values(spells), {
         name: search,

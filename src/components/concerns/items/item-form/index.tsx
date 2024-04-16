@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Item, RootState } from '@/types';
+import { useDispatch } from 'react-redux';
+import { Item } from '@/types';
 import * as S from './styled';
 import { handleInput, toggleInput } from '@/utils/component.utils';
 import Select from '@/components/UI/select';
@@ -9,6 +9,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { usePatchItemMutation, usePostItemMutation } from '@/api/items.api';
 import { ItemBulk, ItemKind, ItemRarity } from '@/enums';
 import Checkbox from '@/components/UI/checkbox';
+import { useAppSelector } from '@/hooks/useAppSelector.hook';
 
 const initialInputs = {
     id: '',
@@ -46,7 +47,7 @@ export default function ItemForm({
     const navigate = useNavigate();
     const {id} = useParams();
 
-    const items = useSelector( (state:RootState) => state.entities.items)
+    const items = useAppSelector( (state) => state.entities.items)
 
     const [triggerPost, postQuery] = usePostItemMutation();
     const [triggerPatch, patchQuery] = usePatchItemMutation();

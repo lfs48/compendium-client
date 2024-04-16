@@ -8,7 +8,7 @@ import Loading from '@/components/UI/loading';
 import { useNavigate } from 'react-router-dom';
 import { useDeleteFeatureMutation } from '@/api/features.api';
 import FeatureSources from '@/components/concerns/features/feature-sources';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '@/hooks/useAppSelector.hook';
 import FeatureTagline from '../feature-tagline';
 
 interface FeaturePanelContentProps {
@@ -23,7 +23,7 @@ const FeaturePanelContent = React.memo(function({
 
     const navigate = useNavigate();
 
-    const entities = useSelector( (state:RootState) => state.entities);
+    const entities = useAppSelector( (state) => state.entities);
 
     const [triggerDelete, {isLoading, isSuccess}] = useDeleteFeatureMutation();
     

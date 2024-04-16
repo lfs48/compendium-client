@@ -2,14 +2,14 @@ import * as S from './styled';
 import { KeyboardEvent, SyntheticEvent, useState } from 'react';
 import Button from '@/components/UI/button';
 import { usePostMessageMutation } from '@/api/messages.api';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '@/hooks/useAppSelector.hook';
 import { RootState } from '@/types';
 
 export default function ChatSend() {
 
     const [trigger, {isLoading}] = usePostMessageMutation();
 
-    const id = useSelector( (state:RootState) => state.session.id)
+    const id = useAppSelector( (state) => state.session.id)
     const authenticated = !!id;
 
     const [input, setInput] = useState('');

@@ -1,4 +1,4 @@
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '@/hooks/useAppSelector.hook';
 import * as S from './styled';
 import { RootState } from '@/types';
 import ChatMessage from '../chat-message';
@@ -18,7 +18,7 @@ export default function ChatMessagesContainer() {
 
     const [firstRef, inView, entry] = useInView();
 
-    const messages = useSelector( (state:RootState) => state.entities.messages );
+    const messages = useAppSelector( (state) => state.entities.messages );
     const sortedMessages =  Object.values(messages).sort( (a,b) => a.created_at.localeCompare(b.created_at) )
     const [length, setLength] = useState(sortedMessages.length)
 

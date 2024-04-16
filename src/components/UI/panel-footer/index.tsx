@@ -1,7 +1,7 @@
 import React from 'react';
 import * as S from './styled';
 import Button from '@/components/UI/button';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '@/hooks/useAppSelector.hook';
 import { RootState } from '@/types';
 
 interface PanelFooterProps {
@@ -16,7 +16,7 @@ export default function PanelFooter({
     ...props
 }: PanelFooterProps) {
 
-    const gm = useSelector( (state:RootState) => state.session.gm);
+    const gm = useAppSelector( (state) => state.session.gm);
 
     return(
         <S.Root {...props}>

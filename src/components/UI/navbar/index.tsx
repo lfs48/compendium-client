@@ -1,7 +1,7 @@
 import { useGetUserByIdQuery } from '@/api/users.api';
 import Logout from './logout';
 import { RootState } from '@/types';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '@/hooks/useAppSelector.hook';
 import * as S from './styled';
 import { skipToken } from '@reduxjs/toolkit/query';
 import DarkMode from './darkmode';
@@ -10,7 +10,7 @@ import AuthLinks from './auth-links';
 
 export default function Navbar() {
 
-    const id = useSelector( (state:RootState) => state.session.id)
+    const id = useAppSelector( (state) => state.session.id)
     const authenticated = !!id;
     
     const { data } = useGetUserByIdQuery(id ?? skipToken);

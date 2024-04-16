@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Feature, RootState } from '@/types';
+import { useDispatch } from 'react-redux';
+import { Feature } from '@/types';
 import * as S from './styled';
 import { handleInput } from '@/utils/component.utils';
 import Select from '@/components/UI/select';
@@ -12,6 +12,7 @@ import EntityAutocomplete from '../../entities/entity-autocomplete';
 import { merge } from 'lodash';
 import { Entity, FeatureKind } from '@/enums';
 import { apiEntityToClientEntity, clientEntityToAPIEntity } from '@/utils/entities.utils';
+import { useAppSelector } from '@/hooks/useAppSelector.hook';
 
 const initialInputs = {
     id: '',
@@ -48,7 +49,7 @@ export default function FeatureForm({
     const navigate = useNavigate();
     const {id} = useParams();
 
-    const entities = useSelector( (state:RootState) => state.entities )
+    const entities = useAppSelector( (state) => state.entities )
     const {features} = entities;
 
     const [triggerPost, postQuery] = usePostFeatureMutation();

@@ -1,7 +1,7 @@
 import Dropdown from '@/components/UI/dropdown';
 import { RootState } from '@/types';
 import { useCallback, useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '@/hooks/useAppSelector.hook';
 import Field from '../../../UI/field';
 import * as S from './styled';
 import { Entity } from '@/enums';
@@ -25,7 +25,7 @@ export default function EntityAutocomplete({
 
     const nameFilled = name.length >= 1;
 
-    const entities = useSelector( (state:RootState) => state.entities[entityType]);
+    const entities = useAppSelector( (state) => state.entities[entityType]);
 
     const _handleSelect = useCallback( (id:string) => {
         handleSelect(id);

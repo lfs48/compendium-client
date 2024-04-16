@@ -1,4 +1,4 @@
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '@/hooks/useAppSelector.hook';
 import * as S from './styled';
 import { RootState } from '@/types';
 import { usePostCollectionMutation } from '@/api/collections.api';
@@ -9,7 +9,7 @@ export default function NewCollection() {
 
     const [collectionMenuState, setCollectionMenuState] = useRecoilState(collectionMenuAtom);
 
-    const collectionsObj = useSelector( (state:RootState) => state.entities.collections );
+    const collectionsObj = useAppSelector( (state) => state.entities.collections );
     const collections = Object.values(collectionsObj);
 
     const [triggerPost, {isLoading}] = usePostCollectionMutation();

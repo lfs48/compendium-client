@@ -1,4 +1,4 @@
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '@/hooks/useAppSelector.hook';
 import * as S from './styled';
 import { RootState } from '@/types';
 import { useRecoilState } from 'recoil';
@@ -7,7 +7,7 @@ import NewCollection from '../new-collection';
 
 export default function CollectionList() {
 
-    const collections = useSelector( (state:RootState) => state.entities.collections);
+    const collections = useAppSelector( (state) => state.entities.collections);
     const [collectionMenuState, setCollectionMenuState] = useRecoilState(collectionMenuAtom);
 
     const handleSelectCollection = (id:string) => {

@@ -1,7 +1,7 @@
 import Select from '@/components/UI/select';
 import { RootState } from '@/types';
 import { ChangeEvent } from 'react';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '@/hooks/useAppSelector.hook';
 import * as S from './styled';
 import { Entity } from '@/enums';
 
@@ -19,7 +19,7 @@ export function EntitySelect({
     ...props
 }: EntitySelectProps) {
 
-    const entities = useSelector( (state:RootState) => state.entities);
+    const entities = useAppSelector( (state) => state.entities);
     let options = [] as {label:string, value:string}[];
     if (entityType) {
         options = Object.values(entities[entityType])

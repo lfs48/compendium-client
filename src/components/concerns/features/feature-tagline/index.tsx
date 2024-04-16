@@ -1,6 +1,6 @@
 import { Feature, RootState } from '@/types';
 import * as S from './styled';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '@/hooks/useAppSelector.hook';
 import { apiFeatureKindToClientFeatureType } from '@/utils/features.utils';
 import { apiEntityToClientEntity } from '@/utils/entities.utils';
 import { FeatureKind } from '@/enums';
@@ -15,7 +15,7 @@ export default function FeatureTagline({
     ...props
 }: FeatureTaglineProps) {
 
-    const entities = useSelector( (state:RootState) => state.entities);
+    const entities = useAppSelector( (state) => state.entities);
 
     let str = '';
     if (feature.level) {

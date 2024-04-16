@@ -1,8 +1,7 @@
-import { RootState, Spell } from '@/types';
 import * as S from './styled';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { useAppSelector } from '@/hooks/useAppSelector.hook';
 import { openPanel } from '@/reducers/UI/panels.reducer';
-import { sortEntities } from '@/utils/entities.utils';
 import { intToOrdinal } from '@/utils/functions.utils';
 
 interface SpellsProps {
@@ -17,7 +16,7 @@ export default function Spells({
 
     const dispatch = useDispatch();
 
-    const spells = useSelector((state:RootState) => state.entities.spells);
+    const spells = useAppSelector((state) => state.entities.spells);
 
     const charSpells = spell_ids.map( (id) => spells[id]);
 

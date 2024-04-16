@@ -1,8 +1,8 @@
 import { SyntheticEvent, useEffect, useState } from 'react';
 import { merge } from 'lodash';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import Field from '@/components/UI/field';
-import { DndClass, RootState } from '@/types';
+import { DndClass } from '@/types';
 import * as S from './styled';
 import { handleInput } from '@/utils/component.utils';
 import Select from '@/components/UI/select';
@@ -16,6 +16,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { LEVEL_ARRAY } from '@/utils/constants.utils';
 import EntityAutocomplete from '../../entities/entity-autocomplete';
 import { Entity, Spellcasting } from '@/enums';
+import { useAppSelector } from '@/hooks/useAppSelector.hook';
 
 const initialInputs = {
     id: '',
@@ -61,7 +62,7 @@ export default function ClassForm({
     const navigate = useNavigate();
     const {id} = useParams();
 
-    const dndClasses = useSelector( (state:RootState) => state.entities.dndClasses)
+    const dndClasses = useAppSelector( (state) => state.entities.dndClasses)
 
     const [triggerPost, postQuery] = usePostClassMutation();
     const [triggerPatch, patchQuery] = usePatchClassMutation();

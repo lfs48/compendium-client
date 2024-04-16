@@ -1,16 +1,12 @@
 import React, { useState } from 'react';
-import { Item, RootState } from '@/types';
+import { Item } from '@/types';
 import * as S from './styled';
-import Divider from '@/components/UI/divider';
 import PanelFooter from '@/components/UI/panel-footer';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import Dialog from '@/components/UI/dialog';
-import { useDeleteClassMutation } from '@/api/dndclasses.api';
 import Loading from '@/components/UI/loading';
 import { useNavigate } from 'react-router-dom';
 import { useDeleteItemMutation } from '@/api/items.api';
-import { intToOrdinal } from '@/utils/functions.utils';
-import { DiceRoll } from 'rpg-dice-roller';
 import { bulkString, valueString } from '@/utils/items.util';
 
 interface ItemPanelContentProps {

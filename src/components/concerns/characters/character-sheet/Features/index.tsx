@@ -1,7 +1,6 @@
 import Collapsable from '@/components/UI/collapsable';
-import { RootState } from '@/types';
-import { useSelector } from 'react-redux';
 import * as S from './styled';
+import { useAppSelector } from '@/hooks/useAppSelector.hook';
 
 interface FeaturesProps {
     feature_ids: string[];
@@ -13,7 +12,7 @@ export default function Features({
     ...props
 }: FeaturesProps) {
 
-    const features = useSelector( (state:RootState) => state.entities.features );
+    const features = useAppSelector( state => state.entities.features )
 
     const featureList = feature_ids.map( (id) => {
         const feature = features[id];

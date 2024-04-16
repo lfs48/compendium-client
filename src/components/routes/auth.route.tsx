@@ -1,10 +1,9 @@
 import { Navigate } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { RootState } from "@/types";
+import { useAppSelector } from '@/hooks/useAppSelector.hook';
 
 export default function AuthRoute({children}) {
 
-    const authenticated = useSelector( (state:RootState) => state.session.authenticated);
+    const authenticated = useAppSelector( (state) => state.session.authenticated);
 
     if (authenticated) {
         return( 

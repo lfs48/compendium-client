@@ -1,6 +1,6 @@
 import { Character, RootState } from '@/types';
 import { calcSavingThrow, calcSkillModifier } from '@/utils/character.utils';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '@/hooks/useAppSelector.hook';
 import * as S from './styled';
 import { capitalize } from 'lodash';
 import AbilityScore from './AbilityScore';
@@ -25,7 +25,7 @@ export default function CharacterSheet({
     ...props
 }: CharacterSheetProps) {
 
-    const {dndclass, race} = useSelector( (state:RootState) => ({
+    const {dndclass, race} = useAppSelector( (state) => ({
         dndclass: state.entities.dndClasses[character.dnd_class],
         race: state.entities.races[character.race]
     }))

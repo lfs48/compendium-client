@@ -1,6 +1,6 @@
 import { sidebarAtom } from '@/recoil';
 import { RootState } from '@/types';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '@/hooks/useAppSelector.hook';
 import { useRecoilState } from 'recoil';
 import { filterEntities, sortEntities } from '@/utils/entities.utils';
 import SidebarBodyRow from '@/components/pages/dashboard/sidebar/sidebar-body-row';
@@ -23,7 +23,7 @@ export default function EntitySidebarContent({
     const [sidebarState, setSidebarState] = useRecoilState(sidebarAtom);
     const {search, sort} = sidebarState[entityType];
 
-    const entities = useSelector( (state:RootState) => state.entities[entityType] )
+    const entities = useAppSelector( (state) => state.entities[entityType] )
 
     const filtered = filterEntities( Object.values(entities), search);
     const sorted = sortEntities(filtered, {dir: sort.dir})

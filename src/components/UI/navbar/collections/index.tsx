@@ -3,7 +3,7 @@ import * as S from './styled';
 import Dropdown from '../../dropdown';
 import { useGetAllUserCollectionsQuery } from '@/api/collections.api';
 import Loading from '../../loading';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '@/hooks/useAppSelector.hook';
 import { RootState } from '@/types';
 import Label from '../../label';
 import MenuCollection from './menu-collection';
@@ -29,7 +29,7 @@ export default function Collections() {
         }
     });
 
-    const collections = useSelector( (state:RootState) => state.entities.collections);
+    const collections = useAppSelector( (state) => state.entities.collections);
 
     const handleClickMenu = (e) => {
         e.preventDefault(); 

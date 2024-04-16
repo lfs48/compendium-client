@@ -3,7 +3,7 @@ import { DndClass, RootState } from '@/types';
 import * as S from './styled';
 import { intToOrdinal } from '@/utils/functions.utils';
 import React, { ReactNode, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '@/hooks/useAppSelector.hook';
 import EntityLink from '@/components/concerns/entities/entity-link';
 import Table from '@/components/UI/table';
 import { LEVEL_ARRAY } from '@/utils/constants.utils';
@@ -19,7 +19,7 @@ export default React.memo( function ClassTable({
     ...props
 } :ClassTableProps) {
 
-    const features = useSelector( (state:RootState) => state.entities.features);
+    const features = useAppSelector( (state) => state.entities.features);
 
     const classFeatures = dndClass.features
     .map( (id) => features[id]);

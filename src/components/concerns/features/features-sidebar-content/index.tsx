@@ -1,4 +1,4 @@
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '@/hooks/useAppSelector.hook';
 import * as S from './styled';
 import { RootState } from '@/types';
 import { useRecoilState } from 'recoil';
@@ -20,7 +20,7 @@ export default function FeaturesSidebarContent({...props}) {
     const {field, dir} = sort;
     const {sourceType, source, kind, levelDir, level} = filters;
 
-    const entities = useSelector( (state:RootState) => state.entities);
+    const entities = useAppSelector( (state) => state.entities);
 1
     const filtered = filterFeatures( Object.values(entities.features), {
         name: search,

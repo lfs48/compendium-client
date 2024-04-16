@@ -1,6 +1,6 @@
 import * as S from './styled';
 import { SyntheticEvent, useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '@/hooks/useAppSelector.hook';
 import { DndClass, RootState } from '@/types';
 import { intToOrdinal } from '@/utils/functions.utils';
 import { getLevelProficiency } from '@/utils/dndClass.utils';
@@ -32,7 +32,7 @@ export default function ClassFormTable({
 
     const [colMenu, setColMenu] = useState(-1);
 
-    const features = useSelector( (state:RootState) =>state.entities.features );
+    const features = useAppSelector( (state) =>state.entities.features );
 
     const classFeatures = dndClass.features
     .map( (id) => features[id]);

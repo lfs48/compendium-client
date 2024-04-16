@@ -1,16 +1,13 @@
 import React, { useState } from 'react';
-import { Spell, RootState } from '@/types';
+import { Spell } from '@/types';
 import * as S from './styled';
 import PanelFooter from '@/components/UI/panel-footer';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import Dialog from '@/components/UI/dialog';
 import Loading from '@/components/UI/loading';
 import { useNavigate } from 'react-router-dom';
 import { useDeleteSpellMutation } from '@/api/spells.api';
 import { intToOrdinal } from '@/utils/functions.utils';
-import EntityLink from '../../entities/entity-link';
-import { Entity } from '@/enums';
-import { merge, capitalize } from 'lodash';
 import { spellAspectsString, spellRankString } from '@/utils/spells.util';
 
 interface SpellPanelContentProps {

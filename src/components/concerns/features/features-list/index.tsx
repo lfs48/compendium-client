@@ -1,5 +1,5 @@
 import { DndClass, Feature, RootState } from '@/types';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '@/hooks/useAppSelector.hook';
 import Collapsable from '@/components/UI/collapsable';
 import Markdown from '@/components/UI/markdown';
 import * as S from './styled';
@@ -21,7 +21,7 @@ export default function FeaturesList({
     ...props
 }: FeatureListProps) {
 
-    const features = useSelector( (state:RootState) => state.entities.features);
+    const features = useAppSelector( (state) => state.entities.features);
 
     const featureList = featureIDs.map( (id) => features[id]);
 

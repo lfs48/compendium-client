@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Feature, Race, RootState } from '@/types';
+import { useDispatch } from 'react-redux';
+import { useAppSelector } from '@/hooks/useAppSelector.hook';
+import { Race } from '@/types';
 import * as S from './styled';
 import { handleInput } from '@/utils/component.utils';
 import { openPanel } from '@/reducers/UI/panels.reducer';
 import { useNavigate, useParams } from 'react-router-dom';
 import { usePatchRaceMutation, usePostRaceMutation } from '@/api/races.api';
 import EntityAutocomplete from '../../entities/entity-autocomplete';
-import FeaturesList from '../../features/features-list';
 import FormFeatureList from '../../features/form-features-list';
 import { merge } from 'lodash';
 
@@ -38,7 +38,7 @@ export default function RaceForm({
     const navigate = useNavigate();
     const {id} = useParams();
 
-    const races = useSelector( (state:RootState) => state.entities.races)
+    const races = useAppSelector( (state) => state.entities.races)
 
     const [triggerPost, postQuery] = usePostRaceMutation();
     const [triggerPatch, patchQuery] = usePatchRaceMutation();

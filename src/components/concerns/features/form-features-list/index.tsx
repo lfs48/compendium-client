@@ -1,6 +1,5 @@
 import ClickableIcon from '@/components/UI/clickable-icon';
-import { RootState } from '@/types';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '@/hooks/useAppSelector.hook';
 import * as S from './styled';
 import { Icon } from '@/enums';
 
@@ -14,7 +13,7 @@ export default function FormFeatureList({
     handleRemove
 }: FormFeatureListProps) {
 
-    const features = useSelector( (state: RootState) => state.entities.features);
+    const features = useAppSelector( (state) => state.entities.features);
     const sourceFeatures = featureIds.map( (id) => features[id]);
 
     const featureComponents = sourceFeatures.map( (feature) => {
