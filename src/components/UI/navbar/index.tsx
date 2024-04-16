@@ -23,14 +23,17 @@ export default function Navbar() {
                 }
             </S.Left>
             <S.Right>
-                <DarkMode />
                 {(authenticated && data) ?
                     <>
                     <span>{data.username}</span>
+                    <DarkMode />
                     <Logout />
                     </>
                 :
+                    <>
                     <AuthLinks />
+                    <DarkMode />
+                    </>
                 }
             </S.Right>
         </S.Root>

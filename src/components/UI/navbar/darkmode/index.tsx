@@ -28,9 +28,15 @@ export default function DarkMode() {
     }
 
     return(
-        <S.Root 
-            active={active}
-            handleToggle={handleToggle}
-        />
+        <S.Root
+            $dark={active}
+            onClick={handleToggle}
+        >
+            <S.Tooltip
+                dir='bottom'
+            >
+                {active ? 'Toggle Light Mode' : 'Toggle Dark Mode'}
+            </S.Tooltip>
+        </S.Root>
     )
 }

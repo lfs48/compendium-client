@@ -20,7 +20,7 @@ export const Left = tw.div`
 `
 
 export const Right = tw.div`
-    space-x-4
+    space-x-8
     text-xl
     font-bold
     flex
