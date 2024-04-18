@@ -10,6 +10,7 @@ import SidebarContent from '@/components/pages/dashboard/sidebar/sidebar-content
 import SidebarHide from './sidebar-hide';
 import { Entity } from '@/enums';
 import { useGetAllEntitiesQuery } from '@/api/entities.api';
+import SidebarLoadingContent from './sidebar-loading-content';
 
 export default function Sidebar() {
 
@@ -38,7 +39,7 @@ export default function Sidebar() {
                 {isSuccess ?
                     <SidebarContent />
                 :
-                    <Loading />
+                    <SidebarLoadingContent />
                 }
                 </S.Content>
                 <SidebarHide />
