@@ -1,7 +1,7 @@
 import Routes from "@/components/routes"
-import Navbar from "@/components/UI/navbar"
 import tw from "tailwind-styled-components"
-import Footer from "@/components/UI/footer"
+import { Toaster } from 'react-hot-toast';
+import AppToaster from "./components/UI/app-toaster";
 
 const Root = tw.div`
   w-full 
@@ -15,6 +15,7 @@ function App() {
   return (
     <Root id='app'>
       <Routes />
+      <AppToaster />
     </Root>
   )
 }

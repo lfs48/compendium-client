@@ -7,6 +7,9 @@ import { areAllKeysFilled, handleInput, isAnyKeyFilled } from '@/utils/component
 import Field from '@/components/UI/field';
 import { useCallback, useState } from 'react';
 import * as S from './styled';
+import { isUserError } from '@/utils/errors.utils';
+import toast from 'react-hot-toast';
+import { ERROR_MESSAGE } from '@/utils/constants.utils';
 
 export default function LoginForm() {
 
@@ -33,7 +36,12 @@ export default function LoginForm() {
             setErrors(initialErrors);
         })
         .catch( err => {
-            setErrors(err.data.errors);
+            if (isUserError(err)) {
+                setErrors(err.data.errors)
+            } else {
+                setErrors(initialErrors);
+                toast.error(ERROR_MESSAGE);
+            }
         })
     }, [inputs]);
 
