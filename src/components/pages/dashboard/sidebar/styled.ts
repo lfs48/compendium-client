@@ -9,6 +9,7 @@ export const Root = tw.div<RootProps>`
     ${p => p.$open ? '-ml-0' : '-ml-[31rem]'}
     transition-[margin-left]
     duration-700
+    h-full
 `
 
 export const Body = tw.div`
