@@ -1,9 +1,9 @@
-import Field from '@/components/UI/field';
-import ButtonComponent from '@/components/UI/button';
-import Input from '@/components/UI/input';
+import Field from '@/components/common/field';
+import ButtonComponent from '@/components/common/button';
+import Input from '@/components/common/input';
 import tw from 'tailwind-styled-components';
 import EntityAutocomplete from '../../entities/entity-autocomplete';
-import Form from '@/components/UI/form';
+import Form from '@/components/common/form';
 
 export const Root = tw(Form)`
     flex

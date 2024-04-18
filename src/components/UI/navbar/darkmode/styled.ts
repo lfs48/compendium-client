@@ -1,6 +1,6 @@
-import Toggle from '@/components/UI/toggle';
+import Toggle from '@/components/common/toggle';
 import tw from 'tailwind-styled-components';
-import SpeechBubble from '../../speech-bubble';
+import SpeechBubble from '../../../common/speech-bubble';
 
 type RootProps = {
     $dark: boolean;

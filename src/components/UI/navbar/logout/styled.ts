@@ -1,5 +1,5 @@
 import tw from 'tailwind-styled-components';
-import SpeechBubble from '../../speech-bubble';
+import SpeechBubble from '../../../common/speech-bubble';
 
 export const Root = tw.i`
     fas

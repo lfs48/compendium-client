@@ -3,9 +3,9 @@ import { useRecoilState } from 'recoil';
 import * as S from './styled';
 import { merge } from 'lodash';
 import { EntitySelect } from '../../entities/entity-select';
-import Select from '@/components/UI/select';
+import Select from '@/components/common/select';
 import { LEVEL_ARRAY } from '@/utils/constants.utils';
-import Label from '@/components/UI/label';
+import Label from '@/components/common/label';
 import { APIEntity, FeatureKind } from '@/enums';
 import { apiEntityToClientEntity } from '@/utils/entities.utils';
 

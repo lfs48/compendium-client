@@ -1,6 +1,6 @@
 import { useGetUserByIdQuery } from "@/api/users.api";
 import { Navigate, Route } from "react-router-dom";
-import Loading from "@/components/UI/loading";
+import Loading from "@/components/common/loading";
 import { useDispatch } from "react-redux";
 import { useAppSelector } from '@/hooks/useAppSelector.hook';
 import { useEffect } from "react";

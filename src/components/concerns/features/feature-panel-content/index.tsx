@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { DndClass, Feature, RootState } from '@/types';
 import * as S from './styled';
-import Divider from '@/components/UI/divider';
-import PanelFooter from '@/components/UI/panel-footer';
-import Dialog from '@/components/UI/dialog';
-import Loading from '@/components/UI/loading';
+import Divider from '@/components/common/divider';
+import PanelFooter from '@/components/common/panel-footer';
+import Dialog from '@/components/common/dialog';
+import Loading from '@/components/common/loading';
 import { useNavigate } from 'react-router-dom';
 import { useDeleteFeatureMutation } from '@/api/features.api';
 import FeatureSources from '@/components/concerns/features/feature-sources';

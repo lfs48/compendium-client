@@ -1,8 +1,8 @@
-import Dropdown from '@/components/UI/dropdown';
+import Dropdown from '@/components/common/dropdown';
 import { RootState } from '@/types';
 import { useCallback, useEffect, useState } from 'react';
 import { useAppSelector } from '@/hooks/useAppSelector.hook';
-import Field from '../../../UI/field';
+import Field from '../../../common/field';
 import * as S from './styled';
 import { Entity } from '@/enums';
 

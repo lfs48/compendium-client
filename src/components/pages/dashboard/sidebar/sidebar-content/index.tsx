@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import { entityFormPath } from '@/utils/entities.utils';
 import FeaturesSidebarContent from '../../../../concerns/features/features-sidebar-content';
 import ItemsSidebarContent from '../../../../concerns/items/items-sidebar-content';
-import Button from '@/components/UI/button';
+import Button from '@/components/common/button';
 
 interface SidebarContentProps {
     [prop: string]: any;

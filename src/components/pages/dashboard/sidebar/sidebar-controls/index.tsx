@@ -1,5 +1,5 @@
 import { sidebarAtom } from '@/recoil';
-import Search from '@/components/UI/search';
+import Search from '@/components/common/search';
 import { useRecoilState } from 'recoil';
 import * as S from './styled';
 import { merge } from 'lodash';

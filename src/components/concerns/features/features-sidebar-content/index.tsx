@@ -7,7 +7,7 @@ import SidebarBodyRow from '../../../pages/dashboard/sidebar/sidebar-body-row';
 import SidebarCell from '../../../pages/dashboard/sidebar/sidebar-cell';
 import SidebarTableHeader from '../../../pages/dashboard/sidebar/sidebar-table-header';
 import { apiEntityToClientEntity, sortEntities } from '@/utils/entities.utils';
-import NoResults from '@/components/UI/no-results';
+import NoResults from '@/components/common/no-results';
 import SidebarTable from '../../../pages/dashboard/sidebar/sidebar-table';
 import { apiFeatureKindToClientFeatureType, filterFeatures } from '@/utils/features.utils';
 import { spaceship } from '@/utils/functions.utils';

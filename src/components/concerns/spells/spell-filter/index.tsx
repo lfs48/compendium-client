@@ -3,11 +3,11 @@ import { useRecoilState } from 'recoil';
 import * as S from './styled';
 import { merge } from 'lodash';
 import { EntitySelect } from '../../entities/entity-select';
-import Select from '@/components/UI/select';
-import Label from '@/components/UI/label';
+import Select from '@/components/common/select';
+import Label from '@/components/common/label';
 import { SpellAspect } from '@/enums';
-import Close from '@/components/UI/close';
-import Field from '@/components/UI/field';
+import Close from '@/components/common/close';
+import Field from '@/components/common/field';
 import { handleInput } from '@/utils/component.utils';
 
 interface SpellsFilterProps {

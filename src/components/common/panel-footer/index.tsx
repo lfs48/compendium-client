@@ -1,6 +1,6 @@
 import React from 'react';
 import * as S from './styled';
-import Button from '@/components/UI/button';
+import Button from '@/components/common/button';
 import { useAppSelector } from '@/hooks/useAppSelector.hook';
 import { RootState } from '@/types';
 

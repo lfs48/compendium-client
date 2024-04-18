@@ -1,4 +1,4 @@
-import NoResults from '@/components/UI/no-results';
+import NoResults from '@/components/common/no-results';
 import SidebarBodyRow from '@/components/pages/dashboard/sidebar/sidebar-body-row';
 import SidebarCell from '@/components/pages/dashboard/sidebar/sidebar-cell';
 import SidebarTable from '@/components/pages/dashboard/sidebar/sidebar-table';

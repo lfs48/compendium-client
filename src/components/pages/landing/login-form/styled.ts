@@ -1,4 +1,4 @@
-import Link from '@/components/UI/link';
+import Link from '@/components/common/link';
 import tw from 'tailwind-styled-components';
 
 export const Root = tw.div`

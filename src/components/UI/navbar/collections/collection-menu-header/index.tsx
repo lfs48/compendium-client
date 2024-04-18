@@ -1,4 +1,4 @@
-import Label from '@/components/UI/label';
+import Label from '@/components/common/label';
 import * as S from './styled';
 import { useRecoilState } from 'recoil';
 import { collectionMenuAtom } from '@/recoil';

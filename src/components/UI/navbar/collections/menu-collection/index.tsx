@@ -3,7 +3,7 @@ import * as S from './styled';
 import { useDispatch } from 'react-redux';
 import { useAppSelector } from '@/hooks/useAppSelector.hook';
 import { apiEntityToClientEntity, entityName } from '@/utils/entities.utils';
-import Collapsable from '@/components/UI/collapsable';
+import Collapsable from '@/components/common/collapsable';
 import { openPanel } from '@/reducers/UI/panels.reducer';
 import { Entity } from '@/enums';
 import CollectionTitle from '../collection-title';

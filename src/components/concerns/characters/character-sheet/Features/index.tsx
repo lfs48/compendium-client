@@ -1,4 +1,4 @@
-import Collapsable from '@/components/UI/collapsable';
+import Collapsable from '@/components/common/collapsable';
 import * as S from './styled';
 import { useAppSelector } from '@/hooks/useAppSelector.hook';
 

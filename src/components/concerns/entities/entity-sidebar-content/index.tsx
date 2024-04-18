@@ -7,7 +7,7 @@ import SidebarBodyRow from '@/components/pages/dashboard/sidebar/sidebar-body-ro
 import SidebarCell from '@/components/pages/dashboard/sidebar/sidebar-cell';
 import SidebarTable from '@/components/pages/dashboard/sidebar/sidebar-table';
 import SidebarTableHeader from '@/components/pages/dashboard/sidebar/sidebar-table-header';
-import NoResults from '@/components/UI/no-results';
+import NoResults from '@/components/common/no-results';
 import { Entity } from '@/enums';
 
 interface EntitySidebarContentProps {

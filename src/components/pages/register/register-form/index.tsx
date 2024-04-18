@@ -1,11 +1,11 @@
 import { useRegisterMutation } from '@/api/auth.api';
-import Book from '@/components/UI/book';
-import Button from '@/components/UI/button';
+import Book from '@/components/common/book';
+import Button from '@/components/common/button';
 import { areAllKeysFilled, handleInput, isAnyKeyFilled } from '@/utils/component.utils';
-import Field from '@/components/UI/field';
+import Field from '@/components/common/field';
 import { useCallback, useState } from 'react';
 import * as S from './styled';
-import Link from '@/components/UI/link';
+import Link from '@/components/common/link';
 import { isUserError } from '@/utils/errors.utils';
 import toast from 'react-hot-toast';
 import { ERROR_MESSAGE } from '@/utils/constants.utils';

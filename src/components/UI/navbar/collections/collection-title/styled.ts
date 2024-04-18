@@ -1,4 +1,4 @@
-import Input from '@/components/UI/input';
+import Input from '@/components/common/input';
 import tw from 'tailwind-styled-components';
 
 export const Root = tw.div`

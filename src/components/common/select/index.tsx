@@ -1,5 +1,5 @@
-import Label from '@/components/UI/label';
-import ErrorList from '@/components/UI/error-list';
+import Label from '@/components/common/label';
+import ErrorList from '@/components/common/error-list';
 import { ChangeEvent, SyntheticEvent } from 'react';
 import * as S from './styled';
 

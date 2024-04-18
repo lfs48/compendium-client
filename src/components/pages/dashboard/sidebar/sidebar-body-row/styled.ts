@@ -1,7 +1,7 @@
 import tw from 'tailwind-styled-components';
 import SidebarCell from '../sidebar-cell';
 import SidebarRow from '../sidebar-row';
-import Dropdown from '@/components/UI/dropdown';
+import Dropdown from '@/components/common/dropdown';
 
 type RootProps = {
     $active: boolean;

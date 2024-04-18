@@ -1,9 +1,9 @@
-import Input from '@/components/UI/input';
-import Label from '@/components/UI/label';
-import ErrorList from '@/components/UI/error-list';
+import Input from '@/components/common/input';
+import Label from '@/components/common/label';
+import ErrorList from '@/components/common/error-list';
 import { SyntheticEvent, useState } from 'react';
 import * as S from './styled';
-import TextArea from '@/components/UI/textarea';
+import TextArea from '@/components/common/textarea';
 
 interface FieldProps {
     value: string | number;

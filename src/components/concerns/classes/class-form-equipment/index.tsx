@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import * as S from './styled';
-import Field from '../../../UI/field';
+import Field from '../../../common/field';
 import { handleInput } from '@/utils/component.utils';
-import Label from '@/components/UI/label';
-import ClickableIcon from '@/components/UI/clickable-icon';
+import Label from '@/components/common/label';
+import ClickableIcon from '@/components/common/clickable-icon';
 import { Icon } from '@/enums';
 
 interface ClassFormEquipmentProps {

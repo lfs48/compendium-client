@@ -4,13 +4,13 @@ import { useAppSelector } from '@/hooks/useAppSelector.hook';
 import { Spell } from '@/types';
 import * as S from './styled';
 import { handleInput, handleToggleInput } from '@/utils/component.utils';
-import Select from '@/components/UI/select';
+import Select from '@/components/common/select';
 import { openPanel } from '@/reducers/UI/panels.reducer';
 import { useNavigate, useParams } from 'react-router-dom';
 import { usePatchSpellMutation, usePostSpellMutation } from '@/api/spells.api';
 import { merge } from 'lodash';
-import Field from '@/components/UI/field';
-import Checkbox from '@/components/UI/checkbox';
+import Field from '@/components/common/field';
+import Checkbox from '@/components/common/checkbox';
 import { Entity, SpellAspect } from '@/enums';
 import { intToOrdinal } from '@/utils/functions.utils';
 

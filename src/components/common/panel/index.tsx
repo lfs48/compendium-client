@@ -3,7 +3,7 @@ import { merge, throttle } from 'lodash';
 import { closePanel } from '@/reducers/UI/panels.reducer';
 import { useDispatch } from 'react-redux';
 import * as S from './styled';
-import Resize from '@/components/UI/resize';
+import Resize from '@/components/common/resize';
 import { useMousePos } from '@/hooks/useMouse.hook';
 import { Entity } from '@/enums';
 

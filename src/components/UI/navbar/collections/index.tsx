@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 import * as S from './styled';
-import Dropdown from '../../dropdown';
+import Dropdown from '../../../common/dropdown';
 import { useGetAllUserCollectionsQuery } from '@/api/collections.api';
-import Loading from '../../loading';
+import Loading from '../../../common/loading';
 import { useAppSelector } from '@/hooks/useAppSelector.hook';
 import { RootState } from '@/types';
-import Label from '../../label';
+import Label from '../../../common/label';
 import MenuCollection from './menu-collection';
 import { useRecoilState } from 'recoil';
 import { collectionMenuAtom } from '@/recoil';

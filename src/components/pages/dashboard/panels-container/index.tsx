@@ -1,7 +1,7 @@
-import Panel from '@/components/UI/panel';
+import Panel from '@/components/common/panel';
 import { RootState } from '@/types';
 import { useAppSelector } from '@/hooks/useAppSelector.hook';
-import Markdown from '@/components/UI/markdown';
+import Markdown from '@/components/common/markdown';
 import ClassPanelContent from '@/components/concerns/classes/class-panel-content';
 import React, { useEffect, useState } from 'react';
 import {merge} from 'lodash';

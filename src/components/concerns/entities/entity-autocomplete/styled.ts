@@ -1,4 +1,4 @@
-import Dropdown from '@/components/UI/dropdown';
+import Dropdown from '@/components/common/dropdown';
 import tw from 'tailwind-styled-components';
 
 export const Root = tw.div`

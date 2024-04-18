@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Feature } from '@/types';
 import * as S from './styled';
 import { handleInput } from '@/utils/component.utils';
-import Select from '@/components/UI/select';
+import Select from '@/components/common/select';
 import { openPanel } from '@/reducers/UI/panels.reducer';
 import { useNavigate, useParams } from 'react-router-dom';
 import { usePatchFeatureMutation, usePostFeatureMutation } from '@/api/features.api';

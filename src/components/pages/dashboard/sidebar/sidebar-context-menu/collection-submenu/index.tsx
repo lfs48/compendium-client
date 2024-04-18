@@ -7,7 +7,7 @@ import { merge } from 'lodash';
 import { clientEntityToAPIEntity } from '@/utils/entities.utils';
 import { useRecoilState } from 'recoil';
 import { collectionMenuAtom } from '@/recoil';
-import Checkbox from '@/components/UI/checkbox';
+import Checkbox from '@/components/common/checkbox';
 import { collectionContainsEntity } from '@/utils/collections.utils';
 
 interface CollectionSubmenuProps {

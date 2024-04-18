@@ -1,4 +1,4 @@
-import Select from '@/components/UI/select';
+import Select from '@/components/common/select';
 import { RootState } from '@/types';
 import { ChangeEvent } from 'react';
 import { useAppSelector } from '@/hooks/useAppSelector.hook';

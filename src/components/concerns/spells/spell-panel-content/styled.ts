@@ -1,5 +1,5 @@
 import tw from 'tailwind-styled-components';
-import Markdown from '@/components/UI/markdown';
+import Markdown from '@/components/common/markdown';
 
 export const Root = tw.div`
     flex

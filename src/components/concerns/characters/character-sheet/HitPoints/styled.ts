@@ -1,5 +1,5 @@
-import Button from '@/components/UI/button';
-import Input from '@/components/UI/input';
+import Button from '@/components/common/button';
+import Input from '@/components/common/input';
 import tw from 'tailwind-styled-components';
 
 export const Root = tw.div`

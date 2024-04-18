@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Item } from '@/types';
 import * as S from './styled';
-import PanelFooter from '@/components/UI/panel-footer';
+import PanelFooter from '@/components/common/panel-footer';
 import { useDispatch } from 'react-redux';
-import Dialog from '@/components/UI/dialog';
-import Loading from '@/components/UI/loading';
+import Dialog from '@/components/common/dialog';
+import Loading from '@/components/common/loading';
 import { useNavigate } from 'react-router-dom';
 import { useDeleteItemMutation } from '@/api/items.api';
 import { bulkString, valueString } from '@/utils/items.util';

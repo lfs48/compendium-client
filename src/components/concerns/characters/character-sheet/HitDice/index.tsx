@@ -1,4 +1,4 @@
-import Button from '@/components/UI/button';
+import Button from '@/components/common/button';
 import { BubbleLabel } from '../BubbleLabel';
 import { Bubble } from '../styled';
 import * as S from './styled';

@@ -1,6 +1,6 @@
 import * as S from './styled';
 import { KeyboardEvent, SyntheticEvent, useState } from 'react';
-import Button from '@/components/UI/button';
+import Button from '@/components/common/button';
 import { usePostMessageMutation } from '@/api/messages.api';
 import { useAppSelector } from '@/hooks/useAppSelector.hook';
 import { RootState } from '@/types';

@@ -1,8 +1,8 @@
-import Field from '@/components/UI/field';
-import Input from '@/components/UI/input';
-import ButtonComponent from '@/components/UI/button';
+import Field from '@/components/common/field';
+import Input from '@/components/common/input';
+import ButtonComponent from '@/components/common/button';
 import tw from 'tailwind-styled-components';
-import Form from '@/components/UI/form';
+import Form from '@/components/common/form';
 
 export const Root = tw(Form)`
     flex

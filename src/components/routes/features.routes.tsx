@@ -1,4 +1,4 @@
-import Loading from '@/components/UI/loading';
+import Loading from '@/components/common/loading';
 import { Route, Routes } from 'react-router-dom';
 import FeatureForm from '../concerns/features/feature-form';
 import GmRoute from './gm.route';

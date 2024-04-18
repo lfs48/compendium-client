@@ -1,6 +1,6 @@
 import tw from 'tailwind-styled-components';
-import Dropdown from '../../dropdown';
-import SpeechBubble from '../../speech-bubble';
+import Dropdown from '../../../common/dropdown';
+import SpeechBubble from '../../../common/speech-bubble';
 
 export const Root = tw.div`
     relative

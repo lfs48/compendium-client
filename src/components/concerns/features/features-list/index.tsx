@@ -1,7 +1,7 @@
 import { DndClass, Feature, RootState } from '@/types';
 import { useAppSelector } from '@/hooks/useAppSelector.hook';
-import Collapsable from '@/components/UI/collapsable';
-import Markdown from '@/components/UI/markdown';
+import Collapsable from '@/components/common/collapsable';
+import Markdown from '@/components/common/markdown';
 import * as S from './styled';
 import { intToOrdinal } from '@/utils/functions.utils';
 import { sortEntities } from '@/utils/entities.utils';

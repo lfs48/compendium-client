@@ -5,7 +5,7 @@ import ItemFilters from '../../../../concerns/items/item-filters';
 import { useRecoilState } from 'recoil';
 import { sidebarAtom } from '@/recoil';
 import { merge } from 'lodash';
-import Close from '@/components/UI/close';
+import Close from '@/components/common/close';
 import { Entity } from '@/enums';
 
 interface SidebarFilterProps {

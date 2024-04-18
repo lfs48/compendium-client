@@ -1,4 +1,4 @@
-import ClickableIcon from '@/components/UI/clickable-icon';
+import ClickableIcon from '@/components/common/clickable-icon';
 import { useAppSelector } from '@/hooks/useAppSelector.hook';
 import * as S from './styled';
 import { Icon } from '@/enums';

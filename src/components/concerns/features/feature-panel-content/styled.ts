@@ -1,5 +1,5 @@
 import tw from 'tailwind-styled-components';
-import Markdown from '@/components/UI/markdown';
+import Markdown from '@/components/common/markdown';
 import FeatureTagline from '../feature-tagline';
 
 export const Root = tw.div`

@@ -4,8 +4,8 @@ import { useAppSelector } from '@/hooks/useAppSelector.hook';
 import { DndClass, RootState } from '@/types';
 import { intToOrdinal } from '@/utils/functions.utils';
 import { getLevelProficiency } from '@/utils/dndClass.utils';
-import Dropdown from '@/components/UI/dropdown';
-import Table from '@/components/UI/table';
+import Dropdown from '@/components/common/dropdown';
+import Table from '@/components/common/table';
 import { LEVEL_ARRAY } from '@/utils/constants.utils';
 
 interface ClassFormTableProps {

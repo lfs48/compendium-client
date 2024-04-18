@@ -1,4 +1,4 @@
-import Loading from '@/components/UI/loading';
+import Loading from '@/components/common/loading';
 import SidebarControls from '@/components/pages/dashboard/sidebar/sidebar-controls';
 import SidebarTabSelect from '@/components/pages/dashboard/sidebar/sidebar-tab-select';
 import { RootState } from '@/types';

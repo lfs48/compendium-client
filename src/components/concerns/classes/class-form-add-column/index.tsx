@@ -1,7 +1,7 @@
 import * as S from './styled';
 import { useState } from 'react';
-import Field from '../../../UI/field';
-import Button from '@/components/UI/button';
+import Field from '../../../common/field';
+import Button from '@/components/common/button';
 
 interface ClassFormAddColumnProps {
     handleAddColumn: (name:string) => void;

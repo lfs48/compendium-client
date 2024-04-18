@@ -5,7 +5,7 @@ import { intToOrdinal } from '@/utils/functions.utils';
 import React, { ReactNode, useEffect } from 'react';
 import { useAppSelector } from '@/hooks/useAppSelector.hook';
 import EntityLink from '@/components/concerns/entities/entity-link';
-import Table from '@/components/UI/table';
+import Table from '@/components/common/table';
 import { LEVEL_ARRAY } from '@/utils/constants.utils';
 import { Entity } from '@/enums';
 

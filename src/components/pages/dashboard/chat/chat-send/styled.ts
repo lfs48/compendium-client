@@ -1,6 +1,6 @@
-import Field from '@/components/UI/field';
-import Input from '@/components/UI/input';
-import TextArea from '@/components/UI/textarea';
+import Field from '@/components/common/field';
+import Input from '@/components/common/input';
+import TextArea from '@/components/common/textarea';
 import tw from 'tailwind-styled-components';
 
 export const Root = tw.div`

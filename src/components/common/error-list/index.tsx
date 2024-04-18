@@ -1,4 +1,4 @@
-import Error from '@/components/UI/error';
+import Error from '@/components/common/error';
 import * as S from './styled';
 
 interface ErrorProps {
