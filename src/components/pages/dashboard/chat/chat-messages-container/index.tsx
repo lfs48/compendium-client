@@ -5,12 +5,13 @@ import ChatMessage from '../chat-message';
 import { useEffect, useRef, useState } from 'react';
 import { useGetAllMessagesQuery } from '@/api/messages.api';
 import { observe, useInView } from 'react-intersection-observer';
+import ChatLoading from '../chat-loading';
 
 export default function ChatMessagesContainer() {
 
     const [page, setPage] = useState(1);
 
-    const query = useGetAllMessagesQuery(page);
+    const {isLoading, isSuccess} = useGetAllMessagesQuery(page);
 
     const boxRef = useRef(null)as React.MutableRefObject<null | HTMLDivElement>;
     const lastRef = useRef(null) as React.MutableRefObject<null | HTMLDivElement>;
@@ -73,7 +74,11 @@ export default function ChatMessagesContainer() {
 
     return(
         <S.Root ref={boxRef}>
-            {els}
+            {isSuccess ?
+                els
+            :
+                <ChatLoading />
+            }
             <div key={1} ref={botRef}></div>
         </S.Root>
     )
