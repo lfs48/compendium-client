@@ -7,20 +7,15 @@ import ChatMessagesContainer from './chat-messages-container';
 
 export default function Chat() {
 
-    const {isLoading, isSuccess} = useGetAllMessagesQuery(1);
+    const {isLoading} = useGetAllMessagesQuery(1);
 
     return(
         <S.Root>
-            {isLoading &&
-                <Loading />
-            }
-            {isSuccess &&
-                <S.Body>
-                    <ChatSocketManager />
-                    <ChatMessagesContainer />
-                    <ChatSend />
-                </S.Body>
-            }
+            <S.Body>
+                <ChatSocketManager />
+                <ChatMessagesContainer />
+                <ChatSend disabled={isLoading}/>
+            </S.Body>
         </S.Root>
     )
 }

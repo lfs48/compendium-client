@@ -3,9 +3,16 @@ import { KeyboardEvent, SyntheticEvent, useState } from 'react';
 import Button from '@/components/common/button';
 import { usePostMessageMutation } from '@/api/messages.api';
 import { useAppSelector } from '@/hooks/useAppSelector.hook';
-import { RootState } from '@/types';
 
-export default function ChatSend() {
+interface ChatLoadingProps {
+    disabled?: boolean;
+    [prop:string]: any;
+}
+
+export default function ChatSend({
+    disabled=false,
+    ...props
+}:ChatLoadingProps) {
 
     const [trigger, {isLoading}] = usePostMessageMutation();
 
@@ -35,19 +42,19 @@ export default function ChatSend() {
     }
 
     return(
-        <S.Root>
+        <S.Root {...props}>
             <S.MessageTextfield
                 value={input}
                 onKeyDown={handleKeyDown}
                 onChange={(e) => setInput(e.target.value)}
                 placeholder={!authenticated ? 'Log in or sign up to send messages' : ''}
-                disabled={!authenticated}
+                disabled={!authenticated || disabled}
             />
             <S.Bottom>
                 <Button
                     onClick={handleSend}
                     loading={isLoading}
-                    disabled={!authenticated}
+                    disabled={!authenticated || disabled}
                 >
                     Send
                 </Button>
