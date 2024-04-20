@@ -11,7 +11,7 @@ export default function ChatMessagesContainer() {
 
     const [page, setPage] = useState(1);
 
-    const {isLoading, isSuccess} = useGetAllMessagesQuery(page);
+    const _ = useGetAllMessagesQuery(page);
 
     const boxRef = useRef(null)as React.MutableRefObject<null | HTMLDivElement>;
     const lastRef = useRef(null) as React.MutableRefObject<null | HTMLDivElement>;
@@ -24,10 +24,8 @@ export default function ChatMessagesContainer() {
     const [length, setLength] = useState(sortedMessages.length)
 
     useEffect( () => {
-        if (page === 1) {
-            botRef.current?.scrollIntoView();
-        }
-    }, [isSuccess])
+        botRef.current?.scrollIntoView();
+    }, [])
 
     useEffect( () => {
         if (sortedMessages.length > length) {
@@ -76,11 +74,7 @@ export default function ChatMessagesContainer() {
 
     return(
         <S.Root ref={boxRef}>
-            {isSuccess || page > 1 ?
-                els
-            :
-                <ChatLoading />
-            }
+            {els}
             <div key={1} ref={botRef}></div>
         </S.Root>
     )

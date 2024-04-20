@@ -27,3 +27,11 @@ export const Body = tw.div`
     flex
     flex-col
 `
+
+export const Content = tw.div`
+    h-[calc(100%-12rem)]
+    flex
+    flex-col
+    w-full
+    p-2
+`

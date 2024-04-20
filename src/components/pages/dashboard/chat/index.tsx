@@ -7,10 +7,11 @@ import ChatMessagesContainer from './chat-messages-container';
 import { useRecoilState } from 'recoil';
 import { chatAtom } from '@/recoil';
 import ChatHide from './chat-hide';
+import ChatLoading from './chat-loading';
 
 export default function Chat() {
 
-    const {isLoading} = useGetAllMessagesQuery(1);
+    const {isSuccess} = useGetAllMessagesQuery(1);
 
     const [{chatOpen}, _] = useRecoilState(chatAtom);
 
@@ -19,8 +20,12 @@ export default function Chat() {
         <S.Root $open={chatOpen}>
             <S.Body>
                 <ChatSocketManager />
-                <ChatMessagesContainer />
-                <ChatSend disabled={isLoading}/>
+                {isSuccess ?
+                    <ChatMessagesContainer />
+                :
+                    <ChatLoading />
+                }
+                <ChatSend disabled={!isSuccess}/>
             </S.Body>
             <ChatHide />
         </S.Root>
