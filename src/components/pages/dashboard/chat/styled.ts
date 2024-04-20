@@ -1,8 +1,11 @@
 import tw from 'tailwind-styled-components';
 
-export const Root = tw.div`
+type RootProps = {
+    $open: boolean;
+}
+
+export const Root = tw.div<RootProps>`
     fixed
-    right-0
     w-80
     h-full-minus-nav
     bg-beige-lighter
@@ -14,6 +17,9 @@ export const Root = tw.div`
     flex
     flex-col
     justify-between
+    ${p => p.$open ? '-right-0' : '-right-80'}
+    transition-[right]
+    duration-700
 `
 
 export const Body = tw.div`

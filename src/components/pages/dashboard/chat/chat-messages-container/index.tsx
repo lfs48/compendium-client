@@ -24,8 +24,10 @@ export default function ChatMessagesContainer() {
     const [length, setLength] = useState(sortedMessages.length)
 
     useEffect( () => {
-        botRef.current?.scrollIntoView();
-    }, [])
+        if (page === 1) {
+            botRef.current?.scrollIntoView();
+        }
+    }, [isSuccess])
 
     useEffect( () => {
         if (sortedMessages.length > length) {
@@ -74,7 +76,7 @@ export default function ChatMessagesContainer() {
 
     return(
         <S.Root ref={boxRef}>
-            {isSuccess ?
+            {isSuccess || page > 1 ?
                 els
             :
                 <ChatLoading />
