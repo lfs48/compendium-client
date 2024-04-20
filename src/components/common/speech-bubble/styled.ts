@@ -7,8 +7,8 @@ type DirProps = {
 export const Root = tw.div<DirProps>`
     text-sm
     font-semibold
-    bg-beige
-    dark:bg-gray-200
+    bg-gray-200
+    dark:bg-gray-300
     dark:text-black
     rounded-sm
     shadow
@@ -46,26 +46,26 @@ export const Arrow = tw.div<DirProps>`
         `
     }
     ${p => p.$dir === 'left' ?`
-        border-l-beige 
-        dark:border-l-gray-200
+        border-l-gray-200
+        dark:border-l-gray-300
         border-r-transparent 
         -right-4
     `:''}
     ${p => p.$dir === 'right' ?`
-        border-r-beige
-        dark:border-r-gray-200
+        border-r-gray-200
+        dark:border-r-gray-300
         border-l-transparent
         -left-4
     `:''}
     ${p => p.$dir === 'top' ?`
-        border-t-beige
-        dark:border-t-gray-200
+        border-t-gray-200
+        dark:border-t-gray-300
         border-b-transparent 
         -bottom-4`
     :''}
     ${p => p.$dir === 'bottom' ?`
-        border-b-beige
-        dark:border-b-gray-200
+        border-b-gray-200
+        dark:border-b-gray-300
         border-t-transparent 
         -top-4`
     :''}
