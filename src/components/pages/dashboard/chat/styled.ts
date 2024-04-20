@@ -6,7 +6,7 @@ type RootProps = {
 
 export const Root = tw.div<RootProps>`
     fixed
-    w-80
+    w-100
     h-full-minus-nav
     bg-beige-lighter
     dark:bg-gray-600
