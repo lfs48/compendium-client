@@ -1,3 +1,5 @@
+import { User } from "./User";
+
 export interface Message {
     id: string;
     body: string;
@@ -5,6 +7,15 @@ export interface Message {
     user: string;
     created_at: string;
 }
+
+export interface APIMessage {
+    id: string;
+    body: string;
+    kind: 'text' | 'roll';
+    user: User;
+    created_at: string;
+}
+
 
 export interface PostMessage {
     message: {

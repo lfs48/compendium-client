@@ -6,6 +6,7 @@ import spellsReducer from "./spells.reducer";
 import itemsReducer from "./items.reducer";
 import collectionReducer from "./collection.reducer";
 import messagesReducer from "./messages.reducer";
+import usersReducer from "./users.reducer";
 
 const entitiesReducer = combineReducers({
     dndClasses: dndclassesReducer,
@@ -14,7 +15,8 @@ const entitiesReducer = combineReducers({
     spells: spellsReducer,
     items: itemsReducer,
     collections: collectionReducer,
-    messages: messagesReducer
+    messages: messagesReducer,
+    users: usersReducer
 });
 
 export default entitiesReducer;

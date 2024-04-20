@@ -1,16 +1,17 @@
 import { Message, PostMessage } from '@/types';
 import { rootApi } from './root.api';
+import { APIMessage } from '@/types/Message';
 
 interface MessageIndex {
-    messages: Message[]
+    messages: APIMessage[]
 }
 
-export const chatsApi = rootApi.injectEndpoints({
+export const messagesApi = rootApi.injectEndpoints({
     endpoints: (builder) => ({
         getAllMessages: builder.query<MessageIndex, number>({
             query: (page) => `/messages?page=${page}`
         }),
-        postMessage: builder.mutation<Message, PostMessage>({
+        postMessage: builder.mutation<APIMessage, PostMessage>({
             query: ({...post}) => ({
                 url: `/messages`,
                 method: 'POST',
@@ -23,4 +24,4 @@ export const chatsApi = rootApi.injectEndpoints({
 export const { 
     useGetAllMessagesQuery,
     usePostMessageMutation
-} = chatsApi;
+} = messagesApi;

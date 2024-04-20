@@ -1,6 +1,7 @@
 import { Message } from '@/types';
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
-import { chatsApi } from '@/api/messages.api';
+import { messagesApi } from '@/api/messages.api';
+import { merge } from 'lodash';
 
 interface MessagesState {
   [id: string]: Message;
@@ -13,26 +14,32 @@ const messagesSlice = createSlice({
   initialState: initialState,
   reducers: {
     receiveMessage: (state, { payload }) => {
-      state[payload.id] = payload;
+      const newMessage = merge({}, payload) as Message;
+      newMessage.user = payload.user.id;
+      state[payload.id] = newMessage;
     }
   },
   extraReducers: (builder) => {
     builder
     .addMatcher(
       isAnyOf(
-        chatsApi.endpoints.getAllMessages.matchFulfilled
+        messagesApi.endpoints.getAllMessages.matchFulfilled
       ),
         (state, { payload }) => {
           payload.messages.forEach( (message) => {
-            state[message.id] = message;
+            const newMessage = merge({}, message) as Message;
+            newMessage.user = message.user.id;
+            state[message.id] = newMessage;
           })
         })
       .addMatcher(
         isAnyOf(
-          chatsApi.endpoints.postMessage.matchFulfilled
+          messagesApi.endpoints.postMessage.matchFulfilled
         ),
         (state, { payload }) => {
-          state[payload.id] = payload;
+          const newMessage = merge({}, payload) as Message;
+          newMessage.user = payload.user.id;
+          state[payload.id] = newMessage;
         }
       );
   }

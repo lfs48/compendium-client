@@ -2,6 +2,7 @@ export interface User {
     id: string;
     username: string;
     gm: boolean;
+    color: string;
 }
 
 export interface PatchUser {
