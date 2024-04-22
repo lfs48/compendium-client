@@ -10,5 +10,6 @@ export interface PatchUser {
         id: string;
         username?: string;
         password?: string;
+        color?: string;
     }
 }
