@@ -4,13 +4,13 @@ import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 
 interface SessionState {
     authenticated: boolean;
-    id: string | null;
+    id: string;
     gm: boolean;
 }
 
 const initialState: SessionState = {
     authenticated: !!localStorage.jwt && !!localStorage.userID,
-    id: localStorage.userID || null,
+    id: localStorage.userID || '',
     gm: false
 };
 
