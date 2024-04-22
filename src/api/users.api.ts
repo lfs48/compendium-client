@@ -6,9 +6,9 @@ export const userApi = rootApi.injectEndpoints({
         getUserById: builder.query<User, string>({
             query: (id) => `users/${id}`
         }),
-        updateUser: builder.mutation<User, PatchUser>({
+        patchUser: builder.mutation<User, PatchUser>({
             query: ({...patch}) => ({
-                url: `/${patch.user.id}`,
+                url: `users/${patch.user.id}`,
                 method: 'PATCH',
                 body: patch
             })
@@ -18,5 +18,5 @@ export const userApi = rootApi.injectEndpoints({
 
 export const { 
     useGetUserByIdQuery, 
-    useUpdateUserMutation 
+    usePatchUserMutation 
 } = userApi;
