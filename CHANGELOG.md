@@ -1,5 +1,25 @@
 # Changelog
 
+## [0.3.1] - 2024-4-22
+
+## Additions
+
+- Users can now customize the color that their username appears with in chat.
+- Users now receive toasts to notify them of successes and errors.
+
+## Improvements
+
+- Made loading animations more stylish.
+
+## Fixes
+
+- Fixed a visual issue where the sidebar would shrink while loading data.
+
+### Optimizations
+
+- Reorganized project directories
+- Migrated to React 18 and Vite 5.
+
 ## [0.3.0] - 2024-4-15
 
 ## Additions
