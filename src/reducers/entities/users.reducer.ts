@@ -40,7 +40,8 @@ const spellsSlice = createSlice({
       )
       .addMatcher(
         isAnyOf(
-            userApi.endpoints.getUserById.matchFulfilled
+            userApi.endpoints.getUserById.matchFulfilled,
+            userApi.endpoints.patchUser.matchFulfilled
         ),
         (state, { payload }) => {
             state[payload.id] = payload;

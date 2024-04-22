@@ -4,6 +4,7 @@ import * as S from './styled';
 import DarkMode from './darkmode';
 import Collections from './collections';
 import AuthLinks from './auth-links';
+import UserColor from './user-color';
 
 export default function Navbar() {
 
@@ -21,7 +22,10 @@ export default function Navbar() {
             <S.Right>
                 {(authenticated && user) ?
                     <>
-                    <span>{user.username}</span>
+                    <S.UserInfo>
+                        <UserColor />
+                        <span>{user.username}</span>
+                    </S.UserInfo>
                     <DarkMode />
                     <Logout />
                     </>
