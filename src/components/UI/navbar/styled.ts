@@ -11,7 +11,7 @@ export const Root = tw.nav`
     flex
     justify-between
     items-center
-    px-12
+    px-16
     w-full
     z-10
     text-xl
