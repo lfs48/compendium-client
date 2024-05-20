@@ -14,4 +14,5 @@ export const Root = tw.i<RootProps>`
     transition-all
     duration-700
     cursor-pointer
+    dark:text-white
 `
